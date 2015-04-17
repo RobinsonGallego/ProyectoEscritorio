@@ -64,13 +64,9 @@ public class ClasePersonalMedico{
             //CREAMOS UN OBJETO QUE GUARDARA LOS RESULTADOS
             ResultSet rs=cmd.executeQuery();
             //LEEMOS TODAS LAS FILAS QUE NOS ENVIA EL SQL
-            while(rs.next())
-            {
-                for (int i=0;i<1;i++)//SE PONE i<1 PORQUE SOLO TENEMOS UNA COLUMNA
-                {
-                    lista.addItem(rs.getString(i+1));
-                }
-            }
+            while(rs.next()){
+                for (int i=0;i<1;i++){//SE PONE i<1 PORQUE SOLO TENEMOS UNA COLUMNA
+                    lista.addItem(rs.getString(i+1));}}
             //CERRAMOS LA CONEXIÓN
             cmd.close();
             cn.close();}
@@ -122,8 +118,8 @@ public class ClasePersonalMedico{
             String sql="select * from PersonalMedico where Identificacion="+identificacion;
             CallableStatement cmd=cn.prepareCall(sql);
             ResultSet rs=cmd.executeQuery();
-            return rs;
-        }catch (Exception e){
+            return rs;}
+        catch (Exception e){
             System.out.println(e.getMessage());}
         return null;
     }
@@ -133,8 +129,8 @@ public class ClasePersonalMedico{
             String sql="select * from PersonalMedico where Nombres='"+nombres+"' and PrimerApellido='"+PApellido+"' and SegundoApellido='"+SApellido+"'";
             CallableStatement cmd=cn.prepareCall(sql);
             ResultSet rs=cmd.executeQuery();
-            return rs;
-        }catch (Exception e){
+            return rs;}
+        catch (Exception e){
             System.out.println(e.getMessage());}
         return null;
     }
