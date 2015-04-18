@@ -46,6 +46,7 @@ public class SplashInicio extends javax.swing.JFrame{
 
         jpbcargar.setBackground(new java.awt.Color(255, 255, 255));
         jpbcargar.setForeground(new java.awt.Color(255, 153, 51));
+        jpbcargar.setBorderPainted(false);
         pfondo.add(jpbcargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 690, 25));
 
         lblinformacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
