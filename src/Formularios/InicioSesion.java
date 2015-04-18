@@ -1,15 +1,37 @@
 package Formularios;
-
+//LIBRERÍAS
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import proyectoescritorio.SplashInicio;
 
-public class InicioSesion extends javax.swing.JFrame
-{
-    public InicioSesion()
-    {
+public class InicioSesion extends javax.swing.JFrame{
+    private SplashInicio splashInicio;
+    //MÉTODO PARA ASIGNAR UN VALOR Y TEXTO AL SPLASH
+    public InicioSesion(SplashInicio splashInicio){
+        this.splashInicio=splashInicio;
+        setProgress(0,"Cargando Componentes del Sistema");
+        initComponents();
+        setProgress(20,"Conectandose a la Base de Datos");
+        setProgress(40,"Cargando Módulos");
+        setProgress(60,"Módulos Cargados...");
+        setProgress(80,"Cargando Interfaces");
+        setProgress(90,"Interfaces Cargadas...");
+        setProgress(100,"Bienvenido al Sistema");
+        this.setLocationRelativeTo(null);
+    }
+    private void setProgress(int percent,String information){
+        splashInicio.getJLabel().setText(information);
+        splashInicio.getJProgressBar().setValue(percent);
+        try{
+            Thread.sleep(1500);}//TIEMPO QUE DEMORA EL SISTEMA EN CARGAR
+        catch(InterruptedException e){
+            JOptionPane.showMessageDialog(null,"No se puedo ejecutar la presentación");}
+    }
+    //CONSTRUCTOR
+    public InicioSesion(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
@@ -158,8 +180,7 @@ public class InicioSesion extends javax.swing.JFrame
     //CAMBIO DE IDIOMA
     private void cbidiomasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbidiomasItemStateChanged
         String idioma=cbidiomas.getSelectedItem().toString();
-        if(idioma.equals("English"))
-        {
+        if(idioma.equals("English")){
             lblusuario.setText("User");
             lblcontrasena.setText("Password");
             btningresar.setText("Log in");
@@ -167,8 +188,7 @@ public class InicioSesion extends javax.swing.JFrame
             btnrecordar.setText("Lost Password");
             lbltitulo.setText("Account Login");
             lblidiomas.setText("Languages");
-            txtusuario.requestFocus();
-        }
+            txtusuario.requestFocus();}
         else{
             lblusuario.setText("Usuario");
             lblcontrasena.setText("Contraseña");
@@ -177,40 +197,27 @@ public class InicioSesion extends javax.swing.JFrame
             btnrecordar.setText("Recordar Contraseña");
             lbltitulo.setText("Inicio Sesión");
             lblidiomas.setText("Idiomas");
-            txtusuario.requestFocus();
-        }
+            txtusuario.requestFocus();}
     }//GEN-LAST:event_cbidiomasItemStateChanged
     //LIMITACIONES Y TRASFERENCIA DE FOCUS
     private void txtusuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusuarioKeyTyped
-        if(txtusuario.getText().length()==10)
-        {
-            evt.consume();//ANULA LAS ACCIONES DEL TECLADO
-        }
+        if(txtusuario.getText().length()==10){
+            evt.consume();}//ANULA LAS ACCIONES DEL TECLADO
         char Caracter=evt.getKeyChar();
         int Contador=(int)(Caracter);
-        if(evt.getSource()==txtusuario)
-        {
-            if(Contador==10)
-            {
-                jpcontrasena.requestFocus();
-            }
-        }
+        if(evt.getSource()==txtusuario){
+            if(Contador==10){
+                jpcontrasena.requestFocus();}}
     }//GEN-LAST:event_txtusuarioKeyTyped
 
     private void jpcontrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyTyped
-        if(jpcontrasena.getText().length()==10)
-        {
-            evt.consume();//ANULA LAS ACCIONES DEL TECLADO
-        }
+        if(jpcontrasena.getText().length()==10){
+            evt.consume();}//ANULA LAS ACCIONES DEL TECLADO
         char Caracter=evt.getKeyChar();
         int Contador=(int)(Caracter);
-        if(evt.getSource()==jpcontrasena)
-        {
-            if(Contador==10)
-            {
-                btningresar.requestFocus();
-            }
-        }
+        if(evt.getSource()==jpcontrasena){
+            if(Contador==10){
+                btningresar.requestFocus();}}
     }//GEN-LAST:event_jpcontrasenaKeyTyped
 
     private void btningresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btningresarKeyTyped
@@ -221,49 +228,34 @@ public class InicioSesion extends javax.swing.JFrame
         System.exit(0);
     }//GEN-LAST:event_btnsalirKeyTyped
     //MÉTODO PARA INGRESAR AL SISTEMA
-    public void Ingresar()
-    {
+    public void Ingresar(){
         String user=txtusuario.getText();
         String contrasena=jpcontrasena.getText();
-        if(user.equals("admin")&&contrasena.equals("admin"))
-        {
+        if(user.equals("admin")&&contrasena.equals("admin")){
             this.dispose();
             Menu menu= new Menu();
-            menu.setVisible(true);
-        }
+            menu.setVisible(true);}
         else{
-            if(user.equals("")&&contrasena.equals(""))
-            {
+            if(user.equals("")&&contrasena.equals("")){
                 JOptionPane.showMessageDialog(null,"Por favor ingrese los Datos","Error",JOptionPane.ERROR_MESSAGE);
-                txtusuario.requestFocus();
-            }
+                txtusuario.requestFocus();}
             else{
                 JOptionPane.showMessageDialog(null,"Usuario y/o Contraseña Incorrectos","Error",JOptionPane.ERROR_MESSAGE);
                 txtusuario.setText("");
                 jpcontrasena.setText("");
-                txtusuario.requestFocus();
-            }
-        }
+                txtusuario.requestFocus();}}
     }
     //MÉTODO QUE VALIDA LETRAS
-    public void Letras(final JTextField a)
-    {
-        a.addKeyListener(new KeyAdapter()
-        {
+    private void Letras(final JTextField a){
+        a.addKeyListener(new KeyAdapter(){
             @Override
-            public void keyTyped(KeyEvent KE)
-            {
+            public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
-                if(Character.isDigit(c))//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
-                {
+                if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();//ANULA EVENTOS DEL TECLADO
-                }
-            }
-        });
+                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO
     }
-    public static void main(String args[])
-    {
+    public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -285,13 +277,10 @@ public class InicioSesion extends javax.swing.JFrame
             java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
+        java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
-            public void run() {
-                new InicioSesion().setVisible(true);
-            }
-        });
+            public void run(){
+                new InicioSesion().setVisible(true);}});
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btningresar;
