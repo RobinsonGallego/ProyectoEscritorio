@@ -1,5 +1,5 @@
 package Tablas;
-
+//LIBRERÍAS
 import Clases.ClaseTipoMenu;
 import Formularios.TipoMenu;
 import java.awt.Font;
@@ -23,8 +23,7 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         Iniciar();
     }
     //MÉTODO PARA LLENAR LA TABLA CON LOS DATOS DE LA BASE DE DATOS
-    private void Iniciar()
-    {
+    private void Iniciar(){
         //LIMPIAMOS LA TABLA
         Limpiar(tablatipomenu);
         //PONEMOS TODOS LOS DATOS POR DEFECTO
@@ -38,8 +37,7 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         Letras(txtbusquedape);
     }
     //MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
-    private void FormatoTabla()
-    {
+    private void FormatoTabla(){
         //PONEMOS TAMAÑO A CADA COLUMNA
         tablatipomenu.getColumnModel().getColumn(0).setWidth(25);
         tablatipomenu.getColumnModel().getColumn(0).setMaxWidth(55);
@@ -63,14 +61,11 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         th.setFont(fuente);
     }
     //MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
-    private void Limpiar(JTable tabla)
-    {
+    private void Limpiar(JTable tabla){
         //RECORREMOS TODAS LAS FILAS
-        while(tabla.getRowCount()>0)
-        {
+        while(tabla.getRowCount()>0){
             //Y AQUÍ LAS REMOVEMOS
-            ((DefaultTableModel)tabla.getModel()).removeRow(0);
-        }
+            ((DefaultTableModel)tabla.getModel()).removeRow(0);}
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -133,6 +128,9 @@ public class TablaTipoMenu extends javax.swing.JFrame{
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbusquedatmKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbusquedatmKeyTyped(evt);
+            }
         });
 
         txtbusquedape.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -140,6 +138,9 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         txtbusquedape.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbusquedapeKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbusquedapeKeyTyped(evt);
             }
         });
 
@@ -225,7 +226,7 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         TipoMenu tipoMenu=new TipoMenu();
         tipoMenu.setVisible(true);
     }//GEN-LAST:event_btnregresarActionPerformed
-
+    //ACCIÓN DEL RADIOBUTTON BUSQUEDA TIPO MENÚ
     private void rbbusquedatmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbusquedatmActionPerformed
         Iniciar();
         rbbusquedape.setSelected(false);
@@ -234,7 +235,7 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         txtbusquedape.setEnabled(false);
         txtbusquedape.setText("");
     }//GEN-LAST:event_rbbusquedatmActionPerformed
-
+    //ACCIÓN DEL RADIOBUTTON BUSQUEDA PACIENTE ESPECIAL
     private void rbbusquedapeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbusquedapeActionPerformed
         Iniciar();
         rbbusquedatm.setSelected(false);
@@ -243,7 +244,7 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         txtbusquedatm.setEnabled(false);
         txtbusquedatm.setText("");
     }//GEN-LAST:event_rbbusquedapeActionPerformed
-
+    //ACCIÓN DEL JTEXTFIELD BUSQUEDA TIPO MENÚ
     private void txtbusquedatmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedatmKeyPressed
         //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
         ClaseTipoMenu ctm=new ClaseTipoMenu();
@@ -253,7 +254,7 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         //LLAMAMOS EL MÉTODO
         ctm.BusquedaTipoMenu(modelo,txtbusquedatm.getText());
     }//GEN-LAST:event_txtbusquedatmKeyPressed
-
+    //ACCIÓN DEL JTEXTFIELD BUSQUEDA PACIENTE ESPECIAL
     private void txtbusquedapeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapeKeyPressed
         //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
         ClaseTipoMenu ctm=new ClaseTipoMenu();
@@ -263,30 +264,41 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         //LLAMAMOS EL MÉTODO
         ctm.BusquedaPacienteE(modelo,txtbusquedape.getText());
     }//GEN-LAST:event_txtbusquedapeKeyPressed
+    //MAYÚSCULA INICIAL
+    private void txtbusquedatmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedatmKeyTyped
+        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        JTextField txttipomenu=(JTextField)evt.getComponent();
+        String texto=txttipomenu.getText();
+        if(texto.length()>0){
+            char primera=texto.charAt(0);
+            texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
+            txtbusquedatm.setText(texto);}
+    }//GEN-LAST:event_txtbusquedatmKeyTyped
+    //MAYÚSCULA INICIAL
+    private void txtbusquedapeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapeKeyTyped
+        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        JTextField txtpe=(JTextField)evt.getComponent();
+        String texto=txtpe.getText();
+        if(texto.length()>0){
+            char primera=texto.charAt(0);
+            texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
+            txtbusquedape.setText(texto);}
+    }//GEN-LAST:event_txtbusquedapeKeyTyped
     //MÉTODO QUE VALIDA LETRAS
-    private void Letras(final JTextField a)
-    {
-        a.addKeyListener(new KeyAdapter()
-        {
+    private void Letras(final JTextField a){
+        a.addKeyListener(new KeyAdapter(){
             @Override
-            public void keyTyped(KeyEvent KE)
-            {
+            public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
-                if(Character.isDigit(c))//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
-                {
+                if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();//ANULA EVENTOS DEL TECLADO
-                }
-            }
-        });
+                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO
     }
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
-            public void run() {
-                new TablaTipoMenu().setVisible(true);
-            }
-        });
+            public void run(){
+                new TablaTipoMenu().setVisible(true);}});
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnregresar;

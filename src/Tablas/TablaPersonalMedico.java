@@ -683,8 +683,8 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
     //MAYÚSCULA INICIAL APELLIDOS
     private void txtprimerapeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtprimerapeKeyTyped
         //MÉTODO PARA PONER MAYÚSCULA INICIAL
-        JTextField txtnombre=(JTextField)evt.getComponent();
-        String texto=txtnombre.getText();
+        JTextField txtapellido=(JTextField)evt.getComponent();
+        String texto=txtapellido.getText();
         if(texto.length()>0){
             char primera=texto.charAt(0);
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());

@@ -205,6 +205,7 @@
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtbusquedatmKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtbusquedatmKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtbusquedape">
@@ -216,6 +217,7 @@
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtbusquedapeKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtbusquedapeKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbbusquedatm">

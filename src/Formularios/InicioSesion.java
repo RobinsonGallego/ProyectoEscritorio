@@ -20,7 +20,12 @@ public class InicioSesion extends javax.swing.JFrame{
         setProgress(80,"Cargando Interfaces");
         setProgress(90,"Interfaces Cargadas...");
         setProgress(100,"Bienvenido al Sistema");
-        this.setLocationRelativeTo(null);
+        setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Acceso.png")).getImage());//PONER IMAGEN ICONO
+        setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
+        setLocationRelativeTo(null);//CENTRAR LA VENTANA
+        txtusuario.requestFocus();
+        Letras(txtusuario);
     }
     private void setProgress(int percent,String information){
         splashInicio.getJLabel().setText(information);
@@ -33,12 +38,6 @@ public class InicioSesion extends javax.swing.JFrame{
     //CONSTRUCTOR
     public InicioSesion(){
         initComponents();
-        setLocationRelativeTo(null);//CENTRAR LA VENTANA
-        setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
-        setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
-        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Acceso.png")).getImage());//PONER IMAGEN ICONO
-        txtusuario.requestFocus();
-        Letras(txtusuario);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

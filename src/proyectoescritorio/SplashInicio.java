@@ -2,6 +2,7 @@ package proyectoescritorio;
 
 import Formularios.InicioSesion;
 import com.sun.awt.AWTUtilities;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
@@ -11,6 +12,8 @@ public class SplashInicio extends javax.swing.JFrame{
     public SplashInicio() {
         initComponents();
         AWTUtilities.setWindowOpacity(splashInicio,(float)1);
+        setTitle("Your Hospital");//TÍTULO DE LA VENTANA
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         startThread();
