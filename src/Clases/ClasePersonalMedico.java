@@ -14,8 +14,7 @@ public class ClasePersonalMedico{
     public ClasePersonalMedico(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
-        cn=con.Conectate();
-    }    
+        cn=con.Conectate();}    
     //MÉTODO PARA LLENAR COMBOBOX PAISES CON DATOS
     public void LlenarPais(JComboBox lista){
         try{

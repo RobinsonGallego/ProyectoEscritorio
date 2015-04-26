@@ -1,7 +1,9 @@
 package Formularios;
 //LIBRERIAS
 import Clases.ClasePersonalMedico;
+import Clases.FotoClassPM;
 import Clases.ValidarEMail;
+import Conexion.Conectate;
 import Tablas.TablaPersonalMedico;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -25,6 +27,8 @@ public class PersonalMedico extends javax.swing.JFrame{
     //VARIABLE PARA LA RUTA
     String Ruta;
     DateFormat df=DateFormat.getDateInstance();
+    //CREAMOS UN OBJETO DE LA CLASE FOTOCLASSPM
+    FotoClassPM foto=new FotoClassPM();
     //CONSTRUCTOR
     public PersonalMedico(){
         initComponents();
@@ -1737,7 +1741,21 @@ public class PersonalMedico extends javax.swing.JFrame{
                     Limpiar();
                     JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE);}}
             catch (SQLException e){
-                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}
+            //CREAMOS UN OBJETO DE CONEXION
+            Conectate con=new Conectate();
+            String consulta="FotoExiste '"+identificacion+"'";
+            ResultSet r=con.Listar(consulta);
+            String Respuesta="";
+            try {
+                while(r.next()){
+                    Respuesta=r.getString(1);}
+                if(Respuesta.equals("NO")){
+                    JOptionPane.showMessageDialog(null,"No tiene Imagen","Advertencia",JOptionPane.ERROR_MESSAGE);}
+                else{
+                    CargarFoto(identificacion);}}
+            catch (SQLException e){
+                JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
         else{
             btnconsultar.setText("Consultar");
             btnconsultar.setDescription("Consult");
@@ -2492,6 +2510,21 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
         btneliminar.setEnabled(false);
         btnmodificar.setEnabled(false);
+    }
+    //MÉTODO PARA CARGAR FOTOS DEL PM
+    public void CargarFoto(long identificacion){
+        Image dtCat=foto.RecuperarFoto(identificacion);
+        ImageIcon icon=new ImageIcon(dtCat);
+        //SE EXTRAE LA IMAGEN DEL ICONO
+        Image img=icon.getImage();
+        //SE MODIFICA SU TAMAÑO
+        Image newimg=img.getScaledInstance(276,346,java.awt.Image.SCALE_SMOOTH);
+        //SE GENERA EL IMAGE ICON CON LA NUEVA IMAGEN
+        ImageIcon newIcon=new ImageIcon(newimg);
+        //SE COLOCA EL NUEVO ICONO MODIFICADO
+        if(newIcon!=null){
+            lblfoto.setIcon(newIcon);
+            lblfoto.setSize(276,346);}
     }
     //MÉTODO PARA VALIDAR FECHAS DE NACIMIENTO
     public int Fecha(String FechaR){
