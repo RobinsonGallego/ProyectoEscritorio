@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 public class TablaTipoMenu extends javax.swing.JFrame{
-
+    //CONSTRUCTOR
     public TablaTipoMenu(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA

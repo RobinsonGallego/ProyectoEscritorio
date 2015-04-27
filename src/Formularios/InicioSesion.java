@@ -218,11 +218,11 @@ public class InicioSesion extends javax.swing.JFrame{
             if(Contador==10){
                 btningresar.requestFocus();}}
     }//GEN-LAST:event_jpcontrasenaKeyTyped
-
+    //ACCIÓN DEL BOTÓN INGRESAR
     private void btningresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btningresarKeyTyped
         Ingresar();
     }//GEN-LAST:event_btningresarKeyTyped
-
+    //ACCIÓN DEL BOTÓN SALIR
     private void btnsalirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnsalirKeyTyped
         System.exit(0);
     }//GEN-LAST:event_btnsalirKeyTyped

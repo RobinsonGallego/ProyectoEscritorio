@@ -13,10 +13,8 @@ public class ValidarEMail extends InputVerifier{
     ImageIcon Error=new ImageIcon(this.getClass().getResource("/Imagenes/error2.png"));
     private Pattern pattern;//OBJETO QUE ESTABLECE EL PATRÓN QUE CONTENDRA EL CAMPO DE TEXTO
     private Matcher matcher;
-
     //ESTE ES EL PATRÓN POR EL CUAL SE RIGE EL CAMPO DE TEXTO
     private static final String EMAIL_PATTERN="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
     //SE PASA UN OBJETO A TIPO JCOMPONENT
     @Override
     public boolean verify(JComponent input){

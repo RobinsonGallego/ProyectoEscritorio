@@ -1747,7 +1747,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             String consulta="FotoExiste '"+identificacion+"'";
             ResultSet r=con.Listar(consulta);
             String Respuesta="";
-            try {
+            try{
                 while(r.next()){
                     Respuesta=r.getString(1);}
                 if(Respuesta.equals("NO")){

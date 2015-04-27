@@ -16,7 +16,7 @@ import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
-public class FotoClassPM {
+public class FotoClassPM{
     Connection cn;
     private Image data;
     //CONSTRUCTOR

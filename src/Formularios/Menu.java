@@ -1,11 +1,9 @@
 package Formularios;
-
+//LIBRERÍAS
 import javax.swing.ImageIcon;
 
-public class Menu extends javax.swing.JFrame
-{
-    public Menu()
-    {
+public class Menu extends javax.swing.JFrame{
+    public Menu(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
@@ -353,9 +351,8 @@ public class Menu extends javax.swing.JFrame
         InicioSesion inicio=new InicioSesion();
         inicio.setVisible(true);
     }//GEN-LAST:event_jMenuItem25ActionPerformed
-
-    public static void main(String args[])
-    {
+    //MÉTODO MAIN
+    public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -377,14 +374,10 @@ public class Menu extends javax.swing.JFrame
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
+        java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
+            public void run(){
+                new Menu().setVisible(true);}});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
