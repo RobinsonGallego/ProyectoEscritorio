@@ -8,7 +8,6 @@ import Tablas.TablaPersonalMedico;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -25,7 +24,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class PersonalMedico extends javax.swing.JFrame{
     //DECLARO UNA VARIABLE PRIVADA QUE ME CARGUE SOLO LAS IMAGENES QUE QUIERO, EN ESTE CASO .JPG
     private FileNameExtensionFilter filter=new FileNameExtensionFilter("Archivo de Imagen","jpg");
-    //VARIABLE PARA LA RUTA
     String Ruta;
     DateFormat df=DateFormat.getDateInstance();
     //CREAMOS UN OBJETO DE LA CLASE FOTOCLASSPM
@@ -37,7 +35,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         setTitle("Personal Médico Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
-        Ruta="";
         txtidentificacion.requestFocus();
         //ASÍ SE INHABILITAN LOS JDATECHOOSER PARA QUE SOLO SE ESCOJA LA FECHA DESDE EL CALENDARIO
         datefechanacimiento.getDateEditor().setEnabled(false);
@@ -1142,11 +1139,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                     else if(txtcorreo.getText().equals("")){
                         JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
                         txtcorreo.requestFocus();}
-                    else if(!"".equals(txtruta.getText())){
-                        String ruta=txtruta.getText();
-                        FileInputStream fis=null;
-                        
-                    }
                     else if(txttarjeta.getText().equals("")){
                         JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
                         txttarjeta.requestFocus();}
