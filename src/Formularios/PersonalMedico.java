@@ -8,6 +8,7 @@ import Tablas.TablaPersonalMedico;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -36,6 +37,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         setTitle("Personal Médico Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
+        Ruta="";
         txtidentificacion.requestFocus();
         //ASÍ SE INHABILITAN LOS JDATECHOOSER PARA QUE SOLO SE ESCOJA LA FECHA DESDE EL CALENDARIO
         datefechanacimiento.getDateEditor().setEnabled(false);
@@ -1140,6 +1142,11 @@ public class PersonalMedico extends javax.swing.JFrame{
                     else if(txtcorreo.getText().equals("")){
                         JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
                         txtcorreo.requestFocus();}
+                    else if(!"".equals(txtruta.getText())){
+                        String ruta=txtruta.getText();
+                        FileInputStream fis=null;
+                        
+                    }
                     else if(txttarjeta.getText().equals("")){
                         JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
                         txttarjeta.requestFocus();}
@@ -1695,7 +1702,7 @@ public class PersonalMedico extends javax.swing.JFrame{
     //ACCIÓN DEL BOTÓN CONSULTAR
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
         if(btnconsultar.getText().equals("Consultar")){
-            long identificacion=Long.parseLong(JOptionPane.showInputDialog(null,"Ingrese el código que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE));
+            long identificacion=Long.parseLong(JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE));
             //CREAMOS UN OBJETO DE LA CLASE PERSONALMEDICO
             ClasePersonalMedico cpm=new ClasePersonalMedico();
             ResultSet rs=cpm.Buscar(identificacion);
@@ -1736,26 +1743,27 @@ public class PersonalMedico extends javax.swing.JFrame{
                     txtcargo.setText(rs.getString(20));
                     cbmotivo.setSelectedItem(rs.getString(21));
                     txtsalario.setText(rs.getString(22));
-                    taobservaciones.setText(rs.getString(23));}
+                    taobservaciones.setText(rs.getString(23));
+                    //CREAMOS UN OBJETO DE CONEXION
+                    Conectate con=new Conectate();
+                    String consulta="FotoExiste '"+identificacion+"'";
+                    ResultSet r=con.Listar(consulta);
+                    String Respuesta="";
+                    try{
+                        while(r.next()){
+                            Respuesta=r.getString(1);}
+                        if(Respuesta.equals("NO")){
+                            lblfoto.setIcon(new ImageIcon(getClass().getResource("/Imagenes/foto_opt.png")));
+                            JOptionPane.showMessageDialog(null,"La Identificación buscada no tiene Foto","Advertencia",JOptionPane.INFORMATION_MESSAGE);}
+                        else{
+                            CargarFoto(identificacion);}}
+                    catch (SQLException e){
+                        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
                 else{
                     Limpiar();
                     JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE);}}
             catch (SQLException e){
-                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}
-            //CREAMOS UN OBJETO DE CONEXION
-            Conectate con=new Conectate();
-            String consulta="FotoExiste '"+identificacion+"'";
-            ResultSet r=con.Listar(consulta);
-            String Respuesta="";
-            try{
-                while(r.next()){
-                    Respuesta=r.getString(1);}
-                if(Respuesta.equals("NO")){
-                    JOptionPane.showMessageDialog(null,"No tiene Imagen","Advertencia",JOptionPane.ERROR_MESSAGE);}
-                else{
-                    CargarFoto(identificacion);}}
-            catch (SQLException e){
-                JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
         else{
             btnconsultar.setText("Consultar");
             btnconsultar.setDescription("Consult");
@@ -2427,6 +2435,7 @@ public class PersonalMedico extends javax.swing.JFrame{
                             telefono=Integer.parseInt(txttelefono.getText());}
                         long movil=Long.parseLong(txtmovil.getText());
                         String correo=txtcorreo.getText();
+                        String foto=txtruta.getText();
                         String tarjeta=txttarjeta.getText();
                         String titulo=txttitulo.getText();
                         String institucion=txtinstitucion.getText();
@@ -2450,7 +2459,7 @@ public class PersonalMedico extends javax.swing.JFrame{
                             JOptionPane.showMessageDialog(null,"Debe registrar mayores de Edad","Información",JOptionPane.INFORMATION_MESSAGE);
                             datefechanacimiento.requestFocus();}
                         else{
-                            cpm.Guardar(identificacion,nombres,primerApellido,segundoApellido,fechaNacimiento,pais,ciudad,estadoCivil,direccion,telefono,movil,correo,tarjeta,titulo,institucion,otrosEstudios,idiomas,experiencialaboral,ultimaEmpresa,cargo,motivo,salario,observaciones);
+                            cpm.Guardar(identificacion,nombres,primerApellido,segundoApellido,fechaNacimiento,pais,ciudad,estadoCivil,direccion,telefono,movil,correo,tarjeta,titulo,institucion,otrosEstudios,idiomas,experiencialaboral,ultimaEmpresa,cargo,motivo,salario,observaciones,foto);
                             JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
                             Limpiar();
                             Iniciar();

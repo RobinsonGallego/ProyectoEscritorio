@@ -73,10 +73,10 @@ public class ClasePersonalMedico{
             System.out.println(e.getMessage());}
     }
     //MÉTODO PARA GUARDAR UN PERSONAL MÉDICO
-    public void Guardar(long identificacion,String nombres,String primerapellido,String segundoapellido,String fechanacimiento,String pais,String ciudad,String estadocivil,String direccion,int telefono,long movil,String correo,String tarjetaprofesional,String titulo,String institucion,String otrosestudios,String idiomas,String experiencialaboral,String ultimaempresa,String cargo,String motivosalida,int ultimosalario,String observaciones){
+    public void Guardar(long identificacion,String nombres,String primerapellido,String segundoapellido,String fechanacimiento,String pais,String ciudad,String estadocivil,String direccion,int telefono,long movil,String correo,String tarjetaprofesional,String titulo,String institucion,String otrosestudios,String idiomas,String experiencialaboral,String ultimaempresa,String cargo,String motivosalida,int ultimosalario,String observaciones,String foto){
         try{
             //AQUÍ EJECUTAMOS EL PROCEDIMIENTO ALMACENADO
-            String sql="execute GuardarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";//LOS SIGNOS SON SEGÚN EL NÚMERO DE DATOS
+            String sql="execute GuardarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";//LOS SIGNOS SON SEGÚN EL NÚMERO DE DATOS
             //COMO NO RECIBIMOS NINGÚN DATO DE RETORNO ENTONCES SOLO HACEMOS UN PREPARED
             PreparedStatement cmd=cn.prepareCall(sql);
             //AHORA AGREGAMOS LOS DATOS
@@ -103,6 +103,7 @@ public class ClasePersonalMedico{
             cmd.setString(21,motivosalida);
             cmd.setInt(22,ultimosalario);
             cmd.setString(23,observaciones);
+            cmd.setString(24,foto);
             //EJECUTAMOS LA SENTENCIA
             cmd.execute();
             //CERRAMOS LA CONEXIÓN
