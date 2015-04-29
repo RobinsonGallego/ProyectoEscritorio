@@ -1750,13 +1750,22 @@ public class PersonalMedico extends javax.swing.JFrame{
                         else{
                             CargarFoto(identificacion);}}
                     catch (SQLException e){
-                        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
+                        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}
+                    btnconsultar.setText("Limpiar");
+                    btnconsultar.setDescription("Clean");
+                    btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
                 else{
+                    Habilitar();
                     Limpiar();
                     JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE);}}
             catch (SQLException e){
                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
-        else{
+        else if(btnconsultar.getText().equals("Limpiar")){
+            Limpiar();
+            Iniciar();
+            Inhabilitar2();
+            txtidentificacion.setEnabled(true);
+            Habilitar();
             btnconsultar.setText("Consultar");
             btnconsultar.setDescription("Consult");
             btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
@@ -1765,9 +1774,8 @@ public class PersonalMedico extends javax.swing.JFrame{
             btnmodificar.setText("Modificar");
             btnmodificar.setDescription("Edit");
             btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-            Limpiar();
-            txtidentificacion.setEnabled(true);
-            Iniciar();}
+            btneliminar.setEnabled(false);
+            btnmodificar.setEnabled(false);}
     }//GEN-LAST:event_btnconsultarActionPerformed
     //ACCIÓN DEL COMBOBOX IDIOMAS
     private void cbidiomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbidiomasActionPerformed
@@ -2367,6 +2375,9 @@ public class PersonalMedico extends javax.swing.JFrame{
             Habilitar();
             txtidentificacion.setEnabled(true);
             btnguardar.setEnabled(true);
+            btnconsultar.setText("Consultar");
+            btnconsultar.setDescription("Consult");
+            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
             btnmodificar.setEnabled(false);
             btneliminar.setEnabled(false);}
         else{
@@ -2376,6 +2387,9 @@ public class PersonalMedico extends javax.swing.JFrame{
             Habilitar();
             txtidentificacion.setEnabled(true);
             btnguardar.setEnabled(true);
+            btnconsultar.setText("Consultar");
+            btnconsultar.setDescription("Consult");
+            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
             btnmodificar.setEnabled(false);
             btneliminar.setEnabled(false);}
     }//GEN-LAST:event_btneliminarActionPerformed
@@ -2481,6 +2495,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             telefono=Integer.parseInt(txttelefono.getText());}
         long movil=Long.parseLong(txtmovil.getText());
         String correo=txtcorreo.getText();
+        String foto=txtruta.getText();
         String tarjeta=txttarjeta.getText();
         String titulo=txttitulo.getText();
         String institucion=txtinstitucion.getText();
@@ -2495,7 +2510,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         if(!"".equals(txtsalario.getText())){
             salario=Integer.parseInt(txtsalario.getText());}
         String observaciones=taobservaciones.getText();
-        cpm.Actualizar(identificacion,nombres,primerApellido,segundoApellido,fechaNacimiento,pais,ciudad,estadoCivil,direccion,telefono,movil,correo,tarjeta,titulo,institucion,otrosEstudios,idiomas,experiencialaboral,ultimaEmpresa,cargo,motivo,salario,observaciones);
+        cpm.Actualizar(identificacion,nombres,primerApellido,segundoApellido,fechaNacimiento,pais,ciudad,estadoCivil,direccion,telefono,movil,correo,tarjeta,titulo,institucion,otrosEstudios,idiomas,experiencialaboral,ultimaEmpresa,cargo,motivo,salario,observaciones,foto);
         Limpiar();
         Iniciar();
         Inhabilitar2();
@@ -2644,6 +2659,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         txtmovil.setText("");
         txtcorreo.setText("");
         txtruta.setText("");
+        lblfoto.setIcon(new ImageIcon(getClass().getResource("/Imagenes/foto_opt.png")));
         txttarjeta.setText("");
         txttitulo.setText("");
         txtinstitucion.setText("");

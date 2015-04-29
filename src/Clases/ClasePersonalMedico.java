@@ -79,6 +79,7 @@ public class ClasePersonalMedico{
     //MÉTODO PARA GUARDAR UN PERSONAL MÉDICO
     public void Guardar(long identificacion,String nombres,String primerapellido,String segundoapellido,String fechanacimiento,String pais,String ciudad,String estadocivil,String direccion,int telefono,long movil,String correo,String tarjetaprofesional,String titulo,String institucion,String otrosestudios,String idiomas,String experiencialaboral,String ultimaempresa,String cargo,String motivosalida,int ultimosalario,String observaciones,String foto){
         try{
+            //CONVERTIMOS LA FOTO EN UN ARCHIVO BINARIO
             FileInputStream fis=null;
             File file=new File(foto);
             fis=new FileInputStream(file);
@@ -142,10 +143,14 @@ public class ClasePersonalMedico{
         return null;
     }
     //MÉTODO PARA ACTUALIZAR LOS DATOS
-    public void Actualizar(long identificacion,String nombres,String primerapellido,String segundoapellido,String fechanacimiento,String pais,String ciudad,String estadocivil,String direccion,int telefono,long movil,String correo,String tarjetaprofesional,String titulo,String institucion,String otrosestudios,String idiomas,String experiencialaboral,String ultimaempresa,String cargo,String motivosalida,int ultimosalario,String observaciones){
+    public void Actualizar(long identificacion,String nombres,String primerapellido,String segundoapellido,String fechanacimiento,String pais,String ciudad,String estadocivil,String direccion,int telefono,long movil,String correo,String tarjetaprofesional,String titulo,String institucion,String otrosestudios,String idiomas,String experiencialaboral,String ultimaempresa,String cargo,String motivosalida,int ultimosalario,String observaciones,String foto){
         try{
+            //CONVERTIMOS LA FOTO EN UN ARCHIVO BINARIO
+            FileInputStream fis=null;
+            File file=new File(foto);
+            fis=new FileInputStream(file);
             //CREAMOS LA SENTENCIA SQL
-            String sql="execute ActualizarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
+            String sql="execute ActualizarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
             //EJECUTAMOS EL PROCEDIMIENTO ALMACENADO CON LOS 4 PARAMETROS A RECIBIR
             PreparedStatement cmd=cn.prepareCall(sql);
             cmd.setLong(1,identificacion);
@@ -171,12 +176,13 @@ public class ClasePersonalMedico{
             cmd.setString(21,motivosalida);
             cmd.setInt(22,ultimosalario);
             cmd.setString(23,observaciones);
+            cmd.setBinaryStream(24,fis,(int)file.length());
             //EJECUTAMOS LA SENTENCIA
             cmd.execute();
             //CERRAMOS LA CONEXIÓN
             cmd.close();
             cn.close();}
-        catch (Exception e){
+        catch (FileNotFoundException|SQLException e){
             System.out.println(e.getMessage());}
     }
     //MÉTODO PARA ELIMINAR UN DATO

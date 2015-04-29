@@ -164,7 +164,6 @@ public class TipoMenu extends javax.swing.JFrame{
         lblcaracteres.setText("Caracteres");
 
         btnlimpiarcomponentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
-        btnlimpiarcomponentes.setEnabled(false);
         btnlimpiarcomponentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlimpiarcomponentesActionPerformed(evt);
@@ -172,7 +171,6 @@ public class TipoMenu extends javax.swing.JFrame{
         });
 
         btnlimpiarpe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
-        btnlimpiarpe.setEnabled(false);
         btnlimpiarpe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlimpiarpeActionPerformed(evt);
@@ -491,14 +489,20 @@ public class TipoMenu extends javax.swing.JFrame{
                     cbtipomenu.setSelectedItem(rs.getString(2));
                     tacomponentes.setText(rs.getString(3));
                     tacontraindicaciones.setText(rs.getString(4));
-                    tapacientesespaciales.setText(rs.getString(5));}
+                    tapacientesespaciales.setText(rs.getString(5));
+                    btnconsultar.setText("Limpiar");
+                    btnconsultar.setDescription("Clean");
+                    btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
                 else{
                     Habilitar();
                     Limpiar();
                     JOptionPane.showMessageDialog(null,"El dato buscado no existe","Información",JOptionPane.INFORMATION_MESSAGE);}}
             catch (SQLException e){
                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
-        else{
+        else if(btnconsultar.getText().equals("Limpiar")){
+            Limpiar();
+            Iniciar();
+            Habilitar();
             btnconsultar.setText("Consultar");
             btnconsultar.setDescription("Consult");
             btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
@@ -508,9 +512,7 @@ public class TipoMenu extends javax.swing.JFrame{
             btnlimpiarpe.setEnabled(false);
             btnmodificar.setText("Modificar");
             btnmodificar.setDescription("Edit");
-            btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-            Limpiar();
-            Iniciar();}
+            btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));}
     }//GEN-LAST:event_btnconsultarActionPerformed
     //ACCIÓN DEL BOTÓN MODIFICAR
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
@@ -519,8 +521,6 @@ public class TipoMenu extends javax.swing.JFrame{
         //DESACTIVAMOS Y ACTIVAMOS LOS BOTONES
         btnguardar.setEnabled(false);
         btneliminar.setEnabled(false);
-        btnlimpiarcomponentes.setEnabled(true);
-        btnlimpiarpe.setEnabled(true);
         btnconsultar.setText("Limpiar");
         btnconsultar.setDescription("Clean");
         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));
@@ -559,8 +559,6 @@ public class TipoMenu extends javax.swing.JFrame{
                 btnmodificar.setText("Modificar");
                 btnmodificar.setDescription("Edit");
                 btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-                btnlimpiarcomponentes.setEnabled(false);
-                btnlimpiarpe.setEnabled(false);
                 btneliminar.setEnabled(false);
                 btnmodificar.setEnabled(false);}}
     }//GEN-LAST:event_btnmodificarActionPerformed
@@ -576,6 +574,9 @@ public class TipoMenu extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(null,"Los datos se Eliminaron con exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
             Habilitar();
             btnguardar.setEnabled(true);
+            btnconsultar.setText("Consultar");
+            btnconsultar.setDescription("Consult");
+            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
             btnmodificar.setEnabled(false);
             btneliminar.setEnabled(false);}
         else{
@@ -583,6 +584,9 @@ public class TipoMenu extends javax.swing.JFrame{
             Iniciar();
             Habilitar();
             btnguardar.setEnabled(true);
+            btnconsultar.setText("Consultar");
+            btnconsultar.setDescription("Consult");
+            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
             btnmodificar.setEnabled(false);
             btneliminar.setEnabled(false);}
     }//GEN-LAST:event_btneliminarActionPerformed
