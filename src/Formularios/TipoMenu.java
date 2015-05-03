@@ -5,10 +5,17 @@ import Tablas.TablaTipoMenu;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TipoMenu extends javax.swing.JFrame{
+    //IMAGENES DE LOS MENSAJES
+    Icon warning=new ImageIcon(getClass().getResource("/Imagenes/warning_opt.png"));
+    Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
+    Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
+    Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
+    //CONSTRUCTOR
     public TipoMenu(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -39,8 +46,6 @@ public class TipoMenu extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonTask1 = new org.edisoncor.gui.button.ButtonTask();
-        buttonTask2 = new org.edisoncor.gui.button.ButtonTask();
         ptipomenu = new javax.swing.JPanel();
         lblcodigo = new javax.swing.JLabel();
         lbltipomenu = new javax.swing.JLabel();
@@ -443,17 +448,17 @@ public class TipoMenu extends javax.swing.JFrame{
     //ACCIÓN DEL BOTÓN GUARDAR
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         if(cbtipomenu.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar el Tipo de Menú","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar el Tipo de Menú","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbtipomenu.requestFocus();}
         else if(tacomponentes.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar los Componentes del Menú","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar los Componentes del Menú","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbcomponentes.requestFocus();}
         else if(tacontraindicaciones.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe indicar las Contraindicaciones","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe indicar las Contraindicaciones","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             tacontraindicaciones.requestFocus();}
         else{
             try{
-                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                 if(Respuesta==JOptionPane.YES_OPTION){
                     //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
                     ClaseTipoMenu ctm=new ClaseTipoMenu();
@@ -464,15 +469,15 @@ public class TipoMenu extends javax.swing.JFrame{
                     String pacientesEspeciales=tapacientesespaciales.getText();
                     ctm.Guardar(tipoMenu,componentes,contraindicaciones,pacientesEspeciales);
                     Limpiar();
-                    JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
                     Iniciar();}}
             catch (Exception e){
-                JOptionPane.showMessageDialog(null,"Error al grabar los datos: "+e.getMessage(),"Error",JOptionPane.WARNING_MESSAGE);}}
+                JOptionPane.showMessageDialog(null,"Error al grabar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     }//GEN-LAST:event_btnguardarActionPerformed
     //ACCIÓN DEL BOTÓN CONSULTAR
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
         if(btnconsultar.getText().equals("Consultar")){
-            int codigo=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el código que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE));
+            int codigo=Integer.parseInt((String) JOptionPane.showInputDialog(null,"Ingrese el código que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
             //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
             ClaseTipoMenu ctm=new ClaseTipoMenu();
             ResultSet rs=ctm.Buscar(codigo);
@@ -496,9 +501,9 @@ public class TipoMenu extends javax.swing.JFrame{
                 else{
                     Habilitar();
                     Limpiar();
-                    JOptionPane.showMessageDialog(null,"El dato buscado no existe","Información",JOptionPane.INFORMATION_MESSAGE);}}
+                    JOptionPane.showMessageDialog(null,"El dato buscado no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
             catch (SQLException e){
-                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
         else if(btnconsultar.getText().equals("Limpiar")){
             Limpiar();
             Iniciar();
@@ -508,8 +513,6 @@ public class TipoMenu extends javax.swing.JFrame{
             btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
             btnguardar.setEnabled(true);
             btnmodificar.setEnabled(false);
-            btnlimpiarcomponentes.setEnabled(false);
-            btnlimpiarpe.setEnabled(false);
             btnmodificar.setText("Modificar");
             btnmodificar.setDescription("Edit");
             btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));}
@@ -530,13 +533,13 @@ public class TipoMenu extends javax.swing.JFrame{
             btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar2_opt.png")));}
         else{
             if(cbtipomenu.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar el Tipo de Menú","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar el Tipo de Menú","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 cbtipomenu.requestFocus();}
             else if(tacomponentes.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar los Componentes del Menú","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar los Componentes del Menú","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 cbcomponentes.requestFocus();}
             else if(tacontraindicaciones.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe indicar las Contraindicaciones","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe indicar las Contraindicaciones","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 tacontraindicaciones.requestFocus();}
             else{
                 //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
@@ -550,7 +553,7 @@ public class TipoMenu extends javax.swing.JFrame{
                 ctm.Actualizar(codigo,tipoMenu,componentes,contraindicaciones,pacientesEspeciales);
                 Limpiar();
                 Iniciar();
-                JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
                 btnconsultar.setText("Consultar");
                 btnconsultar.setDescription("Consult");
                 btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
@@ -566,12 +569,12 @@ public class TipoMenu extends javax.swing.JFrame{
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
         ClaseTipoMenu ctm=new ClaseTipoMenu();
-        int Respuesta=JOptionPane.showConfirmDialog(null,"Seguro desea Eliminar la Infomación?","Confirmación",JOptionPane.YES_NO_OPTION);
+        int Respuesta=JOptionPane.showConfirmDialog(null,"Seguro desea Eliminar la Infomación?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
         if(Respuesta==JOptionPane.YES_OPTION){
             ctm.Eliminar(Integer.parseInt(txtcodigo.getText()));
             Limpiar();
             Iniciar();
-            JOptionPane.showMessageDialog(null,"Los datos se Eliminaron con exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Los datos se Eliminaron con exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
             Habilitar();
             btnguardar.setEnabled(true);
             btnconsultar.setText("Consultar");
@@ -623,6 +626,8 @@ public class TipoMenu extends javax.swing.JFrame{
         tacontraindicaciones.setEnabled(true);
         cbpacientesespaciales.setEnabled(true);
         tapacientesespaciales.setEnabled(true);
+        btnlimpiarcomponentes.setEnabled(true);
+        btnlimpiarpe.setEnabled(true);
     }
     //MÉTODO PARA INHABILITAR CAMPOS
     public void Inhabilitar(){
@@ -632,6 +637,8 @@ public class TipoMenu extends javax.swing.JFrame{
         tacontraindicaciones.setEnabled(false);
         cbpacientesespaciales.setEnabled(false);
         tapacientesespaciales.setEnabled(false);
+        btnlimpiarcomponentes.setEnabled(false);
+        btnlimpiarpe.setEnabled(false);
     }
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -669,8 +676,6 @@ public class TipoMenu extends javax.swing.JFrame{
     private org.edisoncor.gui.button.ButtonTask btnlistar;
     private org.edisoncor.gui.button.ButtonTask btnmodificar;
     private org.edisoncor.gui.button.ButtonTask btnregresar;
-    private org.edisoncor.gui.button.ButtonTask buttonTask1;
-    private org.edisoncor.gui.button.ButtonTask buttonTask2;
     private javax.swing.JComboBox cbcomponentes;
     private javax.swing.JComboBox cbpacientesespaciales;
     private javax.swing.JComboBox cbtipomenu;

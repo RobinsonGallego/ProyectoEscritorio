@@ -1,5 +1,6 @@
 package Formularios;
 //LIBRERÍAS
+import Clases.GenerarReportes;
 import javax.swing.ImageIcon;
 
 public class Menu extends javax.swing.JFrame{
@@ -14,7 +15,6 @@ public class Menu extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
         pfondo = new javax.swing.JPanel();
         calendario = new org.jdesktop.swingx.JXMonthView();
         lblfondo = new javax.swing.JLabel();
@@ -41,24 +41,24 @@ public class Menu extends javax.swing.JFrame{
         smdietas = new javax.swing.JMenuItem();
         smasignacion = new javax.swing.JMenuItem();
         msalidas = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
+        smconsuhorariolaboral = new javax.swing.JMenuItem();
+        smconsuhabitacionpaciente = new javax.swing.JMenuItem();
+        smconsudietaypreparacion = new javax.swing.JMenuItem();
+        smconsustockmedicamentos = new javax.swing.JMenuItem();
+        smconsucontraindicaciones = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
+        sminformeingresos = new javax.swing.JMenuItem();
+        sminformapersonalmedico = new javax.swing.JMenuItem();
         mherramientas = new javax.swing.JMenu();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
-        jMenuItem21 = new javax.swing.JMenuItem();
+        smcopiadeseguridad = new javax.swing.JMenuItem();
+        smusuarios = new javax.swing.JMenuItem();
+        smperfiles = new javax.swing.JMenuItem();
         mayuda = new javax.swing.JMenu();
-        jMenuItem22 = new javax.swing.JMenuItem();
-        jMenuItem23 = new javax.swing.JMenuItem();
-        jMenuItem24 = new javax.swing.JMenuItem();
+        smmanualusuario = new javax.swing.JMenuItem();
+        smmanualtecnico = new javax.swing.JMenuItem();
+        smacercade = new javax.swing.JMenuItem();
         msalir = new javax.swing.JMenu();
-        jMenuItem25 = new javax.swing.JMenuItem();
+        smsalidasegura = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -217,41 +217,46 @@ public class Menu extends javax.swing.JFrame{
         msalidas.setText("Salidas");
         msalidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
-        jMenuItem12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta8_opt.png"))); // NOI18N
-        jMenuItem12.setText("Consulta Horario Laboral");
-        msalidas.add(jMenuItem12);
+        smconsuhorariolaboral.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smconsuhorariolaboral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta8_opt.png"))); // NOI18N
+        smconsuhorariolaboral.setText("Consulta Horario Laboral");
+        msalidas.add(smconsuhorariolaboral);
 
-        jMenuItem13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta2_opt.png"))); // NOI18N
-        jMenuItem13.setText("Consulta Habitación Paciente");
-        msalidas.add(jMenuItem13);
+        smconsuhabitacionpaciente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smconsuhabitacionpaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta2_opt.png"))); // NOI18N
+        smconsuhabitacionpaciente.setText("Consulta Habitación Paciente");
+        msalidas.add(smconsuhabitacionpaciente);
 
-        jMenuItem14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dieta_opt.png"))); // NOI18N
-        jMenuItem14.setText("Consulta Dieta y Preparación");
-        msalidas.add(jMenuItem14);
+        smconsudietaypreparacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smconsudietaypreparacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dieta_opt.png"))); // NOI18N
+        smconsudietaypreparacion.setText("Consulta Dieta y Preparación");
+        msalidas.add(smconsudietaypreparacion);
 
-        jMenuItem15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta7_opt.png"))); // NOI18N
-        jMenuItem15.setText("Consulta Stock Medicamentos");
-        msalidas.add(jMenuItem15);
+        smconsustockmedicamentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smconsustockmedicamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta7_opt.png"))); // NOI18N
+        smconsustockmedicamentos.setText("Consulta Stock Medicamentos");
+        msalidas.add(smconsustockmedicamentos);
 
-        jMenuItem16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta6_opt.png"))); // NOI18N
-        jMenuItem16.setText("Consulta Contraindicaciones de Medicamentos");
-        msalidas.add(jMenuItem16);
+        smconsucontraindicaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smconsucontraindicaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta6_opt.png"))); // NOI18N
+        smconsucontraindicaciones.setText("Consulta Contraindicaciones de Medicamentos");
+        msalidas.add(smconsucontraindicaciones);
         msalidas.add(jSeparator1);
 
-        jMenuItem17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informeeconomico_opt.png"))); // NOI18N
-        jMenuItem17.setText("Informe Ingresos Económicos");
-        msalidas.add(jMenuItem17);
+        sminformeingresos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        sminformeingresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informeeconomico_opt.png"))); // NOI18N
+        sminformeingresos.setText("Informe Ingresos Económicos");
+        msalidas.add(sminformeingresos);
 
-        jMenuItem18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informepersonal_opt.png"))); // NOI18N
-        jMenuItem18.setText("Informe Personal Médico");
-        msalidas.add(jMenuItem18);
+        sminformapersonalmedico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        sminformapersonalmedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informepersonal_opt.png"))); // NOI18N
+        sminformapersonalmedico.setText("Informe Personal Médico");
+        sminformapersonalmedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sminformapersonalmedicoActionPerformed(evt);
+            }
+        });
+        msalidas.add(sminformapersonalmedico);
 
         jMenuBar1.add(msalidas);
 
@@ -261,20 +266,28 @@ public class Menu extends javax.swing.JFrame{
         mherramientas.setText("Herramientas");
         mherramientas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
-        jMenuItem19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backup2_opt.png"))); // NOI18N
-        jMenuItem19.setText("Copia de Seguridad");
-        mherramientas.add(jMenuItem19);
+        smcopiadeseguridad.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        smcopiadeseguridad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smcopiadeseguridad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backup2_opt.png"))); // NOI18N
+        smcopiadeseguridad.setText("Copia de Seguridad");
+        mherramientas.add(smcopiadeseguridad);
 
-        jMenuItem20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario_opt.png"))); // NOI18N
-        jMenuItem20.setText("Usuarios");
-        mherramientas.add(jMenuItem20);
+        smusuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
+        smusuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smusuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario_opt.png"))); // NOI18N
+        smusuarios.setText("Usuarios");
+        smusuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smusuariosActionPerformed(evt);
+            }
+        });
+        mherramientas.add(smusuarios);
 
-        jMenuItem21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/perfiles_opt.png"))); // NOI18N
-        jMenuItem21.setText("Perfiles");
-        mherramientas.add(jMenuItem21);
+        smperfiles.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        smperfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smperfiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/perfiles_opt.png"))); // NOI18N
+        smperfiles.setText("Perfiles");
+        mherramientas.add(smperfiles);
 
         jMenuBar1.add(mherramientas);
 
@@ -284,20 +297,20 @@ public class Menu extends javax.swing.JFrame{
         mayuda.setText("Ayuda");
         mayuda.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
-        jMenuItem22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manual3_opt.png"))); // NOI18N
-        jMenuItem22.setText("Manual de Usuario");
-        mayuda.add(jMenuItem22);
+        smmanualusuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smmanualusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manual3_opt.png"))); // NOI18N
+        smmanualusuario.setText("Manual de Usuario");
+        mayuda.add(smmanualusuario);
 
-        jMenuItem23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/servicio2_opt.png"))); // NOI18N
-        jMenuItem23.setText("Manual Técnico");
-        mayuda.add(jMenuItem23);
+        smmanualtecnico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smmanualtecnico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/servicio2_opt.png"))); // NOI18N
+        smmanualtecnico.setText("Manual Técnico");
+        mayuda.add(smmanualtecnico);
 
-        jMenuItem24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta5_opt.png"))); // NOI18N
-        jMenuItem24.setText("Acerca de");
-        mayuda.add(jMenuItem24);
+        smacercade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smacercade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta5_opt.png"))); // NOI18N
+        smacercade.setText("Acerca de");
+        mayuda.add(smacercade);
 
         jMenuBar1.add(mayuda);
 
@@ -306,15 +319,15 @@ public class Menu extends javax.swing.JFrame{
         msalir.setText("Salir");
         msalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
-        jMenuItem25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SALIR.PNG"))); // NOI18N
-        jMenuItem25.setText("Salida Segura");
-        jMenuItem25.addActionListener(new java.awt.event.ActionListener() {
+        smsalidasegura.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smsalidasegura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SALIR.PNG"))); // NOI18N
+        smsalidasegura.setText("Salida Segura");
+        smsalidasegura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem25ActionPerformed(evt);
+                smsalidaseguraActionPerformed(evt);
             }
         });
-        msalir.add(jMenuItem25);
+        msalir.add(smsalidasegura);
 
         jMenuBar1.add(msalir);
 
@@ -346,11 +359,22 @@ public class Menu extends javax.swing.JFrame{
         tipoMenu.setVisible(true);
     }//GEN-LAST:event_smtipomenuActionPerformed
     //ACCIÓN DEL SUBMENÚ SALIR
-    private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
+    private void smsalidaseguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smsalidaseguraActionPerformed
         this.dispose();
         InicioSesion inicio=new InicioSesion();
         inicio.setVisible(true);
-    }//GEN-LAST:event_jMenuItem25ActionPerformed
+    }//GEN-LAST:event_smsalidaseguraActionPerformed
+    //ACCIÓN DEL SUBMENÚ USUARIOS
+    private void smusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smusuariosActionPerformed
+        this.dispose();
+        Usuarios usuarios=new Usuarios();
+        usuarios.setVisible(true);
+    }//GEN-LAST:event_smusuariosActionPerformed
+
+    private void sminformapersonalmedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sminformapersonalmedicoActionPerformed
+        GenerarReportes reporte=new GenerarReportes();
+        reporte.ReportePM();
+    }//GEN-LAST:event_sminformapersonalmedicoActionPerformed
     //MÉTODO MAIN
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -379,26 +403,10 @@ public class Menu extends javax.swing.JFrame{
             public void run(){
                 new Menu().setVisible(true);}});
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXMonthView calendario;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem22;
-    private javax.swing.JMenuItem jMenuItem23;
-    private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private org.jdesktop.swingx.JXMonthView jXMonthView1;
     private javax.swing.JLabel lblfondo;
     private javax.swing.JMenu mayuda;
     private javax.swing.JMenu mgestiones;
@@ -407,8 +415,15 @@ public class Menu extends javax.swing.JFrame{
     private javax.swing.JMenu msalir;
     private javax.swing.JMenu mtransacciones;
     private javax.swing.JPanel pfondo;
+    private javax.swing.JMenuItem smacercade;
     private javax.swing.JMenuItem smasignacion;
+    private javax.swing.JMenuItem smconsucontraindicaciones;
+    private javax.swing.JMenuItem smconsudietaypreparacion;
+    private javax.swing.JMenuItem smconsuhabitacionpaciente;
+    private javax.swing.JMenuItem smconsuhorariolaboral;
     private javax.swing.JMenuItem smconsultorios;
+    private javax.swing.JMenuItem smconsustockmedicamentos;
+    private javax.swing.JMenuItem smcopiadeseguridad;
     private javax.swing.JMenuItem smdiagnostico;
     private javax.swing.JMenuItem smdietas;
     private javax.swing.JMenuItem smentradasalida;
@@ -419,12 +434,19 @@ public class Menu extends javax.swing.JFrame{
     private javax.swing.JMenuItem smhistoria;
     private javax.swing.JMenuItem smhorarios;
     private javax.swing.JMenuItem smhospitalizacion;
+    private javax.swing.JMenuItem sminformapersonalmedico;
+    private javax.swing.JMenuItem sminformeingresos;
     private javax.swing.JMenuItem sminventario;
+    private javax.swing.JMenuItem smmanualtecnico;
+    private javax.swing.JMenuItem smmanualusuario;
     private javax.swing.JMenuItem smpacientes;
+    private javax.swing.JMenuItem smperfiles;
     private javax.swing.JMenuItem smpersonal;
+    private javax.swing.JMenuItem smsalidasegura;
     private javax.swing.JMenuItem smseguimiento;
     private javax.swing.JMenuItem smtipomenu;
     private javax.swing.JMenuItem smunidades;
+    private javax.swing.JMenuItem smusuarios;
     private javax.swing.JMenuItem smzona;
     // End of variables declaration//GEN-END:variables
 }

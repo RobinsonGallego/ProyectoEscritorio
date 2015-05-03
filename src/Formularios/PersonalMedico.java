@@ -1,6 +1,7 @@
 package Formularios;
 //LIBRERIAS
 import Clases.ClasePersonalMedico;
+import Clases.ClaseUsuarios;
 import Clases.FotoClassPM;
 import Clases.ValidarEMail;
 import Conexion.Conectate;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -28,6 +30,11 @@ public class PersonalMedico extends javax.swing.JFrame{
     DateFormat df=DateFormat.getDateInstance();
     //CREAMOS UN OBJETO DE LA CLASE FOTOCLASSPM
     FotoClassPM foto=new FotoClassPM();
+    //IMAGENES DE LOS MENSAJES
+    Icon warning=new ImageIcon(getClass().getResource("/Imagenes/warning_opt.png"));
+    Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
+    Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
+    Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
     //CONSTRUCTOR
     public PersonalMedico(){
         initComponents();
@@ -36,6 +43,10 @@ public class PersonalMedico extends javax.swing.JFrame{
         setTitle("Personal Médico Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
         txtidentificacion.requestFocus();
+        lblestado1.setVisible(false);
+        lblestadoactual1.setVisible(false);
+        lblestado2.setVisible(false);
+        lblestadoactual2.setVisible(false);
         //ASÍ SE INHABILITAN LOS JDATECHOOSER PARA QUE SOLO SE ESCOJA LA FECHA DESDE EL CALENDARIO
         datefechanacimiento.getDateEditor().setEnabled(false);
         //VALIDACIONES LETRAS O NÚMEROS
@@ -112,7 +123,6 @@ public class PersonalMedico extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonTask1 = new org.edisoncor.gui.button.ButtonTask();
         jtppestanas = new javax.swing.JTabbedPane();
         ppersonales = new javax.swing.JPanel();
         lblidentificacion = new javax.swing.JLabel();
@@ -127,36 +137,47 @@ public class PersonalMedico extends javax.swing.JFrame{
         lbltelefono = new javax.swing.JLabel();
         lblmovil = new javax.swing.JLabel();
         lblcorreo = new javax.swing.JLabel();
+        lblestado1 = new javax.swing.JLabel();
+        lblestadoactual1 = new javax.swing.JLabel();
+        lblmensaje = new javax.swing.JLabel();
         txtidentificacion = new javax.swing.JTextField();
         txtnombres = new javax.swing.JTextField();
         txtprimerapellido = new javax.swing.JTextField();
         txtsegundoapellido = new javax.swing.JTextField();
         cbpais = new javax.swing.JComboBox();
         cbciudad = new javax.swing.JComboBox();
+        pfotografia = new javax.swing.JPanel();
+        txtruta = new javax.swing.JTextField();
+        btncargar = new javax.swing.JButton();
         cbestadocivil = new javax.swing.JComboBox();
         txtdireccion = new javax.swing.JTextField();
         txttelefono = new javax.swing.JTextField();
         txtmovil = new javax.swing.JTextField();
         txtcorreo = new javax.swing.JTextField();
-        pfotografia = new javax.swing.JPanel();
-        txtruta = new javax.swing.JTextField();
-        btncargar = new javax.swing.JButton();
         pimagen = new javax.swing.JPanel();
         lblfoto = new javax.swing.JLabel();
-        lblmensaje = new javax.swing.JLabel();
         datefechanacimiento = new com.toedter.calendar.JDateChooser();
         pdatosprofesionales = new javax.swing.JPanel();
         lbltarjeta = new javax.swing.JLabel();
         lbltitulo = new javax.swing.JLabel();
         lblinstitucion = new javax.swing.JLabel();
         lblotrosestudios = new javax.swing.JLabel();
+        lblidiomas = new javax.swing.JLabel();
+        lblexperiencia = new javax.swing.JLabel();
+        lblobservaciones = new javax.swing.JLabel();
+        lblmensaje2 = new javax.swing.JLabel();
+        lblcontador = new javax.swing.JLabel();
+        lblcaracteres1 = new javax.swing.JLabel();
+        lblconteo = new javax.swing.JLabel();
+        lblcaracteres2 = new javax.swing.JLabel();
+        lblrespuesta = new javax.swing.JLabel();
+        lblestado2 = new javax.swing.JLabel();
+        lblestadoactual2 = new javax.swing.JLabel();
         txttarjeta = new javax.swing.JTextField();
         txttitulo = new javax.swing.JTextField();
         txtinstitucion = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         taotrosestudios = new javax.swing.JTextArea();
-        lblidiomas = new javax.swing.JLabel();
-        lblexperiencia = new javax.swing.JLabel();
         rbsi = new javax.swing.JRadioButton();
         rbno = new javax.swing.JRadioButton();
         plaboral = new javax.swing.JPanel();
@@ -168,18 +189,11 @@ public class PersonalMedico extends javax.swing.JFrame{
         cbmotivo = new javax.swing.JComboBox();
         txtcargo = new javax.swing.JTextField();
         txtsalario = new javax.swing.JTextField();
-        lblobservaciones = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         taobservaciones = new javax.swing.JTextArea();
-        lblmensaje2 = new javax.swing.JLabel();
-        lblcontador = new javax.swing.JLabel();
-        lblcaracteres1 = new javax.swing.JLabel();
-        lblconteo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         cbidiomas = new javax.swing.JComboBox();
         jScrollPane3 = new javax.swing.JScrollPane();
         taidiomas = new javax.swing.JTextArea();
-        lblrespuesta = new javax.swing.JLabel();
         btnlimpiaridiomas = new javax.swing.JButton();
         btnguardar = new org.edisoncor.gui.button.ButtonTask();
         btnmodificar = new org.edisoncor.gui.button.ButtonTask();
@@ -244,6 +258,20 @@ public class PersonalMedico extends javax.swing.JFrame{
         lblcorreo.setText("Correo *");
         ppersonales.add(lblcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 496, -1, -1));
 
+        lblestado1.setBackground(new java.awt.Color(255, 255, 255));
+        lblestado1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestado1.setText("Estado");
+        ppersonales.add(lblestado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 492, -1, -1));
+
+        lblestadoactual1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestadoactual1.setForeground(new java.awt.Color(255, 0, 0));
+        ppersonales.add(lblestadoactual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 492, 80, 20));
+
+        lblmensaje.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblmensaje.setForeground(new java.awt.Color(255, 0, 0));
+        lblmensaje.setText("Los campos marcados con el signo (*) son obligatorios");
+        ppersonales.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 380, -1));
+
         txtidentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtidentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -298,6 +326,46 @@ public class PersonalMedico extends javax.swing.JFrame{
         });
         ppersonales.add(cbciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 277, 175, 25));
 
+        pfotografia.setBackground(new java.awt.Color(255, 255, 255));
+        pfotografia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fotográfia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        txtruta.setEditable(false);
+        txtruta.setBackground(new java.awt.Color(255, 255, 255));
+
+        btncargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/descargar_opt.png"))); // NOI18N
+        btncargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncargarActionPerformed(evt);
+            }
+        });
+        btncargar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btncargarKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pfotografiaLayout = new javax.swing.GroupLayout(pfotografia);
+        pfotografia.setLayout(pfotografiaLayout);
+        pfotografiaLayout.setHorizontalGroup(
+            pfotografiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pfotografiaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtruta, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btncargar)
+                .addGap(6, 6, 6))
+        );
+        pfotografiaLayout.setVerticalGroup(
+            pfotografiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pfotografiaLayout.createSequentialGroup()
+                .addGroup(pfotografiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btncargar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtruta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        ppersonales.add(pfotografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+
         cbestadocivil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbestadocivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Solteto (a)", "Casado (a)", "Separado (a)", "Viudo (a)", "Unión Libre" }));
         cbestadocivil.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -339,46 +407,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         });
         ppersonales.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 492, 175, 25));
 
-        pfotografia.setBackground(new java.awt.Color(255, 255, 255));
-        pfotografia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fotográfia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-
-        txtruta.setEditable(false);
-        txtruta.setBackground(new java.awt.Color(255, 255, 255));
-
-        btncargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/descargar_opt.png"))); // NOI18N
-        btncargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncargarActionPerformed(evt);
-            }
-        });
-        btncargar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                btncargarKeyTyped(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pfotografiaLayout = new javax.swing.GroupLayout(pfotografia);
-        pfotografia.setLayout(pfotografiaLayout);
-        pfotografiaLayout.setHorizontalGroup(
-            pfotografiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pfotografiaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtruta, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btncargar)
-                .addGap(6, 6, 6))
-        );
-        pfotografiaLayout.setVerticalGroup(
-            pfotografiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pfotografiaLayout.createSequentialGroup()
-                .addGroup(pfotografiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btncargar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtruta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        ppersonales.add(pfotografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
-
         pimagen.setBackground(new java.awt.Color(255, 255, 255));
         pimagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
@@ -396,11 +424,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         );
 
         ppersonales.add(pimagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
-
-        lblmensaje.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblmensaje.setForeground(new java.awt.Color(255, 0, 0));
-        lblmensaje.setText("Los campos marcados con el signo (*) son obligatorios");
-        ppersonales.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 380, -1));
 
         datefechanacimiento.setBackground(new java.awt.Color(255, 255, 255));
         datefechanacimiento.setDateFormatString("yyyy/MM/dd");
@@ -427,6 +450,54 @@ public class PersonalMedico extends javax.swing.JFrame{
         lblotrosestudios.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblotrosestudios.setText("Otros Estudios");
         pdatosprofesionales.add(lblotrosestudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 149, -1, -1));
+
+        lblidiomas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblidiomas.setText("Idiomas *");
+        pdatosprofesionales.add(lblidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        lblexperiencia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblexperiencia.setText("Experiencia Laboral *");
+        pdatosprofesionales.add(lblexperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 25, -1, -1));
+
+        lblobservaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblobservaciones.setText("Observaciones");
+        pdatosprofesionales.add(lblobservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+
+        lblmensaje2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblmensaje2.setForeground(new java.awt.Color(255, 0, 0));
+        lblmensaje2.setText("Los campos marcados con el signo (*) son obligatorios");
+        pdatosprofesionales.add(lblmensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, -1, -1));
+
+        lblcontador.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblcontador.setForeground(new java.awt.Color(255, 0, 0));
+        pdatosprofesionales.add(lblcontador, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 25, 15));
+
+        lblcaracteres1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblcaracteres1.setForeground(new java.awt.Color(255, 0, 0));
+        lblcaracteres1.setText("Caracteres");
+        pdatosprofesionales.add(lblcaracteres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+
+        lblconteo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblconteo.setForeground(new java.awt.Color(255, 0, 0));
+        pdatosprofesionales.add(lblconteo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 25, 15));
+
+        lblcaracteres2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblcaracteres2.setForeground(new java.awt.Color(255, 0, 0));
+        lblcaracteres2.setText("Caracteres");
+        pdatosprofesionales.add(lblcaracteres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, -1, -1));
+
+        lblrespuesta.setBackground(new java.awt.Color(255, 255, 255));
+        lblrespuesta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblrespuesta.setEnabled(false);
+        pdatosprofesionales.add(lblrespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 25));
+
+        lblestado2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestado2.setText("Estado");
+        pdatosprofesionales.add(lblestado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 485, -1, -1));
+
+        lblestadoactual2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestadoactual2.setForeground(new java.awt.Color(255, 51, 0));
+        pdatosprofesionales.add(lblestadoactual2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 485, 80, 20));
 
         txttarjeta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txttarjeta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -466,14 +537,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         jScrollPane1.setViewportView(taotrosestudios);
 
         pdatosprofesionales.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 149, 240, 110));
-
-        lblidiomas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblidiomas.setText("Idiomas *");
-        pdatosprofesionales.add(lblidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
-
-        lblexperiencia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblexperiencia.setText("Experiencia Laboral *");
-        pdatosprofesionales.add(lblexperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 25, -1, -1));
 
         rbsi.setBackground(new java.awt.Color(255, 255, 255));
         rbsi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -569,10 +632,6 @@ public class PersonalMedico extends javax.swing.JFrame{
 
         pdatosprofesionales.add(plaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 53, 384, 200));
 
-        lblobservaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblobservaciones.setText("Observaciones");
-        pdatosprofesionales.add(lblobservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
-
         taobservaciones.setColumns(20);
         taobservaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         taobservaciones.setRows(5);
@@ -587,29 +646,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         jScrollPane2.setViewportView(taobservaciones);
 
         pdatosprofesionales.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 380, 130));
-
-        lblmensaje2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblmensaje2.setForeground(new java.awt.Color(255, 0, 0));
-        lblmensaje2.setText("Los campos marcados con el signo (*) son obligatorios");
-        pdatosprofesionales.add(lblmensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, -1, -1));
-
-        lblcontador.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblcontador.setForeground(new java.awt.Color(255, 0, 0));
-        pdatosprofesionales.add(lblcontador, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 25, 15));
-
-        lblcaracteres1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblcaracteres1.setForeground(new java.awt.Color(255, 0, 0));
-        lblcaracteres1.setText("Caracteres");
-        pdatosprofesionales.add(lblcaracteres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
-
-        lblconteo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblconteo.setForeground(new java.awt.Color(255, 0, 0));
-        pdatosprofesionales.add(lblconteo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 25, 15));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Caracteres");
-        pdatosprofesionales.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, -1, -1));
 
         cbidiomas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbidiomas.addActionListener(new java.awt.event.ActionListener() {
@@ -626,11 +662,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         jScrollPane3.setViewportView(taidiomas);
 
         pdatosprofesionales.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 326, 143, 170));
-
-        lblrespuesta.setBackground(new java.awt.Color(255, 255, 255));
-        lblrespuesta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblrespuesta.setEnabled(false);
-        pdatosprofesionales.add(lblrespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 25));
 
         btnlimpiaridiomas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
         btnlimpiaridiomas.addActionListener(new java.awt.event.ActionListener() {
@@ -1082,603 +1113,603 @@ public class PersonalMedico extends javax.swing.JFrame{
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         //VALIDAMOS LOS CAMPOS OBLIGATORIOS
         if(txtidentificacion.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Identificación","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir la Identificación","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtidentificacion.requestFocus();}
         else if(String.valueOf(txtidentificacion.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Identificación no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"La Identificación no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtidentificacion.requestFocus();
             txtidentificacion.setText("");}
         else if(txtnombres.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir Nombres","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir Nombres","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtnombres.requestFocus();}
         else if(String.valueOf(txtnombres.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"Los Nombres no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Los Nombres no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtnombres.requestFocus();
             txtnombres.setText("");}
         else if(txtprimerapellido.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Primer Apellido","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir el Primer Apellido","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtprimerapellido.requestFocus();}
         else if(String.valueOf(txtprimerapellido.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Primer Apellido no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"El Primer Apellido no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtprimerapellido.requestFocus();
             txtprimerapellido.setText("");}
         else if(!"".equals(txtsegundoapellido.getText())){
             if(String.valueOf(txtsegundoapellido.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Segundo Apellido no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Segundo Apellido no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txtsegundoapellido.requestFocus();
                 txtsegundoapellido.setText("");}
             else if(datefechanacimiento.getDate()==null){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 datefechanacimiento.requestFocus();}
             else if(cbpais.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 cbpais.requestFocus();}
             else if(cbciudad.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 cbciudad.requestFocus();}
             else if(cbestadocivil.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 cbestadocivil.requestFocus();}
             else if(!"".equals(txtdireccion.getText())){
                 if(String.valueOf(txtdireccion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtdireccion.requestFocus();
                     txtdireccion.setText("");}
                 else if(!"".equals(txttelefono.getText())){
                     if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txttelefono.requestFocus();
                         txttelefono.setText("");}
                     else if(txtmovil.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();}
                     else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();
                         txtmovil.setText("");}
                     else if(txtcorreo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtcorreo.requestFocus();}
                     else if(txttarjeta.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();}
                     else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();
                         txttarjeta.setText("");}
                     else if(txttitulo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();}
                     else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();
                         txttitulo.setText("");}
                     else if(txtinstitucion.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();}
                     else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();
                         txtinstitucion.setText("");}
                     else if(taidiomas.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         cbidiomas.requestFocus();}
                     else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         rbsi.requestFocus();}
                     else if(rbsi.isSelected()==true){
                         if(txtultimaempresa.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();}
                         else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();
                             txtultimaempresa.setText("");}
                         else if(txtcargo.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();}
                         else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();
                             txtcargo.setText("");}
                         else if(cbmotivo.getSelectedItem().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                             cbmotivo.requestFocus();}
                         else{
-                            int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                            int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                             if(Respuesta==JOptionPane.YES_OPTION){
                                 Guardar();}}}
                     else{
-                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                         if(Respuesta==JOptionPane.YES_OPTION){
                             Guardar();}}}
                 else if(txtmovil.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();}
                 else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();
                     txtmovil.setText("");}
                 else if(txtcorreo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();}
                 else if(txttarjeta.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar",JOptionPane.WARNING_MESSAGE);
                     txttarjeta.requestFocus();}
                 else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();
                     txttarjeta.setText("");}
                 else if(txttitulo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();}
                 else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();
                     txttitulo.setText("");}
                 else if(txtinstitucion.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();}
                 else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();
                     txtinstitucion.setText("");}
                 else if(taidiomas.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     cbidiomas.requestFocus();}
                 else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     rbsi.requestFocus();}
                 else if(rbsi.isSelected()==true){
                     if(txtultimaempresa.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();}
                     else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();
                         txtultimaempresa.setText("");}
                     else if(txtcargo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();}
                     else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();
                         txtcargo.setText("");}
                     else if(cbmotivo.getSelectedItem().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         cbmotivo.requestFocus();}
                     else{
-                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                         if(Respuesta==JOptionPane.YES_OPTION){
                             Guardar();}}}
                 else{
-                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                     if(Respuesta==JOptionPane.YES_OPTION){
                         Guardar();}}}
             else if(!"".equals(txttelefono.getText())){
                 if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txttelefono.requestFocus();
                     txttelefono.setText("");}
                 else if(txtmovil.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();}
                 else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();
                     txtmovil.setText("");}
                 else if(txtcorreo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();}
                 else if(txttarjeta.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();}
                 else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();
                     txttarjeta.setText("");}
                 else if(txttitulo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();}
                 else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();
                     txttitulo.setText("");}
                 else if(txtinstitucion.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();}
                 else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();
                     txtinstitucion.setText("");}
                 else if(taidiomas.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     cbidiomas.requestFocus();}
                 else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     rbsi.requestFocus();}
                 else if(rbsi.isSelected()==true){
                     if(txtultimaempresa.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();}
                     else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();
                         txtultimaempresa.setText("");}
                     else if(txtcargo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();}
                     else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();
                         txtcargo.setText("");}
                     else if(cbmotivo.getSelectedItem().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                         cbmotivo.requestFocus();}
                     else{
-                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                         if(Respuesta==JOptionPane.YES_OPTION){
                             Guardar();}}}
                 else{
-                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                     if(Respuesta==JOptionPane.YES_OPTION){
                         Guardar();}}}
             else if(txtmovil.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();}
             else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();
                 txtmovil.setText("");}
             else if(txtcorreo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txtcorreo.requestFocus();}
             else if(txttarjeta.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();}
             else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();
                 txttarjeta.setText("");}
             else if(txttitulo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();}
             else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();
                 txttitulo.setText("");}
             else if(txtinstitucion.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();}
             else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();
                 txtinstitucion.setText("");}
             else if(taidiomas.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 cbidiomas.requestFocus();}
             else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 rbsi.requestFocus();}
             else if(rbsi.isSelected()==true){
                 if(txtultimaempresa.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();}
                 else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();
                     txtultimaempresa.setText("");}
                 else if(txtcargo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();}
                 else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();
                     txtcargo.setText("");}
                 else if(cbmotivo.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                     cbmotivo.requestFocus();}
                 else{
-                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                     if(Respuesta==JOptionPane.YES_OPTION){
                         Guardar();}}}
             else{
-                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                 if(Respuesta==JOptionPane.YES_OPTION){
                     Guardar();}}}
         else if(datefechanacimiento.getDate()==null){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             datefechanacimiento.requestFocus();}
         else if(cbpais.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             cbpais.requestFocus();}
         else if(cbciudad.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             cbciudad.requestFocus();}
         else if(cbestadocivil.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             cbestadocivil.requestFocus();}
         else if(!"".equals(txtdireccion.getText())){
             if(String.valueOf(txtdireccion.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtdireccion.requestFocus();
                 txtdireccion.setText("");}
             else if(!"".equals(txttelefono.getText())){
                 if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttelefono.requestFocus();
                     txttelefono.setText("");}
                 else if(txtmovil.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();}
                 else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();
                     txtmovil.setText("");}
                 else if(txtcorreo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();}
                 else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();
                     txtcorreo.setText("");}
                 else if(txttarjeta.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();}
                 else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();
                     txttarjeta.setText("");}
                 else if(txttitulo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();}
                 else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();
                     txttitulo.setText("");}
                 else if(txtinstitucion.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();}
                 else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();
                     txtinstitucion.setText("");}
                 else if(taidiomas.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbidiomas.requestFocus();}
                 else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     rbsi.requestFocus();}
                 else if(rbsi.isSelected()==true){
                     if(txtultimaempresa.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();}
                     else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();
                         txtultimaempresa.setText("");}
                     else if(txtcargo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();}
                     else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();
                         txtcargo.setText("");}
                     else if(cbmotivo.getSelectedItem().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         cbmotivo.requestFocus();}
                     else{
-                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                        int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                         if(Respuesta==JOptionPane.YES_OPTION){
                             Guardar();}}}
                 else{
-                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                     if(Respuesta==JOptionPane.YES_OPTION){
                         Guardar();}}}
             else if(txtmovil.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();}
             else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();
                 txtmovil.setText("");}
             else if(txtcorreo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcorreo.requestFocus();}
             else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcorreo.requestFocus();
                 txtcorreo.setText("");}
             else if(txttarjeta.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();}
             else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();
                 txttarjeta.setText("");}
             else if(txttitulo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();}
             else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();
                 txttitulo.setText("");}
             else if(txtinstitucion.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();}
             else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();
                 txtinstitucion.setText("");}
             else if(taidiomas.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 cbidiomas.requestFocus();}
             else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 rbsi.requestFocus();}
             else if(rbsi.isSelected()==true){
                 if(txtultimaempresa.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();}
                 else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();
                     txtultimaempresa.setText("");}
                 else if(txtcargo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();}
                 else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();
                     txtcargo.setText("");}
                 else if(cbmotivo.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbmotivo.requestFocus();}
                 else{
-                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                     if(Respuesta==JOptionPane.YES_OPTION){
                         Guardar();}}}
             else{
-                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                 if(Respuesta==JOptionPane.YES_OPTION){
                     Guardar();}}}       
         else if(!"".equals(txttelefono.getText())){
             if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttelefono.requestFocus();
                 txttelefono.setText("");}
             else if(txtmovil.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();}
             else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();
                 txtmovil.setText("");}
             else if(txtcorreo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcorreo.requestFocus();}
             else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcorreo.requestFocus();
                 txtcorreo.setText("");}
             else if(txttarjeta.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();}
             else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();
                 txttarjeta.setText("");}
             else if(txttitulo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();}
             else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();
                 txttitulo.setText("");}
             else if(txtinstitucion.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();}
             else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();
                 txtinstitucion.setText("");}
             else if(taidiomas.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 cbidiomas.requestFocus();}
             else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 rbsi.requestFocus();}
             else if(rbsi.isSelected()==true){
                 if(txtultimaempresa.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();}
                 else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();
                     txtultimaempresa.setText("");}
                 else if(txtcargo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();}
                 else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();
                     txtcargo.setText("");}
                 else if(cbmotivo.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbmotivo.requestFocus();}
                 else{
-                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                    int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                     if(Respuesta==JOptionPane.YES_OPTION){
                         Guardar();}}}
             else{
-                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                 if(Respuesta==JOptionPane.YES_OPTION){
                     Guardar();}}}
         else if(txtmovil.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txtmovil.requestFocus();}
         else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txtmovil.requestFocus();
             txtmovil.setText("");}
         else if(txtcorreo.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txtcorreo.requestFocus();}
         else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txtcorreo.requestFocus();
             txtcorreo.setText("");}
         else if(txttarjeta.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txttarjeta.requestFocus();}
         else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txttarjeta.requestFocus();
             txttarjeta.setText("");}
         else if(txttitulo.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txttitulo.requestFocus();}
         else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txttitulo.requestFocus();
             txttitulo.setText("");}
         else if(txtinstitucion.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txtinstitucion.requestFocus();}
         else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             txtinstitucion.requestFocus();
             txtinstitucion.setText("");}
         else if(taidiomas.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             cbidiomas.requestFocus();}
         else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
             rbsi.requestFocus();}
         else if(rbsi.isSelected()==true){
             if(txtultimaempresa.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtultimaempresa.requestFocus();}
             else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtultimaempresa.requestFocus();
                 txtultimaempresa.setText("");}
             else if(txtcargo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcargo.requestFocus();}
             else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcargo.requestFocus();
                 txtcargo.setText("");}
             else if(cbmotivo.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 cbmotivo.requestFocus();}
             else{
-                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                 if(Respuesta==JOptionPane.YES_OPTION){
                     Guardar();}}}
         else{
-            int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION);
+            int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
             if(Respuesta==JOptionPane.YES_OPTION){
                 Guardar();}}
     }//GEN-LAST:event_btnguardarActionPerformed
@@ -1694,10 +1725,13 @@ public class PersonalMedico extends javax.swing.JFrame{
     //ACCIÓN DEL BOTÓN CONSULTAR
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
         if(btnconsultar.getText().equals("Consultar")){
-            long identificacion=Long.parseLong(JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE));
+            long identificacion=Long.parseLong((String) JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
             //CREAMOS UN OBJETO DE LA CLASE PERSONALMEDICO
             ClasePersonalMedico cpm=new ClasePersonalMedico();
             ResultSet rs=cpm.Buscar(identificacion);
+            //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+            ClaseUsuarios cu=new ClaseUsuarios();
+            ResultSet rsu=cu.Buscar(identificacion);
             try{
                 if(rs.next()){
                     //ACTIVAMOS LOS BOTONES QUE ESTÁN INACTIVOS
@@ -1746,20 +1780,26 @@ public class PersonalMedico extends javax.swing.JFrame{
                             Respuesta=r.getString(1);}
                         if(Respuesta.equals("NO")){
                             lblfoto.setIcon(new ImageIcon(getClass().getResource("/Imagenes/foto_opt.png")));
-                            JOptionPane.showMessageDialog(null,"La Identificación buscada no tiene Foto","Advertencia",JOptionPane.INFORMATION_MESSAGE);}
+                            JOptionPane.showMessageDialog(null,"La Identificación buscada no tiene Foto","Advertencia",JOptionPane.INFORMATION_MESSAGE,informacion);}
                         else{
                             CargarFoto(identificacion);}}
                     catch (SQLException e){
-                        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}
+                        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
+                    lblestado1.setVisible(true);
+                    lblestadoactual1.setVisible(true);
+                    //lblestadoactual1.setText(rsu.getString(7));
+                    lblestado2.setVisible(true);
+                    lblestadoactual2.setVisible(true);
+                    //lblestadoactual2.setText(rsu.getString(7));
                     btnconsultar.setText("Limpiar");
                     btnconsultar.setDescription("Clean");
                     btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
                 else{
                     Habilitar();
                     Limpiar();
-                    JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE);}}
+                    JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
             catch (SQLException e){
-                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
         else if(btnconsultar.getText().equals("Limpiar")){
             Limpiar();
             Iniciar();
@@ -1800,159 +1840,159 @@ public class PersonalMedico extends javax.swing.JFrame{
             btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar2_opt.png")));}
         else{
             if(txtnombres.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir Nombres","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir Nombres","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtnombres.requestFocus();}
             else if(String.valueOf(txtnombres.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"Los Nombres no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Los Nombres no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtnombres.requestFocus();
                 txtnombres.setText("");}
             else if(txtprimerapellido.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Primer Apellido","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Primer Apellido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtprimerapellido.requestFocus();}
             else if(String.valueOf(txtprimerapellido.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Primer Apellido no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Primer Apellido no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtprimerapellido.requestFocus();
                 txtprimerapellido.setText("");}
             else if(!"".equals(txtsegundoapellido.getText())){
                 if(String.valueOf(txtsegundoapellido.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Segundo Apellido no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Segundo Apellido no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtsegundoapellido.requestFocus();
                     txtsegundoapellido.setText("");}
                 else if(datefechanacimiento.getDate()==null){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     datefechanacimiento.requestFocus();}
                 else if(cbpais.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbpais.requestFocus();}
                 else if(cbciudad.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbciudad.requestFocus();}
                 else if(cbestadocivil.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbestadocivil.requestFocus();}
                 else if(!"".equals(txtdireccion.getText())){
                     if(String.valueOf(txtdireccion.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtdireccion.requestFocus();
                         txtdireccion.setText("");}
                     else if(!"".equals(txttelefono.getText())){
                         if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txttelefono.requestFocus();
                             txttelefono.setText("");}
                         else if(txtmovil.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtmovil.requestFocus();}
                         else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtmovil.requestFocus();
                             txtmovil.setText("");}
                         else if(txtcorreo.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtcorreo.requestFocus();}
                         else if(txttarjeta.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txttarjeta.requestFocus();}
                         else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txttarjeta.requestFocus();
                             txttarjeta.setText("");}
                         else if(txttitulo.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txttitulo.requestFocus();}
                         else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txttitulo.requestFocus();
                             txttitulo.setText("");}
                         else if(txtinstitucion.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtinstitucion.requestFocus();}
                         else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtinstitucion.requestFocus();
                             txtinstitucion.setText("");}
                         else if(taidiomas.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             cbidiomas.requestFocus();}
                         else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             rbsi.requestFocus();}
                         else if(rbsi.isSelected()==true){
                             if(txtultimaempresa.getText().equals("")){
-                                JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                                 txtultimaempresa.requestFocus();}
                             else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                                JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                                 txtultimaempresa.requestFocus();
                                 txtultimaempresa.setText("");}
                             else if(txtcargo.getText().equals("")){
-                                JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                                 txtcargo.requestFocus();}
                             else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                                JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                                 txtcargo.requestFocus();
                                 txtcargo.setText("");}
                             else if(cbmotivo.getSelectedItem().equals("")){
-                                JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                                 cbmotivo.requestFocus();}
                             else{
                                 Actualizar();}}
                         else{
                             Actualizar();}}
                     else if(txtmovil.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();}
                     else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();
                         txtmovil.setText("");}
                     else if(txtcorreo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcorreo.requestFocus();}
                     else if(txttarjeta.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();}
                     else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();
                         txttarjeta.setText("");}
                     else if(txttitulo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();}
                     else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();
                         txttitulo.setText("");}
                     else if(txtinstitucion.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();}
                     else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();
                         txtinstitucion.setText("");}
                     else if(taidiomas.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         cbidiomas.requestFocus();}
                     else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         rbsi.requestFocus();}
                     else if(rbsi.isSelected()==true){
                         if(txtultimaempresa.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();}
                         else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();
                             txtultimaempresa.setText("");}
                         else if(txtcargo.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();}
                         else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();
                             txtcargo.setText("");}
                         else if(cbmotivo.getSelectedItem().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             cbmotivo.requestFocus();}
                         else{
                             Actualizar();}}
@@ -1960,270 +2000,270 @@ public class PersonalMedico extends javax.swing.JFrame{
                         Actualizar();}}
                 else if(!"".equals(txttelefono.getText())){
                     if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttelefono.requestFocus();
                         txttelefono.setText("");}
                     else if(txtmovil.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();}
                     else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();
                         txtmovil.setText("");}
                     else if(txtcorreo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcorreo.requestFocus();}
                     else if(txttarjeta.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();}
                     else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();
                         txttarjeta.setText("");}
                     else if(txttitulo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();}
                     else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();
                         txttitulo.setText("");}
                     else if(txtinstitucion.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();}
                     else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();
                         txtinstitucion.setText("");}
                     else if(taidiomas.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         cbidiomas.requestFocus();}
                     else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         rbsi.requestFocus();}
                     else if(rbsi.isSelected()==true){
                         if(txtultimaempresa.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();}
                         else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();
                             txtultimaempresa.setText("");}
                         else if(txtcargo.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();}
                         else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();
                             txtcargo.setText("");}
                         else if(cbmotivo.getSelectedItem().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             cbmotivo.requestFocus();}
                         else{
                             Actualizar();}}
                     else{
                         Actualizar();}}                
                 else if(txtmovil.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();}
                 else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
                     JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
                     txtmovil.requestFocus();
                     txtmovil.setText("");}
                 else if(txtcorreo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();}
                 else if(txttarjeta.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();}
                 else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();
                     txttarjeta.setText("");}
                 else if(txttitulo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();}
                 else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();
                     txttitulo.setText("");}
                 else if(txtinstitucion.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();}
                 else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();
                     txtinstitucion.setText("");}
                 else if(taidiomas.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbidiomas.requestFocus();}
                 else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     rbsi.requestFocus();}
                 else if(rbsi.isSelected()==true){
                     if(txtultimaempresa.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();}
                     else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();
                         txtultimaempresa.setText("");}
                     else if(txtcargo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();}
                     else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();
                         txtcargo.setText("");}
                     else if(cbmotivo.getSelectedItem().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         cbmotivo.requestFocus();}
                     else{
                         Actualizar();}}
                 else{
                     Actualizar();}}
             else if(datefechanacimiento.getDate()==null){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 datefechanacimiento.requestFocus();}
             else if(cbpais.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar un País","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 cbpais.requestFocus();}
             else if(cbciudad.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar una Ciudad","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 cbciudad.requestFocus();}
             else if(cbestadocivil.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar un Estado Civil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 cbestadocivil.requestFocus();}
             else if(!"".equals(txtdireccion.getText())){
                 if(String.valueOf(txtdireccion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtdireccion.requestFocus();
                     txtdireccion.setText("");}
                 else if(!"".equals(txttelefono.getText())){
                     if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttelefono.requestFocus();
                         txttelefono.setText("");}
                     else if(txtmovil.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();}
                     else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtmovil.requestFocus();
                         txtmovil.setText("");}
                     else if(txtcorreo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcorreo.requestFocus();}
                     else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcorreo.requestFocus();
                         txtcorreo.setText("");}
                     else if(txttarjeta.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();}
                     else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttarjeta.requestFocus();
                         txttarjeta.setText("");}
                     else if(txttitulo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();}
                     else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txttitulo.requestFocus();
                         txttitulo.setText("");}
                     else if(txtinstitucion.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();}
                     else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtinstitucion.requestFocus();
                         txtinstitucion.setText("");}
                     else if(taidiomas.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         cbidiomas.requestFocus();}
                     else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         rbsi.requestFocus();}
                     else if(rbsi.isSelected()==true){
                         if(txtultimaempresa.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();}
                         else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtultimaempresa.requestFocus();
                             txtultimaempresa.setText("");}
                         else if(txtcargo.getText().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();}
                         else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             txtcargo.requestFocus();
                             txtcargo.setText("");}
                         else if(cbmotivo.getSelectedItem().equals("")){
-                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                             cbmotivo.requestFocus();}
                         else{
                             Actualizar();}}
                     else{
                         Actualizar();}}
                 else if(txtmovil.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();}
                 else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();
                     txtmovil.setText("");}
                 else if(txtcorreo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();}
                 else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();
                     txtcorreo.setText("");}
                 else if(txttarjeta.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();}
                 else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();
                     txttarjeta.setText("");}
                 else if(txttitulo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();}
                 else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();
                     txttitulo.setText("");}
                 else if(txtinstitucion.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();}
                 else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();
                     txtinstitucion.setText("");}
                 else if(taidiomas.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbidiomas.requestFocus();}
                 else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     rbsi.requestFocus();}
                 else if(rbsi.isSelected()==true){
                     if(txtultimaempresa.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();}
                     else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();
                         txtultimaempresa.setText("");}
                     else if(txtcargo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();}
                     else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();
                         txtcargo.setText("");}
                     else if(cbmotivo.getSelectedItem().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         cbmotivo.requestFocus();}
                     else{
                         Actualizar();}}
@@ -2231,130 +2271,130 @@ public class PersonalMedico extends javax.swing.JFrame{
                     Actualizar();}}       
             else if(!"".equals(txttelefono.getText())){
                 if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttelefono.requestFocus();
                     txttelefono.setText("");}
                 else if(txtmovil.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();}
                 else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtmovil.requestFocus();
                     txtmovil.setText("");}
                 else if(txtcorreo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();}
                 else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcorreo.requestFocus();
                     txtcorreo.setText("");}
                 else if(txttarjeta.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();}
                 else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttarjeta.requestFocus();
                     txttarjeta.setText("");}
                 else if(txttitulo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();}
                 else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txttitulo.requestFocus();
                     txttitulo.setText("");}
                 else if(txtinstitucion.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();}
                 else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtinstitucion.requestFocus();
                     txtinstitucion.setText("");}
                 else if(taidiomas.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbidiomas.requestFocus();}
                 else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     rbsi.requestFocus();}
                 else if(rbsi.isSelected()==true){
                     if(txtultimaempresa.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();}
                     else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtultimaempresa.requestFocus();
                         txtultimaempresa.setText("");}
                     else if(txtcargo.getText().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();}
                     else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         txtcargo.requestFocus();
                         txtcargo.setText("");}
                     else if(cbmotivo.getSelectedItem().equals("")){
-                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                         cbmotivo.requestFocus();}
                     else{
                         Actualizar();}}
                 else{
                     Actualizar();}}
             else if(txtmovil.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();}
             else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtmovil.requestFocus();
                 txtmovil.setText("");}
             else if(txtcorreo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcorreo.requestFocus();}
             else if(String.valueOf(txtcorreo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Correo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtcorreo.requestFocus();
                 txtcorreo.setText("");}
             else if(txttarjeta.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();}
             else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttarjeta.requestFocus();
                 txttarjeta.setText("");}
             else if(txttitulo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();}
             else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txttitulo.requestFocus();
                 txttitulo.setText("");}
             else if(txtinstitucion.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();}
             else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 txtinstitucion.requestFocus();
                 txtinstitucion.setText("");}
             else if(taidiomas.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 cbidiomas.requestFocus();}
             else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                 rbsi.requestFocus();}
             else if(rbsi.isSelected()==true){
                 if(txtultimaempresa.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();}
                 else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtultimaempresa.requestFocus();
                     txtultimaempresa.setText("");}
                 else if(txtcargo.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();}
                 else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     txtcargo.requestFocus();
                     txtcargo.setText("");}
                 else if(cbmotivo.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar", JOptionPane.WARNING_MESSAGE,warning);
                     cbmotivo.requestFocus();}
                 else{
                     Actualizar();}}
@@ -2365,13 +2405,13 @@ public class PersonalMedico extends javax.swing.JFrame{
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         //CREAMOS UN OBJETO DE LA CLASE PERSONALMÉDICO
         ClasePersonalMedico cpm=new ClasePersonalMedico();
-        int Respuesta=JOptionPane.showConfirmDialog(null,"Seguro desea Eliminar la Infomación?","Confirmación",JOptionPane.YES_NO_OPTION);
+        int Respuesta=JOptionPane.showConfirmDialog(null,"Seguro desea Eliminar la Infomación?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
         if(Respuesta==JOptionPane.YES_OPTION){
             cpm.Eliminar(Long.parseLong(txtidentificacion.getText()));
             Limpiar();
             LimpiarLabores();
             Iniciar();
-            JOptionPane.showMessageDialog(null,"Los datos se Eliminaron con exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Los datos se Eliminaron con exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
             Habilitar();
             txtidentificacion.setEnabled(true);
             btnguardar.setEnabled(true);
@@ -2414,7 +2454,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         ResultSet rs=cpm.Buscar(identificacion);
         try{
             if(rs.next()){
-                JOptionPane.showMessageDialog(null,"La Identificación ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"La Identificación ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE,error);
                 Limpiar();
                 Iniciar();
                 LimpiarLabores();
@@ -2426,7 +2466,7 @@ public class PersonalMedico extends javax.swing.JFrame{
                 ResultSet rs2=cpm.Buscar2(nombres,primerApellido,segundoApellido);
                 try{
                     if(rs2.next()){
-                        JOptionPane.showMessageDialog(null,"El Nombre, Primer Apellido y Segundo Apellido ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"El Nombre, Primer Apellido y Segundo Apellido ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE,error);
                         Limpiar();
                         Iniciar();
                         LimpiarLabores();
@@ -2459,14 +2499,14 @@ public class PersonalMedico extends javax.swing.JFrame{
                         //VALIDAMOS LA FECHA DE NACIMIENTO
                         int anos=this.Fecha(fechaNacimiento);
                         if(anos<0){
-                            JOptionPane.showMessageDialog(null,"Fecha de Nacimiento errada.","Error",JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Fecha de Nacimiento errada.","Error",JOptionPane.ERROR_MESSAGE,error);
                             datefechanacimiento.requestFocus();}
                         else if(anos<18){
-                            JOptionPane.showMessageDialog(null,"Debe registrar mayores de Edad","Información",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Debe registrar mayores de Edad","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
                             datefechanacimiento.requestFocus();}
                         else{
                             cpm.Guardar(identificacion,nombres,primerApellido,segundoApellido,fechaNacimiento,pais,ciudad,estadoCivil,direccion,telefono,movil,correo,tarjeta,titulo,institucion,otrosEstudios,idiomas,experiencialaboral,ultimaEmpresa,cargo,motivo,salario,observaciones,foto);
-                            JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
                             Limpiar();
                             Iniciar();
                             LimpiarLabores();
@@ -2515,7 +2555,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         Iniciar();
         Inhabilitar2();
         txtidentificacion.setEnabled(true);
-        JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
         btnconsultar.setText("Consultar");
         btnconsultar.setDescription("Consult");
         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
@@ -2527,7 +2567,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         btneliminar.setEnabled(false);
         btnmodificar.setEnabled(false);
     }
-    //MÉTODO PARA CARGAR FOTOS DEL PM
+    //MÉTODO PARA CARGAR FOTOS DEL PERSONAL MÉDICO
     public void CargarFoto(long identificacion){
         Image dtCat=foto.RecuperarFoto(identificacion);
         ImageIcon icon=new ImageIcon(dtCat);
@@ -2672,6 +2712,10 @@ public class PersonalMedico extends javax.swing.JFrame{
         taobservaciones.setText("");
         lblconteo.setText("");
         LimpiarLabores();
+        lblestado1.setVisible(false);
+        lblestadoactual1.setVisible(false);
+        lblestado2.setVisible(false);
+        lblestadoactual2.setVisible(false);
     }
     //MÉTODO PARA LIMPIAR LOS DATOS LABORES
     public void LimpiarLabores(){
@@ -2741,25 +2785,28 @@ public class PersonalMedico extends javax.swing.JFrame{
     private org.edisoncor.gui.button.ButtonTask btnlistar;
     private org.edisoncor.gui.button.ButtonTask btnmodificar;
     private org.edisoncor.gui.button.ButtonTask btnregresar;
-    private org.edisoncor.gui.button.ButtonTask buttonTask1;
     private javax.swing.JComboBox cbciudad;
     private javax.swing.JComboBox cbestadocivil;
     private javax.swing.JComboBox cbidiomas;
     private javax.swing.JComboBox cbmotivo;
     private javax.swing.JComboBox cbpais;
     private com.toedter.calendar.JDateChooser datefechanacimiento;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jtppestanas;
     private javax.swing.JLabel lblcaracteres1;
+    private javax.swing.JLabel lblcaracteres2;
     private javax.swing.JLabel lblcargo;
     private javax.swing.JLabel lblciudad;
     private javax.swing.JLabel lblcontador;
     private javax.swing.JLabel lblconteo;
     private javax.swing.JLabel lblcorreo;
     private javax.swing.JLabel lbldireccion;
+    private javax.swing.JLabel lblestado1;
+    private javax.swing.JLabel lblestado2;
+    private javax.swing.JLabel lblestadoactual1;
+    private javax.swing.JLabel lblestadoactual2;
     private javax.swing.JLabel lblestadocivil;
     private javax.swing.JLabel lblexperiencia;
     private javax.swing.JLabel lblfechanacimiento;

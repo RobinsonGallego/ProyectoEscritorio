@@ -2,6 +2,7 @@ package Formularios;
 //LIBRERÍAS
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -9,6 +10,8 @@ import proyectoescritorio.SplashInicio;
 
 public class InicioSesion extends javax.swing.JFrame{
     private SplashInicio splashInicio;
+    //IMAGENES DE LOS MENSAJES
+    Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
     //MÉTODO PARA ASIGNAR UN VALOR Y TEXTO AL SPLASH
     public InicioSesion(SplashInicio splashInicio){
         this.splashInicio=splashInicio;
@@ -123,6 +126,9 @@ public class InicioSesion extends javax.swing.JFrame{
         txtusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtusuario.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 102)));
         txtusuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtusuarioKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtusuarioKeyTyped(evt);
             }
@@ -133,6 +139,9 @@ public class InicioSesion extends javax.swing.JFrame{
         jpcontrasena.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 102)));
         jpcontrasena.setEchoChar('*');
         jpcontrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jpcontrasenaKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jpcontrasenaKeyTyped(evt);
             }
@@ -210,7 +219,7 @@ public class InicioSesion extends javax.swing.JFrame{
     }//GEN-LAST:event_txtusuarioKeyTyped
 
     private void jpcontrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyTyped
-        if(jpcontrasena.getText().length()==10){
+        if(jpcontrasena.getText().length()==15){
             evt.consume();}//ANULA LAS ACCIONES DEL TECLADO
         char Caracter=evt.getKeyChar();
         int Contador=(int)(Caracter);
@@ -226,6 +235,14 @@ public class InicioSesion extends javax.swing.JFrame{
     private void btnsalirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnsalirKeyTyped
         System.exit(0);
     }//GEN-LAST:event_btnsalirKeyTyped
+    //CONVERTIR MAYÚSCULAS A MINÚSCULAS
+    private void txtusuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusuarioKeyReleased
+        Minusculas(txtusuario);
+    }//GEN-LAST:event_txtusuarioKeyReleased
+    //CONVERTIR MAYÚSCULAS A MINÚSCULAS
+    private void jpcontrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyReleased
+        Minusculas(jpcontrasena);
+    }//GEN-LAST:event_jpcontrasenaKeyReleased
     //MÉTODO PARA INGRESAR AL SISTEMA
     public void Ingresar(){
         String user=txtusuario.getText();
@@ -236,13 +253,18 @@ public class InicioSesion extends javax.swing.JFrame{
             menu.setVisible(true);}
         else{
             if(user.equals("")&&contrasena.equals("")){
-                JOptionPane.showMessageDialog(null,"Por favor ingrese los Datos","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Por favor ingrese los Datos","Error",JOptionPane.ERROR_MESSAGE,error);
                 txtusuario.requestFocus();}
             else{
-                JOptionPane.showMessageDialog(null,"Usuario y/o Contraseña Incorrectos","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Usuario y/o Contraseña Incorrectos","Error",JOptionPane.ERROR_MESSAGE,error);
                 txtusuario.setText("");
                 jpcontrasena.setText("");
                 txtusuario.requestFocus();}}
+    }
+    //MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
+    private void Minusculas(javax.swing.JTextField txt){
+        String texto=(txt.getText().toLowerCase());
+        txt.setText(texto);
     }
     //MÉTODO QUE VALIDA LETRAS
     private void Letras(final JTextField a){
