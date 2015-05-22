@@ -1,9 +1,17 @@
 package Formularios;
 //LIBRERÍAS
 import Clases.GenerarReportes;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame{
+    //IMAGENES DE LOS MENSAJES
+    Icon warning=new ImageIcon(getClass().getResource("/Imagenes/warning_opt.png"));
+    Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
+    Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
+    Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
+    //CONSTRUCTOR
     public Menu(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -49,6 +57,8 @@ public class Menu extends javax.swing.JFrame{
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         sminformeingresos = new javax.swing.JMenuItem();
         sminformapersonalmedico = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        smhojasdevida = new javax.swing.JMenuItem();
         mherramientas = new javax.swing.JMenu();
         smcopiadeseguridad = new javax.swing.JMenuItem();
         smusuarios = new javax.swing.JMenuItem();
@@ -257,6 +267,17 @@ public class Menu extends javax.swing.JFrame{
             }
         });
         msalidas.add(sminformapersonalmedico);
+        msalidas.add(jSeparator2);
+
+        smhojasdevida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        smhojasdevida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/curriculum_opt.png"))); // NOI18N
+        smhojasdevida.setText("Hojas de Vida");
+        smhojasdevida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smhojasdevidaActionPerformed(evt);
+            }
+        });
+        msalidas.add(smhojasdevida);
 
         jMenuBar1.add(msalidas);
 
@@ -375,6 +396,26 @@ public class Menu extends javax.swing.JFrame{
         GenerarReportes reporte=new GenerarReportes();
         reporte.ReportePM();
     }//GEN-LAST:event_sminformapersonalmedicoActionPerformed
+    //ACCIÓN DEL SUB-MENÚ HOJAS DE VIDA
+    private void smhojasdevidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smhojasdevidaActionPerformed
+        String respuesta=(String)JOptionPane.showInputDialog(null,"Ingrese la Identificación","Consultar Hoja de Vida",JOptionPane.QUESTION_MESSAGE,pregunta,null,null);
+        if(respuesta==null){}
+        else{
+            if(!EsNumero(respuesta)){
+                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE,error);}
+            else{
+                long identificacion=Long.parseLong(respuesta);
+                GenerarReportes reporte=new GenerarReportes();
+                reporte.ReporteHV(identificacion);}}
+    }//GEN-LAST:event_smhojasdevidaActionPerformed
+    //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
+    private static boolean EsNumero(String Respuesta){
+        try{
+            Integer.parseInt(Respuesta);
+            return true;}
+        catch (NumberFormatException e){
+           return false;}
+    }
     //MÉTODO MAIN
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -407,6 +448,7 @@ public class Menu extends javax.swing.JFrame{
     private org.jdesktop.swingx.JXMonthView calendario;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel lblfondo;
     private javax.swing.JMenu mayuda;
     private javax.swing.JMenu mgestiones;
@@ -432,6 +474,7 @@ public class Menu extends javax.swing.JFrame{
     private javax.swing.JMenuItem smfarmaceutas;
     private javax.swing.JMenuItem smhabitaciones;
     private javax.swing.JMenuItem smhistoria;
+    private javax.swing.JMenuItem smhojasdevida;
     private javax.swing.JMenuItem smhorarios;
     private javax.swing.JMenuItem smhospitalizacion;
     private javax.swing.JMenuItem sminformapersonalmedico;

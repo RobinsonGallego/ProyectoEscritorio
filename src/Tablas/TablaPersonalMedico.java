@@ -8,6 +8,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -16,6 +17,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 public class TablaPersonalMedico extends javax.swing.JFrame{
+    //IMAGENES DE LOS MENSAJES
+    Icon warning=new ImageIcon(getClass().getResource("/Imagenes/warning_opt.png"));
+    Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
+    Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
+    Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
     //CONSTRUCTOR
     public TablaPersonalMedico(){
         initComponents();
@@ -465,7 +471,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         rbbuscarexplabo.setEnabled(false);
         rbbuscarnombres.setEnabled(false);
         rbbuscarprimerape.setEnabled(false);
-        String Respuesta=JOptionPane.showInputDialog(null,"Ingrese la Identificación","Consultar",JOptionPane.QUESTION_MESSAGE);
+        String Respuesta=(String)JOptionPane.showInputDialog(null,"Ingrese la Identificación","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null);
         if(Respuesta==null){
             Iniciar();
             Activar();
@@ -477,7 +483,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                 rbbuscarexplabo.setEnabled(false);
                 rbbuscarnombres.setEnabled(false);
                 rbbuscarprimerape.setEnabled(false);
-                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE,error);
                 Iniciar();
                 Activar();
                 rbbuscardoec.setSelected(false);
@@ -504,13 +510,13 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                         cpm.BusquedaDireEstCi(modelo,identificacion);
                         Formato2();}
                     else{
-                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
                         Limpiar();
                         Iniciar();
                         Activar();
-                        btnregresar.requestFocus();}
-                } catch (SQLException e){
-                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}}
+                        btnregresar.requestFocus();}}
+                catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
     }//GEN-LAST:event_rbbuscardoecActionPerformed
     //ACCIÓN DEL BOTÓN LIMPIAR
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
@@ -525,19 +531,19 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         rbbuscarexplabo.setEnabled(false);
         rbbuscarnombres.setEnabled(false);
         rbbuscarprimerape.setEnabled(false);
-        String Respuesta=JOptionPane.showInputDialog(null,"Ingrese la Identificación","Consultar",JOptionPane.QUESTION_MESSAGE);
+        String Respuesta=(String)JOptionPane.showInputDialog(null,"Ingrese la Identificación","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null);
         if(Respuesta==null){
             Iniciar();
             Activar();
             rbbuscarinfopro.setSelected(false);
-            btnregresar.requestFocus();
-        }else{
+            btnregresar.requestFocus();}
+        else{
             if(!EsNumero(Respuesta)){
                 rbbuscardoec.setEnabled(false);
                 rbbuscarexplabo.setEnabled(false);
                 rbbuscarnombres.setEnabled(false);
                 rbbuscarprimerape.setEnabled(false);
-                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE,error);
                 Iniciar();
                 Activar();
                 rbbuscarinfopro.setSelected(false);
@@ -564,13 +570,13 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                         cpm.BusquedaInfoPer(modelo,identificacion);
                         Formato3();}
                     else{
-                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
                         Limpiar();
                         Iniciar();
                         Activar();
-                        btnregresar.requestFocus();}
-                } catch (SQLException e){
-                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}}
+                        btnregresar.requestFocus();}}
+                catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
     }//GEN-LAST:event_rbbuscarinfoproActionPerformed
     //ACCIÓN DEL RADIOBUTTON EXPERIENCIA LABORAL
     private void rbbuscarexplaboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbuscarexplaboActionPerformed
@@ -579,7 +585,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         rbbuscarinfopro.setEnabled(false);
         rbbuscarnombres.setEnabled(false);
         rbbuscarprimerape.setEnabled(false);
-        String Respuesta=JOptionPane.showInputDialog(null,"Ingrese la Identificación","Consultar",JOptionPane.QUESTION_MESSAGE);
+        String Respuesta=(String)JOptionPane.showInputDialog(null,"Ingrese la Identificación","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null);
         if(Respuesta==null){
             Iniciar();
             Activar();
@@ -591,7 +597,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                 rbbuscarinfopro.setEnabled(false);
                 rbbuscarnombres.setEnabled(false);
                 rbbuscarprimerape.setEnabled(false);
-                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE,error);
                 Iniciar();
                 Activar();
                 rbbuscarexplabo.setSelected(false);
@@ -618,13 +624,13 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                         cpm.BusquedaExperienciaLaboral(modelo,identificacion);
                         Formato4();}
                     else{
-                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
                         Limpiar();
                         Iniciar();
                         Activar();
-                        btnregresar.requestFocus();}
-                } catch (SQLException e){
-                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);}}}
+                        btnregresar.requestFocus();}}
+                catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
     }//GEN-LAST:event_rbbuscarexplaboActionPerformed
     //ACCIÓN DEL RADIOBUTTON NOMBRES
     private void rbbuscarnombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbuscarnombresActionPerformed
