@@ -477,7 +477,7 @@ public class TipoMenu extends javax.swing.JFrame{
     //ACCIÓN DEL BOTÓN CONSULTAR
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
         if(btnconsultar.getText().equals("Consultar")){
-            int codigo=Integer.parseInt((String) JOptionPane.showInputDialog(null,"Ingrese el código que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
+            int codigo=Integer.parseInt((String)JOptionPane.showInputDialog(null,"Ingrese el código que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
             //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
             ClaseTipoMenu ctm=new ClaseTipoMenu();
             ResultSet rs=ctm.Buscar(codigo);

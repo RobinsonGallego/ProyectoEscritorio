@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     PersonalMedico."Identificacion" AS PersonalMedico_Identificacion,
+     PersonalMedico."Nombres" AS PersonalMedico_Nombres,
+     PersonalMedico."PrimerApellido" AS PersonalMedico_PrimerApellido,
+     PersonalMedico."SegundoApellido" AS PersonalMedico_SegundoApellido,
+     PersonalMedico."FechaNacimiento" AS PersonalMedico_FechaNacimiento,
+     PersonalMedico."Pais" AS PersonalMedico_Pais,
+     PersonalMedico."Ciudad" AS PersonalMedico_Ciudad,
+     PersonalMedico."EstadoCivil" AS PersonalMedico_EstadoCivil,
+     PersonalMedico."Direccion" AS PersonalMedico_Direccion,
+     PersonalMedico."Telefono" AS PersonalMedico_Telefono,
+     PersonalMedico."Movil" AS PersonalMedico_Movil,
+     PersonalMedico."Correo" AS PersonalMedico_Correo,
+     PersonalMedico."TarjetaProfesional" AS PersonalMedico_TarjetaProfesional,
+     PersonalMedico."Titulo" AS PersonalMedico_Titulo,
+     PersonalMedico."Institucion" AS PersonalMedico_Institucion,
+     PersonalMedico."OtrosEstudios" AS PersonalMedico_OtrosEstudios,
+     PersonalMedico."Idiomas" AS PersonalMedico_Idiomas,
+     PersonalMedico."ExperienciaLaboral" AS PersonalMedico_ExperienciaLaboral,
+     PersonalMedico."UltimaEmpresa" AS PersonalMedico_UltimaEmpresa,
+     PersonalMedico."Cargo" AS PersonalMedico_Cargo,
+     PersonalMedico."MotivoSalida" AS PersonalMedico_MotivoSalida,
+     PersonalMedico."UltimoSalario" AS PersonalMedico_UltimoSalario,
+     PersonalMedico."Observaciones" AS PersonalMedico_Observaciones
+FROM
+     "dbo"."PersonalMedico" PersonalMedico]]>
+	</queryString>
+	<field name="PersonalMedico_Identificacion" class="java.math.BigDecimal"/>
+	<field name="PersonalMedico_Nombres" class="java.lang.String"/>
+	<field name="PersonalMedico_PrimerApellido" class="java.lang.String"/>
+	<field name="PersonalMedico_SegundoApellido" class="java.lang.String"/>
+	<field name="PersonalMedico_FechaNacimiento" class="java.sql.Date"/>
+	<field name="PersonalMedico_Correo" class="java.lang.String"/>
+	<field name="PersonalMedico_Titulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="752" height="60" forecolor="#666666" backcolor="#666666"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="63" width="752" height="30" forecolor="#FF0000" backcolor="#FF0000"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="0" width="200" height="60" forecolor="#FFFFFF"/>
+				<textElement>
+					<font fontName="Tahoma" size="48" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="23" width="230" height="37" forecolor="#FFFFFF"/>
+				<textElement>
+					<font fontName="Tahoma" size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Personal Médico]]></text>
+			</staticText>
+			<image>
+				<reportElement x="610" y="0" width="119" height="94"/>
+				<imageExpression><![CDATA["D:\\NetBeans\\ProyectoEscritorio\\src\\Reportes\\informe2.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="434" y="68" width="166" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="115" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="0" width="80" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Primer Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="0" width="80" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Segundo Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="0" width="75" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="147" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="612" y="0" width="140" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Título]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="37" width="752" height="1" forecolor="#666666"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PersonalMedico_Identificacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="115" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PersonalMedico_Nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="215" y="0" width="80" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PersonalMedico_PrimerApellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="295" y="0" width="80" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PersonalMedico_SegundoApellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="375" y="0" width="54" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PersonalMedico_FechaNacimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="147" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PersonalMedico_Correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="612" y="0" width="140" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PersonalMedico_Titulo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="19" width="752" height="1" forecolor="#666666"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="752" height="30" forecolor="#FF0000" backcolor="#FF0000"/>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="8" y="6" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="612" y="6" width="80" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="692" y="6" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="104"/>
+	<property name="ireport.y" value="122"/>
 	<parameter name="ID" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -91,7 +91,7 @@ where "Identificacion"=$P{ID}]]>
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="495" splitType="Stretch">
+		<band height="599" splitType="Stretch">
 			<textField>
 				<reportElement x="215" y="20" width="137" height="20"/>
 				<textElement verticalAlignment="Middle">
@@ -191,7 +191,7 @@ where "Identificacion"=$P{ID}]]>
 				<textFieldExpression><![CDATA[$F{PersonalMedico_Ciudad}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="399" y="20" width="156" height="112"/>
+				<reportElement x="420" y="19" width="135" height="112"/>
 				<imageExpression><![CDATA[$F{PersonalMedico_Foto}]]></imageExpression>
 			</image>
 			<staticText>
@@ -300,91 +300,91 @@ where "Identificacion"=$P{ID}]]>
 				<text><![CDATA[Otros Estudios]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="215" y="328" width="271" height="20"/>
+				<reportElement x="215" y="328" width="271" height="49"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PersonalMedico_OtrosEstudios}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="38" y="349" width="147" height="20" forecolor="#666666"/>
+				<reportElement x="38" y="377" width="147" height="20" forecolor="#666666"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Idiomas]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="215" y="350" width="271" height="20"/>
+				<reportElement x="215" y="378" width="271" height="61"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PersonalMedico_Idiomas}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="38" y="371" width="147" height="20" forecolor="#666666"/>
+				<reportElement x="38" y="440" width="147" height="20" forecolor="#666666"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Experiencia Laboral]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="215" y="372" width="70" height="20"/>
+				<reportElement x="215" y="441" width="70" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PersonalMedico_ExperienciaLaboral}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="38" y="393" width="147" height="20" forecolor="#666666"/>
+				<reportElement x="38" y="462" width="147" height="20" forecolor="#666666"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Última Empresa]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="215" y="394" width="173" height="20"/>
+				<reportElement x="215" y="463" width="173" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PersonalMedico_UltimaEmpresa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="38" y="415" width="147" height="20" forecolor="#666666"/>
+				<reportElement x="38" y="484" width="147" height="20" forecolor="#666666"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cargo]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="215" y="416" width="173" height="20"/>
+				<reportElement x="215" y="485" width="173" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PersonalMedico_Cargo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="38" y="437" width="147" height="20" forecolor="#666666"/>
+				<reportElement x="38" y="506" width="147" height="20" forecolor="#666666"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Último Salario]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="215" y="438" width="100" height="20"/>
+				<reportElement x="215" y="507" width="100" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PersonalMedico_UltimoSalario}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="38" y="459" width="147" height="20" forecolor="#666666"/>
+				<reportElement x="38" y="528" width="147" height="20" forecolor="#666666"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Observaciones]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="215" y="460" width="340" height="20"/>
+				<reportElement x="215" y="529" width="340" height="69"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>

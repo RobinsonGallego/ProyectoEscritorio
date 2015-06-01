@@ -30,7 +30,7 @@ public class ClaseTipoMenu{
             //CERRAMOS LA CONEXIÓN
             cmd.close();
             cn.close();}
-        catch (Exception e){
+        catch(Exception e){
             System.out.println(e.getMessage());}
     }
     //MÉTODO PARA BUSCAR UN DATO

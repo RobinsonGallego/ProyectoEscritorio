@@ -1,6 +1,9 @@
 package Formularios;
 //LIBRERÍAS
+import Clases.ClasePersonalMedico;
 import Clases.GenerarReportes;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -308,6 +311,11 @@ public class Menu extends javax.swing.JFrame{
         smperfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         smperfiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/perfiles_opt.png"))); // NOI18N
         smperfiles.setText("Perfiles");
+        smperfiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smperfilesActionPerformed(evt);
+            }
+        });
         mherramientas.add(smperfiles);
 
         jMenuBar1.add(mherramientas);
@@ -373,25 +381,25 @@ public class Menu extends javax.swing.JFrame{
         PersonalMedico personalMedico=new PersonalMedico();
         personalMedico.setVisible(true);
     }//GEN-LAST:event_smpersonalActionPerformed
-    //ACCIÓN DEL SUBMENÚ TIPO MENÚ
+    //ACCIÓN DEL SUB-MENÚ TIPO MENÚ
     private void smtipomenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smtipomenuActionPerformed
         this.dispose();
         TipoMenu tipoMenu=new TipoMenu();
         tipoMenu.setVisible(true);
     }//GEN-LAST:event_smtipomenuActionPerformed
-    //ACCIÓN DEL SUBMENÚ SALIR
+    //ACCIÓN DEL SUB-MENÚ SALIR
     private void smsalidaseguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smsalidaseguraActionPerformed
         this.dispose();
         InicioSesion inicio=new InicioSesion();
         inicio.setVisible(true);
     }//GEN-LAST:event_smsalidaseguraActionPerformed
-    //ACCIÓN DEL SUBMENÚ USUARIOS
+    //ACCIÓN DEL SUB-MENÚ USUARIOS
     private void smusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smusuariosActionPerformed
         this.dispose();
         Usuarios usuarios=new Usuarios();
         usuarios.setVisible(true);
     }//GEN-LAST:event_smusuariosActionPerformed
-
+    //ACCIÓN DEL SUB-MENÚ INFORME PERSONAL MÉDICO
     private void sminformapersonalmedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sminformapersonalmedicoActionPerformed
         GenerarReportes reporte=new GenerarReportes();
         reporte.ReportePM();
@@ -405,9 +413,25 @@ public class Menu extends javax.swing.JFrame{
                 JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE,error);}
             else{
                 long identificacion=Long.parseLong(respuesta);
-                GenerarReportes reporte=new GenerarReportes();
-                reporte.ReporteHV(identificacion);}}
+                //CREAMOS UN OBJETO DE LA CLASE PERSONAL MÉDICO
+                ClasePersonalMedico cpm=new ClasePersonalMedico();
+                //HACEMOS LA BUSQUEDA DE LA IDENTIFICACIÓN
+                ResultSet rs=cpm.Buscar(identificacion);
+                try{
+                    if(rs.next()){
+                        GenerarReportes reporte=new GenerarReportes();
+                        reporte.ReporteHV(identificacion);}
+                    else{
+                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
+                catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
     }//GEN-LAST:event_smhojasdevidaActionPerformed
+    //ACCIÓN DEL SUB-MENÚ PERFILES
+    private void smperfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smperfilesActionPerformed
+        this.dispose();
+        Perfiles perfiles=new Perfiles();
+        perfiles.setVisible(true);
+    }//GEN-LAST:event_smperfilesActionPerformed
     //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
     private static boolean EsNumero(String Respuesta){
         try{

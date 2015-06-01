@@ -114,7 +114,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             //PINTAMOS LA IMAGEN EN EL LABEL
             lblfoto.setIcon(icon2);
             //DIMENSIONAMOS EL LABEL
-            lblfoto.setSize(276,346);
+            lblfoto.setSize(276,344);
             //OBTENEMOS LA RUTA EN EL TEXTFIELD
             txtruta.setText(file);
             //LIMPIAMOS LA RUTA
@@ -208,69 +208,53 @@ public class PersonalMedico extends javax.swing.JFrame{
         jtppestanas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         ppersonales.setBackground(new java.awt.Color(255, 255, 255));
-        ppersonales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblidentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblidentificacion.setText("Identificación *");
-        ppersonales.add(lblidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 22, -1, -1));
 
         lblnombres.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblnombres.setText("Nombres *");
-        ppersonales.add(lblnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 65, -1, -1));
 
         lblprimerapellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblprimerapellido.setText("Primer Apellido *");
-        ppersonales.add(lblprimerapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 108, -1, -1));
 
         lblsegundoapellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblsegundoapellido.setText("Segundo Apellido");
-        ppersonales.add(lblsegundoapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 151, -1, -1));
 
         lblfechanacimiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblfechanacimiento.setText("Fecha de Nacimiento *");
-        ppersonales.add(lblfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 194, -1, -1));
 
         lblpais.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblpais.setText("País *");
-        ppersonales.add(lblpais, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 237, -1, -1));
 
         lblciudad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblciudad.setText("Ciudad *");
-        ppersonales.add(lblciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 282, -1, -1));
 
         lblestadocivil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblestadocivil.setText("Estado Civil *");
-        ppersonales.add(lblestadocivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 325, -1, -1));
 
         lbldireccion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbldireccion.setText("Dirección");
-        ppersonales.add(lbldireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 367, -1, -1));
 
         lbltelefono.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbltelefono.setText("Teléfono");
-        ppersonales.add(lbltelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 411, -1, -1));
 
         lblmovil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblmovil.setText("Móvil *");
-        ppersonales.add(lblmovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 453, -1, -1));
 
         lblcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblcorreo.setText("Correo *");
-        ppersonales.add(lblcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 496, -1, -1));
 
         lblestado1.setBackground(new java.awt.Color(255, 255, 255));
-        lblestado1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestado1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblestado1.setText("Estado");
-        ppersonales.add(lblestado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 492, -1, -1));
 
-        lblestadoactual1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestadoactual1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblestadoactual1.setForeground(new java.awt.Color(255, 0, 0));
-        ppersonales.add(lblestadoactual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 492, 80, 20));
 
         lblmensaje.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblmensaje.setForeground(new java.awt.Color(255, 0, 0));
         lblmensaje.setText("Los campos marcados con el signo (*) son obligatorios");
-        ppersonales.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 380, -1));
 
         txtidentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtidentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -278,7 +262,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtidentificacionKeyTyped(evt);
             }
         });
-        ppersonales.add(txtidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 17, 130, 25));
 
         txtnombres.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtnombres.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -286,7 +269,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtnombresKeyTyped(evt);
             }
         });
-        ppersonales.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 60, 175, 25));
 
         txtprimerapellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtprimerapellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -294,7 +276,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtprimerapellidoKeyTyped(evt);
             }
         });
-        ppersonales.add(txtprimerapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 103, 175, 25));
 
         txtsegundoapellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtsegundoapellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -302,7 +283,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtsegundoapellidoKeyTyped(evt);
             }
         });
-        ppersonales.add(txtsegundoapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 146, 175, 25));
 
         cbpais.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbpais.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +295,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 cbpaisKeyTyped(evt);
             }
         });
-        ppersonales.add(cbpais, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 232, 175, 25));
 
         cbciudad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbciudad.setEnabled(false);
@@ -324,7 +303,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 cbciudadKeyTyped(evt);
             }
         });
-        ppersonales.add(cbciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 277, 175, 25));
 
         pfotografia.setBackground(new java.awt.Color(255, 255, 255));
         pfotografia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fotográfia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -364,8 +342,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
-        ppersonales.add(pfotografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
-
         cbestadocivil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbestadocivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Solteto (a)", "Casado (a)", "Separado (a)", "Viudo (a)", "Unión Libre" }));
         cbestadocivil.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -373,7 +349,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 cbestadocivilKeyTyped(evt);
             }
         });
-        ppersonales.add(cbestadocivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 320, 175, 25));
 
         txtdireccion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -381,7 +356,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtdireccionKeyTyped(evt);
             }
         });
-        ppersonales.add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 363, 175, 25));
 
         txttelefono.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txttelefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -389,7 +363,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txttelefonoKeyTyped(evt);
             }
         });
-        ppersonales.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 406, 130, 25));
 
         txtmovil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtmovil.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -397,7 +370,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtmovilKeyTyped(evt);
             }
         });
-        ppersonales.add(txtmovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 449, 130, 25));
 
         txtcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -405,7 +377,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtcorreoKeyTyped(evt);
             }
         });
-        ppersonales.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 492, 175, 25));
 
         pimagen.setBackground(new java.awt.Color(255, 255, 255));
         pimagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -420,84 +391,188 @@ public class PersonalMedico extends javax.swing.JFrame{
         );
         pimagenLayout.setVerticalGroup(
             pimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblfoto, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+            .addComponent(lblfoto, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
         );
-
-        ppersonales.add(pimagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
 
         datefechanacimiento.setBackground(new java.awt.Color(255, 255, 255));
         datefechanacimiento.setDateFormatString("yyyy/MM/dd");
         datefechanacimiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        ppersonales.add(datefechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 189, 175, 25));
+
+        javax.swing.GroupLayout ppersonalesLayout = new javax.swing.GroupLayout(ppersonales);
+        ppersonales.setLayout(ppersonalesLayout);
+        ppersonalesLayout.setHorizontalGroup(
+            ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ppersonalesLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblidentificacion)
+                            .addComponent(lblnombres)
+                            .addComponent(lblprimerapellido)
+                            .addComponent(lblsegundoapellido)
+                            .addComponent(lblfechanacimiento)
+                            .addComponent(lblpais)
+                            .addComponent(lblciudad)
+                            .addComponent(lblestadocivil)
+                            .addComponent(lbldireccion)
+                            .addComponent(lbltelefono))
+                        .addGap(18, 18, 18)
+                        .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtprimerapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtsegundoapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(datefechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbpais, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbestadocivil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pfotografia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(ppersonalesLayout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(pimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addComponent(lblmovil)
+                        .addGap(110, 110, 110)
+                        .addComponent(txtmovil, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addComponent(lblcorreo)
+                        .addGap(101, 101, 101)
+                        .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(lblestado1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblestadoactual1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        ppersonalesLayout.setVerticalGroup(
+            ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ppersonalesLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblidentificacion)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblnombres)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblprimerapellido)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblsegundoapellido)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblfechanacimiento)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblpais)
+                        .addGap(30, 30, 30)
+                        .addComponent(lblciudad)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblestadocivil)
+                        .addGap(27, 27, 27)
+                        .addComponent(lbldireccion)
+                        .addGap(29, 29, 29)
+                        .addComponent(lbltelefono))
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtprimerapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtsegundoapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(datefechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbpais, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(cbciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbestadocivil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(pfotografia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(pimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(lblmovil))
+                    .addComponent(txtmovil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblmensaje)))
+                .addGap(18, 18, 18)
+                .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ppersonalesLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(lblcorreo))
+                    .addGroup(ppersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblestado1))
+                    .addComponent(lblestadoactual1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         jtppestanas.addTab("Datos Personales", ppersonales);
 
         pdatosprofesionales.setBackground(new java.awt.Color(255, 255, 255));
-        pdatosprofesionales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbltarjeta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbltarjeta.setText("Tarjeta Profesional *");
-        pdatosprofesionales.add(lbltarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 22, -1, -1));
 
         lbltitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbltitulo.setText("Título *");
-        pdatosprofesionales.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 68, -1, -1));
 
         lblinstitucion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblinstitucion.setText("Institución *");
-        pdatosprofesionales.add(lblinstitucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 111, -1, -1));
 
         lblotrosestudios.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblotrosestudios.setText("Otros Estudios");
-        pdatosprofesionales.add(lblotrosestudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 149, -1, -1));
 
         lblidiomas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblidiomas.setText("Idiomas *");
-        pdatosprofesionales.add(lblidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         lblexperiencia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblexperiencia.setText("Experiencia Laboral *");
-        pdatosprofesionales.add(lblexperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 25, -1, -1));
 
         lblobservaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblobservaciones.setText("Observaciones");
-        pdatosprofesionales.add(lblobservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         lblmensaje2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblmensaje2.setForeground(new java.awt.Color(255, 0, 0));
         lblmensaje2.setText("Los campos marcados con el signo (*) son obligatorios");
-        pdatosprofesionales.add(lblmensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, -1, -1));
 
         lblcontador.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblcontador.setForeground(new java.awt.Color(255, 0, 0));
-        pdatosprofesionales.add(lblcontador, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 25, 15));
 
         lblcaracteres1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblcaracteres1.setForeground(new java.awt.Color(255, 0, 0));
         lblcaracteres1.setText("Caracteres");
-        pdatosprofesionales.add(lblcaracteres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
 
         lblconteo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblconteo.setForeground(new java.awt.Color(255, 0, 0));
-        pdatosprofesionales.add(lblconteo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 25, 15));
 
         lblcaracteres2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblcaracteres2.setForeground(new java.awt.Color(255, 0, 0));
         lblcaracteres2.setText("Caracteres");
-        pdatosprofesionales.add(lblcaracteres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, -1, -1));
 
         lblrespuesta.setBackground(new java.awt.Color(255, 255, 255));
         lblrespuesta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblrespuesta.setEnabled(false);
-        pdatosprofesionales.add(lblrespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 25));
 
-        lblestado2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestado2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblestado2.setText("Estado");
-        pdatosprofesionales.add(lblestado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 485, -1, -1));
 
-        lblestadoactual2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblestadoactual2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblestadoactual2.setForeground(new java.awt.Color(255, 51, 0));
-        pdatosprofesionales.add(lblestadoactual2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 485, 80, 20));
 
         txttarjeta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txttarjeta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -505,7 +580,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txttarjetaKeyTyped(evt);
             }
         });
-        pdatosprofesionales.add(txttarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 20, 140, 25));
 
         txttitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txttitulo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -513,7 +587,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txttituloKeyTyped(evt);
             }
         });
-        pdatosprofesionales.add(txttitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 63, 240, 25));
 
         txtinstitucion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtinstitucion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -521,7 +594,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 txtinstitucionKeyTyped(evt);
             }
         });
-        pdatosprofesionales.add(txtinstitucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 106, 240, 25));
 
         taotrosestudios.setColumns(20);
         taotrosestudios.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -536,8 +608,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         });
         jScrollPane1.setViewportView(taotrosestudios);
 
-        pdatosprofesionales.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 149, 240, 110));
-
         rbsi.setBackground(new java.awt.Color(255, 255, 255));
         rbsi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         rbsi.setText("SI");
@@ -551,7 +621,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 rbsiKeyTyped(evt);
             }
         });
-        pdatosprofesionales.add(rbsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 21, -1, -1));
 
         rbno.setBackground(new java.awt.Color(255, 255, 255));
         rbno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -566,7 +635,6 @@ public class PersonalMedico extends javax.swing.JFrame{
                 rbnoKeyTyped(evt);
             }
         });
-        pdatosprofesionales.add(rbno, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 21, -1, -1));
 
         plaboral.setBackground(new java.awt.Color(255, 255, 255));
         plaboral.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Información Laboral", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -630,8 +698,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         });
         plaboral.add(txtsalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 156, 140, 25));
 
-        pdatosprofesionales.add(plaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 53, 384, 200));
-
         taobservaciones.setColumns(20);
         taobservaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         taobservaciones.setRows(5);
@@ -645,15 +711,12 @@ public class PersonalMedico extends javax.swing.JFrame{
         });
         jScrollPane2.setViewportView(taobservaciones);
 
-        pdatosprofesionales.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 380, 130));
-
         cbidiomas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbidiomas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbidiomasActionPerformed(evt);
             }
         });
-        pdatosprofesionales.add(cbidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 295, 143, 25));
 
         taidiomas.setEditable(false);
         taidiomas.setColumns(20);
@@ -661,15 +724,142 @@ public class PersonalMedico extends javax.swing.JFrame{
         taidiomas.setRows(5);
         jScrollPane3.setViewportView(taidiomas);
 
-        pdatosprofesionales.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 326, 143, 170));
-
         btnlimpiaridiomas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
         btnlimpiaridiomas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlimpiaridiomasActionPerformed(evt);
             }
         });
-        pdatosprofesionales.add(btnlimpiaridiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 326, -1, -1));
+
+        javax.swing.GroupLayout pdatosprofesionalesLayout = new javax.swing.GroupLayout(pdatosprofesionales);
+        pdatosprofesionales.setLayout(pdatosprofesionalesLayout);
+        pdatosprofesionalesLayout.setHorizontalGroup(
+            pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lbltarjeta)
+                .addGap(18, 18, 18)
+                .addComponent(txttarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(158, 158, 158)
+                .addComponent(lblexperiencia)
+                .addGap(18, 18, 18)
+                .addComponent(rbsi)
+                .addGap(18, 18, 18)
+                .addComponent(rbno)
+                .addGap(17, 17, 17)
+                .addComponent(lblrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbltitulo)
+                    .addComponent(lblinstitucion)
+                    .addComponent(lblotrosestudios))
+                .addGap(55, 55, 55)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtinstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(plaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(lblcaracteres1)
+                .addGap(8, 8, 8)
+                .addComponent(lblcontador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblidiomas)
+                .addGap(88, 88, 88)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbidiomas, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(lblobservaciones))
+                    .addComponent(btnlimpiaridiomas))
+                .addGap(13, 13, 13)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(lblcaracteres2)
+                        .addGap(8, 8, 8)
+                        .addComponent(lblconteo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblmensaje2)
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addComponent(lblestado2)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblestadoactual2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        pdatosprofesionalesLayout.setVerticalGroup(
+            pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(lbltarjeta))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(txttarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lblexperiencia))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(rbsi))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(rbno))
+                    .addComponent(lblrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(lbltitulo)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblinstitucion)
+                        .addGap(23, 23, 23)
+                        .addComponent(lblotrosestudios))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtinstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(plaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblcaracteres1)
+                    .addComponent(lblcontador, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblidiomas))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(cbidiomas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addComponent(lblobservaciones)
+                        .addGap(21, 21, 21)
+                        .addComponent(btnlimpiaridiomas))
+                    .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblcaracteres2)
+                            .addComponent(lblconteo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addComponent(lblmensaje2)
+                        .addGap(18, 18, 18)
+                        .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblestadoactual2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblestado2)))))
+        );
 
         jtppestanas.addTab("Datos Profesionales", pdatosprofesionales);
 
@@ -764,8 +954,8 @@ public class PersonalMedico extends javax.swing.JFrame{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jtppestanas, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtppestanas, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1725,81 +1915,88 @@ public class PersonalMedico extends javax.swing.JFrame{
     //ACCIÓN DEL BOTÓN CONSULTAR
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
         if(btnconsultar.getText().equals("Consultar")){
-            long identificacion=Long.parseLong((String) JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
-            //CREAMOS UN OBJETO DE LA CLASE PERSONALMEDICO
-            ClasePersonalMedico cpm=new ClasePersonalMedico();
-            ResultSet rs=cpm.Buscar(identificacion);
-            //CREAMOS UN OBJETO DE LA CLASE USUARIOS
-            ClaseUsuarios cu=new ClaseUsuarios();
-            ResultSet rsu=cu.Buscar(identificacion);
-            try{
-                if(rs.next()){
-                    //ACTIVAMOS LOS BOTONES QUE ESTÁN INACTIVOS
-                    btnmodificar.setEnabled(true);
-                    btneliminar.setEnabled(true);
-                    btnguardar.setEnabled(false);
-                    //DESACTIVAMOS LOS CAMPOS DE ESCRITURA
-                    Inhabilitar();
-                    //CAPTURAMOS LA INFORMACIÓN EN LAS CAJAS
-                    txtidentificacion.setText(rs.getString(1));
-                    txtnombres.setText(rs.getString(2));
-                    txtprimerapellido.setText(rs.getString(3));
-                    txtsegundoapellido.setText(rs.getString(4));
-                    datefechanacimiento.setDate(rs.getDate(5));
-                    cbpais.setSelectedItem(rs.getString(6));
-                    cbciudad.setSelectedItem(rs.getString(7));
-                    cbciudad.setEnabled(false);
-                    cbestadocivil.setSelectedItem(rs.getString(8));
-                    txtdireccion.setText(rs.getString(9));
-                    txttelefono.setText(rs.getString(10));
-                    txtmovil.setText(rs.getString(11));
-                    txtcorreo.setText(rs.getString(12));
-                    txttarjeta.setText(rs.getString(13));
-                    txttitulo.setText(rs.getString(14));
-                    txtinstitucion.setText(rs.getString(15));
-                    taotrosestudios.setText(rs.getString(16));
-                    taidiomas.setText(rs.getString(17));
-                    lblrespuesta.setText(rs.getString(18));
-                    lblrespuesta.setVisible(false);
-                    if(lblrespuesta.getText().equals("SI")){
-                        rbsi.setSelected(true);}
-                    else{
-                        rbno.setSelected(true);}
-                    txtultimaempresa.setText(rs.getString(19));
-                    txtcargo.setText(rs.getString(20));
-                    cbmotivo.setSelectedItem(rs.getString(21));
-                    txtsalario.setText(rs.getString(22));
-                    taobservaciones.setText(rs.getString(23));
-                    //CREAMOS UN OBJETO DE CONEXION
-                    Conectate con=new Conectate();
-                    String consulta="FotoExiste '"+identificacion+"'";
-                    ResultSet r=con.Listar(consulta);
-                    String Respuesta="";
-                    try{
-                        while(r.next()){
-                            Respuesta=r.getString(1);}
-                        if(Respuesta.equals("NO")){
-                            lblfoto.setIcon(new ImageIcon(getClass().getResource("/Imagenes/foto_opt.png")));
-                            JOptionPane.showMessageDialog(null,"La Identificación buscada no tiene Foto","Advertencia",JOptionPane.INFORMATION_MESSAGE,informacion);}
+            String respuesta=((String)JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
+            if(respuesta==null){
+                txtidentificacion.requestFocus();}
+            else if(!EsNumero(respuesta)){
+                JOptionPane.showMessageDialog(null,"Error en el Dato a Consultar.\nEl Dato debe ser un número de Identificación.","Error",JOptionPane.ERROR_MESSAGE,error);
+                txtidentificacion.requestFocus();}
+            else{
+                long identificacion=Long.parseLong(respuesta);
+                //CREAMOS UN OBJETO DE LA CLASE PERSONALMEDICO
+                ClasePersonalMedico cpm=new ClasePersonalMedico();
+                ResultSet rs=cpm.Buscar(identificacion);
+                //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+                ClaseUsuarios cu=new ClaseUsuarios();
+                ResultSet rsu=cu.BuscarUsuario(identificacion);
+                try{
+                    if(rs.next()){
+                        //ACTIVAMOS LOS BOTONES QUE ESTÁN INACTIVOS
+                        btnmodificar.setEnabled(true);
+                        btneliminar.setEnabled(true);
+                        btnguardar.setEnabled(false);
+                        //DESACTIVAMOS LOS CAMPOS DE ESCRITURA
+                        Inhabilitar();
+                        //CAPTURAMOS LA INFORMACIÓN EN LAS CAJAS
+                        txtidentificacion.setText(rs.getString(1));
+                        txtnombres.setText(rs.getString(2));
+                        txtprimerapellido.setText(rs.getString(3));
+                        txtsegundoapellido.setText(rs.getString(4));
+                        datefechanacimiento.setDate(rs.getDate(5));
+                        cbpais.setSelectedItem(rs.getString(6));
+                        cbciudad.setSelectedItem(rs.getString(7));
+                        cbciudad.setEnabled(false);
+                        cbestadocivil.setSelectedItem(rs.getString(8));
+                        txtdireccion.setText(rs.getString(9));
+                        txttelefono.setText(rs.getString(10));
+                        txtmovil.setText(rs.getString(11));
+                        txtcorreo.setText(rs.getString(12));
+                        txttarjeta.setText(rs.getString(13));
+                        txttitulo.setText(rs.getString(14));
+                        txtinstitucion.setText(rs.getString(15));
+                        taotrosestudios.setText(rs.getString(16));
+                        taidiomas.setText(rs.getString(17));
+                        lblrespuesta.setText(rs.getString(18));
+                        lblrespuesta.setVisible(false);
+                        if(lblrespuesta.getText().equals("SI")){
+                            rbsi.setSelected(true);}
                         else{
-                            CargarFoto(identificacion);}}
-                    catch (SQLException e){
-                        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-                    lblestado1.setVisible(true);
-                    lblestadoactual1.setVisible(true);
-                    //lblestadoactual1.setText(rsu.getString(7));
-                    lblestado2.setVisible(true);
-                    lblestadoactual2.setVisible(true);
-                    //lblestadoactual2.setText(rsu.getString(7));
-                    btnconsultar.setText("Limpiar");
-                    btnconsultar.setDescription("Clean");
-                    btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
-                else{
-                    Habilitar();
-                    Limpiar();
-                    JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
-            catch (SQLException e){
-                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
+                            rbno.setSelected(true);}
+                        txtultimaempresa.setText(rs.getString(19));
+                        txtcargo.setText(rs.getString(20));
+                        cbmotivo.setSelectedItem(rs.getString(21));
+                        txtsalario.setText(rs.getString(22));
+                        taobservaciones.setText(rs.getString(23));
+                        //CREAMOS UN OBJETO DE CONEXION
+                        Conectate con=new Conectate();
+                        String consulta="FotoExiste '"+identificacion+"'";
+                        ResultSet r=con.Listar(consulta);
+                        String Respuesta="";
+                        try{
+                            while(r.next()){
+                                Respuesta=r.getString(1);}
+                            if(Respuesta.equals("NO")){
+                                lblfoto.setIcon(new ImageIcon(getClass().getResource("/Imagenes/foto_opt.png")));
+                                JOptionPane.showMessageDialog(null,"La Identificación buscada no tiene Foto","Advertencia",JOptionPane.INFORMATION_MESSAGE,informacion);}
+                            else{
+                                CargarFoto(identificacion);}}
+                        catch (SQLException e){
+                            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
+                        lblestado1.setVisible(true);
+                        lblestadoactual1.setVisible(true);
+                        //lblestadoactual1.setText(rsu.getString(7));
+                        lblestado2.setVisible(true);
+                        lblestadoactual2.setVisible(true);
+                        //lblestadoactual2.setText(rsu.getString(7));
+                        btnconsultar.setText("Limpiar");
+                        btnconsultar.setDescription("Clean");
+                        btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
+                    else{
+                        Habilitar();
+                        Limpiar();
+                        JOptionPane.showMessageDialog(null,"La Identificación buscada no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
+                catch (SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
         else if(btnconsultar.getText().equals("Limpiar")){
             Limpiar();
             Iniciar();
@@ -2580,7 +2777,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         //SE COLOCA EL NUEVO ICONO MODIFICADO
         if(newIcon!=null){
             lblfoto.setIcon(newIcon);
-            lblfoto.setSize(276,346);}
+            lblfoto.setSize(276,344);}
     }
     //MÉTODO PARA VALIDAR FECHAS DE NACIMIENTO
     public int Fecha(String FechaR){
@@ -2606,6 +2803,14 @@ public class PersonalMedico extends javax.swing.JFrame{
             year--;}
         //REGRESA LA CANTIDAD DE AÑOS EN BASE A LA FECHA RECIBIDA
         return year;
+    }
+    //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
+    private static boolean EsNumero(String Respuesta){
+        try{
+            Integer.parseInt(Respuesta);
+            return true;}
+        catch (NumberFormatException e){
+           return false;}
     }
     //MÉTODO PARA INHABILITAR CAMPOS PRINCIPALES
     public void Inhabilitar(){

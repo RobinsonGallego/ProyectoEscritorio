@@ -24,8 +24,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jpfondo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="pusuario" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnguardar" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="btnconsultar" min="-2" pref="170" max="-2" attributes="0"/>
@@ -33,12 +33,13 @@
                   <Component id="btnregresar" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="btnlistar" min="-2" pref="125" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jpfondo" alignment="0" max="32767" attributes="0"/>
+          <Component id="pusuario" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="btnguardar" min="-2" pref="50" max="-2" attributes="0"/>
@@ -56,7 +57,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jpfondo">
+    <Container class="javax.swing.JPanel" name="pusuario">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -86,26 +87,23 @@
                               <Component id="lblnombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbpreguntasecreta" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtcorreo" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                                      <Component id="cbestado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="cbperfil" alignment="0" pref="150" max="32767" attributes="0"/>
-                                          <Component id="txtcontrasena" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtusuario" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cbidentificacion" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblid" min="-2" pref="90" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtnombrecompleto" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtcontrasena" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblmenscontrasena" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="txtcorreo" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="cbestado" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtusuario" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cbidentificacion" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblid" min="-2" pref="90" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="txtnombrecompleto" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="cbperfil" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="cbpreguntasecreta" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="lblestado" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -115,7 +113,7 @@
                           <Component id="lblmensaje" min="-2" pref="380" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -154,6 +152,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblcontrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtcontrasena" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="lblmenscontrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -275,17 +274,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtusuario">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
@@ -357,6 +349,20 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cbperfilKeyTyped"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="lblmenscontrasena">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a Encriptada"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnguardar">
@@ -373,6 +379,9 @@
         </Property>
         <Property name="description" type="java.lang.String" value="Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnguardarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnconsultar">
       <Properties>
@@ -388,6 +397,9 @@
         </Property>
         <Property name="description" type="java.lang.String" value="Consult"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnconsultarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnmodificar">
       <Properties>
@@ -402,7 +414,11 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="description" type="java.lang.String" value="Edit"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmodificarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnlistar">
       <Properties>

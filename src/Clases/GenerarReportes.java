@@ -24,7 +24,7 @@ public class GenerarReportes{
     //MÉTODO PARA REPORTE PERSONAL MÉDICO
     public void ReportePM(){
         //RUTA DEL ARCHIVO
-        String path="D:/NetBeans/ProyectoEscritorio/src/Reportes/Curriculums.jasper";
+        String path="D:/NetBeans/ProyectoEscritorio/src/Reportes/PersonalMedico.jasper";
         //OBJETO JASPER
         JasperReport jr=null;
         try{
@@ -33,7 +33,7 @@ public class GenerarReportes{
             //CREAMOS OBJETO DE IMPRESIÓN DE REPORTES. LE MANDAMOS EL REPORTE CARGADO,LOS PARAMETROS Y LA CONEXIÓN
             JasperPrint jp=JasperFillManager.fillReport(jr,null,cn);
             //CREAMOS OBJETO DE VIEWER PARA VER EL REPORTE
-            JasperViewer ver=new JasperViewer(jp);
+            JasperViewer ver=new JasperViewer(jp,false);//SE LE PONE EL FALSE, PARA QUE NO CIERRE LA APLICACIÓN
             //LE DAMOS UN TÍTULO AL REPORTE
             ver.setTitle("Personal Médico");
             //HACEMOS EL REPORTE DEL TAMAÑO DE LA PANTALLA
@@ -57,7 +57,7 @@ public class GenerarReportes{
             //CREAMOS OBJETO DE IMPRESIÓN DE REPORTES. LE MANDAMOS EL REPORTE CARGADO,LOS PARAMETROS Y LA CONEXIÓN
             JasperPrint jp=JasperFillManager.fillReport(jr,parametro,cn);
             //CREAMOS OBJETO DE VIEWER PARA VER EL REPORTE
-            JasperViewer ver=new JasperViewer(jp);
+            JasperViewer ver=new JasperViewer(jp,false);//SE LE PONE EL FALSE, PARA QUE NO CIERRE LA APLICACIÓN
             //LE DAMOS UN TÍTULO AL REPORTE
             ver.setTitle("Hoja de Vida");
             //HACEMOS EL REPORTE DEL TAMAÑO DE LA PANTALLA

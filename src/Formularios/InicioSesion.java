@@ -41,6 +41,12 @@ public class InicioSesion extends javax.swing.JFrame{
     //CONSTRUCTOR
     public InicioSesion(){
         initComponents();
+        setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Acceso.png")).getImage());//PONER IMAGEN ICONO
+        setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
+        setLocationRelativeTo(null);//CENTRAR LA VENTANA
+        txtusuario.requestFocus();
+        Letras(txtusuario);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
