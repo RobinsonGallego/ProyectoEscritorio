@@ -64,6 +64,10 @@ public class PersonalMedico extends javax.swing.JFrame{
         //VALIDACIÓN DEL CORREO
         txtcorreo.setInputVerifier(new ValidarEMail());
         Iniciar();}
+    //MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL
+    public void setText(String user){
+        //Perfil(user);
+    }
     //MÉTODO INICIAR
     private void Iniciar(){
         //LIMPIAMOS LOS COMBOBOX
@@ -197,7 +201,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnlimpiaridiomas = new javax.swing.JButton();
         btnguardar = new org.edisoncor.gui.button.ButtonTask();
         btnmodificar = new org.edisoncor.gui.button.ButtonTask();
-        btneliminar = new org.edisoncor.gui.button.ButtonTask();
         btnlistar = new org.edisoncor.gui.button.ButtonTask();
         btnregresar = new org.edisoncor.gui.button.ButtonTask();
         btnconsultar = new org.edisoncor.gui.button.ButtonTask();
@@ -857,8 +860,10 @@ public class PersonalMedico extends javax.swing.JFrame{
                         .addComponent(lblmensaje2)
                         .addGap(18, 18, 18)
                         .addGroup(pdatosprofesionalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblestadoactual2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblestado2)))))
+                            .addGroup(pdatosprofesionalesLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(lblestado2))
+                            .addComponent(lblestadoactual2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         jtppestanas.addTab("Datos Profesionales", pdatosprofesionales);
@@ -883,18 +888,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmodificarActionPerformed(evt);
-            }
-        });
-
-        btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar1a_opt.png"))); // NOI18N
-        btneliminar.setText("Eliminar");
-        btneliminar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        btneliminar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btneliminar.setDescription("Remove");
-        btneliminar.setEnabled(false);
-        btneliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneliminarActionPerformed(evt);
             }
         });
 
@@ -935,42 +928,40 @@ public class PersonalMedico extends javax.swing.JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtppestanas)
+            .addComponent(jtppestanas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(109, 109, 109)
+                    .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(btnlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnconsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(80, 80, 80))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(262, 262, 262)
+                        .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnconsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jtppestanas, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                            .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btnlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnconsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnconsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1926,14 +1917,10 @@ public class PersonalMedico extends javax.swing.JFrame{
                 //CREAMOS UN OBJETO DE LA CLASE PERSONALMEDICO
                 ClasePersonalMedico cpm=new ClasePersonalMedico();
                 ResultSet rs=cpm.Buscar(identificacion);
-                //CREAMOS UN OBJETO DE LA CLASE USUARIOS
-                ClaseUsuarios cu=new ClaseUsuarios();
-                ResultSet rsu=cu.BuscarUsuario(identificacion);
                 try{
                     if(rs.next()){
                         //ACTIVAMOS LOS BOTONES QUE ESTÁN INACTIVOS
                         btnmodificar.setEnabled(true);
-                        btneliminar.setEnabled(true);
                         btnguardar.setEnabled(false);
                         //DESACTIVAMOS LOS CAMPOS DE ESCRITURA
                         Inhabilitar();
@@ -1982,12 +1969,22 @@ public class PersonalMedico extends javax.swing.JFrame{
                                 CargarFoto(identificacion);}}
                         catch (SQLException e){
                             JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-                        lblestado1.setVisible(true);
-                        lblestadoactual1.setVisible(true);
-                        //lblestadoactual1.setText(rsu.getString(7));
-                        lblestado2.setVisible(true);
-                        lblestadoactual2.setVisible(true);
-                        //lblestadoactual2.setText(rsu.getString(7));
+                        //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+                        ClaseUsuarios cu=new ClaseUsuarios();
+                        ResultSet rsu=cu.BuscarUsuario(identificacion);
+                        try{
+                            if(rsu.next()){
+                                lblestado1.setVisible(true);
+                                lblestadoactual1.setVisible(true);
+                                lblestadoactual1.setText(rsu.getString(7));
+                                lblestado2.setVisible(true);
+                                lblestadoactual2.setVisible(true);
+                                lblestadoactual2.setText(rsu.getString(7));}
+                            else{
+                                lblestado1.setVisible(true);
+                                lblestado2.setVisible(true);}}
+                        catch(SQLException e){
+                            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
                         btnconsultar.setText("Limpiar");
                         btnconsultar.setDescription("Clean");
                         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
@@ -2011,7 +2008,6 @@ public class PersonalMedico extends javax.swing.JFrame{
             btnmodificar.setText("Modificar");
             btnmodificar.setDescription("Edit");
             btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-            btneliminar.setEnabled(false);
             btnmodificar.setEnabled(false);}
     }//GEN-LAST:event_btnconsultarActionPerformed
     //ACCIÓN DEL COMBOBOX IDIOMAS
@@ -2024,7 +2020,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         Habilitar();
         //DESACTIVAMOS LOS BOTONES
         btnguardar.setEnabled(false);
-        btneliminar.setEnabled(false);
         btnconsultar.setText("Limpiar");
         btnconsultar.setDescription("Clean");
         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));
@@ -2598,39 +2593,8 @@ public class PersonalMedico extends javax.swing.JFrame{
             else{
                 Actualizar();}}
     }//GEN-LAST:event_btnmodificarActionPerformed
-    //ACCIÓN DEL BOTÓN ELIMINAR
-    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-        //CREAMOS UN OBJETO DE LA CLASE PERSONALMÉDICO
-        ClasePersonalMedico cpm=new ClasePersonalMedico();
-        int Respuesta=JOptionPane.showConfirmDialog(null,"Seguro desea Eliminar la Infomación?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
-        if(Respuesta==JOptionPane.YES_OPTION){
-            cpm.Eliminar(Long.parseLong(txtidentificacion.getText()));
-            Limpiar();
-            LimpiarLabores();
-            Iniciar();
-            JOptionPane.showMessageDialog(null,"Los datos se Eliminaron con exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
-            Habilitar();
-            txtidentificacion.setEnabled(true);
-            btnguardar.setEnabled(true);
-            btnconsultar.setText("Consultar");
-            btnconsultar.setDescription("Consult");
-            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-            btnmodificar.setEnabled(false);
-            btneliminar.setEnabled(false);}
-        else{
-            Limpiar();
-            LimpiarLabores();
-            Iniciar();
-            Habilitar();
-            txtidentificacion.setEnabled(true);
-            btnguardar.setEnabled(true);
-            btnconsultar.setText("Consultar");
-            btnconsultar.setDescription("Consult");
-            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-            btnmodificar.setEnabled(false);
-            btneliminar.setEnabled(false);}
-    }//GEN-LAST:event_btneliminarActionPerformed
-    //ACCIÓN DEL BOTÓN LISTAR
+
+   //ACCIÓN DEL BOTÓN LISTAR
     private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
         this.dispose();
         TablaPersonalMedico tpm=new TablaPersonalMedico();
@@ -2761,7 +2725,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnmodificar.setText("Modificar");
         btnmodificar.setDescription("Edit");
         btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-        btneliminar.setEnabled(false);
         btnmodificar.setEnabled(false);
     }
     //MÉTODO PARA CARGAR FOTOS DEL PERSONAL MÉDICO
@@ -2984,7 +2947,6 @@ public class PersonalMedico extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncargar;
     private org.edisoncor.gui.button.ButtonTask btnconsultar;
-    private org.edisoncor.gui.button.ButtonTask btneliminar;
     private org.edisoncor.gui.button.ButtonTask btnguardar;
     private javax.swing.JButton btnlimpiaridiomas;
     private org.edisoncor.gui.button.ButtonTask btnlistar;

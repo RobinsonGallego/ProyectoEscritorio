@@ -4,6 +4,7 @@ import Clases.ClasePerfiles;
 import Clases.ClasePersonalMedico;
 import Clases.ClaseUsuarios;
 import Clases.Encriptar_Desencriptar;
+import Tablas.TablaUsuarios;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -34,7 +35,8 @@ public class Usuarios extends javax.swing.JFrame{
         cbidentificacion.requestFocus();
         //VALIDACIONES LETRAS
         Letras(txtusuario);
-        Iniciar();}
+        Iniciar();
+    }
     //MÉTODO INICIAR
     private void Iniciar(){
         //LIMPIAMOS COMBOBOX
@@ -297,12 +299,22 @@ public class Usuarios extends javax.swing.JFrame{
         btnlistar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnlistar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnlistar.setDescription("List");
+        btnlistar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlistarActionPerformed(evt);
+            }
+        });
 
         btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar2_opt.png"))); // NOI18N
         btnregresar.setText("Regresar");
         btnregresar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnregresar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnregresar.setDescription("Return");
+        btnregresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -509,7 +521,7 @@ public class Usuarios extends javax.swing.JFrame{
                 btnmodificar.setEnabled(false);
                 break;}
     }//GEN-LAST:event_btnconsultarActionPerformed
-
+    //ACCIÓN DEL BOTÓN MODIFICAR
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
         //HABILITAMOS EL CAMPO QUE SE MODIFICARA
         cbestado.setEnabled(true);
@@ -531,6 +543,18 @@ public class Usuarios extends javax.swing.JFrame{
             else{
                 Actualizar();}}
     }//GEN-LAST:event_btnmodificarActionPerformed
+    //ACCIÓN DEL BOTÓN REGRESAR
+    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarActionPerformed
+    //ACCIÓN DEL BOTÓN LISTAR
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+        this.dispose();
+        TablaUsuarios tu=new TablaUsuarios();
+        tu.setVisible(true);
+    }//GEN-LAST:event_btnlistarActionPerformed
     //MÉTODO GUARDAR USUARIO
     public void Guardar(){
         //CREAMOS UN OBJETO DE LA CLASEUSUARIOS

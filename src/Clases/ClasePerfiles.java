@@ -5,6 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ClasePerfiles{
     Connection cn;
@@ -28,6 +29,23 @@ public class ClasePerfiles{
             cmd.close();
             cn.close();}
         catch(Exception e){
+            System.out.println(e.getMessage());}
+    }
+    //MÉTODO PARA ACTUALIZAR LOS DATOS
+    public void Actualizar(int codigo,String descripcion){
+        try{
+            //CREAMOS LA SENTENCIA SQL
+            String sql="execute ActualizarPerfil ?,?";
+            //EJECUTAMOS EL PROCEDIMIENTO ALMACENADO
+            PreparedStatement cmd=cn.prepareCall(sql);
+            cmd.setInt(1,codigo);
+            cmd.setString(2,descripcion);
+            //EJECUTAMOS LA SENTENCIA
+            cmd.execute();
+            //CERRAMOS LA CONEXIÓN
+            cmd.close();
+            cn.close();}
+        catch(SQLException e){
             System.out.println(e.getMessage());}
     }
     //MÉTODO PARA BUSCAR UN PERFIL

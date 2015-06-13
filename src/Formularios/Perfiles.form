@@ -141,9 +141,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
           </Properties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtdescripcionKeyTyped"/>
@@ -157,9 +154,6 @@
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
-            </Property>
-            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
@@ -216,6 +210,9 @@
         <Property name="description" type="java.lang.String" value="Edit"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmodificarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnlistar">
       <Properties>
@@ -246,6 +243,9 @@
         </Property>
         <Property name="description" type="java.lang.String" value="Return"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnregresarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

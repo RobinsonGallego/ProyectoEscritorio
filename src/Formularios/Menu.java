@@ -1,6 +1,8 @@
 package Formularios;
 //LIBRERÍAS
+import Clases.ClasePerfiles;
 import Clases.ClasePersonalMedico;
+import Clases.ClaseUsuarios;
 import Clases.GenerarReportes;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +23,66 @@ public class Menu extends javax.swing.JFrame{
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         setTitle("Menú Principal");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
+        lblusuario.setVisible(false);
+    }
+    //MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL
+    public void setText(String user){
+        Perfil(user);
+        lblusuario.setText(user);
+    }
+    //MÉTODO PARA VALIDAR PERFILES
+    private void Perfil(String usuario){
+        //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+        ClaseUsuarios cu=new ClaseUsuarios();
+        ResultSet rs=cu.BuscarUsuario2(usuario);
+        try{
+            if(rs.next()){                
+                //TRANSFORMAMOS EL DATO DEL PERFIL
+                int codigoPerfil=Integer.parseInt(rs.getString(8));
+                //CREAMOS UN OBJETO DE LA CLASEPERFILES
+                ClasePerfiles cp=new ClasePerfiles();
+                ResultSet rs2=cp.Buscar(codigoPerfil);
+                try{
+                    if(rs2.next()){
+                        String perfil=rs2.getString(2);
+                        switch(perfil){
+                            case "Administrador":
+                                mgestiones.setEnabled(true);
+                                mtransacciones.setEnabled(true);
+                                msalidas.setEnabled(true);
+                                mherramientas.setEnabled(true);
+                                mayuda.setEnabled(true);
+                                msalir.setEnabled(true);
+                            break;
+                            case "Médico":
+                                //GESTIONES
+                                mgestiones.setEnabled(true);
+                                smfarmaceutas.setEnabled(false);
+                                smunidades.setEnabled(false);
+                                smhabitaciones.setEnabled(false);
+                                smconsultorios.setEnabled(false);
+                                smhorarios.setEnabled(false);
+                                smzona.setEnabled(false);
+                                //TRANSACCIONES
+                                mtransacciones.setEnabled(false);
+                                //SALIDAS
+                                msalidas.setEnabled(false);
+                                //HERRAMIENTAS
+                                mherramientas.setEnabled(true);
+                                smcopiadeseguridad.setEnabled(false);
+                                smperfiles.setEnabled(false);
+                                //AYUDA
+                                mayuda.setEnabled(true);
+                                smmanualtecnico.setEnabled(false);
+                                //SALIR
+                                msalir.setEnabled(true);
+                            break;
+                            case "Paciente":
+                            break;}}}
+                catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,7 +91,8 @@ public class Menu extends javax.swing.JFrame{
         pfondo = new javax.swing.JPanel();
         calendario = new org.jdesktop.swingx.JXMonthView();
         lblfondo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        lblusuario = new javax.swing.JLabel();
+        mbprincipal = new javax.swing.JMenuBar();
         mgestiones = new javax.swing.JMenu();
         smpacientes = new javax.swing.JMenuItem();
         smpersonal = new javax.swing.JMenuItem();
@@ -76,13 +139,40 @@ public class Menu extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pfondo.setBackground(new java.awt.Color(255, 255, 255));
-        pfondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         calendario.setOpaque(false);
-        pfondo.add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(584, 11, -1, -1));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo_opt.png"))); // NOI18N
-        pfondo.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 320));
+
+        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        javax.swing.GroupLayout pfondoLayout = new javax.swing.GroupLayout(pfondo);
+        pfondo.setLayout(pfondoLayout);
+        pfondoLayout.setHorizontalGroup(
+            pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pfondoLayout.createSequentialGroup()
+                .addComponent(lblfondo)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pfondoLayout.setVerticalGroup(
+            pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pfondoLayout.createSequentialGroup()
+                .addComponent(lblfondo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pfondoLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         mgestiones.setForeground(new java.awt.Color(51, 153, 255));
         mgestiones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gestion_opt.png"))); // NOI18N
@@ -154,7 +244,7 @@ public class Menu extends javax.swing.JFrame{
         smzona.setText("Zona de Reparto");
         mgestiones.add(smzona);
 
-        jMenuBar1.add(mgestiones);
+        mbprincipal.add(mgestiones);
 
         mtransacciones.setForeground(new java.awt.Color(51, 153, 255));
         mtransacciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpetas_opt.png"))); // NOI18N
@@ -222,7 +312,7 @@ public class Menu extends javax.swing.JFrame{
         smasignacion.setText("Asignación Horarios");
         mtransacciones.add(smasignacion);
 
-        jMenuBar1.add(mtransacciones);
+        mbprincipal.add(mtransacciones);
 
         msalidas.setForeground(new java.awt.Color(51, 153, 255));
         msalidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresora_opt.png"))); // NOI18N
@@ -282,7 +372,7 @@ public class Menu extends javax.swing.JFrame{
         });
         msalidas.add(smhojasdevida);
 
-        jMenuBar1.add(msalidas);
+        mbprincipal.add(msalidas);
 
         mherramientas.setForeground(new java.awt.Color(51, 153, 255));
         mherramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/herramientas_opt.png"))); // NOI18N
@@ -318,7 +408,7 @@ public class Menu extends javax.swing.JFrame{
         });
         mherramientas.add(smperfiles);
 
-        jMenuBar1.add(mherramientas);
+        mbprincipal.add(mherramientas);
 
         mayuda.setForeground(new java.awt.Color(51, 153, 255));
         mayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ayuda_opt.png"))); // NOI18N
@@ -341,7 +431,7 @@ public class Menu extends javax.swing.JFrame{
         smacercade.setText("Acerca de");
         mayuda.add(smacercade);
 
-        jMenuBar1.add(mayuda);
+        mbprincipal.add(mayuda);
 
         msalir.setForeground(new java.awt.Color(51, 153, 255));
         msalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SALIR.PNG"))); // NOI18N
@@ -358,9 +448,9 @@ public class Menu extends javax.swing.JFrame{
         });
         msalir.add(smsalidasegura);
 
-        jMenuBar1.add(msalir);
+        mbprincipal.add(msalir);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mbprincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -375,10 +465,11 @@ public class Menu extends javax.swing.JFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    //ACCIÓN DEL SUBMENÚ PERSONAL
+    //ACCIÓN DEL SUBMENÚ PERSONAL MÉDICO
     private void smpersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smpersonalActionPerformed
         this.dispose();
         PersonalMedico personalMedico=new PersonalMedico();
+        personalMedico.setText(lblusuario.getText());
         personalMedico.setVisible(true);
     }//GEN-LAST:event_smpersonalActionPerformed
     //ACCIÓN DEL SUB-MENÚ TIPO MENÚ
@@ -437,7 +528,7 @@ public class Menu extends javax.swing.JFrame{
         try{
             Integer.parseInt(Respuesta);
             return true;}
-        catch (NumberFormatException e){
+        catch(NumberFormatException e){
            return false;}
     }
     //MÉTODO MAIN
@@ -470,11 +561,12 @@ public class Menu extends javax.swing.JFrame{
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXMonthView calendario;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel lblfondo;
+    private javax.swing.JLabel lblusuario;
     private javax.swing.JMenu mayuda;
+    private javax.swing.JMenuBar mbprincipal;
     private javax.swing.JMenu mgestiones;
     private javax.swing.JMenu mherramientas;
     private javax.swing.JMenu msalidas;

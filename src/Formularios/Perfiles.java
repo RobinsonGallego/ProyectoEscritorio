@@ -54,7 +54,6 @@ public class Perfiles extends javax.swing.JFrame{
         lbldescripcion.setText("Descripción Perfil");
 
         txtdescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtdescripcion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtdescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtdescripcionKeyTyped(evt);
@@ -64,7 +63,6 @@ public class Perfiles extends javax.swing.JFrame{
         txtcodigo.setEditable(false);
         txtcodigo.setBackground(new java.awt.Color(255, 255, 255));
         txtcodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtcodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout pperfilesLayout = new javax.swing.GroupLayout(pperfiles);
         pperfiles.setLayout(pperfilesLayout);
@@ -123,6 +121,11 @@ public class Perfiles extends javax.swing.JFrame{
         btnmodificar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnmodificar.setDescription("Edit");
         btnmodificar.setEnabled(false);
+        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodificarActionPerformed(evt);
+            }
+        });
 
         btnlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listar.png"))); // NOI18N
         btnlistar.setText("Listar");
@@ -135,6 +138,11 @@ public class Perfiles extends javax.swing.JFrame{
         btnregresar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnregresar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnregresar.setDescription("Return");
+        btnregresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,8 +205,12 @@ public class Perfiles extends javax.swing.JFrame{
     //ACCIÓN DEL BOTÓN GUARDAR
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         if(txtdescripcion.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Descripción","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe ingresar la Descripción","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtdescripcion.requestFocus();}
+        else if(String.valueOf(txtdescripcion.getText().charAt(0)).equals(" ")){
+            JOptionPane.showMessageDialog(null,"La Descripción no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            txtdescripcion.requestFocus();
+            txtdescripcion.setText("");}
         else{
             try{
                 int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
@@ -259,6 +271,54 @@ public class Perfiles extends javax.swing.JFrame{
                     btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
                     break;}
     }//GEN-LAST:event_btnconsultarActionPerformed
+    //ACCIÓN DEL BOTÓN MODIFICAR
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        //HABILITAMOS EL CAMPO QUE SE MODIFICARA
+        txtdescripcion.setEnabled(true);
+        txtdescripcion.requestFocus();
+        //DESACTIVAMOS LOS BOTONES
+        btnguardar.setEnabled(false);
+        btnconsultar.setText("Limpiar");
+        btnconsultar.setDescription("Clean");
+        btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));
+        if(btnmodificar.getText().equals("Modificar")){
+            btnmodificar.setText("Actualizar");
+            btnmodificar.setDescription("Update");
+            btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar2_opt.png")));}
+        else{
+            if(txtdescripcion.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"Debe ingresar la Descripción","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+                txtdescripcion.requestFocus();}
+            else if(String.valueOf(txtdescripcion.getText().charAt(0)).equals(" ")){
+                JOptionPane.showMessageDialog(null,"La Descripción no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+                txtdescripcion.requestFocus();
+                txtdescripcion.setText("");}
+            else{
+                //CREAMOS UN OBJETO DE LA CLASEPERFILES
+                ClasePerfiles cp=new ClasePerfiles();
+                //CAPTURAMOS LOS DATOS
+                int codigo=Integer.parseInt(txtcodigo.getText());
+                String descripcion=txtdescripcion.getText();
+                cp.Actualizar(codigo,descripcion);
+                Limpiar();
+                JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
+                btnconsultar.setText("Consultar");
+                btnconsultar.setDescription("Consult");
+                btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
+                btnguardar.setEnabled(true);
+                btnmodificar.setEnabled(false);
+                btnmodificar.setText("Modificar");
+                btnmodificar.setDescription("Edit");
+                btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
+                btnmodificar.setEnabled(false);
+                Habilitar();}}
+    }//GEN-LAST:event_btnmodificarActionPerformed
+    //ACCIÓN DEL BOTÓN REGRESAR
+    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarActionPerformed
     //MÉTODO QUE VALIDA LETRAS
     private void Letras(final JTextField a){
         a.addKeyListener(new KeyAdapter(){
@@ -268,7 +328,7 @@ public class Perfiles extends javax.swing.JFrame{
                 if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});//ANULA EVENTOS DEL TECLADO
-    }
+    }    
     //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
     private static boolean EsNumero(String Respuesta){
         try{

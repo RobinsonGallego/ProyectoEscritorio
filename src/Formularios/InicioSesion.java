@@ -1,7 +1,10 @@
 package Formularios;
 //LIBRERÍAS
+import Clases.ClaseUsuarios;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -12,6 +15,7 @@ public class InicioSesion extends javax.swing.JFrame{
     private SplashInicio splashInicio;
     //IMAGENES DE LOS MENSAJES
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
+    Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     //MÉTODO PARA ASIGNAR UN VALOR Y TEXTO AL SPLASH
     public InicioSesion(SplashInicio splashInicio){
         this.splashInicio=splashInicio;
@@ -253,19 +257,40 @@ public class InicioSesion extends javax.swing.JFrame{
     public void Ingresar(){
         String user=txtusuario.getText();
         String contrasena=jpcontrasena.getText();
-        if(user.equals("admin")&&contrasena.equals("admin")){
-            this.dispose();
-            Menu menu= new Menu();
-            menu.setVisible(true);}
+        if(user.equals("")&&contrasena.equals("")){
+            JOptionPane.showMessageDialog(null,"Por favor ingrese los Datos","Error",JOptionPane.ERROR_MESSAGE,error);
+            txtusuario.requestFocus();}
         else{
-            if(user.equals("")&&contrasena.equals("")){
-                JOptionPane.showMessageDialog(null,"Por favor ingrese los Datos","Error",JOptionPane.ERROR_MESSAGE,error);
-                txtusuario.requestFocus();}
-            else{
-                JOptionPane.showMessageDialog(null,"Usuario y/o Contraseña Incorrectos","Error",JOptionPane.ERROR_MESSAGE,error);
-                txtusuario.setText("");
-                jpcontrasena.setText("");
-                txtusuario.requestFocus();}}
+            //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+            ClaseUsuarios cu=new ClaseUsuarios();
+            ResultSet rs=cu.BuscarUsuario2(user);
+            try{
+                if(rs.next()){
+                    String password=rs.getString(6);
+                    String estado=rs.getString(7);
+                    if(password.equals(contrasena)){
+                        if(estado.equals("Activo")){
+                            this.dispose();
+                            Menu menu=new Menu();
+                            menu.setText(user);
+                            menu.setVisible(true);}
+                        else{
+                            JOptionPane.showMessageDialog(null,"El Usuario ingresado NO esta Activo.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                            txtusuario.setText("");
+                            jpcontrasena.setText("");
+                            txtusuario.requestFocus();}}
+                    else{
+                        JOptionPane.showMessageDialog(null,"Usuario y/o Contraseña Incorrectos.","Error",JOptionPane.ERROR_MESSAGE,error);
+                        txtusuario.setText("");
+                        jpcontrasena.setText("");
+                        txtusuario.requestFocus();}}
+                else{
+                    JOptionPane.showMessageDialog(null,"El Usuario ingresado no existe.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                    txtusuario.setText("");
+                    jpcontrasena.setText("");
+                    txtusuario.requestFocus();}}
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     }
     //MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
     private void Minusculas(javax.swing.JTextField txt){
@@ -321,6 +346,6 @@ public class InicioSesion extends javax.swing.JFrame{
     private javax.swing.JLabel lblidiomas;
     private javax.swing.JLabel lbltitulo;
     private javax.swing.JLabel lblusuario;
-    private javax.swing.JTextField txtusuario;
+    public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }
