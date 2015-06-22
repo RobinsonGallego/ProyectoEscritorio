@@ -1,6 +1,12 @@
 package Clases;
 public class Encriptar_Desencriptar{
-    //MÉTODO PARA ENCRIPTAR CONTRASEÑA
+    /**
+     * MÉTODO PARA ENCRIPTAR CONTRASEÑA
+     * @param contrasena que contiene un String que se Encriptara
+     * @return un String Encriptado
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public String Encriptar(String contrasena){
         //CREAMOS UN ARREGLO PARA LA CONTRASEÑA
         char arreglo[]=contrasena.toCharArray();
@@ -14,7 +20,13 @@ public class Encriptar_Desencriptar{
         //RETORNAMOS LA ENCRIPCTACIÓN
         return encriptado;
     }
-    //MÉTODO PARA DESENCRIPTAR CONTRASEÑA
+    /**
+     * MÉTODO PARA DESENCRIPTAR CONTRASEÑA
+     * @param contrasena que contiene un String que se Desencriptara
+     * @return un String Desencriptado
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public String Desencriptar(String contrasena){
         //CREAMOS UN ARREGLO PARA LA CONTRASEÑA
         char arreglo[]=contrasena.toCharArray();

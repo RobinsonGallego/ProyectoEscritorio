@@ -1,5 +1,9 @@
 package Tablas;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.0
+ */
 import Clases.ClaseTipoMenu;
 import Formularios.TipoMenu;
 import java.awt.Font;
@@ -12,7 +16,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 public class TablaTipoMenu extends javax.swing.JFrame{
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR TablaTipoMenu
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public TablaTipoMenu(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -22,7 +30,11 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         btnregresar.requestFocus();
         Iniciar();
     }
-    //MÉTODO PARA LLENAR LA TABLA CON LOS DATOS DE LA BASE DE DATOS
+    /**
+     * MÉTODO ALTERNO INICIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Iniciar(){
         //LIMPIAMOS LA TABLA
         Limpiar(tablatipomenu);
@@ -36,7 +48,11 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         Letras(txtbusquedatm);
         Letras(txtbusquedape);
     }
-    //MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
+    /**
+     * MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void FormatoTabla(){
         //PONEMOS TAMAÑO A CADA COLUMNA
         tablatipomenu.getColumnModel().getColumn(0).setWidth(25);
@@ -60,7 +76,12 @@ public class TablaTipoMenu extends javax.swing.JFrame{
         Font fuente=new Font("Tahoma",Font.BOLD,12);
         th.setFont(fuente);
     }
-    //MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
+    /**
+     * MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
+     * @param tabla que contiene un JTable para ser Limpiado
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Limpiar(JTable tabla){
         //RECORREMOS TODAS LAS FILAS
         while(tabla.getRowCount()>0){
@@ -266,7 +287,11 @@ public class TablaTipoMenu extends javax.swing.JFrame{
     }//GEN-LAST:event_txtbusquedapeKeyPressed
     //MAYÚSCULA INICIAL
     private void txtbusquedatmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedatmKeyTyped
-        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        /**
+         * MÉTODO PARA PONER MAYÚSCULA INICIAL
+         * @author Robinson Gallego Alzate
+         * @version 1.0
+         */
         JTextField txttipomenu=(JTextField)evt.getComponent();
         String texto=txttipomenu.getText();
         if(texto.length()>0){
@@ -276,7 +301,11 @@ public class TablaTipoMenu extends javax.swing.JFrame{
     }//GEN-LAST:event_txtbusquedatmKeyTyped
     //MAYÚSCULA INICIAL
     private void txtbusquedapeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapeKeyTyped
-        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        /**
+         * MÉTODO PARA PONER MAYÚSCULA INICIAL
+         * @author Robinson Gallego Alzate
+         * @version 1.0
+         */
         JTextField txtpe=(JTextField)evt.getComponent();
         String texto=txtpe.getText();
         if(texto.length()>0){
@@ -284,7 +313,12 @@ public class TablaTipoMenu extends javax.swing.JFrame{
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
             txtbusquedape.setText(texto);}
     }//GEN-LAST:event_txtbusquedapeKeyTyped
-    //MÉTODO QUE VALIDA LETRAS
+    /**
+     * MÉTODO QUE VALIDA LETRAS
+     * @param a que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Letras(final JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
@@ -294,6 +328,10 @@ public class TablaTipoMenu extends javax.swing.JFrame{
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});//ANULA EVENTOS DEL TECLADO
     }
+    /**
+     * MÉTODO PRINCIPAL MAIN
+     * @param args 
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override

@@ -1,5 +1,9 @@
 package Tablas;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Clases.ClasePerfiles;
 import Clases.ClaseUsuarios;
 import Formularios.Usuarios;
@@ -22,7 +26,11 @@ public class TablaUsuarios extends javax.swing.JFrame{
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR TablaUsuarios
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public TablaUsuarios(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -32,7 +40,11 @@ public class TablaUsuarios extends javax.swing.JFrame{
         btnregresar.requestFocus();
         Iniciar();
     }
-    //MÉTODO PARA LLENAR LA TABLA CON LOS DATOS DE LA BASE DE DATOS
+    /**
+     * MÉTODO ALTERNO INICIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Iniciar(){
         //LIMPIAMOS LA TABLA
         LimpiarTabla(tablausuarios);
@@ -46,7 +58,11 @@ public class TablaUsuarios extends javax.swing.JFrame{
         Letras(txtusuario);
         Letras(txtperfil);
     }
-    //MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
+    /**
+     * MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void FormatoTabla(){
         //PONEMOS TAMAÑO A CADA COLUMNA
         tablausuarios.getColumnModel().getColumn(0).setWidth(25);
@@ -76,7 +92,12 @@ public class TablaUsuarios extends javax.swing.JFrame{
         Font fuente=new Font("Tahoma",Font.BOLD,12);
         th.setFont(fuente);
     }
-    //MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
+    /**
+     * MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
+     * @param tabla que contiene un JTable que se Limpiara
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void LimpiarTabla(JTable tabla){
         //RECORREMOS TODAS LAS FILAS
         while(tabla.getRowCount()>0){
@@ -424,7 +445,13 @@ public class TablaUsuarios extends javax.swing.JFrame{
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
             txtperfil.setText(texto);}
     }//GEN-LAST:event_txtperfilKeyTyped
-    //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
+    /**
+     * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
+     * @param Respuesta que contiene un String que sera evaluado
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private static boolean EsNumero(String Respuesta){
         try{
             Integer.parseInt(Respuesta);
@@ -432,7 +459,12 @@ public class TablaUsuarios extends javax.swing.JFrame{
         catch (NumberFormatException e){
            return false;}
     }
-   //MÉTODO QUE VALIDA LETRAS
+   /**
+    * MÉTODO QUE VALIDA LETRAS
+    * @param a que contiene un JTextField
+    * @author Robinson Gallego Alzate
+    * @version 1.1
+    */
     private void Letras(final JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
@@ -442,12 +474,21 @@ public class TablaUsuarios extends javax.swing.JFrame{
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});//ANULA EVENTOS DEL TECLADO
     }
-    //MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
+    /**
+     * MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
+     * @param txt que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Minusculas(javax.swing.JTextField txt){
         String texto=(txt.getText().toLowerCase());
         txt.setText(texto);
     }
-    //MÉTODO LIMPIAR
+    /**
+     * MÉTODO LIMPIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Limpiar(){
         rbbusquedaiden.setSelected(false);
         rbbusquedausu.setSelected(false);
@@ -462,7 +503,12 @@ public class TablaUsuarios extends javax.swing.JFrame{
         cbinactivo.setEnabled(false);
         cbinactivo.setSelected(false);
     }
-    //MÉTODO MAIN
+    /**
+     * MÉTODO PRINCIPAL MAIN
+     * @param args
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

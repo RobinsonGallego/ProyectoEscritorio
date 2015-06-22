@@ -29,6 +29,5 @@ public class ValidarEMail extends InputVerifier{
     private boolean esValido(String string){
         pattern=Pattern.compile(EMAIL_PATTERN);//SE COMPILA LA CADENA
         matcher=pattern.matcher(string);//SE COMPARA LA CADENA
-        return matcher.matches();//RETORNA LA CADENA CUANDO CUMPLE EL PATRÓN ESTABLECIDO
-    }
+        return matcher.matches();}//RETORNA LA CADENA CUANDO CUMPLE EL PATRÓN ESTABLECIDO
 }

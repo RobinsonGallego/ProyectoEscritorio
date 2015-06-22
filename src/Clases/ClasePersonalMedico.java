@@ -1,5 +1,9 @@
 package Clases;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.0
+ */
 import Conexion.Conectate;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,12 +18,21 @@ import javax.swing.table.DefaultTableModel;
 
 public class ClasePersonalMedico{
     Connection cn;
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR ClasePersonalMedico
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public ClasePersonalMedico(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
         cn=con.Conectate();}    
-    //MÉTODO PARA LLENAR COMBOBOX PAISES CON DATOS
+    /**
+     * MÉTODO PARA LLENAR COMBOBOX PAISES CON DATOS
+     * @param lista que contiene una Lista de datos que se carga en un JComboBox
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void LlenarPais(JComboBox lista){
         try{
             //SENTENCIA SQL
@@ -38,7 +51,13 @@ public class ClasePersonalMedico{
         catch (Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA LLENAR COMBOBOX CIUDADES CON DATOS
+    /**
+     * MÉTODO PARA LLENAR COMBOBOX CIUDADES CON DATOS
+     * @param lista que contiene una Lista de datos que se carga en un JComboBox
+     * @param pais que contiene un int del País seleccionado
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void LlenarCiudad(JComboBox lista,int pais){
         try{
             //SENTENCIA SQL
@@ -57,7 +76,12 @@ public class ClasePersonalMedico{
         catch (Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA LLENAR COMBOBOX IDIOMAS CON DATOS
+    /**
+     * MÉTODO PARA LLENAR COMBOBOX IDIOMAS CON DATOS
+     * @param lista que contiene una Lista de datos que se carga en un JComboBox
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void LlenarIdiomas(JComboBox lista){
         try{
             //SENTENCIA SQL
@@ -76,7 +100,35 @@ public class ClasePersonalMedico{
         catch (Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA GUARDAR UN PERSONAL MÉDICO
+    /**
+     * MÉTODO PARA GUARDAR UN PERSONAL MÉDICO
+     * @param identificacion que contiene un Long que se va a Guardar
+     * @param nombres que contiene un String que se va a Guardar
+     * @param primerapellido que contiene un String que se va a Guardar
+     * @param segundoapellido que contiene un String que se va a Guardar
+     * @param fechanacimiento que contiene un Date que se va a Guardar
+     * @param pais que contiene un String que se va a Guardar
+     * @param ciudad que contiene un String que se va a Guardar
+     * @param estadocivil que contiene un String que se va a Guardar
+     * @param direccion que contiene un String que se va a Guardar
+     * @param telefono que contiene un int que se va a Guardar
+     * @param movil que contiene un Long que se va a Guardar
+     * @param correo que contiene un String que se va a Guardar
+     * @param tarjetaprofesional que contiene un String que se va a Guardar
+     * @param titulo que contiene un String que se va a Guardar
+     * @param institucion que contiene un String que se va a Guardar
+     * @param otrosestudios que contiene un String que se va a Guardar
+     * @param idiomas que contiene un String que se va a Guardar
+     * @param experiencialaboral que contiene un String que se va a Guardar
+     * @param ultimaempresa que contiene un String que se va a Guardar
+     * @param cargo que contiene un String que se va a Guardar
+     * @param motivosalida que contiene un String que se va a Guardar
+     * @param ultimosalario que contiene un int que se va a Guardar
+     * @param observaciones que contiene un String que se va a Guardar
+     * @param foto que contiene un String que se va a Guardar
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Guardar(long identificacion,String nombres,String primerapellido,String segundoapellido,String fechanacimiento,String pais,String ciudad,String estadocivil,String direccion,int telefono,long movil,String correo,String tarjetaprofesional,String titulo,String institucion,String otrosestudios,String idiomas,String experiencialaboral,String ultimaempresa,String cargo,String motivosalida,int ultimosalario,String observaciones,String foto){
         try{
             //CONVERTIMOS LA FOTO EN UN ARCHIVO BINARIO
@@ -120,7 +172,13 @@ public class ClasePersonalMedico{
         catch (FileNotFoundException|SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSCAR UN DATO
+    /**
+     * MÉTODO PARA BUSCAR UN DATO
+     * @param identificacion que contiene un Long que se va a Buscar
+     * @return un ResultSet si encuentra la Identificación o un null sino lo encuentra
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public ResultSet Buscar(long identificacion){
         try{
             String sql="select * from PersonalMedico where Identificacion="+identificacion;
@@ -131,7 +189,15 @@ public class ClasePersonalMedico{
             System.out.println(e.getMessage());}
         return null;
     }
-    //MÉTODO PARA BUSCAR UN DATO CON 3 PARAMETROS
+    /**
+     * MÉTODO PARA BUSCAR UN DATO CON 3 PARAMETROS
+     * @param nombres que contiene un String que se va a Buscar
+     * @param PApellido que contiene un String que se va a Buscar
+     * @param SApellido que contiene un String que se va a Buscar
+     * @return un ResultSet si encuentra los 3 Parametros o un null sino los encuentra
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public ResultSet Buscar2(String nombres,String PApellido,String SApellido){
         try{
             String sql="select * from PersonalMedico where Nombres='"+nombres+"' and PrimerApellido='"+PApellido+"' and SegundoApellido='"+SApellido+"'";
@@ -142,7 +208,35 @@ public class ClasePersonalMedico{
             System.out.println(e.getMessage());}
         return null;
     }
-    //MÉTODO PARA ACTUALIZAR LOS DATOS
+    /**
+     * MÉTODO PARA ACTUALIZAR LOS DATOS
+     * @param identificacion que contiene un Long que se va a Actualizar
+     * @param nombres que contiene un String que se va a Actualizar
+     * @param primerapellido que contiene un String que se a Actualizar
+     * @param segundoapellido que contiene un String que se a Actualizar
+     * @param fechanacimiento que contiene un Date que se a Actualizar
+     * @param pais que contiene un String que se a Actualizar
+     * @param ciudad que contiene un String que se a Actualizar
+     * @param estadocivil que contiene un String que se a Actualizar
+     * @param direccion que contiene un String que se a Actualizar
+     * @param telefono que contiene un int que se a Actualizar
+     * @param movil que contiene un Long que se a Actualizar
+     * @param correo que contiene un String que se a Actualizar
+     * @param tarjetaprofesional que contiene un String que se a Actualizar
+     * @param titulo que contiene un String que se a Actualizar
+     * @param institucion que contiene un String que se a Actualizar
+     * @param otrosestudios que contiene un String que se a Actualizar
+     * @param idiomas que contiene un String que se a Actualizar
+     * @param experiencialaboral que contiene un String que se a Actualizar
+     * @param ultimaempresa que contiene un String que se a Actualizar
+     * @param cargo que contiene un String que se a Actualizar
+     * @param motivosalida que contiene un String que se a Actualizar
+     * @param ultimosalario que contiene un int que se a Actualizar
+     * @param observaciones que contiene un String que se a Actualizar
+     * @param foto que contiene un String que se a Actualizar
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Actualizar(long identificacion,String nombres,String primerapellido,String segundoapellido,String fechanacimiento,String pais,String ciudad,String estadocivil,String direccion,int telefono,long movil,String correo,String tarjetaprofesional,String titulo,String institucion,String otrosestudios,String idiomas,String experiencialaboral,String ultimaempresa,String cargo,String motivosalida,int ultimosalario,String observaciones,String foto){
         try{
             //CONVERTIMOS LA FOTO EN UN ARCHIVO BINARIO
@@ -185,22 +279,12 @@ public class ClasePersonalMedico{
         catch (FileNotFoundException|SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA ELIMINAR UN DATO
-    public void Eliminar(long identificacion){
-        try{
-            //CREAMOS UNA CONSULTA SIMPLE
-            String sql="delete PersonalMedico from PersonalMedico where Identificacion="+identificacion;
-            //COMO NO MOSTRAMOS NINGÚN DATO SOLO HACEMOS UN PREPARED
-            PreparedStatement cmd=cn.prepareCall(sql);
-            //EJECUTAMOS LA SENTENCIA
-            cmd.execute();
-            //CERRAMOS LA CONEXIÓN
-            cmd.close();
-            cn.close();}
-        catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
-    //MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
+    /**
+     * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
+     * @param modelo que contiene un DefaultTableModel para mostrar los Datos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void LlenarDatos(DefaultTableModel modelo){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
@@ -237,7 +321,13 @@ public class ClasePersonalMedico{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS PARA DIRECCIÓN Y ESTADO CIVIL
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS PARA DIRECCIÓN Y ESTADO CIVIL
+     * @param modelo que contiene un DefaultTableModel para mostrar los Datos
+     * @param identificacion que contiene un Long para Buscar los Datos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void BusquedaDireEstCi(DefaultTableModel modelo,long identificacion){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA IDENTIFICACIÓN
         try{
@@ -274,7 +364,13 @@ public class ClasePersonalMedico{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS PARA INFORMACIÓN PROFESIONAL
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS PARA INFORMACIÓN PROFESIONAL
+     * @param modelo que contiene un DefaultTableModel para mostrar los Datos
+     * @param identificacion que contiene un Long para Buscar los Datos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void BusquedaInfoPer(DefaultTableModel modelo,long identificacion){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA IDENTIFICACIÓN
         try{
@@ -309,7 +405,13 @@ public class ClasePersonalMedico{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSCAR LA EXPERIENCIA LABORAL
+    /**
+     * MÉTODO PARA BUSCAR LA EXPERIENCIA LABORAL
+     * @param modelo que contiene un DefaultTableModel para mostrar los Datos
+     * @param identificacion que contiene un Long para Buscar los Datos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void BusquedaExperienciaLaboral(DefaultTableModel modelo,long identificacion){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA IDENTIFICACIÓN
         try{
@@ -346,7 +448,13 @@ public class ClasePersonalMedico{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSCAR NOMBRES
+    /**
+     * MÉTODO PARA BUSCAR NOMBRES
+     * @param modelo que contiene un DefaultTableModel para mostrar los Datos
+     * @param nombres que contiene un String para Buscar los Datos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void BusquedaNombres(DefaultTableModel modelo,String nombres){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y NOMBRES
         try{
@@ -383,7 +491,13 @@ public class ClasePersonalMedico{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSCAR NOMBRES
+    /**
+     * MÉTODO PARA BUSCAR PRIMER APELLIDO
+     * @param modelo que contiene un DefaultTableModel para mostrar los Datos
+     * @param primerApe que contiene un String para Buscar los Datos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void BusquedaPrimerApe(DefaultTableModel modelo,String primerApe){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y NOMBRES
         try{

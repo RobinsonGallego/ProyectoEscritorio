@@ -1,5 +1,9 @@
 package proyectoescritorio;
-
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Formularios.InicioSesion;
 import com.sun.awt.AWTUtilities;
 import javax.swing.ImageIcon;
@@ -8,7 +12,11 @@ import javax.swing.JProgressBar;
 
 public class SplashInicio extends javax.swing.JFrame{
     private SplashInicio splashInicio=this;
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR SplashInicio
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public SplashInicio() {
         initComponents();
         AWTUtilities.setWindowOpacity(splashInicio,(float)1);
@@ -18,7 +26,11 @@ public class SplashInicio extends javax.swing.JFrame{
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         startThread();
     }
-    //MÉTODO PARA INICIAR EL SPLASH
+    /**
+     * MÉTODO PARA INICIAR EL SPLASH
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void startThread(){
         Thread thread=new Thread(new Runnable(){
             @Override

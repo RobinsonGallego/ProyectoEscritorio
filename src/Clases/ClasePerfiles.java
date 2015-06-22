@@ -1,5 +1,9 @@
 package Clases;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Conexion.Conectate;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -9,12 +13,21 @@ import java.sql.SQLException;
 
 public class ClasePerfiles{
     Connection cn;
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR ClasePerfiles
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public ClasePerfiles(){
         Conectate con=new Conectate();
         cn=con.Conectate();
     }
-    //MÉTODO PARA GUARDAR UN PERFIL
+    /**
+     * MÉTODO PARA GUARDAR UN PERFIL
+     * @param descripcion que contiene el String que se va a Guardar
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void GuardarPerfil(String descripcion){
         try{
             //AQUÍ EJECUTAMOS EL PROCEDIMIENTO ALMACENADO
@@ -31,7 +44,13 @@ public class ClasePerfiles{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA ACTUALIZAR LOS DATOS
+    /**
+     * MÉTODO PARA ACTUALIZAR LOS DATOS
+     * @param codigo que contiene el int que se va a Actualizar
+     * @param descripcion que contiene el String que se va a Actualizar
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Actualizar(int codigo,String descripcion){
         try{
             //CREAMOS LA SENTENCIA SQL
@@ -48,7 +67,13 @@ public class ClasePerfiles{
         catch(SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSCAR UN PERFIL
+    /**
+     * MÉTODO PARA BUSCAR UN PERFIL
+     * @param codigo que contiene el int que se va a Buscar
+     * @return un ResultSet si encuentra el Perfil o un null sino encuentra el Perfil
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public ResultSet Buscar(int codigo){
         try{
             String sql="select * from Perfiles where CodigoPerfil="+codigo;
@@ -59,7 +84,13 @@ public class ClasePerfiles{
             System.out.println(e.getMessage());}
         return null;
     }
-    //MÉTODO PARA BUSCAR UNA DESCRIPCIÓN
+    /**
+     * MÉTODO PARA BUSCAR UNA DESCRIPCIÓN
+     * @param descripcion que contiene el String que se va a Buscar
+     * @return un ResultSet si encuentra el Perfil o un null sino encuentra el Perfil
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public ResultSet Buscar(String descripcion){
         try{
             String sql="select * from Perfiles where Descripcion='"+descripcion+"'";

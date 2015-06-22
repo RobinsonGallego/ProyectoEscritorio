@@ -1,5 +1,9 @@
 package Clases;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Conexion.Conectate;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
@@ -19,12 +23,24 @@ import javax.imageio.stream.ImageInputStream;
 public class FotoClassPM{
     Connection cn;
     private Image data;
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR FotoClassPM
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public FotoClassPM(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
-        cn=con.Conectate();}
-    //MÉTODO QUE DADA UNA CADENA DE BYTES LA CONVIERTE EN UNA IMAGEN CON EXTENSIÓN jpeg
+        cn=con.Conectate();
+    }
+    /**
+     * MÉTODO QUE DADA UNA CADENA DE BYTES LA CONVIERTE EN UNA IMAGEN CON EXTENSIÓN jpeg
+     * @param bytes que contiene un arreglo de Bytes, para ser convertido a Imegen
+     * @return una Imagen convertida
+     * @throws el método puede disparar excepciones de tipo IOException 
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private Image ConvertirImagen(byte[] bytes) throws IOException{//RECIBIMOS UN ARRAYS DE BYTES
         ByteArrayInputStream bis=new ByteArrayInputStream(bytes);
         Iterator readers=ImageIO.getImageReadersByFormatName("jpeg");
@@ -33,8 +49,15 @@ public class FotoClassPM{
         ImageInputStream iis=ImageIO.createImageInputStream(source);
         reader.setInput(iis,true);
         ImageReadParam param=reader.getDefaultReadParam();
-        return reader.read(0,param);}
-    //MÉTODO PARA RECUPERAR LA IMAGEN DE LA BASE DE DATOS
+        return reader.read(0,param);
+    }
+    /**
+     * MÉTODO PARA RECUPERAR LA IMAGEN DE LA BASE DE DATOS
+     * @param identificacion que con tiene un Long que se Buscara
+     * @return un dato con la Imagen
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public Image RecuperarFoto(long identificacion){
         try{
             //SENTENCIA SQL
@@ -52,5 +75,6 @@ public class FotoClassPM{
             rs.close();}
         catch (IOException|SQLException e){
             Logger.getLogger(Clases.FotoClassPM.class.getName()).log(Level.SEVERE,null,e);}
-        return data;}
+        return data;
+    }
 }

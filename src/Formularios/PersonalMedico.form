@@ -66,7 +66,6 @@
                   </Group>
                   <Component id="btnconsultar" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,7 +102,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblcorreo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="101" pref="101" max="-2" attributes="0"/>
+                              <Component id="txtcorreo" min="-2" pref="175" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="lblestado1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblestadoactual1" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lblusuario" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblidentificacion" min="-2" max="-2" attributes="0"/>
@@ -146,15 +157,6 @@
                               <EmptySpace min="83" pref="83" max="-2" attributes="0"/>
                               <Component id="lblmensaje" min="-2" pref="380" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblcorreo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="101" pref="101" max="-2" attributes="0"/>
-                              <Component id="txtcorreo" min="-2" pref="175" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="lblestado1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblestadoactual1" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -162,81 +164,86 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                              <Component id="lblidentificacion" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                              <Component id="lblnombres" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                              <Component id="lblprimerapellido" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                              <Component id="lblsegundoapellido" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                              <Component id="lblfechanacimiento" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                              <Component id="lblpais" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                              <Component id="lblciudad" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                              <Component id="lblestadocivil" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                              <Component id="lbldireccion" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-                              <Component id="lbltelefono" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblusuario" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                                      <Component id="lblidentificacion" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="lblnombres" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="lblprimerapellido" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="lblsegundoapellido" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="lblfechanacimiento" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="lblpais" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lblciudad" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="lblestadocivil" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                                      <Component id="lbldireccion" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
+                                      <Component id="lbltelefono" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtidentificacion" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="txtnombres" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="txtprimerapellido" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="txtsegundoapellido" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="datefechanacimiento" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="cbpais" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                                      <Component id="cbciudad" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="cbestadocivil" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="txtdireccion" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Component id="txttelefono" min="-2" pref="25" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                      <Component id="pfotografia" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Component id="pimagen" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                      <Component id="lblmovil" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtmovil" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                      <Component id="lblmensaje" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                      <Component id="lblcorreo" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtcorreo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="lblestado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblestadoactual1" min="-2" pref="25" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="txtidentificacion" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="txtnombres" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="txtprimerapellido" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="txtsegundoapellido" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="datefechanacimiento" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="cbpais" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="cbciudad" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="cbestadocivil" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="txtdireccion" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="txttelefono" min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                              <Component id="pfotografia" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="pimagen" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                              <Component id="lblmovil" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="txtmovil" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                              <Component id="lblmensaje" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                              <Component id="lblcorreo" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtcorreo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="lblestado1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblestadoactual1" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -593,6 +600,8 @@
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblusuario">
             </Component>
           </SubComponents>
         </Container>

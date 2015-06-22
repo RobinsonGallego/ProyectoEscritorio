@@ -1,5 +1,9 @@
 package Clases;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Conexion.Conectate;
 import java.awt.Frame;
 import java.sql.Connection;
@@ -16,12 +20,21 @@ import net.sf.jasperreports.view.JasperViewer;
 
 public class GenerarReportes{
     Connection cn;
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR GenerarReportes
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public GenerarReportes(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
-        cn=con.Conectate();}
-    //MÉTODO PARA REPORTE PERSONAL MÉDICO
+        cn=con.Conectate();
+    }
+    /**
+     * MÉTODO PARA GENERAR REPORTE PERSONAL MÉDICO
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void ReportePM(){
         //RUTA DEL ARCHIVO
         String path="D:/NetBeans/ProyectoEscritorio/src/Reportes/PersonalMedico.jasper";
@@ -43,7 +56,12 @@ public class GenerarReportes{
         catch(JRException ex){
             Logger.getLogger(GenerarReportes.class.getName()).log(Level.SEVERE,null,ex);}
     }
-    //MÉTODO PARA REPORTE PERSONAL MÉDICO HOJA DE VIDA
+    /**
+     * MÉTODO PARA GENERAR REPORTE PERSONAL MÉDICO HOJA DE VIDA
+     * @param Identificacion que contiene un Long que se Buscara
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void ReporteHV(long Identificacion){
         //RUTA DEL ARCHIVO
         String path="D:/NetBeans/ProyectoEscritorio/src/Reportes/HojadeVida.jasper";

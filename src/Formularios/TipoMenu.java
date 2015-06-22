@@ -1,5 +1,9 @@
 package Formularios;
-//LIBRERIAS
+/**
+ * LIBRERIAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.0
+ */
 import Clases.ClaseTipoMenu;
 import Tablas.TablaTipoMenu;
 import java.awt.event.KeyEvent;
@@ -15,7 +19,11 @@ public class TipoMenu extends javax.swing.JFrame{
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR TipoMenu
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public TipoMenu(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -26,7 +34,11 @@ public class TipoMenu extends javax.swing.JFrame{
         cbtipomenu.requestFocus();
         Iniciar();
     }
-    //MÉTODO INICIAR
+    /**
+     * MÉTODO ALTERNATIVO INICIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Iniciar(){
         //LIMPIAMOS LOS COMBOBOX
         cbcomponentes.removeAllItems();
@@ -609,7 +621,11 @@ public class TipoMenu extends javax.swing.JFrame{
         cbpacientesespaciales.setSelectedItem("");
         tapacientesespaciales.setText("");
     }//GEN-LAST:event_btnlimpiarpeActionPerformed
-    //MÉTODO PARA LIMPIAR DATOS
+    /**
+     * MÉTODO PARA LIMPIAR DATOS
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Limpiar(){
         txtcodigo.setText("");
         cbtipomenu.setSelectedItem("");
@@ -618,7 +634,11 @@ public class TipoMenu extends javax.swing.JFrame{
         tapacientesespaciales.setText("");
         cbtipomenu.requestFocus();
     }
-    //MÉTODO PARA HABILITAR CAMPOS
+    /**
+     * MÉTODO PARA HABILITAR CAMPOS
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Habilitar(){
         cbtipomenu.setEnabled(true);
         cbcomponentes.setEnabled(true);
@@ -629,7 +649,11 @@ public class TipoMenu extends javax.swing.JFrame{
         btnlimpiarcomponentes.setEnabled(true);
         btnlimpiarpe.setEnabled(true);
     }
-    //MÉTODO PARA INHABILITAR CAMPOS
+    /**
+     * MÉTODO PARA INHABILITAR CAMPOS
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Inhabilitar(){
         cbtipomenu.setEnabled(false);
         cbcomponentes.setEnabled(false);
@@ -640,6 +664,12 @@ public class TipoMenu extends javax.swing.JFrame{
         btnlimpiarcomponentes.setEnabled(false);
         btnlimpiarpe.setEnabled(false);
     }
+    /**
+     * MÉTODO PRINCIPAL MAIN
+     * @param args 
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

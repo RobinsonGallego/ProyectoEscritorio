@@ -1,5 +1,4 @@
 package proyectoescritorio;
-
 public class ProyectoEscritorio{
     public static void main(String[] args){
     java.awt.EventQueue.invokeLater(new Runnable(){

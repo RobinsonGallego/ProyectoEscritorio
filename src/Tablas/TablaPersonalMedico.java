@@ -1,5 +1,9 @@
 package Tablas;
-//LIBRERIAS
+/**
+ * LIBRERIAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.0
+ */
 import Clases.ClasePersonalMedico;
 import Formularios.PersonalMedico;
 import java.awt.Color;
@@ -22,7 +26,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR TablaPersonalMedico
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public TablaPersonalMedico(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -34,7 +42,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         Letras(txtprimerape);
         Iniciar();
     }
-    //MÉTODO INICIAR
+    /**
+     * MÉTODO ALTERNO INICIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Iniciar(){
         //LIMPIAMOS LA TABLA
         Limpiar(tablapersonalmedico);
@@ -46,7 +58,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         cpm.LlenarDatos(modelo);
         FormatoTabla();
     }
-    //MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
+    /**
+     * MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void FormatoTabla(){
         //MODIFICAMOS LOS TÍTULOS DE LAS COLUMNAS
         JTableHeader th;
@@ -99,7 +115,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getColumnModel().getColumn(10).setMinWidth(25);
         tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Experiencia Laboral");
     }
-    //FORMATO ESTADO CIVIL O DIRECCIÓN
+    /**
+     * MÉTODO PARA DAR FORMATO A ESTADO CIVIL O DIRECCIÓN
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Formato2(){
         //PONEMOS TAMAÑO A CADA COLUMNA
         tablapersonalmedico.getColumnModel().getColumn(0).setWidth(25);
@@ -140,7 +160,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getColumnModel().getColumn(10).setMinWidth(25);
         tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Correo");
     }
-    //FORMATO INFORMACIÓN PROFESIONAL
+    /**
+     * MÉTODO PARA DAR FORMATO A INFORMACIÓN PROFESIONAL
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Formato3(){
         //PONEMOS TAMAÑO A CADA COLUMNA
         tablapersonalmedico.getColumnModel().getColumn(0).setWidth(25);
@@ -185,7 +209,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(0);
         tablapersonalmedico.getTableHeader().getColumnModel().getColumn(10).setMinWidth(0);
     }
-    //FORMATO INFORMACIÓN LABORAL
+    /**
+     * MÉTOD PARA DAR FORMATO A INFORMACIÓN LABORAL
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Formato4(){
         //PONEMOS TAMAÑO A CADA COLUMNA
         tablapersonalmedico.getColumnModel().getColumn(0).setWidth(25);
@@ -229,7 +257,12 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getColumnModel().getColumn(10).setMinWidth(25);
         tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Observaciones");
     }
-    //MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
+    /**
+     * MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
+     * @param tabla que contiene un JTable para ser Limpiado
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Limpiar(JTable tabla){
         //RECORREMOS TODAS LAS FILAS
         while(tabla.getRowCount()>0){
@@ -656,7 +689,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
     }//GEN-LAST:event_txtnombresKeyPressed
     //MAYÚSCULA INICIAL NOMBRES
     private void txtnombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombresKeyTyped
-        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        /**
+         * MÉTODO PARA PONER MAYÚSCULA INICIAL
+         * @author Robinson Gallego Alzate
+         * @version 1.0
+         */
         JTextField txtnombre=(JTextField)evt.getComponent();
         String texto=txtnombre.getText();
         if(texto.length()>0){
@@ -688,7 +725,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
     }//GEN-LAST:event_txtprimerapeKeyPressed
     //MAYÚSCULA INICIAL APELLIDOS
     private void txtprimerapeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtprimerapeKeyTyped
-        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        /**
+         * MÉTODO PARA PONER MAYÚSCULA INICIAL
+         * @author Robinson Gallego Alzate
+         * @version 1.0
+         */
         JTextField txtapellido=(JTextField)evt.getComponent();
         String texto=txtapellido.getText();
         if(texto.length()>0){
@@ -696,27 +737,40 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
             txtprimerape.setText(texto);}
     }//GEN-LAST:event_txtprimerapeKeyTyped
-    //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
+    /**
+     * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
+     * @param Respuesta que contiene un String que se Analizará
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private static boolean EsNumero(String Respuesta){
         try{
             Integer.parseInt(Respuesta);
             return true;}
-        catch (NumberFormatException e){
+        catch(NumberFormatException e){
            return false;}
     }
-    //MÉTODO QUE VALIDA LETRAS
+    /**
+     * MÉTODO QUE VALIDA LETRAS
+     * @param a que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Letras(final JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
-                if(Character.isDigit(c))//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
-                {
+                if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();//ANULA EVENTOS DEL TECLADO
-                }}});
+                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO                
     }
-    //MÉTODO PARA ACTIVAR TODO
+    /**
+     * MÉTODO PARA ACTIVAR TODO
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Activar(){
         rbbuscardoec.setEnabled(true);
         rbbuscardoec.setForeground(Color.BLACK);
@@ -731,7 +785,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         rbbuscarprimerape.setForeground(Color.BLACK);
         txtprimerape.setEnabled(false);
     }
-    //MÉTODO PARA LIMPIAR
+    /**
+     * MÉTODO PARA LIMPIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Limpiar(){
         rbbuscardoec.setSelected(false);
         rbbuscarinfopro.setSelected(false);
@@ -741,6 +799,10 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         txtnombres.setText("");
         txtprimerape.setText("");
     }
+    /**
+     * MÉTODO PRINCIPAL MAIN
+     * @param args 
+     */
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -766,9 +828,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new TablaPersonalMedico().setVisible(true);
-            }
-        });
+                new TablaPersonalMedico().setVisible(true);}});
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnlimpiar;

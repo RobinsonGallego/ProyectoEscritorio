@@ -1,5 +1,9 @@
 package Clases;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Conexion.Conectate;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -11,11 +15,20 @@ import javax.swing.table.DefaultTableModel;
 
 public class ClaseUsuarios{
     Connection cn;
-    //CONSTRUCTOR
+    /**CONSTRUCTOR ClaseUsuarios
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public ClaseUsuarios(){
         Conectate con=new Conectate();
-        cn=con.Conectate();}
-    //MÉTODO PARA LLENAR COMBOBOX IDENTIFICACIONES CON DATOS
+        cn=con.Conectate();
+    }
+    /**
+     * MÉTODO PARA LLENAR COMBOBOX IDENTIFICACIONES CON DATOS
+     * @param lista que contiene una Lista con datos para un JComboBox
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void LlenarIdentificaciones(JComboBox lista){
         try{
             //SENTENCIA SQL
@@ -34,7 +47,13 @@ public class ClaseUsuarios{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSCAR UNA IDENTIFICACIÓN EN USUARIOS
+    /**
+     * MÉTODO PARA BUSCAR UNA IDENTIFICACIÓN EN USUARIOS
+     * @param identificacion que contiene un Long que sera Buscado
+     * @return un ResultSet si encuentra el Usuario o un null sino lo encuentra
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public ResultSet BuscarUsuario(long identificacion){
         try{
             String sql="select * from Usuarios where IdentificacionUsuario="+identificacion;
@@ -45,7 +64,13 @@ public class ClaseUsuarios{
             System.out.println(e.getMessage());}
         return null;
     }
-    //MÉTODO PARA BUSCAR UN USUARIO
+    /**
+     * MÉTODO PARA BUSCAR UN USUARIO
+     * @param usuario que contiene un String que sera Buscado
+     * @return un ResultSet si encuentra el Usuario o un null sino lo encuentra
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public ResultSet BuscarUsuario2(String usuario){
         try{
             String sql="select * from Usuarios where Usuario='"+usuario+"'";
@@ -56,7 +81,12 @@ public class ClaseUsuarios{
             System.out.println(e.getMessage());}
         return null;
     }
-    //MÉTODO PARA LLENAR COMBOBOX PERFILES CON DATOS
+    /**
+     * MÉTODO PARA LLENAR COMBOBOX PERFILES CON DATOS
+     * @param lista que contiene una Lista con datos para un JComboBox
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void LlenarPerfiles(JComboBox lista){
         try{
             //SENTENCIA SQL
@@ -75,7 +105,18 @@ public class ClaseUsuarios{
         catch (Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA GUARDAR USUARIOS
+    /**
+     * MÉTODO PARA GUARDAR USUARIOS
+     * @param identificacion que contiene un Long para Guardar
+     * @param usuario que contiene un String para Guardar
+     * @param correo que contiene un String para Guardar
+     * @param preguntasecreta que contiene un String para Guardar
+     * @param contrasena que contiene un String para Guardar
+     * @param estado que contiene un String para Guardar
+     * @param perfil que contiene un String para Guardar
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Guardar(long identificacion,String usuario,String correo,String preguntasecreta,String contrasena,String estado,String perfil){
         try{
             //AQUÍ EJECUTAMOS EL PROCEDIMIENTO ALMACENADO
@@ -107,7 +148,18 @@ public class ClaseUsuarios{
         catch(SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA ACTUALIZAR LOS DATOS
+    /**
+     * MÉTODO PARA ACTUALIZAR LOS DATOS
+     * @param identificacion que contiene un Long para Actualizar
+     * @param usuario que contiene un String para Actualizar
+     * @param correo que contiene un String para Actualizar
+     * @param preguntasecreta que contiene un String para Actualizar
+     * @param contrasena que contiene un String para Actualizar
+     * @param estado que contiene un String para Actualizar
+     * @param perfil que contiene un String para Actualizar
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Actualizar(long identificacion,String usuario,String correo,String preguntasecreta,String contrasena,String estado,String perfil){
         try{
             //CREAMOS LA SENTENCIA SQL
@@ -136,7 +188,12 @@ public class ClaseUsuarios{
         catch(SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
+    /**
+     * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void LlenarDatos(DefaultTableModel modelo){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
@@ -180,7 +237,13 @@ public class ClaseUsuarios{
         catch(SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS POR IDENTIFICACIÓN
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS POR IDENTIFICACIÓN
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @param identificacion que contiene un Long que sera Buscado 
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void BusquedaIdentificacion(DefaultTableModel modelo,long identificacion){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
@@ -224,7 +287,13 @@ public class ClaseUsuarios{
         catch(SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS POR USUARIO
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS POR USUARIO
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @param usuario que contiene un String que sera Buscado 
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void BusquedaUsuario(DefaultTableModel modelo,String usuario){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
@@ -268,7 +337,13 @@ public class ClaseUsuarios{
         catch(SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS POR PERFIL
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS POR PERFIL
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @param perfil que contiene un String que sera Buscado
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void BusquedaPerfil(DefaultTableModel modelo,int perfil){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
@@ -311,7 +386,13 @@ public class ClaseUsuarios{
         catch(SQLException e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS POR ESTADO
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS POR ESTADO
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @param estado que contiene un String que sera Buscado
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void BusquedaEstado(DefaultTableModel modelo,String estado){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{

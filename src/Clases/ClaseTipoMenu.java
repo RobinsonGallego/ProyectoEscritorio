@@ -1,5 +1,9 @@
 package Clases;
-//LIBRERIAS
+/**
+ * LIBRERIAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.0
+ */
 import Conexion.Conectate;
 import java.sql.*;
 import javax.swing.JComboBox;
@@ -7,13 +11,25 @@ import javax.swing.table.DefaultTableModel;
 
 public class ClaseTipoMenu{
     Connection cn;
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR ClaseTipoMenu
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public ClaseTipoMenu(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
         cn=con.Conectate();
     }
-    //MÉTODO PARA GUARDAR UN TIPO MENÚ
+    /**
+     * MÉTODO PARA GUARDAR UN TIPO MENÚ
+     * @param tipomenu que contiene un String que se va a Guardar
+     * @param componentes que contiene un String que se va a Guardar
+     * @param contraindicaciones que contiene un String que se va a Guardar
+     * @param pacientesEspeciales que contiene un String que se va a Guardar
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Guardar(String tipomenu,String componentes,String contraindicaciones,String pacientesEspeciales){
         try{
             //AQUÍ EJECUTAMOS EL PROCEDIMIENTO ALMACENADO
@@ -33,7 +49,13 @@ public class ClaseTipoMenu{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSCAR UN DATO
+    /**
+     * MÉTODO PARA BUSCAR UN DATO
+     * @param codigo que contiene un int para Buscar
+     * @return un ResultSet si encuentra el Codigo o un null sino lo encuentra
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public ResultSet Buscar(int codigo){
         try{
             String sql="select * from TipoMenu where Codigo="+codigo;
@@ -44,7 +66,16 @@ public class ClaseTipoMenu{
             System.out.println(e.getMessage());}
         return null;
     }
-    //MÉTODO PARA ACTUALIZAR LOS DATOS
+    /**
+     * MÉTODO PARA ACTUALIZAR LOS DATOS
+     * @param codigo que contiene un int que se va a Actualizar
+     * @param tipomenu que contiene un String que se va a Actualizar
+     * @param componentes que contiene un String que se va a Actualizar
+     * @param contraindicaciones que contiene un String que se va a Actualizar
+     * @param pacientesEspeciales que contiene un String que se va a Actualizar
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Actualizar(int codigo,String tipomenu,String componentes,String contraindicaciones,String pacientesEspeciales){
         try{
             //CREAMOS LA SENTENCIA SQL
@@ -64,7 +95,12 @@ public class ClaseTipoMenu{
         catch (Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA ELIMINAR UN DATO
+    /**
+     * MÉTODO PARA ELIMINAR UN DATO
+     * @param codigo que contiene un int que se Eliminara
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void Eliminar(int codigo){
         try{
             //CREAMOS UNA CONSULTA SIMPLE
@@ -79,7 +115,13 @@ public class ClaseTipoMenu{
         catch (Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS POR TIPO MENÚ
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS POR TIPO MENÚ
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @param palabraactual que contiene un String que se Buscara
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void BusquedaTipoMenu(DefaultTableModel modelo,String palabraactual){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
@@ -106,7 +148,13 @@ public class ClaseTipoMenu{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA BUSQUEDAS DINÁMICAS POR PACIENTE ESPECIAL
+    /**
+     * MÉTODO PARA BUSQUEDAS DINÁMICAS POR PACIENTE ESPECIAL
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @param palabraactual que contiene un String que se Buscara
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void BusquedaPacienteE(DefaultTableModel modelo,String palabraactual){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
@@ -133,7 +181,12 @@ public class ClaseTipoMenu{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
+    /**
+     * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
+     * @param modelo que contiene un DefaultTableModel que mostrara la información
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void LlenarDatos(DefaultTableModel modelo){
         //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
@@ -160,7 +213,12 @@ public class ClaseTipoMenu{
         catch(Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA LLENAR COMBOBOX COMPONENTES CON DATOS
+    /**
+     * MÉTODO PARA LLENAR COMBOBOX COMPONENTES CON DATOS
+     * @param lista que contiene una Lista con datos para un JComboBox
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void LlenarComponente(JComboBox lista){
         try{
             //SENTENCIA SQL
@@ -179,7 +237,12 @@ public class ClaseTipoMenu{
         catch (Exception e){
             System.out.println(e.getMessage());}
     }
-    //MÉTODO PARA LLENAR COMBOBOX PACIENTES ESPECIALES CON DATOS
+    /**
+     * MÉTODO PARA LLENAR COMBOBOX PACIENTES ESPECIALES CON DATOS
+     * @param lista que contiene una Lista con datos para un JComboBox
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public void LlenarPacientesEspaciales(JComboBox lista){
         try{
             //SENTENCIA SQL

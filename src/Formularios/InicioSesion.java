@@ -1,5 +1,9 @@
 package Formularios;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.0
+ */
 import Clases.ClaseUsuarios;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -16,7 +20,12 @@ public class InicioSesion extends javax.swing.JFrame{
     //IMAGENES DE LOS MENSAJES
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
-    //MÉTODO PARA ASIGNAR UN VALOR Y TEXTO AL SPLASH
+    /**
+     * MÉTODO PARA ASIGNAR UN VALOR Y TEXTO AL SPLASH
+     * @param splashInicio que contiene una Clase SplashInicio
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public InicioSesion(SplashInicio splashInicio){
         this.splashInicio=splashInicio;
         setProgress(0,"Cargando Componentes del Sistema");
@@ -42,7 +51,11 @@ public class InicioSesion extends javax.swing.JFrame{
         catch(InterruptedException e){
             JOptionPane.showMessageDialog(null,"No se puedo ejecutar la presentación");}
     }
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR InicioSesion
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public InicioSesion(){
         initComponents();
         setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
@@ -253,7 +266,11 @@ public class InicioSesion extends javax.swing.JFrame{
     private void jpcontrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyReleased
         Minusculas(jpcontrasena);
     }//GEN-LAST:event_jpcontrasenaKeyReleased
-    //MÉTODO PARA INGRESAR AL SISTEMA
+    /**
+     * MÉTODO PARA INGRESAR AL SISTEMA
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Ingresar(){
         String user=txtusuario.getText();
         String contrasena=jpcontrasena.getText();
@@ -292,12 +309,22 @@ public class InicioSesion extends javax.swing.JFrame{
             catch(SQLException e){
                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     }
-    //MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
+    /**
+     * MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
+     * @param txt que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Minusculas(javax.swing.JTextField txt){
         String texto=(txt.getText().toLowerCase());
         txt.setText(texto);
     }
-    //MÉTODO QUE VALIDA LETRAS
+    /**
+     * MÉTODO QUE VALIDA LETRAS
+     * @param a que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private void Letras(final JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
@@ -307,6 +334,12 @@ public class InicioSesion extends javax.swing.JFrame{
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});//ANULA EVENTOS DEL TECLADO
     }
+    /**
+     * MÉTODO PRINCIPAL MAIN
+     * @param args 
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

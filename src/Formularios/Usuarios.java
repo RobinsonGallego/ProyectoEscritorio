@@ -1,5 +1,9 @@
 package Formularios;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Clases.ClasePerfiles;
 import Clases.ClasePersonalMedico;
 import Clases.ClaseUsuarios;
@@ -22,7 +26,11 @@ public class Usuarios extends javax.swing.JFrame{
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR Usuarios
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public Usuarios(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -37,7 +45,11 @@ public class Usuarios extends javax.swing.JFrame{
         Letras(txtusuario);
         Iniciar();
     }
-    //MÉTODO INICIAR
+    /**
+     * MÉTODO ALTERNATIVO INICIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Iniciar(){
         //LIMPIAMOS COMBOBOX
         cbidentificacion.removeAllItems();
@@ -555,7 +567,11 @@ public class Usuarios extends javax.swing.JFrame{
         TablaUsuarios tu=new TablaUsuarios();
         tu.setVisible(true);
     }//GEN-LAST:event_btnlistarActionPerformed
-    //MÉTODO GUARDAR USUARIO
+    /**
+     * MÉTODO PARA GUARDAR USUARIO
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Guardar(){
         //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
         ClaseUsuarios cu=new ClaseUsuarios();
@@ -581,7 +597,11 @@ public class Usuarios extends javax.swing.JFrame{
         catch(SQLException e){
             JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
     }
-    //MÉTODO ACTUALIZAR USUARIO
+    /**
+     * MÉTODO PARA ACTUALIZAR USUARIO
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Actualizar(){
         //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
         ClaseUsuarios cu=new ClaseUsuarios();
@@ -609,7 +629,12 @@ public class Usuarios extends javax.swing.JFrame{
         btnmodificar.setEnabled(false);
         Habilitar();
     }
-    //MÉTODO QUE VALIDA LETRAS
+    /**
+     * MÉTODO QUE VALIDA LETRAS
+     * @param a que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Letras(final JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
@@ -619,7 +644,13 @@ public class Usuarios extends javax.swing.JFrame{
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});//ANULA EVENTOS DEL TECLADO
     }
-    //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
+    /**
+     * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
+     * @param Respuesta que contiene un String que sera evaluado
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private static boolean EsNumero(String Respuesta){
         try{
             Integer.parseInt(Respuesta);
@@ -627,12 +658,21 @@ public class Usuarios extends javax.swing.JFrame{
         catch(NumberFormatException e){
            return false;}
     }
-    //MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
+    /**
+     * MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
+     * @param txt que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Minusculas(javax.swing.JTextField txt){
         String texto=(txt.getText().toLowerCase());
         txt.setText(texto);
     }
-    //MÉTODO LIMPIAR
+    /**
+     * MÉTODO LIMPIAR
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Limpiar(){
         cbidentificacion.setSelectedItem("");
         txtusuario.setText("");
@@ -643,7 +683,11 @@ public class Usuarios extends javax.swing.JFrame{
         cbperfil.setSelectedItem("");
         cbidentificacion.requestFocus();
     }
-    //MÉTODO INHABILITAR
+    /**
+     * MÉTODO INHABILITAR
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Inhabilitar(){
         cbidentificacion.setEnabled(false);
         txtnombrecompleto.setEnabled(false);
@@ -655,7 +699,11 @@ public class Usuarios extends javax.swing.JFrame{
         cbestado.setEnabled(false);
         cbperfil.setEnabled(false);
     }
-    //MÉTODO HABILITAR
+    /**
+     * MÉTODO HABILITAR
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Habilitar(){
         cbidentificacion.setEnabled(true);
         cbidentificacion.requestFocus();
@@ -667,7 +715,12 @@ public class Usuarios extends javax.swing.JFrame{
         cbestado.setEnabled(true);
         cbperfil.setEnabled(true);
     }
-    //MÉTODO MAIN
+    /**
+     * MÉTODO PRINCIPAL MAIN
+     * @param args 
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

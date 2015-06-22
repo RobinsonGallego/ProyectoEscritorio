@@ -1,5 +1,9 @@
 package Formularios;
-//LIBRERÍAS
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.0
+ */
 import Clases.ClasePerfiles;
 import Clases.ClasePersonalMedico;
 import Clases.ClaseUsuarios;
@@ -16,7 +20,11 @@ public class Menu extends javax.swing.JFrame{
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR Menu
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public Menu(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -25,12 +33,22 @@ public class Menu extends javax.swing.JFrame{
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
         lblusuario.setVisible(false);
     }
-    //MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL
+    /**
+     * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL 
+     * @param user que contiene un String recibido del Inicio de Sessión
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void setText(String user){
         Perfil(user);
         lblusuario.setText(user);
     }
-    //MÉTODO PARA VALIDAR PERFILES
+    /**
+     * MÉTODO PARA VALIDAR PERFILES
+     * @param usuario que contiene un String para Buscarlo
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Perfil(String usuario){
         //CREAMOS UN OBJETO DE LA CLASE USUARIOS
         ClaseUsuarios cu=new ClaseUsuarios();
@@ -523,7 +541,13 @@ public class Menu extends javax.swing.JFrame{
         Perfiles perfiles=new Perfiles();
         perfiles.setVisible(true);
     }//GEN-LAST:event_smperfilesActionPerformed
-    //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
+    /**
+     * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
+     * @param Respuesta que contiene un String que sera Analizada
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     private static boolean EsNumero(String Respuesta){
         try{
             Integer.parseInt(Respuesta);
@@ -531,7 +555,12 @@ public class Menu extends javax.swing.JFrame{
         catch(NumberFormatException e){
            return false;}
     }
-    //MÉTODO MAIN
+    /**
+     * MÉTODO PRINCIPAL MAIN
+     * @param args 
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

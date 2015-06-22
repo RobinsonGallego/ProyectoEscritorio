@@ -1,5 +1,9 @@
 package Formularios;
-
+/**
+ * LIBRERÍAS IMPORTADAS
+ * @author Robinson Gallego Alzate
+ * @version 1.1
+ */
 import Clases.ClasePerfiles;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -16,7 +20,11 @@ public class Perfiles extends javax.swing.JFrame{
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
-    //CONSTRUCTOR
+    /**
+     * CONSTRUCTOR Perfiles
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public Perfiles(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
@@ -194,7 +202,11 @@ public class Perfiles extends javax.swing.JFrame{
         if(evt.getSource()==txtdescripcion){
             if(Contador==10){
                 btnguardar.requestFocus();}}
-        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        /**
+         * MÉTODO PARA PONER MAYÚSCULA INICIAL
+         * @author Robinson Gallego Alzate
+         * @version 1.1
+         */
         JTextField txtdescrip=(JTextField)evt.getComponent();
         String texto=txtdescrip.getText();
         if(texto.length()>0){
@@ -319,7 +331,12 @@ public class Perfiles extends javax.swing.JFrame{
         Menu menu=new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_btnregresarActionPerformed
-    //MÉTODO QUE VALIDA LETRAS
+    /**
+     * MÉTODO QUE VALIDA LETRAS
+     * @param a que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private void Letras(final JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
@@ -329,7 +346,13 @@ public class Perfiles extends javax.swing.JFrame{
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});//ANULA EVENTOS DEL TECLADO
     }    
-    //VALIDACIÓN SI RESPUESTA ES UN NÚMERO
+    /**
+     * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
+     * @param Respuesta
+     * @return 
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     private static boolean EsNumero(String Respuesta){
         try{
             Integer.parseInt(Respuesta);
@@ -337,24 +360,41 @@ public class Perfiles extends javax.swing.JFrame{
         catch(NumberFormatException e){
            return false;}
     }
-    //MÉTODO PARA LIMPIAR TODO
+    /**
+     * MÉTODO PARA LIMPIAR TODO
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Limpiar(){
         txtcodigo.setText("");
         txtdescripcion.setText("");
         txtdescripcion.requestFocus();
     }
-    //MÉTODO PARA INHABILITAR CAMPOS
+    /**
+     * MÉTODO PARA INHABILITAR CAMPOS
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Inhabilitar(){
         txtcodigo.setEnabled(false);
         txtdescripcion.setEnabled(false);
     }
-    //MÉTODO PARA HABILITAR CAMPOS
+    /**
+     * MÉTODO PARA HABILITAR CAMPOS
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public void Habilitar(){
         txtcodigo.setEnabled(true);
         txtdescripcion.setEnabled(true);
         txtdescripcion.requestFocus();
     }
-    //MÉTODO MAIN
+    /**
+     * MÉTODO PRINCIPAL MAIN 
+     * @param args 
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
