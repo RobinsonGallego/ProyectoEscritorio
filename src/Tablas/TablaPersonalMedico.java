@@ -801,7 +801,9 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
     }
     /**
      * MÉTODO PRINCIPAL MAIN
-     * @param args 
+     * @param args que contiene un String de arreglos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
      */
     public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -37,11 +37,12 @@ public class FotoClassPM{
      * MÉTODO QUE DADA UNA CADENA DE BYTES LA CONVIERTE EN UNA IMAGEN CON EXTENSIÓN jpeg
      * @param bytes que contiene un arreglo de Bytes, para ser convertido a Imegen
      * @return una Imagen convertida
-     * @throws el método puede disparar excepciones de tipo IOException 
+     * @throws IOException que puede disparar las excepciones
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
-    private Image ConvertirImagen(byte[] bytes) throws IOException{//RECIBIMOS UN ARRAYS DE BYTES
+    private Image ConvertirImagen(byte[] bytes) throws IOException{
+        //RECIBIMOS UN ARRAYS DE BYTES
         ByteArrayInputStream bis=new ByteArrayInputStream(bytes);
         Iterator readers=ImageIO.getImageReadersByFormatName("jpeg");
         ImageReader reader=(ImageReader) readers.next();

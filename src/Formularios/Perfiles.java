@@ -348,8 +348,8 @@ public class Perfiles extends javax.swing.JFrame{
     }    
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
-     * @param Respuesta
-     * @return 
+     * @param Respuesta que contiene un String de sera evaluado
+     * @return un dato de tipo Booleano
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
@@ -391,7 +391,7 @@ public class Perfiles extends javax.swing.JFrame{
     }
     /**
      * MÉTODO PRINCIPAL MAIN 
-     * @param args 
+     * @param args que contiene un String de arreglos
      * @author Robinson Gallego Alzate
      * @version 1.1
      */

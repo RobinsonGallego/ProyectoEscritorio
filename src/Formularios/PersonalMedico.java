@@ -3019,7 +3019,7 @@ public class PersonalMedico extends javax.swing.JFrame{
     /**
      * MÉTODO PARA VALIDAR FECHAS DE NACIMIENTO
      * @param FechaR que contiene un String para ser Validado
-     * @return 
+     * @return un int con la Edad, según la fecha de nacimiento
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
@@ -3261,7 +3261,7 @@ public class PersonalMedico extends javax.swing.JFrame{
     }
     /**
      * MÉTODO PRINCIPAL MAIN
-     * @param args 
+     * @param args que contiene un String de arreglos
      * @author Robinson Gallego Alzate
      * @version 1.0
      */

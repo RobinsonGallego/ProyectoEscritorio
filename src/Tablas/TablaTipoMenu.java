@@ -330,7 +330,9 @@ public class TablaTipoMenu extends javax.swing.JFrame{
     }
     /**
      * MÉTODO PRINCIPAL MAIN
-     * @param args 
+     * @param args que contiene un String de arreglos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable(){

@@ -505,7 +505,7 @@ public class TablaUsuarios extends javax.swing.JFrame{
     }
     /**
      * MÉTODO PRINCIPAL MAIN
-     * @param args
+     * @param args que contiene un String de arreglos
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
