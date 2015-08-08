@@ -34,7 +34,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
     public TablaPersonalMedico(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
-        setExtendedState(MAXIMIZED_BOTH);
+        setExtendedState(MAXIMIZED_BOTH);//TAMAÑO MAXIMO DE LA VENTANA
         setTitle("Tabla Personal Médico");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
         btnregresar.requestFocus();

@@ -97,34 +97,45 @@ public class Usuarios extends javax.swing.JFrame{
 
         pusuario.setBackground(new java.awt.Color(255, 255, 255));
         pusuario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        pusuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblidentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblidentificacion.setText("Identificación *");
+        pusuario.add(lblidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
 
         lblnombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblnombre.setText("Nombre Completo");
+        pusuario.add(lblnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 68, -1, -1));
 
         lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblusuario.setText("Usuario *");
+        pusuario.add(lblusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 111, -1, -1));
 
         lblcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblcorreo.setText("Correo *");
+        pusuario.add(lblcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 154, -1, -1));
 
         lblpreguntasecreta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblpreguntasecreta.setText("Pregunta Secreta *");
+        pusuario.add(lblpreguntasecreta, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 197, -1, -1));
 
         lblcontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblcontrasena.setText("Contraseña *");
+        pusuario.add(lblcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 240, -1, -1));
 
         lblestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblestado.setText("Estado *");
+        pusuario.add(lblestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 283, -1, -1));
 
         lblperfil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblperfil.setText("Perfil *");
+        pusuario.add(lblperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 326, -1, -1));
 
         lblmensaje.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblmensaje.setForeground(new java.awt.Color(255, 0, 0));
         lblmensaje.setText("Los campos marcados con el signo (*) son obligatorios");
+        pusuario.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 356, 380, -1));
+        pusuario.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 27, 90, 25));
 
         cbidentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbidentificacion.addActionListener(new java.awt.event.ActionListener() {
@@ -137,11 +148,13 @@ public class Usuarios extends javax.swing.JFrame{
                 cbidentificacionKeyTyped(evt);
             }
         });
+        pusuario.add(cbidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 27, 150, 25));
 
         txtnombrecompleto.setEditable(false);
         txtnombrecompleto.setBackground(new java.awt.Color(255, 255, 255));
         txtnombrecompleto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtnombrecompleto.setForeground(new java.awt.Color(255, 0, 0));
+        pusuario.add(txtnombrecompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 63, 270, 25));
 
         txtusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtusuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -152,15 +165,17 @@ public class Usuarios extends javax.swing.JFrame{
                 txtusuarioKeyTyped(evt);
             }
         });
+        pusuario.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 106, 150, 25));
 
         txtcorreo.setEditable(false);
         txtcorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtcorreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtcorreo.setEnabled(false);
+        pusuario.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 149, 220, 25));
 
         cbpreguntasecreta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbpreguntasecreta.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"", "¿Cuál es segundo Apellido de su mamá?", "¿Cuál es su color favorito?", "¿Cuál es nombre de su Abuela?", "¿Quién le enseño las vocales?", "¿Cuántos hijos tiene?", "¿Cuál es su pelicula favorita?", "¿Cuál es el color de sus ojos?" }));
+        pusuario.add(cbpreguntasecreta, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 192, 295, 25));
 
         txtcontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcontrasena.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -171,6 +186,7 @@ public class Usuarios extends javax.swing.JFrame{
                 txtcontrasenaKeyTyped(evt);
             }
         });
+        pusuario.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 235, 150, 25));
 
         cbestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbestado.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Activo","Inactivo"}));
@@ -179,6 +195,7 @@ public class Usuarios extends javax.swing.JFrame{
                 cbestadoKeyTyped(evt);
             }
         });
+        pusuario.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 278, -1, 25));
 
         cbperfil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbperfil.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -186,91 +203,13 @@ public class Usuarios extends javax.swing.JFrame{
                 cbperfilKeyTyped(evt);
             }
         });
+        pusuario.add(cbperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 321, 200, 25));
 
         lblmenscontrasena.setBackground(new java.awt.Color(255, 255, 255));
         lblmenscontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblmenscontrasena.setForeground(new java.awt.Color(255, 0, 0));
         lblmenscontrasena.setText("Contraseña Encriptada");
-
-        javax.swing.GroupLayout pusuarioLayout = new javax.swing.GroupLayout(pusuario);
-        pusuario.setLayout(pusuarioLayout);
-        pusuarioLayout.setHorizontalGroup(
-            pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pusuarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pusuarioLayout.createSequentialGroup()
-                        .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblpreguntasecreta)
-                            .addComponent(lblidentificacion)
-                            .addComponent(lblcorreo)
-                            .addComponent(lblusuario)
-                            .addComponent(lblcontrasena)
-                            .addComponent(lblnombre))
-                        .addGap(18, 18, 18)
-                        .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pusuarioLayout.createSequentialGroup()
-                                .addComponent(txtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblmenscontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pusuarioLayout.createSequentialGroup()
-                                .addComponent(cbidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtnombrecompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbpreguntasecreta, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblestado)
-                    .addComponent(lblperfil)
-                    .addGroup(pusuarioLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        pusuarioLayout.setVerticalGroup(
-            pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pusuarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblidentificacion)
-                        .addComponent(cbidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtnombrecompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblnombre))
-                .addGap(18, 18, 18)
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblusuario)
-                    .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblcorreo)
-                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblpreguntasecreta)
-                    .addComponent(cbpreguntasecreta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblcontrasena)
-                    .addComponent(txtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblmenscontrasena))
-                .addGap(18, 18, 18)
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblestado)
-                    .addComponent(cbestado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblperfil)
-                    .addComponent(cbperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(lblmensaje))
-        );
+        pusuario.add(lblmenscontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 240, -1, -1));
 
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar2_opt.png"))); // NOI18N
         btnguardar.setText("Guardar");
@@ -333,15 +272,15 @@ public class Usuarios extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(pusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnconsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,7 +328,6 @@ public class Usuarios extends javax.swing.JFrame{
             if(Contador==10){
                 txtusuario.requestFocus();}}
     }//GEN-LAST:event_cbidentificacionKeyTyped
-
     private void txtusuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusuarioKeyTyped
         if(txtusuario.getText().length()==10){
             evt.consume();}
@@ -403,7 +341,6 @@ public class Usuarios extends javax.swing.JFrame{
     private void txtusuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusuarioKeyReleased
         Minusculas(txtusuario);
     }//GEN-LAST:event_txtusuarioKeyReleased
-
     private void txtcontrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcontrasenaKeyTyped
         if(txtcontrasena.getText().length()==15){
             evt.consume();}
@@ -413,7 +350,6 @@ public class Usuarios extends javax.swing.JFrame{
             if(Contador==10){
                 cbestado.requestFocus();}}
     }//GEN-LAST:event_txtcontrasenaKeyTyped
-
     private void cbestadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbestadoKeyTyped
         char Caracter=evt.getKeyChar();
         int Contador=(int)(Caracter);
@@ -421,7 +357,6 @@ public class Usuarios extends javax.swing.JFrame{
             if(Contador==10){
                 cbperfil.requestFocus();}}
     }//GEN-LAST:event_cbestadoKeyTyped
-
     private void cbperfilKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbperfilKeyTyped
         char Caracter=evt.getKeyChar();
         int Contador=(int)(Caracter);

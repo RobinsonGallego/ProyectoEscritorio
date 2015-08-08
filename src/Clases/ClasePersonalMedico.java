@@ -136,7 +136,7 @@ public class ClasePersonalMedico{
             File file=new File(foto);
             fis=new FileInputStream(file);
             //AQUÍ EJECUTAMOS EL PROCEDIMIENTO ALMACENADO
-            String sql="execute GuardarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";//LOS SIGNOS SON SEGÚN EL NÚMERO DE DATOS
+            String sql="execute GuardarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";//LOS SIGNOS SON SEGÚN EL NÚMERO DE DATOS
             //COMO NO RECIBIMOS NINGÚN DATO DE RETORNO ENTONCES SOLO HACEMOS UN PREPARED
             PreparedStatement cmd=cn.prepareCall(sql);
             //AHORA AGREGAMOS LOS DATOS
@@ -164,6 +164,7 @@ public class ClasePersonalMedico{
             cmd.setInt(22,ultimosalario);
             cmd.setString(23,observaciones);
             cmd.setBinaryStream(24,fis,(int)file.length());
+            cmd.setString(25,foto);
             //EJECUTAMOS LA SENTENCIA
             cmd.execute();
             //CERRAMOS LA CONEXIÓN
@@ -185,7 +186,7 @@ public class ClasePersonalMedico{
             CallableStatement cmd=cn.prepareCall(sql);
             ResultSet rs=cmd.executeQuery();
             return rs;}
-        catch (Exception e){
+        catch(Exception e){
             System.out.println(e.getMessage());}
         return null;
     }
@@ -204,7 +205,7 @@ public class ClasePersonalMedico{
             CallableStatement cmd=cn.prepareCall(sql);
             ResultSet rs=cmd.executeQuery();
             return rs;}
-        catch (Exception e){
+        catch(Exception e){
             System.out.println(e.getMessage());}
         return null;
     }
@@ -244,7 +245,7 @@ public class ClasePersonalMedico{
             File file=new File(foto);
             fis=new FileInputStream(file);
             //CREAMOS LA SENTENCIA SQL
-            String sql="execute ActualizarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
+            String sql="execute ActualizarPersonalMedico ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
             //EJECUTAMOS EL PROCEDIMIENTO ALMACENADO CON LOS 4 PARAMETROS A RECIBIR
             PreparedStatement cmd=cn.prepareCall(sql);
             cmd.setLong(1,identificacion);
@@ -271,12 +272,13 @@ public class ClasePersonalMedico{
             cmd.setInt(22,ultimosalario);
             cmd.setString(23,observaciones);
             cmd.setBinaryStream(24,fis,(int)file.length());
+            cmd.setString(25,foto);
             //EJECUTAMOS LA SENTENCIA
             cmd.execute();
             //CERRAMOS LA CONEXIÓN
             cmd.close();
             cn.close();}
-        catch (FileNotFoundException|SQLException e){
+        catch(FileNotFoundException|SQLException e){
             System.out.println(e.getMessage());}
     }
     /**

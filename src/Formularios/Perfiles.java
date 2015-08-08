@@ -5,6 +5,7 @@ package Formularios;
  * @version 1.1
  */
 import Clases.ClasePerfiles;
+import Tablas.TablaPerfiles;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
@@ -140,6 +141,11 @@ public class Perfiles extends javax.swing.JFrame{
         btnlistar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnlistar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnlistar.setDescription("List");
+        btnlistar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlistarActionPerformed(evt);
+            }
+        });
 
         btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar2_opt.png"))); // NOI18N
         btnregresar.setText("Regresar");
@@ -331,6 +337,12 @@ public class Perfiles extends javax.swing.JFrame{
         Menu menu=new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_btnregresarActionPerformed
+    //ACCIÓN DEL BOTÓN LISTAR
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+        this.dispose();
+        Tablas.TablaPerfiles tp=new TablaPerfiles();
+        tp.setVisible(true);
+    }//GEN-LAST:event_btnlistarActionPerformed
     /**
      * MÉTODO QUE VALIDA LETRAS
      * @param a que contiene un JTextField

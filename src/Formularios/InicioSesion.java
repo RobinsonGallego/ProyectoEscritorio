@@ -240,7 +240,6 @@ public class InicioSesion extends javax.swing.JFrame{
             if(Contador==10){
                 jpcontrasena.requestFocus();}}
     }//GEN-LAST:event_txtusuarioKeyTyped
-
     private void jpcontrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyTyped
         if(jpcontrasena.getText().length()==15){
             evt.consume();}//ANULA LAS ACCIONES DEL TECLADO

@@ -228,6 +228,9 @@
         </Property>
         <Property name="description" type="java.lang.String" value="List"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlistarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnregresar">
       <Properties>

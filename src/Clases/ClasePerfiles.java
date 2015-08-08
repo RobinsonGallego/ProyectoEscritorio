@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 public class ClasePerfiles{
     Connection cn;
@@ -100,5 +101,38 @@ public class ClasePerfiles{
         catch (Exception e){
             System.out.println(e.getMessage());}
         return null;
+    }
+    /**
+     * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
+     * @param modelo que contiene un DefaultTableModel para mostrar los Datos
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    public void LlenarDatos(DefaultTableModel modelo){
+        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
+        try{
+            //SE CREA LA SENTENCIA SQL
+            String sql="select * from Perfiles";
+            //PREPARAMOS LA LLAMADA
+            CallableStatement cmd=cn.prepareCall(sql);
+            //EJECUTAMOS LA LLAMADA Y RECIBIMOS LOS DATOS DE LA BASE DE DATOS
+            ResultSet rs=cmd.executeQuery();
+            //SE LEE EL MÁXIMO DE FILAS
+            while(rs.next()){
+                /*SE CREA UN OBJETO DE DATOS QUE GUARDARA
+                LOS DATOS Y LUEGO LOS INSERTAREMOS EN LA TABLA*/
+                Object[] datos=new Object[2];
+                //SE PONE 2, PORQUE SOLO SON 2 COLUMNAS
+                for (int i=0;i<2;i++){
+                    //GUARDAMOS LOS DATOS EN EL OBJETO
+                    datos[0]=rs.getString(1);
+                    datos[1]=rs.getString(2);}
+                //GUARDAMOS LOS DATOS EN LA TABLA
+                modelo.addRow(datos);}
+            //CERRAMOS LA CONEXIÓN
+            cmd.close();
+            cn.close();}
+        catch(Exception e){
+            System.out.println(e.getMessage());}
     }
 }

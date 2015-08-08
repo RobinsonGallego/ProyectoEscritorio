@@ -31,8 +31,7 @@ public class FotoClassPM{
     public FotoClassPM(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
-        cn=con.Conectate();
-    }
+        cn=con.Conectate();}
     /**
      * MÉTODO QUE DADA UNA CADENA DE BYTES LA CONVIERTE EN UNA IMAGEN CON EXTENSIÓN jpeg
      * @param bytes que contiene un arreglo de Bytes, para ser convertido a Imegen
@@ -74,7 +73,33 @@ public class FotoClassPM{
                 i++;}
             //CERRAMOS LA CONEXIÓN
             rs.close();}
-        catch (IOException|SQLException e){
+        catch(IOException|SQLException e){
+            Logger.getLogger(Clases.FotoClassPM.class.getName()).log(Level.SEVERE,null,e);}
+        return data;
+    }
+    /**
+     * MÉTODO PARA RECUPERAR LA IMAGEN DE LA BASE DE DATOS
+     * @param identificacion que con tiene un String que se Buscara
+     * @return un dato con la Imagen
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    public Image RecuperarFotoPaciente(String identificacion){
+        try{
+            //SENTENCIA SQL
+            String sql="select Pacientes.Foto from Pacientes where Identificacion='"+identificacion+"'";
+            CallableStatement cmd=cn.prepareCall(sql);
+            ResultSet rs=cmd.executeQuery();
+            int i=0;
+            while(rs.next()){
+                //SE LEE LA CADENA DE BYTES DE LA BASE DE DATOS
+                byte[] b=rs.getBytes("Foto");
+                //LA CADENA OBTENIDA SE CONVERTIRA EN UNA IMAGEN
+                data=ConvertirImagen(b);
+                i++;}
+            //CERRAMOS LA CONEXIÓN
+            rs.close();}
+        catch(IOException|SQLException e){
             Logger.getLogger(Clases.FotoClassPM.class.getName()).log(Level.SEVERE,null,e);}
         return data;
     }

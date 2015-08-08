@@ -8,6 +8,8 @@ import Clases.ClasePerfiles;
 import Clases.ClasePersonalMedico;
 import Clases.ClaseUsuarios;
 import Clases.GenerarReportes;
+import java.awt.Desktop;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.Icon;
@@ -41,8 +43,7 @@ public class Menu extends javax.swing.JFrame{
      */
     public void setText(String user){
         Perfil(user);
-        lblusuario.setText(user);
-    }
+        lblusuario.setText(user);}
     /**
      * MÉTODO PARA VALIDAR PERFILES
      * @param usuario que contiene un String para Buscarlo
@@ -202,6 +203,11 @@ public class Menu extends javax.swing.JFrame{
         smpacientes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         smpacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/paciente_opt.png"))); // NOI18N
         smpacientes.setText("Pacientes");
+        smpacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smpacientesActionPerformed(evt);
+            }
+        });
         mgestiones.add(smpacientes);
 
         smpersonal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
@@ -242,6 +248,11 @@ public class Menu extends javax.swing.JFrame{
         smhabitaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         smhabitaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/habitaciones_opt.png"))); // NOI18N
         smhabitaciones.setText("Habitaciones");
+        smhabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smhabitacionesActionPerformed(evt);
+            }
+        });
         mgestiones.add(smhabitaciones);
 
         smconsultorios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
@@ -437,6 +448,11 @@ public class Menu extends javax.swing.JFrame{
         smmanualusuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         smmanualusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manual3_opt.png"))); // NOI18N
         smmanualusuario.setText("Manual de Usuario");
+        smmanualusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smmanualusuarioActionPerformed(evt);
+            }
+        });
         mayuda.add(smmanualusuario);
 
         smmanualtecnico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -541,6 +557,30 @@ public class Menu extends javax.swing.JFrame{
         Perfiles perfiles=new Perfiles();
         perfiles.setVisible(true);
     }//GEN-LAST:event_smperfilesActionPerformed
+    //ACCIÓN DEL SUB-MENÚ PACIENTES
+    private void smpacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smpacientesActionPerformed
+        this.dispose();
+        Pacientes pacientes=new Pacientes();
+        pacientes.setText(lblusuario.getText());
+        pacientes.setVisible(true);
+    }//GEN-LAST:event_smpacientesActionPerformed
+    //ACCIÓN DEL SUB-MENÚ HABITACIONES
+    private void smhabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smhabitacionesActionPerformed
+        this.dispose();
+        Habitaciones h=new Habitaciones();
+        h.setText(lblusuario.getText());
+        h.setVisible(true);
+    }//GEN-LAST:event_smhabitacionesActionPerformed
+    //ACCIÓN DEL SUB-MENÚ MANUAL DE USUARIO
+    private void smmanualusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smmanualusuarioActionPerformed
+        int respuesta=JOptionPane.showConfirmDialog(null,"¿Desea abrir el Manual de Usuario?","Manual de Usuario",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
+        if(respuesta==0){
+            try{
+                File rutaPDF=new File(getClass().getResource("/Documentos/ManualdeusuarioPPI.pdf").getFile());
+                Desktop.getDesktop().open(rutaPDF);}
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Error en Documento PDF: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
+    }//GEN-LAST:event_smmanualusuarioActionPerformed
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que sera Analizada

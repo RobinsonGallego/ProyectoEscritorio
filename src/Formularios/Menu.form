@@ -32,6 +32,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pacientes"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="smpacientesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="smpersonal">
               <Properties>
@@ -108,6 +111,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Habitaciones"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="smhabitacionesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="smconsultorios">
               <Properties>
@@ -515,6 +521,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manual de Usuario"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="smmanualusuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="smmanualtecnico">
               <Properties>
