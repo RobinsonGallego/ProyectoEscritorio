@@ -1764,7 +1764,7 @@ public class Pacientes extends javax.swing.JFrame{
                     btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));
                     btnmodificar.setText("Buscar");
                     btnmodificar.setDescription("Seach");
-                    //btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));
+                    btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar2_opt.png")));
                     btnmodificar.setEnabled(true);}
                 else{
                     cbtipodocumento.requestFocus();}
