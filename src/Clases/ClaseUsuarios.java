@@ -114,13 +114,15 @@ public class ClaseUsuarios{
      * @param contrasena que contiene un String para Guardar
      * @param estado que contiene un String para Guardar
      * @param perfil que contiene un String para Guardar
+     * @param cambiocontra que contiene un int para Guardar
+     * @param respu que contiene un String para Guardar
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
-    public void Guardar(long identificacion,String usuario,String correo,String preguntasecreta,String contrasena,String estado,String perfil){
+    public void Guardar(long identificacion,String usuario,String correo,String preguntasecreta,String contrasena,String estado,String perfil,int cambiocontra,String respu){
         try{
             //AQUÍ EJECUTAMOS EL PROCEDIMIENTO ALMACENADO
-            String sql="execute GuardarUsuarios ?,?,?,?,?,?,?";//LOS SIGNOS SON SEGÚN EL NÚMERO DE DATOS
+            String sql="execute GuardarUsuarios ?,?,?,?,?,?,?,?,?";//LOS SIGNOS SON SEGÚN EL NÚMERO DE DATOS
             //COMO NO RECIBIMOS NINGÚN DATO DE RETORNO ENTONCES SOLO HACEMOS UN PREPARED
             PreparedStatement cmd=cn.prepareCall(sql);
             //AHORA AGREGAMOS LOS DATOS
@@ -140,6 +142,8 @@ public class ClaseUsuarios{
             catch(SQLException e){
                 System.out.println(e.getMessage());}
             cmd.setInt(7,codigoPerfil);
+            cmd.setInt(8,cambiocontra);
+            cmd.setString(9,respu);
             //EJECUTAMOS LA SENTENCIA
             cmd.execute();
             //CERRAMOS LA CONEXIÓN
@@ -181,6 +185,27 @@ public class ClaseUsuarios{
             catch(SQLException e){
                 System.out.println(e.getMessage());}
             //EJECUTAMOS LA SENTENCIA
+            cmd.execute();
+            //CERRAMOS LA CONEXIÓN
+            cmd.close();
+            cn.close();}
+        catch(SQLException e){
+            System.out.println(e.getMessage());}
+    }
+    /**
+     * MÉTODO PARA ACTUALIZAR LA CONTRASEÑA
+     * @param identificacion
+     * @param contraNueva
+     * @param cambioContra
+     * @param respuesta
+     */
+    public void ActualizarContrasena(long identificacion,String contraNueva,int cambioContra,String respuesta){
+        try{
+            //CREAMOS LA SENTENCIA SQL
+            String sql="update Usuarios set Contrasena='"+contraNueva+"',CambioContrasena="+cambioContra+",Respuesta='"+respuesta+"'where IdentificacionUsuario="+identificacion;
+            //CREAMOS UN PreparedStatement
+            PreparedStatement cmd=cn.prepareCall(sql);
+            //EJECUTAMOS EL QUERY
             cmd.execute();
             //CERRAMOS LA CONEXIÓN
             cmd.close();

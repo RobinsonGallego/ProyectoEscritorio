@@ -4,6 +4,7 @@ package Formularios;
  * @author Robinson Gallego Alzate
  * @version 1.0
  */
+import Clases.ClasePacientes;
 import Clases.ClasePerfiles;
 import Clases.ClasePersonalMedico;
 import Clases.ClaseUsuarios;
@@ -309,6 +310,11 @@ public class Menu extends javax.swing.JFrame{
         smhistoria.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         smhistoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/historia clinica_opt.png"))); // NOI18N
         smhistoria.setText("Historia Clinica");
+        smhistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smhistoriaActionPerformed(evt);
+            }
+        });
         mtransacciones.add(smhistoria);
 
         smdiagnostico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK));
@@ -581,6 +587,26 @@ public class Menu extends javax.swing.JFrame{
             catch(Exception e){
                 JOptionPane.showMessageDialog(null,"Error en Documento PDF: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     }//GEN-LAST:event_smmanualusuarioActionPerformed
+    //ACCIÓN DEL SUB-MENÚ HISTORIA CLINICA
+    private void smhistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smhistoriaActionPerformed
+        String respuesta=((String)JOptionPane.showInputDialog(null,"Ingrese el Número de Documento para Historia Clinica.","Consultar Historia Clinica",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
+        if(respuesta==null){
+            mtransacciones.requestFocus();}
+        else{
+            ClasePacientes cpa=new ClasePacientes();
+            ResultSet rs=cpa.BuscarIdentificacion(respuesta);
+            try{
+                if(rs.next()){
+                    HistoriaClinica hc=new HistoriaClinica();
+                    hc.InfoPaciente(rs);
+                    hc.setVisible(true);
+                    this.dispose();}
+                else{
+                    JOptionPane.showMessageDialog(null,"El Documento buscado no existe.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                    mtransacciones.requestFocus();}}
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
+    }//GEN-LAST:event_smhistoriaActionPerformed
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que sera Analizada

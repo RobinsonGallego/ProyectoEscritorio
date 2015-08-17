@@ -5,6 +5,7 @@ package Formularios;
  * @version 1.0
  */
 import Clases.ClaseUsuarios;
+import Clases.Encriptar_Desencriptar;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
@@ -282,9 +283,37 @@ public class InicioSesion extends javax.swing.JFrame{
             ResultSet rs=cu.BuscarUsuario2(user);
             try{
                 if(rs.next()){
+                    //DESENCRIPTAMOS LA CONTRASEÑA
+                    Encriptar_Desencriptar ed=new Encriptar_Desencriptar();
                     String password=rs.getString(6);
+                    String passDesencriptado=ed.Desencriptar(rs.getString(6));
                     String estado=rs.getString(7);
                     if(password.equals(contrasena)){
+                        if(estado.equals("Activo")){
+                            int cambio=rs.getInt(9);
+                            if(cambio==0){
+                                int cambiocontra=JOptionPane.showOptionDialog(null,"Usted es un Usuario Nuevo. Por favor modifique su Contraseña.","Usuario Nuevo",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,informacion,null,null);
+                                if(cambiocontra==0){
+                                    this.dispose();
+                                    CambioContraseña cc=new CambioContraseña();
+                                    cc.Pregunta(rs);
+                                    cc.setVisible(true);}
+                                else{
+                                    JOptionPane.showMessageDialog(null,"Debe actualizar la contraseña para ingresar al Sistema.","Error",JOptionPane.ERROR_MESSAGE,error);
+                                    txtusuario.setText("");
+                                    jpcontrasena.setText("");
+                                    txtusuario.requestFocus();}}
+                            else{
+                                this.dispose();
+                                Menu menu=new Menu();
+                                menu.setText(user);
+                                menu.setVisible(true);}}
+                        else{
+                            JOptionPane.showMessageDialog(null,"El Usuario ingresado NO esta Activo.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                            txtusuario.setText("");
+                            jpcontrasena.setText("");
+                            txtusuario.requestFocus();}}
+                    else if(passDesencriptado.equals(contrasena)){
                         if(estado.equals("Activo")){
                             this.dispose();
                             Menu menu=new Menu();

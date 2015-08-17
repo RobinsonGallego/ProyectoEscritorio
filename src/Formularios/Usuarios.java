@@ -39,6 +39,7 @@ public class Usuarios extends javax.swing.JFrame{
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
         txtnombrecompleto.setBorder(BorderFactory.createLineBorder(Color.white));
         lblid.setVisible(false);
+        lblcambiocontrasena.setVisible(false);
         lblmenscontrasena.setVisible(false);
         cbidentificacion.requestFocus();
         //VALIDACIONES LETRAS
@@ -87,6 +88,9 @@ public class Usuarios extends javax.swing.JFrame{
         cbestado = new javax.swing.JComboBox();
         cbperfil = new javax.swing.JComboBox();
         lblmenscontrasena = new javax.swing.JLabel();
+        lblcambiocontrasena = new javax.swing.JLabel();
+        lblrespuesta = new javax.swing.JLabel();
+        txtrespuesta = new javax.swing.JTextField();
         btnguardar = new org.edisoncor.gui.button.ButtonTask();
         btnconsultar = new org.edisoncor.gui.button.ButtonTask();
         btnmodificar = new org.edisoncor.gui.button.ButtonTask();
@@ -97,45 +101,34 @@ public class Usuarios extends javax.swing.JFrame{
 
         pusuario.setBackground(new java.awt.Color(255, 255, 255));
         pusuario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        pusuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblidentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblidentificacion.setText("Identificación *");
-        pusuario.add(lblidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, -1, -1));
 
         lblnombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblnombre.setText("Nombre Completo");
-        pusuario.add(lblnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 68, -1, -1));
 
         lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblusuario.setText("Usuario *");
-        pusuario.add(lblusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 111, -1, -1));
 
         lblcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblcorreo.setText("Correo *");
-        pusuario.add(lblcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 154, -1, -1));
 
         lblpreguntasecreta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblpreguntasecreta.setText("Pregunta Secreta *");
-        pusuario.add(lblpreguntasecreta, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 197, -1, -1));
 
         lblcontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblcontrasena.setText("Contraseña *");
-        pusuario.add(lblcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 240, -1, -1));
 
         lblestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblestado.setText("Estado *");
-        pusuario.add(lblestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 283, -1, -1));
 
         lblperfil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblperfil.setText("Perfil *");
-        pusuario.add(lblperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 326, -1, -1));
 
         lblmensaje.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblmensaje.setForeground(new java.awt.Color(255, 0, 0));
         lblmensaje.setText("Los campos marcados con el signo (*) son obligatorios");
-        pusuario.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 356, 380, -1));
-        pusuario.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 27, 90, 25));
 
         cbidentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbidentificacion.addActionListener(new java.awt.event.ActionListener() {
@@ -148,13 +141,11 @@ public class Usuarios extends javax.swing.JFrame{
                 cbidentificacionKeyTyped(evt);
             }
         });
-        pusuario.add(cbidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 27, 150, 25));
 
         txtnombrecompleto.setEditable(false);
         txtnombrecompleto.setBackground(new java.awt.Color(255, 255, 255));
         txtnombrecompleto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtnombrecompleto.setForeground(new java.awt.Color(255, 0, 0));
-        pusuario.add(txtnombrecompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 63, 270, 25));
 
         txtusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtusuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -165,17 +156,19 @@ public class Usuarios extends javax.swing.JFrame{
                 txtusuarioKeyTyped(evt);
             }
         });
-        pusuario.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 106, 150, 25));
 
         txtcorreo.setEditable(false);
         txtcorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcorreo.setEnabled(false);
-        pusuario.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 149, 220, 25));
 
         cbpreguntasecreta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbpreguntasecreta.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"", "¿Cuál es segundo Apellido de su mamá?", "¿Cuál es su color favorito?", "¿Cuál es nombre de su Abuela?", "¿Quién le enseño las vocales?", "¿Cuántos hijos tiene?", "¿Cuál es su pelicula favorita?", "¿Cuál es el color de sus ojos?" }));
-        pusuario.add(cbpreguntasecreta, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 192, 295, 25));
+        cbpreguntasecreta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cbpreguntasecretaKeyTyped(evt);
+            }
+        });
 
         txtcontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcontrasena.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -186,7 +179,6 @@ public class Usuarios extends javax.swing.JFrame{
                 txtcontrasenaKeyTyped(evt);
             }
         });
-        pusuario.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 235, 150, 25));
 
         cbestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbestado.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"","Activo","Inactivo"}));
@@ -195,7 +187,6 @@ public class Usuarios extends javax.swing.JFrame{
                 cbestadoKeyTyped(evt);
             }
         });
-        pusuario.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 278, -1, 25));
 
         cbperfil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbperfil.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -203,13 +194,151 @@ public class Usuarios extends javax.swing.JFrame{
                 cbperfilKeyTyped(evt);
             }
         });
-        pusuario.add(cbperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 321, 200, 25));
 
         lblmenscontrasena.setBackground(new java.awt.Color(255, 255, 255));
         lblmenscontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblmenscontrasena.setForeground(new java.awt.Color(255, 0, 0));
         lblmenscontrasena.setText("Contraseña Encriptada");
-        pusuario.add(lblmenscontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 240, -1, -1));
+
+        lblcambiocontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblcambiocontrasena.setText("0");
+
+        lblrespuesta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblrespuesta.setText("Respuesta");
+
+        txtrespuesta.setEditable(false);
+        txtrespuesta.setBackground(new java.awt.Color(255, 255, 255));
+        txtrespuesta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        javax.swing.GroupLayout pusuarioLayout = new javax.swing.GroupLayout(pusuario);
+        pusuario.setLayout(pusuarioLayout);
+        pusuarioLayout.setHorizontalGroup(
+            pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pusuarioLayout.createSequentialGroup()
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblidentificacion)
+                        .addGap(42, 42, 42)
+                        .addComponent(cbidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblnombre)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtnombrecompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblusuario)
+                        .addGap(80, 80, 80)
+                        .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblcorreo)
+                        .addGap(84, 84, 84)
+                        .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblpreguntasecreta)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbpreguntasecreta, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblcontrasena)
+                        .addGap(55, 55, 55)
+                        .addComponent(txtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblmenscontrasena))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblestado)
+                        .addGap(83, 83, 83)
+                        .addComponent(cbestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pusuarioLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblperfil))
+                            .addGroup(pusuarioLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblrespuesta)))
+                        .addGap(73, 73, 73)
+                        .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pusuarioLayout.createSequentialGroup()
+                                .addComponent(cbperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblcambiocontrasena))
+                            .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        pusuarioLayout.setVerticalGroup(
+            pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pusuarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblidentificacion))
+                    .addComponent(cbidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblnombre))
+                    .addComponent(txtnombrecompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblusuario))
+                    .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblcorreo))
+                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblpreguntasecreta))
+                    .addComponent(cbpreguntasecreta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblcontrasena)
+                            .addComponent(lblmenscontrasena))))
+                .addGap(18, 18, 18)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblestado))
+                    .addComponent(cbestado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblperfil))
+                    .addGroup(pusuarioLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblcambiocontrasena))))
+                .addGap(18, 18, 18)
+                .addGroup(pusuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblrespuesta)
+                    .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblmensaje))
+        );
 
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar2_opt.png"))); // NOI18N
         btnguardar.setText("Guardar");
@@ -272,7 +401,7 @@ public class Usuarios extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,7 +413,6 @@ public class Usuarios extends javax.swing.JFrame{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,6 +425,9 @@ public class Usuarios extends javax.swing.JFrame{
                 .addGap(18, 18, 18)
                 .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -313,12 +444,14 @@ public class Usuarios extends javax.swing.JFrame{
             try{
                 if(rs.next()){
                     txtnombrecompleto.setText(rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4));
-                    txtcorreo.setText(rs.getString(12));}}
+                    txtcorreo.setText(rs.getString(12));
+                    txtusuario.requestFocus();}}
             catch(SQLException e){
                 JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
         else{
             txtnombrecompleto.setText("");
-            txtcorreo.setText("");}
+            txtcorreo.setText("");
+            cbidentificacion.requestFocus();}
     }//GEN-LAST:event_cbidentificacionActionPerformed
     //LIMITACIONES Y TRANSFERENCIA DE FOCUS
     private void cbidentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbidentificacionKeyTyped
@@ -376,6 +509,9 @@ public class Usuarios extends javax.swing.JFrame{
         else if(txtusuario.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir el Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtusuario.requestFocus();}
+        else if(txtusuario.getText().length()<9){
+            JOptionPane.showMessageDialog(null,"El Usuario debe ser de mínimo 9 caracteres","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            txtusuario.requestFocus();}
         else if(String.valueOf(txtusuario.getText().charAt(0)).equals(" ")){
             JOptionPane.showMessageDialog(null,"El Usuario no debe iniciar con Espacio en Blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtusuario.requestFocus();
@@ -385,6 +521,9 @@ public class Usuarios extends javax.swing.JFrame{
             cbpreguntasecreta.requestFocus();}
         else if(txtcontrasena.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir la Contraseña","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            txtcontrasena.requestFocus();}
+        else if(txtcontrasena.getText().length()<8){
+            JOptionPane.showMessageDialog(null,"La Contraseña debe ser de mínimo 8 caracteres","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcontrasena.requestFocus();}
         else if(String.valueOf(txtcontrasena.getText().charAt(0)).equals(" ")){
             JOptionPane.showMessageDialog(null,"La Contraseña no debe iniciar con Espacio en Blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
@@ -444,6 +583,7 @@ public class Usuarios extends javax.swing.JFrame{
                                     cbperfil.setSelectedItem(rs2.getString(2));}}
                             catch(SQLException e){
                                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
+                            txtrespuesta.setText(rs.getString(10));
                             btnconsultar.setText("Limpiar");
                             btnconsultar.setDescription("Clean");
                             btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
@@ -502,6 +642,14 @@ public class Usuarios extends javax.swing.JFrame{
         TablaUsuarios tu=new TablaUsuarios();
         tu.setVisible(true);
     }//GEN-LAST:event_btnlistarActionPerformed
+    //TRANSFERENCIA DE FOCUS
+    private void cbpreguntasecretaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbpreguntasecretaKeyTyped
+        char Caracter=evt.getKeyChar();
+        int Contador=(int)(Caracter);
+        if(evt.getSource()==cbpreguntasecreta){
+            if(Contador==10){
+                txtcontrasena.requestFocus();}}
+    }//GEN-LAST:event_cbpreguntasecretaKeyTyped
     /**
      * MÉTODO PARA GUARDAR USUARIO
      * @author Robinson Gallego Alzate
@@ -526,7 +674,9 @@ public class Usuarios extends javax.swing.JFrame{
                 String contrasena=txtcontrasena.getText();
                 String estado=(String)cbestado.getSelectedItem();
                 String perfil=(String)cbperfil.getSelectedItem();
-                cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil);
+                int cambiocontra=Integer.parseInt(lblcambiocontrasena.getText());
+                String respuesta=txtrespuesta.getText();
+                cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil,cambiocontra,respuesta);
                 JOptionPane.showMessageDialog(null,"Registro guardado con Exito.","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
                 Limpiar();}}
         catch(SQLException e){
@@ -693,6 +843,7 @@ public class Usuarios extends javax.swing.JFrame{
     private javax.swing.JComboBox cbidentificacion;
     private javax.swing.JComboBox cbperfil;
     private javax.swing.JComboBox cbpreguntasecreta;
+    private javax.swing.JLabel lblcambiocontrasena;
     private javax.swing.JLabel lblcontrasena;
     private javax.swing.JLabel lblcorreo;
     private javax.swing.JLabel lblestado;
@@ -703,11 +854,13 @@ public class Usuarios extends javax.swing.JFrame{
     private javax.swing.JLabel lblnombre;
     private javax.swing.JLabel lblperfil;
     private javax.swing.JLabel lblpreguntasecreta;
+    private javax.swing.JLabel lblrespuesta;
     private javax.swing.JLabel lblusuario;
     private javax.swing.JPanel pusuario;
     private javax.swing.JTextField txtcontrasena;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtnombrecompleto;
+    private javax.swing.JTextField txtrespuesta;
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }

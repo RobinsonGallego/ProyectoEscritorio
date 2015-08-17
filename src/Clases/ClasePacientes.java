@@ -84,12 +84,12 @@ public class ClasePacientes{
             ResultSet rs=cmd.executeQuery();
             //LEEMOS TODAS LAS FILAS QUE NOS ENVIA EL SQL
             while(rs.next()){
-                for (int i=0;i<1;i++){//SE PONE i<1 PORQUE SOLO TENEMOS UNA COLUMNA
+                for(int i=0;i<1;i++){//SE PONE i<1 PORQUE SOLO TENEMOS UNA COLUMNA
                     lista.addItem(rs.getString(i+1));}}
             //CERRAMOS LA CONEXIÓN
             cmd.close();
             cn.close();}
-        catch (Exception e){
+        catch(Exception e){
             System.out.println(e.getMessage());}
     }
     /**
