@@ -21,6 +21,7 @@ public class InicioSesion extends javax.swing.JFrame{
     //IMAGENES DE LOS MENSAJES
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
+    Icon pregunta=new ImageIcon(getClass().getResource("/Imagenes/pregunta_opt.png"));
     /**
      * MÉTODO PARA ASIGNAR UN VALOR Y TEXTO AL SPLASH
      * @param splashInicio que contiene una Clase SplashInicio
@@ -121,7 +122,7 @@ public class InicioSesion extends javax.swing.JFrame{
                 btningresarKeyTyped(evt);
             }
         });
-        jpiniciosesion.add(btningresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, -1));
+        jpiniciosesion.add(btningresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, 25));
 
         btnsalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SALIR.PNG"))); // NOI18N
@@ -139,13 +140,18 @@ public class InicioSesion extends javax.swing.JFrame{
                 btnsalirKeyTyped(evt);
             }
         });
-        jpiniciosesion.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, -1));
+        jpiniciosesion.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, 25));
 
         btnrecordar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnrecordar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/recordar2.png"))); // NOI18N
         btnrecordar.setText("Recordar Contraseña");
         btnrecordar.setPreferredSize(new java.awt.Dimension(193, 25));
-        jpiniciosesion.add(btnrecordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 200, -1));
+        btnrecordar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrecordarActionPerformed(evt);
+            }
+        });
+        jpiniciosesion.add(btnrecordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 200, 25));
 
         txtusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtusuario.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 102)));
@@ -266,6 +272,36 @@ public class InicioSesion extends javax.swing.JFrame{
     private void jpcontrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyReleased
         Minusculas(jpcontrasena);
     }//GEN-LAST:event_jpcontrasenaKeyReleased
+    //ACCIÓN DEL BOTÓN RECUPERAR CONTRASEÑA
+    private void btnrecordarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrecordarActionPerformed
+        String respuesta=(String)JOptionPane.showInputDialog(null,"Ingrese el Usuario a Recuperar Contraseña.","Recuperar Contraseña",JOptionPane.QUESTION_MESSAGE,pregunta,null,null);
+        if(respuesta==null){
+            txtusuario.setText("");
+            jpcontrasena.setText("");
+            txtusuario.requestFocus();}
+        else if(EsNumero(respuesta)){
+            JOptionPane.showMessageDialog(null,"Error en el Usuario.\nEl Dato debe ser un texto.","Error",JOptionPane.ERROR_MESSAGE,error);
+            txtusuario.setText("");
+            jpcontrasena.setText("");
+            txtusuario.requestFocus();}
+        else{
+            //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+            ClaseUsuarios cu=new ClaseUsuarios();
+            ResultSet rs=cu.BuscarUsuario2(respuesta);
+            try{
+                if(rs.next()){
+                    this.dispose();
+                    RecuperarContrasena rc=new RecuperarContrasena();
+                    rc.Pregunta(rs);
+                    rc.setVisible(true);}
+                else{
+                    JOptionPane.showMessageDialog(null,"El Usuario ingresado no existe.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                    txtusuario.setText("");
+                    jpcontrasena.setText("");
+                    txtusuario.requestFocus();}}
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
+    }//GEN-LAST:event_btnrecordarActionPerformed
     /**
      * MÉTODO PARA INGRESAR AL SISTEMA
      * @author Robinson Gallego Alzate
@@ -275,7 +311,7 @@ public class InicioSesion extends javax.swing.JFrame{
         String user=txtusuario.getText();
         String contrasena=jpcontrasena.getText();
         if(user.equals("")&&contrasena.equals("")){
-            JOptionPane.showMessageDialog(null,"Por favor ingrese los Datos","Error",JOptionPane.ERROR_MESSAGE,error);
+            JOptionPane.showMessageDialog(null,"Por favor ingrese los Datos.","Error",JOptionPane.ERROR_MESSAGE,error);
             txtusuario.requestFocus();}
         else{
             //CREAMOS UN OBJETO DE LA CLASE USUARIOS
@@ -295,7 +331,7 @@ public class InicioSesion extends javax.swing.JFrame{
                                 int cambiocontra=JOptionPane.showOptionDialog(null,"Usted es un Usuario Nuevo. Por favor modifique su Contraseña.","Usuario Nuevo",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,informacion,null,null);
                                 if(cambiocontra==0){
                                     this.dispose();
-                                    CambioContraseña cc=new CambioContraseña();
+                                    CambioContrasena cc=new CambioContrasena();
                                     cc.Pregunta(rs);
                                     cc.setVisible(true);}
                                 else{
@@ -309,7 +345,7 @@ public class InicioSesion extends javax.swing.JFrame{
                                 menu.setText(user);
                                 menu.setVisible(true);}}
                         else{
-                            JOptionPane.showMessageDialog(null,"El Usuario ingresado NO esta Activo.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                            JOptionPane.showMessageDialog(null,"El Usuario ingresado no esta Activo.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
                             txtusuario.setText("");
                             jpcontrasena.setText("");
                             txtusuario.requestFocus();}}
@@ -320,7 +356,7 @@ public class InicioSesion extends javax.swing.JFrame{
                             menu.setText(user);
                             menu.setVisible(true);}
                         else{
-                            JOptionPane.showMessageDialog(null,"El Usuario ingresado NO esta Activo.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                            JOptionPane.showMessageDialog(null,"El Usuario ingresado no esta Activo.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
                             txtusuario.setText("");
                             jpcontrasena.setText("");
                             txtusuario.requestFocus();}}
@@ -361,6 +397,20 @@ public class InicioSesion extends javax.swing.JFrame{
                 if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});//ANULA EVENTOS DEL TECLADO
+    }
+    /**
+     * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
+     * @param Respuesta que contiene un String que sera Analizada
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private static boolean EsNumero(String Respuesta){
+        try{
+            Integer.parseInt(Respuesta);
+            return true;}
+        catch(NumberFormatException e){
+           return false;}
     }
     /**
      * MÉTODO PRINCIPAL MAIN

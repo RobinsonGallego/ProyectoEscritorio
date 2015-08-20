@@ -24,8 +24,7 @@ public class SplashInicio extends javax.swing.JFrame{
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
-        startThread();
-    }
+        startThread();}
     /**
      * MÉTODO PARA INICIAR EL SPLASH
      * @author Robinson Gallego Alzate
@@ -39,8 +38,7 @@ public class SplashInicio extends javax.swing.JFrame{
                 aplicationFrame.setLocationRelativeTo(null);
                 aplicationFrame.setVisible(true);
                 dispose();}});
-        thread.start();
-    }
+        thread.start();}
     public JProgressBar getJProgressBar(){
         return jpbcargar;}
     public JLabel getJLabel(){
@@ -109,8 +107,7 @@ public class SplashInicio extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SplashInicio().setVisible(true);}});
-    }
+                new SplashInicio().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar jpbcargar;
     private javax.swing.JLabel lblimgenfondo;

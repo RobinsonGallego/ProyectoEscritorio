@@ -19,8 +19,7 @@ public class ClaseTipoMenu{
     public ClaseTipoMenu(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
-        cn=con.Conectate();
-    }
+        cn=con.Conectate();}
     /**
      * MÉTODO PARA GUARDAR UN TIPO MENÚ
      * @param tipomenu que contiene un String que se va a Guardar
@@ -47,8 +46,7 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UN DATO
      * @param codigo que contiene un int para Buscar
@@ -64,8 +62,7 @@ public class ClaseTipoMenu{
             return rs;}
         catch (Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA ACTUALIZAR LOS DATOS
      * @param codigo que contiene un int que se va a Actualizar
@@ -93,8 +90,7 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA ELIMINAR UN DATO
      * @param codigo que contiene un int que se Eliminara
@@ -113,8 +109,7 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR TIPO MENÚ
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -123,7 +118,6 @@ public class ClaseTipoMenu{
      * @version 1.0
      */
     public void BusquedaTipoMenu(DefaultTableModel modelo,String palabraactual){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from TipoMenu where TipoMenu like '%"+palabraactual+"%'";
@@ -146,8 +140,7 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR PACIENTE ESPECIAL
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -156,7 +149,6 @@ public class ClaseTipoMenu{
      * @version 1.0
      */
     public void BusquedaPacienteE(DefaultTableModel modelo,String palabraactual){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from TipoMenu where PacientesEspeciales like '%"+palabraactual+"%'";
@@ -179,8 +171,7 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -188,7 +179,6 @@ public class ClaseTipoMenu{
      * @version 1.0
      */
     public void LlenarDatos(DefaultTableModel modelo){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from TipoMenu";
@@ -211,8 +201,7 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR COMBOBOX COMPONENTES CON DATOS
      * @param lista que contiene una Lista con datos para un JComboBox
@@ -235,8 +224,7 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR COMBOBOX PACIENTES ESPECIALES CON DATOS
      * @param lista que contiene una Lista con datos para un JComboBox
@@ -259,6 +247,5 @@ public class ClaseTipoMenu{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
 }

@@ -33,8 +33,7 @@ public class Conectate{
             conn=DriverManager.getConnection(url,login,password);}
         catch(SQLException|ClassNotFoundException e){
             JOptionPane.showMessageDialog(null,"Error en Conexión: "+e);}
-        return conn;
-    }
+        return conn;}
     /**
      * MÉTODO PARA LISTAR LAS CONSULTAS QUE RETORNAN VALORES
      * @param cadena que contiene un String que se Buscara
@@ -51,6 +50,5 @@ public class Conectate{
             return rs;}
         catch(ClassNotFoundException|SQLException e){
             JOptionPane.showMessageDialog(null,e.getMessage());
-            return null;}
-    }
+            return null;}}
 }

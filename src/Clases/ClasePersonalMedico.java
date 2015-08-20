@@ -49,8 +49,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR COMBOBOX CIUDADES CON DATOS
      * @param lista que contiene una Lista de datos que se carga en un JComboBox
@@ -74,8 +73,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR COMBOBOX IDIOMAS CON DATOS
      * @param lista que contiene una Lista de datos que se carga en un JComboBox
@@ -98,8 +96,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA GUARDAR UN PERSONAL MÉDICO
      * @param identificacion que contiene un Long que se va a Guardar
@@ -171,8 +168,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch (FileNotFoundException|SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UN DATO
      * @param identificacion que contiene un Long que se va a Buscar
@@ -188,8 +184,7 @@ public class ClasePersonalMedico{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA BUSCAR UN DATO CON 3 PARAMETROS
      * @param nombres que contiene un String que se va a Buscar
@@ -207,8 +202,7 @@ public class ClasePersonalMedico{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA ACTUALIZAR LOS DATOS
      * @param identificacion que contiene un Long que se va a Actualizar
@@ -279,8 +273,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch(FileNotFoundException|SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -288,7 +281,6 @@ public class ClasePersonalMedico{
      * @version 1.0
      */
     public void LlenarDatos(DefaultTableModel modelo){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from PersonalMedico";
@@ -321,8 +313,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS PARA DIRECCIÓN Y ESTADO CIVIL
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -331,7 +322,6 @@ public class ClasePersonalMedico{
      * @version 1.0
      */
     public void BusquedaDireEstCi(DefaultTableModel modelo,long identificacion){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA IDENTIFICACIÓN
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from PersonalMedico where Identificacion like '%"+identificacion+"%'";
@@ -364,8 +354,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS PARA INFORMACIÓN PROFESIONAL
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -374,7 +363,6 @@ public class ClasePersonalMedico{
      * @version 1.0
      */
     public void BusquedaInfoPer(DefaultTableModel modelo,long identificacion){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA IDENTIFICACIÓN
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from PersonalMedico where Identificacion like '%"+identificacion+"%'";
@@ -405,8 +393,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR LA EXPERIENCIA LABORAL
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -415,7 +402,6 @@ public class ClasePersonalMedico{
      * @version 1.0
      */
     public void BusquedaExperienciaLaboral(DefaultTableModel modelo,long identificacion){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA IDENTIFICACIÓN
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from PersonalMedico where Identificacion like '%"+identificacion+"%'";
@@ -448,8 +434,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR NOMBRES
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -458,7 +443,6 @@ public class ClasePersonalMedico{
      * @version 1.0
      */
     public void BusquedaNombres(DefaultTableModel modelo,String nombres){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y NOMBRES
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from PersonalMedico where Nombres like '%"+nombres+"%'";
@@ -491,8 +475,7 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR PRIMER APELLIDO
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -501,7 +484,6 @@ public class ClasePersonalMedico{
      * @version 1.0
      */
     public void BusquedaPrimerApe(DefaultTableModel modelo,String primerApe){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y NOMBRES
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from PersonalMedico where PrimerApellido like '%"+primerApe+"%'";
@@ -534,6 +516,5 @@ public class ClasePersonalMedico{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
 }

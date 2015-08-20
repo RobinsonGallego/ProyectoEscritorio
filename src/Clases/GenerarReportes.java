@@ -28,8 +28,7 @@ public class GenerarReportes{
     public GenerarReportes(){
         //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
         Conectate con=new Conectate();
-        cn=con.Conectate();
-    }
+        cn=con.Conectate();}
     /**
      * MÉTODO PARA GENERAR REPORTE PERSONAL MÉDICO
      * @author Robinson Gallego Alzate
@@ -54,8 +53,7 @@ public class GenerarReportes{
             //MOSTRAMOS EL REPORTE
             ver.setVisible(true);}
         catch(JRException ex){
-            Logger.getLogger(GenerarReportes.class.getName()).log(Level.SEVERE,null,ex);}
-    }
+            Logger.getLogger(GenerarReportes.class.getName()).log(Level.SEVERE,null,ex);}}
     /**
      * MÉTODO PARA GENERAR REPORTE PERSONAL MÉDICO HOJA DE VIDA
      * @param Identificacion que contiene un Long que se Buscara
@@ -83,6 +81,5 @@ public class GenerarReportes{
             //MOSTRAMOS EL REPORTE
             ver.setVisible(true);}
         catch(JRException ex){
-            Logger.getLogger(GenerarReportes.class.getName()).log(Level.SEVERE,null,ex);}
-    }
+            Logger.getLogger(GenerarReportes.class.getName()).log(Level.SEVERE,null,ex);}}
 }

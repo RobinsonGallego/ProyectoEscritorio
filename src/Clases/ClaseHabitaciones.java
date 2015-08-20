@@ -1,5 +1,5 @@
 package Clases;
-
+//LIBRERÍAS IMPORTADAS
 import Conexion.Conectate;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -38,8 +38,7 @@ public class ClaseHabitaciones{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA GUARDAR UNA HABITACIÓN
      * @param numhabitacion que contiene un int para ser guardado
@@ -66,8 +65,7 @@ public class ClaseHabitaciones{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA ACTUALIZAR UNA HABITACIÓN
      * @param idhabitacion que contiene un int para ser actualizado
@@ -96,8 +94,7 @@ public class ClaseHabitaciones{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UN DATO
      * @param ID que contiene un int que se va a Buscar
@@ -113,8 +110,7 @@ public class ClaseHabitaciones{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -122,7 +118,6 @@ public class ClaseHabitaciones{
      * @version 1.0
      */
     public void LlenarDatos(DefaultTableModel modelo){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Habitaciones";
@@ -154,8 +149,7 @@ public class ClaseHabitaciones{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UN TIPO DE SERVICIO
      * @param tiposervicio que contiene un int que se va a Buscar
@@ -171,8 +165,7 @@ public class ClaseHabitaciones{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR ESTADO
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -181,7 +174,6 @@ public class ClaseHabitaciones{
      * @version 1.1
      */
     public void BusquedaEstado(DefaultTableModel modelo,String estado){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Habitaciones where Estado='"+estado+"'";
@@ -213,8 +205,7 @@ public class ClaseHabitaciones{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR TIPO SERVICIO
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -223,7 +214,6 @@ public class ClaseHabitaciones{
      * @version 1.1
      */
     public void BusquedaTipoServicio(DefaultTableModel modelo,int seleccion){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Habitaciones where TipoServicio="+seleccion;
@@ -255,6 +245,5 @@ public class ClaseHabitaciones{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
 }

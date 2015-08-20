@@ -49,8 +49,7 @@ public class FotoClassPM{
         ImageInputStream iis=ImageIO.createImageInputStream(source);
         reader.setInput(iis,true);
         ImageReadParam param=reader.getDefaultReadParam();
-        return reader.read(0,param);
-    }
+        return reader.read(0,param);}
     /**
      * MÉTODO PARA RECUPERAR LA IMAGEN DE LA BASE DE DATOS
      * @param identificacion que con tiene un Long que se Buscara
@@ -75,8 +74,7 @@ public class FotoClassPM{
             rs.close();}
         catch(IOException|SQLException e){
             Logger.getLogger(Clases.FotoClassPM.class.getName()).log(Level.SEVERE,null,e);}
-        return data;
-    }
+        return data;}
     /**
      * MÉTODO PARA RECUPERAR LA IMAGEN DE LA BASE DE DATOS
      * @param identificacion que con tiene un String que se Buscara
@@ -101,6 +99,5 @@ public class FotoClassPM{
             rs.close();}
         catch(IOException|SQLException e){
             Logger.getLogger(Clases.FotoClassPM.class.getName()).log(Level.SEVERE,null,e);}
-        return data;
-    }
+        return data;}
 }

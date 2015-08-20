@@ -1875,7 +1875,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         else if(txtcorreo.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcorreo.requestFocus();}
-        if(EsNumero(String.valueOf(txtcorreo.getText().charAt(0)))==true){
+        else if(EsNumero(String.valueOf(txtcorreo.getText().charAt(0)))==true){
             JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
             txtcorreo.requestFocus();
             txtcorreo.setText("");}
@@ -2150,7 +2150,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         else if(txtcorreo.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcorreo.requestFocus();}
-        if(EsNumero(String.valueOf(txtcorreo.getText().charAt(0)))==true){
+        else if(EsNumero(String.valueOf(txtcorreo.getText().charAt(0)))==true){
             JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
             txtcorreo.requestFocus();
             txtcorreo.setText("");}

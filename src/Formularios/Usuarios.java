@@ -350,6 +350,11 @@ public class Usuarios extends javax.swing.JFrame{
                 btnguardarActionPerformed(evt);
             }
         });
+        btnguardar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnguardarKeyTyped(evt);
+            }
+        });
 
         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png"))); // NOI18N
         btnconsultar.setText("Consultar");
@@ -359,6 +364,11 @@ public class Usuarios extends javax.swing.JFrame{
         btnconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnconsultarActionPerformed(evt);
+            }
+        });
+        btnconsultar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnconsultarKeyTyped(evt);
             }
         });
 
@@ -373,6 +383,11 @@ public class Usuarios extends javax.swing.JFrame{
                 btnmodificarActionPerformed(evt);
             }
         });
+        btnmodificar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnmodificarKeyTyped(evt);
+            }
+        });
 
         btnlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listar.png"))); // NOI18N
         btnlistar.setText("Listar");
@@ -384,6 +399,11 @@ public class Usuarios extends javax.swing.JFrame{
                 btnlistarActionPerformed(evt);
             }
         });
+        btnlistar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnlistarKeyTyped(evt);
+            }
+        });
 
         btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar2_opt.png"))); // NOI18N
         btnregresar.setText("Regresar");
@@ -393,6 +413,11 @@ public class Usuarios extends javax.swing.JFrame{
         btnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnregresarActionPerformed(evt);
+            }
+        });
+        btnregresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnregresarKeyTyped(evt);
             }
         });
 
@@ -501,8 +526,68 @@ public class Usuarios extends javax.swing.JFrame{
     private void txtcontrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcontrasenaKeyReleased
         Minusculas(txtcontrasena);
     }//GEN-LAST:event_txtcontrasenaKeyReleased
-    //ACCIÓN DEL BOTÓN GUARDAR
+    //ACCIÓN DEL BOTÓN GUARDAR CON CLIC
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        Guardar();
+    }//GEN-LAST:event_btnguardarActionPerformed
+    //ACCIÓN DEL BOTÓN CONSULTAR CON CLIC
+    private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
+        Consultar();
+    }//GEN-LAST:event_btnconsultarActionPerformed
+    //ACCIÓN DEL BOTÓN MODIFICAR CON CLIC
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        Actualizar();
+    }//GEN-LAST:event_btnmodificarActionPerformed
+    //ACCIÓN DEL BOTÓN REGRESAR CON CLIC
+    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarActionPerformed
+    //ACCIÓN DEL BOTÓN LISTAR CON CLIC
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+        this.dispose();
+        TablaUsuarios tu=new TablaUsuarios();
+        tu.setVisible(true);
+    }//GEN-LAST:event_btnlistarActionPerformed
+    //TRANSFERENCIA DE FOCUS
+    private void cbpreguntasecretaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbpreguntasecretaKeyTyped
+        char Caracter=evt.getKeyChar();
+        int Contador=(int)(Caracter);
+        if(evt.getSource()==cbpreguntasecreta){
+            if(Contador==10){
+                txtcontrasena.requestFocus();}}
+    }//GEN-LAST:event_cbpreguntasecretaKeyTyped
+    //ACCIÓN DEL BOTÓN GUARDAR CON TECLADO
+    private void btnguardarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnguardarKeyTyped
+        Guardar();
+    }//GEN-LAST:event_btnguardarKeyTyped
+    //ACCIÓN DEL BOTÓN CONSULTAR CON TECLADO
+    private void btnconsultarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnconsultarKeyTyped
+        Consultar();
+    }//GEN-LAST:event_btnconsultarKeyTyped
+    //ACCIÓN DEL BOTÓN MODIFICAR CON TECLADO
+    private void btnmodificarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnmodificarKeyTyped
+        Actualizar();
+    }//GEN-LAST:event_btnmodificarKeyTyped
+    //ACCIÓN DEL BOTÓN LISTAR CON TECLADO
+    private void btnlistarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnlistarKeyTyped
+        this.dispose();
+        TablaUsuarios tu=new TablaUsuarios();
+        tu.setVisible(true);
+    }//GEN-LAST:event_btnlistarKeyTyped
+    //ACCIÓN DEL BOTÓN REGRESAR CON TECLADO
+    private void btnregresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnregresarKeyTyped
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarKeyTyped
+    /**
+     * MÉTODO PARA GUARDAR USUARIO
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    private void Guardar(){
         if(cbidentificacion.getSelectedItem().equals("")){
             JOptionPane.showMessageDialog(null,"Debe seleccionar la Identificación del Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbidentificacion.requestFocus();}
@@ -536,10 +621,35 @@ public class Usuarios extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(null,"Debe seleccionar un Perfil para el Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbperfil.requestFocus();}
         else{
-            Guardar();}
-    }//GEN-LAST:event_btnguardarActionPerformed
-    //ACCIÓN DEL BOTÓN CONSULTAR
-    private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
+            //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
+            ClaseUsuarios cu=new ClaseUsuarios();
+            //CAPTURAMOS LOS DATOS
+            long identificacion=Long.parseLong((String)cbidentificacion.getSelectedItem());
+            //HACEMOS UNA BUSQUEDA PARA VER QUE ESTA IDENTIFICACIÓN NO TENGA USUARIO ASIGNADO
+            ResultSet rs=cu.BuscarUsuario(identificacion);
+            //VALIDAMOS
+            try{
+                if(rs.next()){
+                    JOptionPane.showMessageDialog(null,"La Identificación ya tiene Usuario asignado.","Error",JOptionPane.ERROR_MESSAGE,error);
+                    Limpiar();}
+                else{
+                    String usuario=txtusuario.getText();
+                    String correo=txtcorreo.getText();
+                    String preguntasecre=(String)cbpreguntasecreta.getSelectedItem();
+                    String contrasena=txtcontrasena.getText();
+                    String estado=(String)cbestado.getSelectedItem();
+                    String perfil=(String)cbperfil.getSelectedItem();
+                    int cambiocontra=Integer.parseInt(lblcambiocontrasena.getText());
+                    String respuesta=txtrespuesta.getText();
+                    cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil,cambiocontra,respuesta);
+                    JOptionPane.showMessageDialog(null,"Registro guardado con Exito.","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
+                    Limpiar();}}
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
+    /**
+     * MÉTODO PARA CONSULTAR UN USUARIO
+     */
+    private void Consultar(){
         switch(btnconsultar.getText()){
             case "Consultar":
                 String respuesta=((String)JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Consultar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
@@ -583,7 +693,6 @@ public class Usuarios extends javax.swing.JFrame{
                                     cbperfil.setSelectedItem(rs2.getString(2));}}
                             catch(SQLException e){
                                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-                            txtrespuesta.setText(rs.getString(10));
                             btnconsultar.setText("Limpiar");
                             btnconsultar.setDescription("Clean");
                             btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
@@ -606,10 +715,13 @@ public class Usuarios extends javax.swing.JFrame{
                 btnmodificar.setDescription("Edit");
                 btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
                 btnmodificar.setEnabled(false);
-                break;}
-    }//GEN-LAST:event_btnconsultarActionPerformed
-    //ACCIÓN DEL BOTÓN MODIFICAR
-    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+                break;}}
+    /**
+     * MÉTODO PARA ACTUALIZAR USUARIO
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    private void Actualizar(){
         //HABILITAMOS EL CAMPO QUE SE MODIFICARA
         cbestado.setEnabled(true);
         cbestado.requestFocus();
@@ -628,92 +740,31 @@ public class Usuarios extends javax.swing.JFrame{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar el Estado del Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
                 cbestado.requestFocus();}
             else{
-                Actualizar();}}
-    }//GEN-LAST:event_btnmodificarActionPerformed
-    //ACCIÓN DEL BOTÓN REGRESAR
-    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
-        this.dispose();
-        Menu menu=new Menu();
-        menu.setVisible(true);
-    }//GEN-LAST:event_btnregresarActionPerformed
-    //ACCIÓN DEL BOTÓN LISTAR
-    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
-        this.dispose();
-        TablaUsuarios tu=new TablaUsuarios();
-        tu.setVisible(true);
-    }//GEN-LAST:event_btnlistarActionPerformed
-    //TRANSFERENCIA DE FOCUS
-    private void cbpreguntasecretaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbpreguntasecretaKeyTyped
-        char Caracter=evt.getKeyChar();
-        int Contador=(int)(Caracter);
-        if(evt.getSource()==cbpreguntasecreta){
-            if(Contador==10){
-                txtcontrasena.requestFocus();}}
-    }//GEN-LAST:event_cbpreguntasecretaKeyTyped
-    /**
-     * MÉTODO PARA GUARDAR USUARIO
-     * @author Robinson Gallego Alzate
-     * @version 1.1
-     */
-    public void Guardar(){
-        //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
-        ClaseUsuarios cu=new ClaseUsuarios();
-        //CAPTURAMOS LOS DATOS
-        long identificacion=Long.parseLong((String)cbidentificacion.getSelectedItem());
-        //HACEMOS UNA BUSQUEDA PARA VER QUE ESTA IDENTIFICACIÓN NO TENGA USUARIO ASIGNADO
-        ResultSet rs=cu.BuscarUsuario(identificacion);
-        //VALIDAMOS
-        try{
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null,"La Identificación ya tiene Usuario asignado.","Error",JOptionPane.ERROR_MESSAGE,error);
-                Limpiar();}
-            else{
+                //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
+                ClaseUsuarios cu=new ClaseUsuarios();
+                //CAPTURAMOS LOS DATOS
+                long identificacion=Long.parseLong((String)cbidentificacion.getSelectedItem());
                 String usuario=txtusuario.getText();
                 String correo=txtcorreo.getText();
                 String preguntasecre=(String)cbpreguntasecreta.getSelectedItem();
-                String contrasena=txtcontrasena.getText();
+                //DESENCRIPTAMOS LA CONTRASEÑA
+                Encriptar_Desencriptar ed=new Encriptar_Desencriptar();
+                String contrasena=(ed.Desencriptar(txtcontrasena.getText()));
                 String estado=(String)cbestado.getSelectedItem();
                 String perfil=(String)cbperfil.getSelectedItem();
-                int cambiocontra=Integer.parseInt(lblcambiocontrasena.getText());
-                String respuesta=txtrespuesta.getText();
-                cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil,cambiocontra,respuesta);
-                JOptionPane.showMessageDialog(null,"Registro guardado con Exito.","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
-                Limpiar();}}
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
-    /**
-     * MÉTODO PARA ACTUALIZAR USUARIO
-     * @author Robinson Gallego Alzate
-     * @version 1.1
-     */
-    public void Actualizar(){
-        //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
-        ClaseUsuarios cu=new ClaseUsuarios();
-        //CAPTURAMOS LOS DATOS
-        long identificacion=Long.parseLong((String)cbidentificacion.getSelectedItem());
-        String usuario=txtusuario.getText();
-        String correo=txtcorreo.getText();
-        String preguntasecre=(String)cbpreguntasecreta.getSelectedItem();
-        //DESENCRIPTAMOS LA CONTRASEÑA
-        Encriptar_Desencriptar ed=new Encriptar_Desencriptar();
-        String contrasena=(ed.Desencriptar(txtcontrasena.getText()));
-        String estado=(String)cbestado.getSelectedItem();
-        String perfil=(String)cbperfil.getSelectedItem();
-        cu.Actualizar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil);
-        Limpiar();
-        JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
-        btnconsultar.setText("Consultar");
-        btnconsultar.setDescription("Consult");
-        btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-        btnguardar.setEnabled(true);
-        btnmodificar.setEnabled(false);
-        btnmodificar.setText("Modificar");
-        btnmodificar.setDescription("Edit");
-        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-        btnmodificar.setEnabled(false);
-        Habilitar();
-    }
+                cu.Actualizar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil);
+                Limpiar();
+                JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
+                btnconsultar.setText("Consultar");
+                btnconsultar.setDescription("Consult");
+                btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
+                btnguardar.setEnabled(true);
+                btnmodificar.setEnabled(false);
+                btnmodificar.setText("Modificar");
+                btnmodificar.setDescription("Edit");
+                btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
+                btnmodificar.setEnabled(false);
+                Habilitar();}}}
     /**
      * MÉTODO QUE VALIDA LETRAS
      * @param a que contiene un JTextField
@@ -766,6 +817,7 @@ public class Usuarios extends javax.swing.JFrame{
         lblmenscontrasena.setVisible(false);
         cbestado.setSelectedItem("");
         cbperfil.setSelectedItem("");
+        txtrespuesta.setText("");
         cbidentificacion.requestFocus();
     }
     /**
@@ -783,6 +835,7 @@ public class Usuarios extends javax.swing.JFrame{
         txtcontrasena.setEnabled(false);
         cbestado.setEnabled(false);
         cbperfil.setEnabled(false);
+        txtrespuesta.setEnabled(false);
     }
     /**
      * MÉTODO HABILITAR
@@ -799,6 +852,7 @@ public class Usuarios extends javax.swing.JFrame{
         txtcontrasena.setEnabled(true);
         cbestado.setEnabled(true);
         cbperfil.setEnabled(true);
+        txtrespuesta.setEnabled(true);
     }
     /**
      * MÉTODO PRINCIPAL MAIN

@@ -1,5 +1,5 @@
 package Formularios;
-
+//LIBRERÍAS IMPORTADAS
 import Clases.ClaseUsuarios;
 import Clases.Encriptar_Desencriptar;
 import java.awt.Image;
@@ -11,29 +11,26 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class CambioContraseña extends javax.swing.JFrame{
+public class CambioContrasena extends javax.swing.JFrame{
     //IMAGENES DE LOS MENSAJES
     Icon warning=new ImageIcon(getClass().getResource("/Imagenes/warning_opt.png"));
     Icon informacion=new ImageIcon(getClass().getResource("/Imagenes/informacion_opt.png"));
     Icon error=new ImageIcon(getClass().getResource("/Imagenes/error2.png"));
-    /**
-     * CONTRUCTOR CAMBIO CONTRASEÑA
-     */
-    public CambioContraseña(){
+    //CONTRUCTOR CAMBIO CONTRASEÑA
+    public CambioContrasena(){
         initComponents();
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
-        setTitle("Cambio Contraseña");//TÍTULO DE LA VENTANA
+        setTitle("Cambio de Contraseña");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
-        ImageIcon logo=new ImageIcon("src/Imagenes/candado.png");//CREAMOS UN OBJETO IMAGEICON PARA LLAMAR LA IMAGEN
+        ImageIcon logo=new ImageIcon("src/Imagenes/llave.png");//CREAMOS UN OBJETO IMAGEICON PARA LLAMAR LA IMAGEN
         Icon icono=new ImageIcon(logo.getImage().getScaledInstance(lblfondo.getWidth(),lblfondo.getHeight(),Image.SCALE_DEFAULT));//CONVERTIMOS LA IMAGEN EN ICONO CON LAS MEDIDAS DEL JLABEL
         lblfondo.setIcon(icono);//CAPTURAMOS LA IMAGEN EN EL JLABEL
         lblusuario.setVisible(false);
         Letras(txtrespuesta);
-        Letras(txtcontranueva);
-    }
+        Letras(txtcontranueva);}
     /**
-     * MÉTODO ALTERNO INICIAR
+     * MÉTODO PREGUNTA QUE CONTIENE UN USUARIO
      * @param rs que contiene un objeto ResultSet con la información del Usuario
      */
     public void Pregunta(ResultSet rs){
@@ -41,8 +38,7 @@ public class CambioContraseña extends javax.swing.JFrame{
             lblusuario.setText(rs.getString(2));
             lblpregunta.setText(rs.getString(5));}
         catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error en los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
+            JOptionPane.showMessageDialog(null,"Error en los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -53,13 +49,13 @@ public class CambioContraseña extends javax.swing.JFrame{
         lblpregunta = new javax.swing.JLabel();
         lblrespuesta = new javax.swing.JLabel();
         txtrespuesta = new javax.swing.JTextField();
-        btnaceptar = new org.edisoncor.gui.button.ButtonTask();
+        btnguardar = new org.edisoncor.gui.button.ButtonTask();
         lblfondo = new javax.swing.JLabel();
         lblusuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pfondo.setBackground(new java.awt.Color(255, 255, 255));
+        pfondo.setBackground(new java.awt.Color(245, 245, 245));
 
         lblcontranueva.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblcontranueva.setText("Contraseña Nueva *");
@@ -87,18 +83,19 @@ public class CambioContraseña extends javax.swing.JFrame{
             }
         });
 
-        btnaceptar.setText("Aceptar");
-        btnaceptar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        btnaceptar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnaceptar.setDescription("Accept");
-        btnaceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar2_opt.png"))); // NOI18N
+        btnguardar.setText("Guardar");
+        btnguardar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnguardar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnguardar.setDescription("Save");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnaceptarActionPerformed(evt);
+                btnguardarActionPerformed(evt);
             }
         });
-        btnaceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnguardar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                btnaceptarKeyTyped(evt);
+                btnguardarKeyTyped(evt);
             }
         });
 
@@ -129,7 +126,7 @@ public class CambioContraseña extends javax.swing.JFrame{
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pfondoLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(btnaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(120, 120, 120))))
         );
         pfondoLayout.setVerticalGroup(
@@ -153,7 +150,7 @@ public class CambioContraseña extends javax.swing.JFrame{
                         .addComponent(lblcontranueva)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
@@ -188,7 +185,7 @@ public class CambioContraseña extends javax.swing.JFrame{
         int Contador=(int)(Caracter);
         if(evt.getSource()==txtrespuesta){
             if(Contador==10){
-                btnaceptar.requestFocus();}}
+                btnguardar.requestFocus();}}
         //MÉTODO PARA PONER MAYÚSCULA INICIAL
         JTextField txtrespu=(JTextField)evt.getComponent();
         String texto=txtrespu.getText();
@@ -202,13 +199,13 @@ public class CambioContraseña extends javax.swing.JFrame{
         Minusculas(txtcontranueva);
     }//GEN-LAST:event_txtcontranuevaKeyReleased
     //ACCIÓN DEL BOTÓN ACEPTAR CON CLIC
-    private void btnaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaceptarActionPerformed
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         Guardar();
-    }//GEN-LAST:event_btnaceptarActionPerformed
+    }//GEN-LAST:event_btnguardarActionPerformed
     //ACCIÓN DEL BOTÓN ACEPTAR CON TECLADO
-    private void btnaceptarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnaceptarKeyTyped
+    private void btnguardarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnguardarKeyTyped
         Guardar();
-    }//GEN-LAST:event_btnaceptarKeyTyped
+    }//GEN-LAST:event_btnguardarKeyTyped
     /**
      * MÉTODO PARA GUARDAR LOS DATOS NUEVOS
      */
@@ -256,8 +253,7 @@ public class CambioContraseña extends javax.swing.JFrame{
                 char c=KE.getKeyChar();
                 if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO
-    }
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
      * @param txt que contiene un JTextField
@@ -266,8 +262,7 @@ public class CambioContraseña extends javax.swing.JFrame{
      */
     private void Minusculas(javax.swing.JTextField txt){
         String texto=(txt.getText().toLowerCase());
-        txt.setText(texto);
-    }
+        txt.setText(texto);}
     /**
      * @param args the command line arguments
      */
@@ -284,21 +279,21 @@ public class CambioContraseña extends javax.swing.JFrame{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioContrasena.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioContrasena.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioContrasena.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioContrasena.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new CambioContraseña().setVisible(true);}});}
+                new CambioContrasena().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.edisoncor.gui.button.ButtonTask btnaceptar;
+    private org.edisoncor.gui.button.ButtonTask btnguardar;
     private javax.swing.JLabel lblcontranueva;
     private javax.swing.JLabel lblfondo;
     private javax.swing.JLabel lblpregunta;

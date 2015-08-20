@@ -1,5 +1,5 @@
 package Clases;
-//LIBRERÍAS
+//LIBRERÍAS IMPORTADAS
 import Conexion.Conectate;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,8 +41,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR COMBOBOX PAÍS CON DATOS
      * @param lista que contiene una Lista de datos que se carga en un JComboBox
@@ -65,8 +64,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch (Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR COMBOBOX CIUDAD CON DATOS
      * @param lista que contiene una Lista de datos que se carga en un JComboBox
@@ -90,8 +88,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UN PACIENTE POR SU IDENTIFICACIÓN
      * @param identificacion que contiene un String que se va a Buscar
@@ -107,8 +104,7 @@ public class ClasePacientes{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA BUSCAR UN PACIENTE POR DOS PARAMETROS
      * @param tipoDocumento que contiene un String con el Tipo de Documento que se buscara
@@ -123,8 +119,7 @@ public class ClasePacientes{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA BUSCAR UN PACIENTE POR TRES PARAMETROS
      * @param nombres que contiene un String con los Nombres que se buscara
@@ -140,8 +135,7 @@ public class ClasePacientes{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA BUSCAR EL VALORCOPAGO DE UNA EPS
      * @param eps que contiene un int de la EPS seleccionada
@@ -166,11 +160,10 @@ public class ClasePacientes{
             cn.close();}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return valor;
-    }
+        return valor;}
     /**
-     * 
-     * @param codigoeps
+     * MÉTODO PARA BUSCAR UNA EPS
+     * @param codigoeps que contiene un dato int que sera buscado
      * @return 
      */
     public ResultSet BuscasEPS(int codigoeps){
@@ -181,8 +174,7 @@ public class ClasePacientes{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA GUARDAR UN PACIENTE
      * @param pa que contiene un objeto ObjetoPaciente con toda la información obtenida del Formulario
@@ -232,8 +224,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(FileNotFoundException|SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA ACTUALIZAR UN PACIENTE
      * @param pa que contiene un objeto ObjetoPaciente con toda la información obtenida del Formulario
@@ -283,8 +274,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(FileNotFoundException|SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -292,7 +282,6 @@ public class ClasePacientes{
      * @version 1.0
      */
     public void LlenarDatos(DefaultTableModel modelo){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Pacientes";
@@ -331,8 +320,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR IDENTIFICACIÓN
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -341,7 +329,6 @@ public class ClasePacientes{
      * @version 1.1
      */
     public void BusquedaIdentificacion(DefaultTableModel modelo,String identificacion){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Pacientes where Identificacion like '%"+identificacion+"%'";
@@ -380,8 +367,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR NOMBRES
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -390,7 +376,6 @@ public class ClasePacientes{
      * @version 1.1
      */
     public void BusquedaNombres(DefaultTableModel modelo,String nombres){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Pacientes where Nombres like '%"+nombres+"%'";
@@ -429,8 +414,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR PRIMER APELLIDO
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -439,7 +423,6 @@ public class ClasePacientes{
      * @version 1.1
      */
     public void BusquedaPrimerApe(DefaultTableModel modelo,String primerape){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Pacientes where PrimerApellido like '%"+primerape+"%'";
@@ -478,8 +461,7 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR ESTADO
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -488,7 +470,6 @@ public class ClasePacientes{
      * @version 1.1
      */
     public void BusquedaEstado(DefaultTableModel modelo,String estado){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Pacientes where Estado='"+estado+"'";
@@ -527,6 +508,5 @@ public class ClasePacientes{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
 }

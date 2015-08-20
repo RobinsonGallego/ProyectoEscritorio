@@ -18,8 +18,7 @@ public class Encriptar_Desencriptar{
         //CAPTURAMOS LA CONTRASEÑA ENCRIPTADA
         String encriptado=String.valueOf(arreglo);
         //RETORNAMOS LA ENCRIPCTACIÓN
-        return encriptado;
-    }
+        return encriptado;}
     /**
      * MÉTODO PARA DESENCRIPTAR CONTRASEÑA
      * @param contrasena que contiene un String que se Desencriptara
@@ -38,6 +37,5 @@ public class Encriptar_Desencriptar{
         //CAPTURAMOS LA CONTRASEÑA DESENCRIPTADA
         String desencriptado=String.valueOf(arreglo);
         //RETORNAMOS LA DESENCRIPTACIÓN
-        return desencriptado;
-    }
+        return desencriptado;}
 }

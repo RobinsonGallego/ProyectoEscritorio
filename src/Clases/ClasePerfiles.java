@@ -21,8 +21,7 @@ public class ClasePerfiles{
      */
     public ClasePerfiles(){
         Conectate con=new Conectate();
-        cn=con.Conectate();
-    }
+        cn=con.Conectate();}
     /**
      * MÉTODO PARA GUARDAR UN PERFIL
      * @param descripcion que contiene el String que se va a Guardar
@@ -43,8 +42,7 @@ public class ClasePerfiles{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA ACTUALIZAR LOS DATOS
      * @param codigo que contiene el int que se va a Actualizar
@@ -66,8 +64,7 @@ public class ClasePerfiles{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UN PERFIL
      * @param codigo que contiene el int que se va a Buscar
@@ -83,8 +80,7 @@ public class ClasePerfiles{
             return rs;}
         catch (Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA BUSCAR UNA DESCRIPCIÓN
      * @param descripcion que contiene el String que se va a Buscar
@@ -100,8 +96,7 @@ public class ClasePerfiles{
             return rs;}
         catch (Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
      * @param modelo que contiene un DefaultTableModel para mostrar los Datos
@@ -109,7 +104,6 @@ public class ClasePerfiles{
      * @version 1.0
      */
     public void LlenarDatos(DefaultTableModel modelo){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Perfiles";
@@ -133,6 +127,5 @@ public class ClasePerfiles{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
 }

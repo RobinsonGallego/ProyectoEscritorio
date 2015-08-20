@@ -21,8 +21,7 @@ public class ClaseUsuarios{
      */
     public ClaseUsuarios(){
         Conectate con=new Conectate();
-        cn=con.Conectate();
-    }
+        cn=con.Conectate();}
     /**
      * MÉTODO PARA LLENAR COMBOBOX IDENTIFICACIONES CON DATOS
      * @param lista que contiene una Lista con datos para un JComboBox
@@ -45,8 +44,7 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(Exception e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UNA IDENTIFICACIÓN EN USUARIOS
      * @param identificacion que contiene un Long que sera Buscado
@@ -62,8 +60,7 @@ public class ClaseUsuarios{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA BUSCAR UN USUARIO
      * @param usuario que contiene un String que sera Buscado
@@ -79,8 +76,7 @@ public class ClaseUsuarios{
             return rs;}
         catch(Exception e){
             System.out.println(e.getMessage());}
-        return null;
-    }
+        return null;}
     /**
      * MÉTODO PARA LLENAR COMBOBOX PERFILES CON DATOS
      * @param lista que contiene una Lista con datos para un JComboBox
@@ -150,8 +146,7 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA ACTUALIZAR LOS DATOS
      * @param identificacion que contiene un Long para Actualizar
@@ -190,14 +185,13 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA ACTUALIZAR LA CONTRASEÑA
-     * @param identificacion
-     * @param contraNueva
-     * @param cambioContra
-     * @param respuesta
+     * @param identificacion que contiene un dato tipo Long para ser seleccionado en B.D
+     * @param contraNueva que contiene la Contraseña Nueva que será modificada en la B.D
+     * @param cambioContra que contiene la ocnfirmación del Cambio de Contraseña que será modificada en la B.D
+     * @param respuesta que contiene la Respuesta que será modificada en la B.D
      */
     public void ActualizarContrasena(long identificacion,String contraNueva,int cambioContra,String respuesta){
         try{
@@ -211,8 +205,25 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
+    /**
+     * MÉTODO PARA MODIFICAR EL ESTADO POR CONTEO DE ERRORE
+     * @param identificacion que contiene un dato tipo Long para ser seleccionado en B.D
+     * @param estado que contiene el estado que será modificado en la B.D
+     */
+    public void ModificarEstado(long identificacion,String estado){
+        try{
+            //CREAMOS LA SENTENCIA SQL
+            String sql="update Usuarios set Estado='"+estado+"'where IdentificacionUsuario="+identificacion;
+            //CREAMOS UN PreparedStatement
+            PreparedStatement cmd=cn.prepareCall(sql);
+            //EJECUTAMOS EL QUERY
+            cmd.execute();
+            //CERRAMOS LA CONEXIÓN
+            cmd.close();
+            cn.close();}
+        catch(SQLException e){
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA LLENAR LOS DATOS EN UNA TABLA
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -220,7 +231,6 @@ public class ClaseUsuarios{
      * @version 1.1
      */
     public void LlenarDatos(DefaultTableModel modelo){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Usuarios";
@@ -260,8 +270,7 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR IDENTIFICACIÓN
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -270,7 +279,6 @@ public class ClaseUsuarios{
      * @version 1.1
      */
     public void BusquedaIdentificacion(DefaultTableModel modelo,long identificacion){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Usuarios where IdentificacionUsuario like '%"+identificacion+"%'";
@@ -310,8 +318,7 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR USUARIO
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -320,7 +327,6 @@ public class ClaseUsuarios{
      * @version 1.1
      */
     public void BusquedaUsuario(DefaultTableModel modelo,String usuario){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Usuarios where Usuario like '%"+usuario+"%'";
@@ -360,8 +366,7 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR PERFIL
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -370,7 +375,6 @@ public class ClaseUsuarios{
      * @version 1.1
      */
     public void BusquedaPerfil(DefaultTableModel modelo,int perfil){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Usuarios where Perfil like '%"+perfil+"%'";
@@ -409,8 +413,7 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSQUEDAS DINÁMICAS POR ESTADO
      * @param modelo que contiene un DefaultTableModel que mostrara la información
@@ -419,7 +422,6 @@ public class ClaseUsuarios{
      * @version 1.1
      */
     public void BusquedaEstado(DefaultTableModel modelo,String estado){
-        //RECIBIMOS UN OBJETO DE TIPO DEFAULTTABLEMODEL Y UNA PALABRA ACTUAL
         try{
             //SE CREA LA SENTENCIA SQL
             String sql="select * from Usuarios where Estado='"+estado+"'";
@@ -459,6 +461,5 @@ public class ClaseUsuarios{
             cmd.close();
             cn.close();}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
 }

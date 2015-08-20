@@ -55,8 +55,7 @@ public class ObjetoPaciente{
         this.numeroCheque=numeroCheque;
         this.banco=banco;
         this.foto=foto;
-        this.estado=estado;
-    }
+        this.estado=estado;}
     //GETTERS y SETTERS
     public String getTipoDocumento(){
         return tipoDocumento;}
