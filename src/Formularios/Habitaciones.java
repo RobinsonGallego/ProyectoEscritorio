@@ -1,5 +1,5 @@
 package Formularios;
-
+//LIBRERÍAS IMPORTADAS
 import Clases.ClaseHabitaciones;
 import Clases.ClasePerfiles;
 import Clases.ClaseUsuarios;
@@ -29,8 +29,7 @@ public class Habitaciones extends javax.swing.JFrame{
         Numeros(txtnumhabitacion);
         Numeros(txtpiso);
         Numeros(txtnumcamas);
-        Iniciar();
-    }
+        Iniciar();}
     /**
      * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL
      * @param user que contiene un String para recibido del Menú
@@ -75,8 +74,7 @@ public class Habitaciones extends javax.swing.JFrame{
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     /**
      * MÉTODO ALTERNO INICIAR
      * @author Robinson Gallego Alzate
@@ -91,8 +89,7 @@ public class Habitaciones extends javax.swing.JFrame{
         //CREAMOS EL OBJETO CLASEHABITACIONES
         ClaseHabitaciones ch=new ClaseHabitaciones();
         //LLAMAMOS MÉTODO PARA LLENAR COMBOBOX
-        ch.LlenarTipoServicio(cbtiposervicio);
-    }
+        ch.LlenarTipoServicio(cbtiposervicio);}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -531,8 +528,7 @@ public class Habitaciones extends javax.swing.JFrame{
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     /**
      * MÉTODO PARA ACTUALIZAR LOS REGISTROS
      */
@@ -647,8 +643,7 @@ public class Habitaciones extends javax.swing.JFrame{
                     btnguardar.setEnabled(true);
                     btnlistar.setEnabled(true);
                     btnmodificar.setEnabled(false);
-                    break;}
-    }
+                    break;}}
     /**
      * MÉTODO PARA CONSULTAR CON OTRO PERFIL
      */
@@ -690,8 +685,7 @@ public class Habitaciones extends javax.swing.JFrame{
                     btnconsultar.setText("Consultar");
                     btnconsultar.setDescription("Consult");
                     btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-                    break;}
-    }
+                    break;}}
     /**
      * MÉTODO PARA LIMPIAR LOS DATOS
      */
@@ -732,8 +726,7 @@ public class Habitaciones extends javax.swing.JFrame{
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
                 if(!Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI SON NÚMEROS O ESPACIO EN BLANCO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO 
-    }
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que sera Analizado
@@ -746,8 +739,7 @@ public class Habitaciones extends javax.swing.JFrame{
             Integer.parseInt(Respuesta);
             return true;}
         catch(NumberFormatException e){
-           return false;}
-    }
+           return false;}}
     /**
      * @param args the command line arguments
      */
@@ -777,7 +769,6 @@ public class Habitaciones extends javax.swing.JFrame{
             @Override
             public void run() {
                 new Habitaciones().setVisible(true);}});}
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnconsultar;
     private org.edisoncor.gui.button.ButtonTask btnguardar;
