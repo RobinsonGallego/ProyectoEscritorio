@@ -469,6 +469,11 @@ public class Menu extends javax.swing.JFrame{
         smacercade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         smacercade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta5_opt.png"))); // NOI18N
         smacercade.setText("Acerca de");
+        smacercade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smacercadeActionPerformed(evt);
+            }
+        });
         mayuda.add(smacercade);
 
         mbprincipal.add(mayuda);
@@ -607,6 +612,11 @@ public class Menu extends javax.swing.JFrame{
             catch(SQLException e){
                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     }//GEN-LAST:event_smhistoriaActionPerformed
+    //ACCIÓN DEL BOTÓN ACERCA DE... CON CLIC
+    private void smacercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smacercadeActionPerformed
+        AcercaDe ad=new AcercaDe();
+        ad.setVisible(true);
+    }//GEN-LAST:event_smacercadeActionPerformed
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que sera Analizada

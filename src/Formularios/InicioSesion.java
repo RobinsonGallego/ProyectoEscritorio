@@ -38,9 +38,10 @@ public class InicioSesion extends javax.swing.JFrame{
         setProgress(80,"Cargando Interfaces");
         setProgress(90,"Interfaces Cargadas...");
         setProgress(100,"Bienvenido al Sistema");
-        setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
+        setUndecorated(true);
+        /*setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Acceso.png")).getImage());//PONER IMAGEN ICONO
-        setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
+        setResizable(false);*///BLOQUEA EL TAMAÑO DE LA VENTANA
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         txtusuario.requestFocus();
         Letras(txtusuario);
@@ -59,10 +60,11 @@ public class InicioSesion extends javax.swing.JFrame{
      * @version 1.0
      */
     public InicioSesion(){
+        setUndecorated(true);
         initComponents();
-        setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
+        /*setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Acceso.png")).getImage());//PONER IMAGEN ICONO
-        setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
+        setResizable(false);*///BLOQUEA EL TAMAÑO DE LA VENTANA
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         txtusuario.requestFocus();
         Letras(txtusuario);
