@@ -6,6 +6,7 @@ package Formularios;
  */
 import Clases.ClaseUsuarios;
 import Clases.Encriptar_Desencriptar;
+import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
@@ -38,12 +39,12 @@ public class InicioSesion extends javax.swing.JFrame{
         setProgress(80,"Cargando Interfaces");
         setProgress(90,"Interfaces Cargadas...");
         setProgress(100,"Bienvenido al Sistema");
-        setUndecorated(true);
-        /*setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
+        setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Acceso.png")).getImage());//PONER IMAGEN ICONO
-        setResizable(false);*///BLOQUEA EL TAMAÑO DE LA VENTANA
+        setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         txtusuario.requestFocus();
+        lblbloq.setVisible(false);
         Letras(txtusuario);
     }
     private void setProgress(int percent,String information){
@@ -60,13 +61,13 @@ public class InicioSesion extends javax.swing.JFrame{
      * @version 1.0
      */
     public InicioSesion(){
-        setUndecorated(true);
         initComponents();
-        /*setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
+        setTitle("Inicio Sesión Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Acceso.png")).getImage());//PONER IMAGEN ICONO
-        setResizable(false);*///BLOQUEA EL TAMAÑO DE LA VENTANA
+        setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         txtusuario.requestFocus();
+        lblbloq.setVisible(false);
         Letras(txtusuario);
     }
     @SuppressWarnings("unchecked")
@@ -77,6 +78,7 @@ public class InicioSesion extends javax.swing.JFrame{
         lbltitulo = new javax.swing.JLabel();
         lblusuario = new javax.swing.JLabel();
         lblcontrasena = new javax.swing.JLabel();
+        lblbloq = new javax.swing.JLabel();
         btningresar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
         btnrecordar = new javax.swing.JButton();
@@ -96,7 +98,7 @@ public class InicioSesion extends javax.swing.JFrame{
         lbltitulo.setForeground(new java.awt.Color(255, 0, 0));
         lbltitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Acceso.png"))); // NOI18N
         lbltitulo.setText("Inicio de Sesión");
-        jpiniciosesion.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jpiniciosesion.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
@@ -107,6 +109,11 @@ public class InicioSesion extends javax.swing.JFrame{
         lblcontrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contraseña.png"))); // NOI18N
         lblcontrasena.setText("Contraseña");
         jpiniciosesion.add(lblcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 90, 27));
+
+        lblbloq.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblbloq.setForeground(new java.awt.Color(255, 0, 0));
+        lblbloq.setText("Bloq Mayús activado");
+        jpiniciosesion.add(lblbloq, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
 
         btningresar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btningresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/entrar3a.png"))); // NOI18N
@@ -124,7 +131,7 @@ public class InicioSesion extends javax.swing.JFrame{
                 btningresarKeyTyped(evt);
             }
         });
-        jpiniciosesion.add(btningresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, 25));
+        jpiniciosesion.add(btningresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 120, 25));
 
         btnsalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SALIR.PNG"))); // NOI18N
@@ -142,7 +149,7 @@ public class InicioSesion extends javax.swing.JFrame{
                 btnsalirKeyTyped(evt);
             }
         });
-        jpiniciosesion.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, 25));
+        jpiniciosesion.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 100, 25));
 
         btnrecordar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnrecordar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/recordar2.png"))); // NOI18N
@@ -153,7 +160,7 @@ public class InicioSesion extends javax.swing.JFrame{
                 btnrecordarActionPerformed(evt);
             }
         });
-        jpiniciosesion.add(btnrecordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 200, 25));
+        jpiniciosesion.add(btnrecordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 200, 25));
 
         txtusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtusuario.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 102)));
@@ -165,7 +172,7 @@ public class InicioSesion extends javax.swing.JFrame{
                 txtusuarioKeyTyped(evt);
             }
         });
-        jpiniciosesion.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 130, 27));
+        jpiniciosesion.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 150, 27));
 
         jpcontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jpcontrasena.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 102)));
@@ -178,14 +185,14 @@ public class InicioSesion extends javax.swing.JFrame{
                 jpcontrasenaKeyTyped(evt);
             }
         });
-        jpiniciosesion.add(jpcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 130, 27));
+        jpiniciosesion.add(jpcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 150, 27));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hospital.gif"))); // NOI18N
-        jpiniciosesion.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 450, 270));
+        jpiniciosesion.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 480, 270));
 
         lblidiomas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblidiomas.setText("Idiomas");
-        jpiniciosesion.add(lblidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 70, 27));
+        jpiniciosesion.add(lblidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 70, 27));
 
         cbidiomas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbidiomas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Spanish", "English" }));
@@ -194,17 +201,17 @@ public class InicioSesion extends javax.swing.JFrame{
                 cbidiomasItemStateChanged(evt);
             }
         });
-        jpiniciosesion.add(cbidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 90, 27));
+        jpiniciosesion.add(cbidiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 100, 27));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpiniciosesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpiniciosesion, javax.swing.GroupLayout.PREFERRED_SIZE, 470, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpiniciosesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpiniciosesion, javax.swing.GroupLayout.PREFERRED_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -270,11 +277,7 @@ public class InicioSesion extends javax.swing.JFrame{
     private void txtusuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusuarioKeyReleased
         Minusculas(txtusuario);
     }//GEN-LAST:event_txtusuarioKeyReleased
-    //CONVERTIR MAYÚSCULAS A MINÚSCULAS
-    private void jpcontrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyReleased
-        Minusculas(jpcontrasena);
-    }//GEN-LAST:event_jpcontrasenaKeyReleased
-    //ACCIÓN DEL BOTÓN RECUPERAR CONTRASEÑA
+   //ACCIÓN DEL BOTÓN RECUPERAR CONTRASEÑA
     private void btnrecordarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrecordarActionPerformed
         String respuesta=(String)JOptionPane.showInputDialog(null,"Ingrese el Usuario a Recuperar Contraseña.","Recuperar Contraseña",JOptionPane.QUESTION_MESSAGE,pregunta,null,null);
         if(respuesta==null){
@@ -304,6 +307,13 @@ public class InicioSesion extends javax.swing.JFrame{
             catch(SQLException e){
                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     }//GEN-LAST:event_btnrecordarActionPerformed
+    //ACCIÓN CUANDO ESTA ACTIVO EL BLOQ MAYÚS
+    private void jpcontrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpcontrasenaKeyReleased
+        if(Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK)){
+            lblbloq.setVisible(true);}
+        else{
+            lblbloq.setVisible(false);}
+    }//GEN-LAST:event_jpcontrasenaKeyReleased
     /**
      * MÉTODO PARA INGRESAR AL SISTEMA
      * @author Robinson Gallego Alzate
@@ -454,6 +464,7 @@ public class InicioSesion extends javax.swing.JFrame{
     private javax.swing.JComboBox cbidiomas;
     private javax.swing.JPasswordField jpcontrasena;
     private javax.swing.JPanel jpiniciosesion;
+    private javax.swing.JLabel lblbloq;
     private javax.swing.JLabel lblcontrasena;
     private javax.swing.JLabel lblfondo;
     private javax.swing.JLabel lblidiomas;

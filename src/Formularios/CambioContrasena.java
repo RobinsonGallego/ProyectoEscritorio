@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -28,7 +30,7 @@ public class CambioContrasena extends javax.swing.JFrame{
         lblfondo.setIcon(icono);//CAPTURAMOS LA IMAGEN EN EL JLABEL
         lblusuario.setVisible(false);
         Letras(txtrespuesta);
-        Letras(txtcontranueva);}
+        LetrasyNumeros(txtcontranueva);}
     /**
      * MÉTODO PREGUNTA QUE CONTIENE UN USUARIO
      * @param rs que contiene un objeto ResultSet con la información del Usuario
@@ -52,6 +54,12 @@ public class CambioContrasena extends javax.swing.JFrame{
         btnguardar = new org.edisoncor.gui.button.ButtonTask();
         lblfondo = new javax.swing.JLabel();
         lblusuario = new javax.swing.JLabel();
+        lbltitulo = new javax.swing.JLabel();
+        lblespe1 = new javax.swing.JLabel();
+        lblespe2 = new javax.swing.JLabel();
+        lblespe3 = new javax.swing.JLabel();
+        lblespe4 = new javax.swing.JLabel();
+        lblespe5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,9 +70,6 @@ public class CambioContrasena extends javax.swing.JFrame{
 
         txtcontranueva.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcontranueva.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtcontranuevaKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcontranuevaKeyTyped(evt);
             }
@@ -101,18 +106,39 @@ public class CambioContrasena extends javax.swing.JFrame{
 
         lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
+        lbltitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbltitulo.setText("Especificaciones de la Contraseña");
+
+        lblespe1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblespe1.setForeground(new java.awt.Color(255, 0, 0));
+        lblespe1.setText("* Mayúscula Inical");
+
+        lblespe2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblespe2.setForeground(new java.awt.Color(255, 0, 0));
+        lblespe2.setText("* Formato: Letras + Números");
+
+        lblespe3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblespe3.setForeground(new java.awt.Color(255, 0, 0));
+        lblespe3.setText("* Menor de 15 Caracteres");
+
+        lblespe4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblespe4.setForeground(new java.awt.Color(255, 0, 0));
+        lblespe4.setText("* Mayor o igual a 8 Caracteres");
+
+        lblespe5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblespe5.setForeground(new java.awt.Color(255, 0, 0));
+        lblespe5.setText("* No permite Caracteres Especiales");
+
         javax.swing.GroupLayout pfondoLayout = new javax.swing.GroupLayout(pfondo);
         pfondo.setLayout(pfondoLayout);
         pfondoLayout.setHorizontalGroup(
             pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pfondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblusuario, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
                 .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pfondoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblfondo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
                         .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pfondoLayout.createSequentialGroup()
                                 .addComponent(lblcontranueva)
@@ -122,20 +148,40 @@ public class CambioContrasena extends javax.swing.JFrame{
                             .addGroup(pfondoLayout.createSequentialGroup()
                                 .addComponent(lblrespuesta)
                                 .addGap(65, 65, 65)
-                                .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pfondoLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120))))
+                                .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pfondoLayout.createSequentialGroup()
+                                .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pfondoLayout.createSequentialGroup()
+                                .addGap(0, 82, Short.MAX_VALUE)
+                                .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)))
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbltitulo)
+                            .addGroup(pfondoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblespe2)
+                                    .addComponent(lblespe1)
+                                    .addComponent(lblespe3)
+                                    .addComponent(lblespe4)
+                                    .addComponent(lblespe5))))))
+                .addGap(6, 6, 6))
         );
         pfondoLayout.setVerticalGroup(
             pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pfondoLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblfondo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pfondoLayout.createSequentialGroup()
-                        .addComponent(txtcontranueva, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pfondoLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(lblcontranueva))
+                            .addComponent(txtcontranueva, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(lblpregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -143,16 +189,28 @@ public class CambioContrasena extends javax.swing.JFrame{
                             .addGroup(pfondoLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(lblrespuesta))
-                            .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblfondo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pfondoLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(lblcontranueva)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 9, Short.MAX_VALUE))
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbltitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblespe1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pfondoLayout.createSequentialGroup()
+                                .addComponent(lblespe2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblespe3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblespe4)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblespe5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,7 +221,7 @@ public class CambioContrasena extends javax.swing.JFrame{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pfondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -177,6 +235,13 @@ public class CambioContrasena extends javax.swing.JFrame{
         if(evt.getSource()==txtcontranueva){
             if(Contador==10){
                 txtrespuesta.requestFocus();}}
+        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        JTextField txtrespu=(JTextField)evt.getComponent();
+        String texto=txtrespu.getText();
+        if(texto.length()>0){
+            char primera=texto.charAt(0);
+            texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
+            txtcontranueva.setText(texto);}
     }//GEN-LAST:event_txtcontranuevaKeyTyped
     private void txtrespuestaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrespuestaKeyTyped
         if(txtrespuesta.getText().length()==30){
@@ -194,11 +259,8 @@ public class CambioContrasena extends javax.swing.JFrame{
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
             txtrespuesta.setText(texto);}
     }//GEN-LAST:event_txtrespuestaKeyTyped
-    //CONVERTIR MAYÚSCULAS A MINÚSCULAS
-    private void txtcontranuevaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcontranuevaKeyReleased
-        Minusculas(txtcontranueva);
-    }//GEN-LAST:event_txtcontranuevaKeyReleased
-    //ACCIÓN DEL BOTÓN ACEPTAR CON CLIC
+
+   //ACCIÓN DEL BOTÓN ACEPTAR CON CLIC
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         Guardar();
     }//GEN-LAST:event_btnguardarActionPerformed
@@ -213,13 +275,20 @@ public class CambioContrasena extends javax.swing.JFrame{
         if(txtcontranueva.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir la Contraseña Nueva.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcontranueva.requestFocus();}
+        else if(EsNumero(String.valueOf(txtcontranueva.getText().charAt(0)))==true){
+            JOptionPane.showMessageDialog(null,"La Contraseña esta mal Ingresada.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            txtcontranueva.requestFocus();
+            txtcontranueva.setText("");}
         else if(txtcontranueva.getText().length()<8){
-            JOptionPane.showMessageDialog(null,"La Contraseña debe ser de mínimo 8 caracteres","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"La Contraseña debe ser de mínimo 8 caracteres.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcontranueva.requestFocus();}
         else if(String.valueOf(txtcontranueva.getText().charAt(0)).equals(" ")){
             JOptionPane.showMessageDialog(null,"La Contraseña no debe iniciar con Espacio en Blanco.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcontranueva.requestFocus();
             txtcontranueva.setText("");}
+        else if(Formato(txtcontranueva.getText())==false){
+            JOptionPane.showMessageDialog(null,"La Contraseña esta mal Ingresada.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            txtcontranueva.requestFocus();}
         else if(txtrespuesta.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir la respuesta a la pregunta asignada.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtrespuesta.requestFocus();}
@@ -255,14 +324,45 @@ public class CambioContrasena extends javax.swing.JFrame{
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
                     KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
-     * MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
-     * @param txt que contiene un JTextField
+     * MÉTODO QUE VALIDA LETRAS Y NÚMEROS
+     * @param a que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private void LetrasyNumeros(JTextField a){
+        a.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyTyped(KeyEvent KE){
+                char c=KE.getKeyChar();
+                if(!Character.isLetterOrDigit(c)&&c!=' '){//AQUÍ ESTOY COMPARANDO SI SON NÚMEROS O ESPACIO EN BLANCO
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO 
+    /**
+     * MÉTODO PARA DAR FORMATO ESPECIAL
+     * @param texto que contiene un String que sera Validado
+     * @return un dato tipo Booleano
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
-    private void Minusculas(javax.swing.JTextField txt){
-        String texto=(txt.getText().toLowerCase());
-        txt.setText(texto);}
+    protected static boolean Formato(String texto){
+    	boolean valido=false;
+    	Pattern patron=Pattern.compile("(\\D{1,12})(\\d{1,3})");
+    	Matcher mTarje=patron.matcher(texto.toLowerCase());
+    	if(mTarje.matches()){
+            valido=true;}
+        return valido;}
+    /**
+     * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
+     * @param Respuesta que contiene un String que sera Analizado
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private static boolean EsNumero(String Respuesta){
+        try{
+            Integer.parseInt(Respuesta);
+            return true;}
+        catch(NumberFormatException e){
+           return false;}}
     /**
      * @param args the command line arguments
      */
@@ -295,9 +395,15 @@ public class CambioContrasena extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnguardar;
     private javax.swing.JLabel lblcontranueva;
+    private javax.swing.JLabel lblespe1;
+    private javax.swing.JLabel lblespe2;
+    private javax.swing.JLabel lblespe3;
+    private javax.swing.JLabel lblespe4;
+    private javax.swing.JLabel lblespe5;
     private javax.swing.JLabel lblfondo;
     private javax.swing.JLabel lblpregunta;
     private javax.swing.JLabel lblrespuesta;
+    private javax.swing.JLabel lbltitulo;
     private javax.swing.JLabel lblusuario;
     private javax.swing.JPanel pfondo;
     private javax.swing.JTextField txtcontranueva;

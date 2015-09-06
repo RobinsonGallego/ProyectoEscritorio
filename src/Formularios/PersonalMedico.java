@@ -74,8 +74,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         Letras(txtultimaempresa);
         Letras(txtcargo);
         Numeros(txtsalario);
-        Iniciar();
-    }
+        Iniciar();}
     /**
      * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL
      * @param user que contiene un String para recibido del Menú
@@ -2285,8 +2284,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             Integer.parseInt(Respuesta);
             return true;}
         catch(NumberFormatException e){
-           return false;}
-    }
+           return false;}}
     /**
      * MÉTODO PARA INHABILITAR CAMPOS PRINCIPALES
      * @author Robinson Gallego Alzate
@@ -2467,8 +2465,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
                 if(!Character.isLetterOrDigit(c)&&c!=' '){//AQUÍ ESTOY COMPARANDO SI SON NÚMEROS O ESPACIO EN BLANCO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO 
-    }
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO 
     /**
      * MÉTODO PARA DAR FORMATO ESPECIAL
      * @param texto que contiene un String que sera Validado
@@ -2482,8 +2479,7 @@ public class PersonalMedico extends javax.swing.JFrame{
     	Matcher mTarje=patron.matcher(texto.toLowerCase());
     	if(mTarje.matches()){
             valido=true;}
-        return valido;
-    }
+        return valido;}
     /**
      * MÉTODO PRINCIPAL MAIN
      * @param args que contiene un String de arreglos
