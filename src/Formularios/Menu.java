@@ -74,23 +74,32 @@ public class Menu extends javax.swing.JFrame{
                                 mayuda.setEnabled(true);
                                 msalir.setEnabled(true);
                             break;
-                            case "Médico":
+                            case "Personal médico":
                                 //GESTIONES
                                 mgestiones.setEnabled(true);
+                                smpersonal.setEnabled(false);
                                 smfarmaceutas.setEnabled(false);
+                                smtipomenu.setEnabled(false);
                                 smunidades.setEnabled(false);
                                 smhabitaciones.setEnabled(false);
                                 smconsultorios.setEnabled(false);
                                 smhorarios.setEnabled(false);
                                 smzona.setEnabled(false);
                                 //TRANSACCIONES
-                                mtransacciones.setEnabled(false);
+                                mtransacciones.setEnabled(true);
+                                smentradasalida.setEnabled(false);
+                                smfacpacientes.setEnabled(false);
+                                smfacfarmacia.setEnabled(false);
+                                sminventario.setEnabled(false);
+                                smasignacion.setEnabled(false);
                                 //SALIDAS
-                                msalidas.setEnabled(false);
+                                msalidas.setEnabled(true);
+                                smconsustockmedicamentos.setEnabled(false);
+                                sminformeingresos.setEnabled(false);
+                                sminformapersonalmedico.setEnabled(false);
+                                smhojasdevida.setEnabled(false);
                                 //HERRAMIENTAS
-                                mherramientas.setEnabled(true);
-                                smcopiadeseguridad.setEnabled(false);
-                                smperfiles.setEnabled(false);
+                                mherramientas.setEnabled(false);
                                 //AYUDA
                                 mayuda.setEnabled(true);
                                 smmanualtecnico.setEnabled(false);

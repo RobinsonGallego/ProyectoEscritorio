@@ -1350,10 +1350,6 @@ public class PersonalMedico extends javax.swing.JFrame{
         if(txtidentificacion.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir la Identificación","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtidentificacion.requestFocus();}
-        else if(String.valueOf(txtidentificacion.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Identificación no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtidentificacion.requestFocus();
-            txtidentificacion.setText("");}
         else if(txtnombres.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir Nombres","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtnombres.requestFocus();}
@@ -1370,7 +1366,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             txtprimerapellido.setText("");}
         else if(!"".equals(txtsegundoapellido.getText())){
             SegundoALleno();}
-        else {
+        else{
             SegundoAVacio();}
     }//GEN-LAST:event_btnguardarActionPerformed
     //ACCIÓN REALIZADA AL ESCOGER UN PAÍS

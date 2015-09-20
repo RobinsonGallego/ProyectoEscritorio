@@ -160,7 +160,6 @@ public class Usuarios extends javax.swing.JFrame{
         txtcorreo.setEditable(false);
         txtcorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtcorreo.setEnabled(false);
 
         cbpreguntasecreta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbpreguntasecreta.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"", "¿Cuál es segundo Apellido de su mamá?", "¿Cuál es su color favorito?", "¿Cuál es nombre de su Abuela?", "¿Quién le enseño las vocales?", "¿Cuántos hijos tiene?", "¿Cuál es su pelicula favorita?", "¿Cuál es el color de sus ojos?" }));
@@ -830,7 +829,6 @@ public class Usuarios extends javax.swing.JFrame{
         txtnombrecompleto.setEnabled(false);
         txtusuario.setEnabled(false);
         txtcorreo.setEnabled(false);
-        txtcorreo.setDisabledTextColor(new Color(145,145,145));
         cbpreguntasecreta.setEnabled(false);
         txtcontrasena.setEnabled(false);
         cbestado.setEnabled(false);

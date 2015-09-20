@@ -259,7 +259,6 @@ public class CambioContrasena extends javax.swing.JFrame{
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
             txtrespuesta.setText(texto);}
     }//GEN-LAST:event_txtrespuestaKeyTyped
-
    //ACCIÓN DEL BOTÓN ACEPTAR CON CLIC
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         Guardar();

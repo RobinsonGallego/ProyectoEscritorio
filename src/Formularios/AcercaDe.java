@@ -171,7 +171,6 @@ public class AcercaDe extends javax.swing.JFrame{
     private void btncerrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btncerrarKeyTyped
         this.dispose();
     }//GEN-LAST:event_btncerrarKeyTyped
-
     /**
      * @param args the command line arguments
      */
