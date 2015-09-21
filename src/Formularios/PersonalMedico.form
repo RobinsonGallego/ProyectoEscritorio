@@ -509,7 +509,7 @@
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;&quot;,&quot;Solteto (a)&quot;, &quot;Casado (a)&quot;, &quot;Separado (a)&quot;, &quot;Viudo (a)&quot;, &quot;Uni&#xf3;n Libre&quot; })" type="code"/>
+                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;&quot;,&quot;Soltero (a)&quot;, &quot;Casado (a)&quot;, &quot;Separado (a)&quot;, &quot;Viudo (a)&quot;, &quot;Uni&#xf3;n Libre&quot; })" type="code"/>
                 </Property>
               </Properties>
               <Events>

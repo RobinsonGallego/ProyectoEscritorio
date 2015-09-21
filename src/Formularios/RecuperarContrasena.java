@@ -36,21 +36,19 @@ public class RecuperarContrasena extends javax.swing.JFrame{
         String texto="<html>Correo\nEléctronico</html>";
         lblcorreo.setText(texto);
         Letras(txtrespuesta);
-        txtrespuesta.requestFocus();
-    }
+        txtcorreo.requestFocus();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         pfondo = new javax.swing.JPanel();
         lblimagen = new javax.swing.JLabel();
-        lbltitulo = new javax.swing.JLabel();
         lblcorreo = new javax.swing.JLabel();
+        lbltitulo = new javax.swing.JLabel();
         txtcorreo = new javax.swing.JTextField();
         lblpregunta = new javax.swing.JLabel();
         lblrespuesta = new javax.swing.JLabel();
         txtrespuesta = new javax.swing.JTextField();
-        btnmodificar = new javax.swing.JButton();
         lblrespubd = new javax.swing.JLabel();
         btnenviar = new org.edisoncor.gui.button.ButtonTask();
         btncancelar = new org.edisoncor.gui.button.ButtonTask();
@@ -61,13 +59,11 @@ public class RecuperarContrasena extends javax.swing.JFrame{
 
         pfondo.setBackground(new java.awt.Color(245, 245, 245));
 
+        lblcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
         lbltitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbltitulo.setText("Recuperación de Contraseña");
 
-        lblcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-
-        txtcorreo.setEditable(false);
-        txtcorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -85,18 +81,6 @@ public class RecuperarContrasena extends javax.swing.JFrame{
         txtrespuesta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtrespuestaKeyTyped(evt);
-            }
-        });
-
-        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar_opt.png"))); // NOI18N
-        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmodificarActionPerformed(evt);
-            }
-        });
-        btnmodificar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                btnmodificarKeyTyped(evt);
             }
         });
 
@@ -148,37 +132,37 @@ public class RecuperarContrasena extends javax.swing.JFrame{
                     .addComponent(lblrespubd, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                     .addComponent(lblimagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblcontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pfondoLayout.createSequentialGroup()
-                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(18, 18, 18)
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pfondoLayout.createSequentialGroup()
+                                    .addComponent(lblcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblpregunta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pfondoLayout.createSequentialGroup()
+                                    .addComponent(lblrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtrespuesta)))
                             .addGroup(pfondoLayout.createSequentialGroup()
-                                .addComponent(lblcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblpregunta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pfondoLayout.createSequentialGroup()
-                                .addComponent(lblrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtrespuesta)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
+                                .addComponent(lbltitulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pfondoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(btnenviar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(pfondoLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(lbltitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pfondoLayout.setVerticalGroup(
             pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pfondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pfondoLayout.createSequentialGroup()
                         .addComponent(lblimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -192,20 +176,18 @@ public class RecuperarContrasena extends javax.swing.JFrame{
                         .addGap(18, 18, 18)
                         .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblpregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblrespuesta)
                             .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnenviar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,13 +210,11 @@ public class RecuperarContrasena extends javax.swing.JFrame{
     public void Pregunta(ResultSet rs){
         try{
             lblusuario.setText(rs.getString(2));
-            txtcorreo.setText(rs.getString(4));
             lblpregunta.setText(rs.getString(5));
             lblrespubd.setText(rs.getString(10));
             lblcontrasena.setText(rs.getString(6));}
         catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error en los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
+            JOptionPane.showMessageDialog(null,"Error en los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     //LIMITACIÓN Y TRASNFERENCIA DE FOCUS
     private void txtrespuestaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrespuestaKeyTyped
         if(txtrespuesta.getText().length()==30){
@@ -244,13 +224,6 @@ public class RecuperarContrasena extends javax.swing.JFrame{
         if(evt.getSource()==txtrespuesta){
             if(Contador==10){
                 btnenviar.requestFocus();}}
-        //MÉTODO PARA PONER MAYÚSCULA INICIAL
-        JTextField txtrespu=(JTextField)evt.getComponent();
-        String texto=txtrespu.getText();
-        if(texto.length()>0){
-            char primera=texto.charAt(0);
-            texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
-            txtrespuesta.setText(texto);}
     }//GEN-LAST:event_txtrespuestaKeyTyped
     private void txtcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcorreoKeyTyped
         if(txtcorreo.getText().length()==70){
@@ -261,17 +234,7 @@ public class RecuperarContrasena extends javax.swing.JFrame{
             if(Contador==10){
                 txtrespuesta.requestFocus();}}
     }//GEN-LAST:event_txtcorreoKeyTyped
-    //ACCIÓN DEL BOTÓN MODIFICAR CORREO CON CLIC
-    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
-        txtcorreo.setEditable(true);
-        txtcorreo.requestFocus();
-    }//GEN-LAST:event_btnmodificarActionPerformed
-    //ACCIÓN DEL BOTÓN MODIFICAR CORREO CON TECLADO
-    private void btnmodificarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnmodificarKeyTyped
-        txtcorreo.setEditable(true);
-        txtcorreo.requestFocus();
-    }//GEN-LAST:event_btnmodificarKeyTyped
-    //ACCIÓN DEL BOTÓN ENVIAR CON CLIC
+   //ACCIÓN DEL BOTÓN ENVIAR CON CLIC
     private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
         AccionEnviar();
     }//GEN-LAST:event_btnenviarActionPerformed
@@ -292,14 +255,14 @@ public class RecuperarContrasena extends javax.swing.JFrame{
      */
     private void AccionEnviar(){
         if(txtcorreo.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe escribir el Correo.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcorreo.requestFocus();}
         else if(EsNumero(String.valueOf(txtcorreo.getText().charAt(0)))==true){
-            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
+            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado.","Validación",JOptionPane.ERROR_MESSAGE,error);
             txtcorreo.requestFocus();
             txtcorreo.setText("");}
         else if(esMail(txtcorreo.getText())==false){
-            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
+            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado.","Validación",JOptionPane.ERROR_MESSAGE,error);
             txtcorreo.requestFocus();}
         else if(txtrespuesta.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir la Respuesta a la Pregunta realizada.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
@@ -334,9 +297,7 @@ public class RecuperarContrasena extends javax.swing.JFrame{
             ClaseUsuarios cu=new ClaseUsuarios();
             cu.ModificarEstado(identificacion,"Inactivo");
             JOptionPane.showMessageDialog(null,"El Usuario ha sido bloqueado, por número de intentos fallidos.\nPor favor comuniquese con el Personal de Sistemas para ser Desbloqueado.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
-            Salir();
-        }
-    }
+            Salir();}}
     /**
      * MÉTODO SALIR DE LA VENTANA
      */
@@ -355,8 +316,7 @@ public class RecuperarContrasena extends javax.swing.JFrame{
         Matcher matcherMail=patronEmail.matcher(correo.toLowerCase());
         if(matcherMail.matches()){
             correcto=true;}
-        return correcto;
-    }
+        return correcto;}
     /**
      * MÉTODO QUE VALIDA LETRAS
      * @param a que contiene un JTextField
@@ -370,8 +330,7 @@ public class RecuperarContrasena extends javax.swing.JFrame{
                 char c=KE.getKeyChar();
                 if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO
-    }
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que sera Analizado
@@ -384,8 +343,7 @@ public class RecuperarContrasena extends javax.swing.JFrame{
             Integer.parseInt(Respuesta);
             return true;}
         catch(NumberFormatException e){
-           return false;}
-    }
+           return false;}}
     /**
      * @param args the command line arguments
      */
@@ -418,7 +376,6 @@ public class RecuperarContrasena extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btncancelar;
     private org.edisoncor.gui.button.ButtonTask btnenviar;
-    private javax.swing.JButton btnmodificar;
     private javax.swing.JLabel lblcontrasena;
     private javax.swing.JLabel lblcorreo;
     private javax.swing.JLabel lblimagen;

@@ -45,16 +45,14 @@ public class InicioSesion extends javax.swing.JFrame{
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         txtusuario.requestFocus();
         lblbloq.setVisible(false);
-        Letras(txtusuario);
-    }
+        Letras(txtusuario);}
     private void setProgress(int percent,String information){
         splashInicio.getJLabel().setText(information);
         splashInicio.getJProgressBar().setValue(percent);
         try{
             Thread.sleep(1500);}//TIEMPO QUE DEMORA EL SISTEMA EN CARGAR
         catch(InterruptedException e){
-            JOptionPane.showMessageDialog(null,"No se puedo ejecutar la presentación");}
-    }
+            JOptionPane.showMessageDialog(null,"No se puedo ejecutar la presentación");}}
     /**
      * CONSTRUCTOR InicioSesion
      * @author Robinson Gallego Alzate
@@ -68,8 +66,7 @@ public class InicioSesion extends javax.swing.JFrame{
         setLocationRelativeTo(null);//CENTRAR LA VENTANA
         txtusuario.requestFocus();
         lblbloq.setVisible(false);
-        Letras(txtusuario);
-    }
+        Letras(txtusuario);}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -295,10 +292,16 @@ public class InicioSesion extends javax.swing.JFrame{
             ResultSet rs=cu.BuscarUsuario2(respuesta);
             try{
                 if(rs.next()){
-                    this.dispose();
-                    RecuperarContrasena rc=new RecuperarContrasena();
-                    rc.Pregunta(rs);
-                    rc.setVisible(true);}
+                    if(rs.getString(7).equals("Inactivo")){
+                        JOptionPane.showMessageDialog(null,"El Usuario ingresado no tiene permiso de Recuperar Contraseña.\nEl Usuario se encuentra bloqueado. Por favor comuniquese con\nel Personal de Sistemas.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                        txtusuario.setText("");
+                        jpcontrasena.setText("");
+                        txtusuario.requestFocus();}
+                    else{
+                        this.dispose();
+                        RecuperarContrasena rc=new RecuperarContrasena();
+                        rc.Pregunta(rs);
+                        rc.setVisible(true);}}
                 else{
                     JOptionPane.showMessageDialog(null,"El Usuario ingresado no existe.","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
                     txtusuario.setText("");
