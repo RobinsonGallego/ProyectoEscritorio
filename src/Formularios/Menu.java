@@ -141,6 +141,42 @@ public class Menu extends javax.swing.JFrame{
                                 smmanualtecnico.setEnabled(false);
                                 //SALIR
                                 msalir.setEnabled(true);
+                            break;
+                            case "Admisión":
+                                //GESTIONES
+                                mgestiones.setEnabled(true);
+                                smpersonal.setEnabled(false);
+                                smfarmaceutas.setEnabled(false);
+                                smtipomenu.setEnabled(false);
+                                smunidades.setEnabled(false);
+                                smhabitaciones.setEnabled(false);
+                                smconsultorios.setEnabled(false);
+                                smhorarios.setEnabled(false);
+                                smzona.setEnabled(false);
+                                //TRANSACCIONES
+                                mtransacciones.setEnabled(true);
+                                smfacfarmacia.setEnabled(false);
+                                sminventario.setEnabled(false);
+                                smdiagnostico.setEnabled(false);
+                                smhospitalizacion.setEnabled(false);
+                                smseguimiento.setEnabled(false);
+                                smasignacion.setEnabled(false);
+                                //SALIDAS
+                                msalidas.setEnabled(true);
+                                smconsudietaypreparacion.setEnabled(false);
+                                smconsustockmedicamentos.setEnabled(false);
+                                smconsucontraindicaciones.setEnabled(false);
+                                sminformeingresos.setEnabled(false);
+                                sminfogastosgenerales.setEnabled(false);
+                                sminformapersonalmedico.setEnabled(false);
+                                smhojasdevida.setEnabled(false);
+                                //HERRAMIENTAS
+                                mherramientas.setEnabled(false);
+                                //AYUDA
+                                mayuda.setEnabled(true);
+                                smmanualtecnico.setEnabled(false);
+                                //SALIR
+                                msalir.setEnabled(true);
                             break;}}}
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}

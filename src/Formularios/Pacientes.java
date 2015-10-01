@@ -111,8 +111,7 @@ public class Pacientes extends javax.swing.JFrame{
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1632,6 +1631,25 @@ public class Pacientes extends javax.swing.JFrame{
     private void Accionmodificar(){
         //ACTIVAMOS LOS CAMPOS
         Habilitar();
+        //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+        ClaseUsuarios cu2=new ClaseUsuarios();
+        ResultSet rs3=cu2.BuscarUsuario2(lblusuario.getText());
+        try{
+            if(rs3.next()){               
+                //TRANSFORMAMOS EL DATO DEL PERFIL
+                int codigoPerfil=Integer.parseInt(rs3.getString(8));
+                //CREAMOS UN OBJETO DE LA CLASEPERFILES
+                ClasePerfiles cp=new ClasePerfiles();
+                ResultSet rs4=cp.Buscar(codigoPerfil);
+                try{
+                    if(rs4.next()){
+                        String perfil=rs4.getString(2);
+                        if(!"Administrador".equals(perfil)){
+                            cbestado.setEnabled(false);}}}
+                catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}                
         jdcfechaingreso.setEnabled(false);
         txtnombres.requestFocus();
         //DESACTIVAMOS LOS BOTONES
@@ -1700,7 +1718,7 @@ public class Pacientes extends javax.swing.JFrame{
                             try{
                                 if(rs2.next()){
                                     String perfil=rs2.getString(2);
-                                    if(perfil.equals("Administrador")||perfil.equals("Admisión")){
+                                    if(perfil.equals("Administrador")||perfil.equals("Admisión")||perfil.equals("Personal médico")){
                                         btnmodificar.setEnabled(true);}
                                     else{
                                         btnmodificar.setEnabled(false);}}}
@@ -1908,7 +1926,7 @@ public class Pacientes extends javax.swing.JFrame{
                 Iniciar();
                 cbtipodocumento.setEnabled(true);
                 cbtipodocumento.requestFocus();
-                Habilitar();
+                Inhabilitar();
                 btnconsultar.setText("Consultar");
                 btnconsultar.setDescription("Consult");
                 btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
@@ -2070,11 +2088,11 @@ public class Pacientes extends javax.swing.JFrame{
         try{
             if(rs.next()){
                 //JUEGO DE BOTONES
-                btnmodificar.setEnabled(true);
                 btnmodificar.setText("Modificar");
                 btnmodificar.setDescription("Edit");
                 btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
                 btnguardar.setEnabled(false);
+                btnmodificar.setEnabled(true);
                 Inhabilitar();
                 //CAPTURAMOS LA INFORMACIÓN EN LAS CAJAS
                 cbtipodocumento.setSelectedItem(rs.getString(1));
@@ -2135,6 +2153,7 @@ public class Pacientes extends javax.swing.JFrame{
                         CargarFoto(txtnumerodocumento.getText());}}
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
+                cbestado.setSelectedItem(rs.getString(28));
                 btnconsultar.setText("Limpiar");
                 btnconsultar.setDescription("Clean");
                 btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
@@ -2211,18 +2230,46 @@ public class Pacientes extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(null,"Registro Actualizado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
             Limpiar();
             Iniciar();
-            cbtipodocumento.setEnabled(true);
-            cbtipodocumento.requestFocus();
-            btnconsultar.setText("Consultar");
-            btnconsultar.setDescription("Consult");
-            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-            btnguardar.setEnabled(true);
-            btnmodificar.setEnabled(false);
-            btnmodificar.setText("Modificar");
-            btnmodificar.setDescription("Edit");
-            btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-            btnmodificar.setEnabled(false);}
-    }
+            //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+            ClaseUsuarios cu=new ClaseUsuarios();
+            ResultSet rs=cu.BuscarUsuario2(lblusuario.getText());
+            try{
+                if(rs.next()){               
+                    //TRANSFORMAMOS EL DATO DEL PERFIL
+                    int codigoPerfil=Integer.parseInt(rs.getString(8));
+                    //CREAMOS UN OBJETO DE LA CLASEPERFILES
+                    ClasePerfiles cp=new ClasePerfiles();
+                    ResultSet rs2=cp.Buscar(codigoPerfil);
+                    try{
+                        if(rs2.next()){
+                            String perfil=rs2.getString(2);
+                            if(perfil.equals("Administrador")){
+                                cbtipodocumento.setEnabled(true);
+                                cbtipodocumento.requestFocus();
+                                btnconsultar.setText("Consultar");
+                                btnconsultar.setDescription("Consult");
+                                btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
+                                btnguardar.setEnabled(true);
+                                btnmodificar.setEnabled(false);
+                                btnmodificar.setText("Modificar");
+                                btnmodificar.setDescription("Edit");
+                                btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
+                                btnmodificar.setEnabled(false);}
+                            else{
+                                Inhabilitar();
+                                btnconsultar.setText("Consultar");
+                                btnconsultar.setDescription("Consult");
+                                btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
+                                btnmodificar.setEnabled(false);
+                                btnmodificar.setText("Modificar");
+                                btnmodificar.setDescription("Edit");
+                                btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
+                                btnmodificar.setEnabled(false);
+                                btnlistar.setEnabled(false);}}}
+                    catch(SQLException e){
+                        JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
     //COMPLEMENTO DE VALIDACIONES GUARDAR    
     private void SegundoALleno(){
         if(String.valueOf(txtsegundoapellido.getText().charAt(0)).equals(" ")){
@@ -2587,8 +2634,7 @@ public class Pacientes extends javax.swing.JFrame{
             //OBTENEMOS LA RUTA EN EL TEXTFIELD
             txtrutafoto.setText(file);
             //LIMPIAMOS LA RUTA
-            Ruta="";}
-    }
+            Ruta="";}}
     /**
      * MÉTODO PARA CARGAR FOTOS DEL PERSONAL MÉDICO
      * @param identificacion que contiene un Long para Buscarlo
@@ -2893,8 +2939,7 @@ public class Pacientes extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new Pacientes().setVisible(true);}});
-    }
+                new Pacientes().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncargarfoto;
     private org.edisoncor.gui.button.ButtonTask btnconsultar;
