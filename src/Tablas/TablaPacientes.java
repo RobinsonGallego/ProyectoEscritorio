@@ -28,8 +28,8 @@ public class TablaPacientes extends javax.swing.JFrame{
         setExtendedState(MAXIMIZED_BOTH);//TAMAÑO MAXIMO DE LA VENTANA
         setTitle("Tabla Pacientes");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
-        Iniciar();
-    }
+        lblusuario.setVisible(false);
+        Iniciar();}
     /**
      * MÉTODO ALTERNO INICIAR
      * @author Robinson Gallego Alzate
@@ -46,8 +46,15 @@ public class TablaPacientes extends javax.swing.JFrame{
         cpa.LlenarDatos(modelo);
         FormatoTabla();
         Letras(txtnombres);
-        Letras(txtprimerape);
-    }
+        Letras(txtprimerape);}
+    /**
+     * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL
+     * @param user que contiene un String para recibido del Menú
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    public void setText(String user){
+        lblusuario.setText(user);}
     /**
      * MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
      * @author Robinson Gallego Alzate
@@ -103,8 +110,7 @@ public class TablaPacientes extends javax.swing.JFrame{
         tablapacientes.getColumnModel().getColumn(10).setWidth(25);
         tablapacientes.getColumnModel().getColumn(10).setMaxWidth(70);
         tablapacientes.getColumnModel().getColumn(10).setMinWidth(25);
-        tablapacientes.getColumnModel().getColumn(10).setHeaderValue("Estado");
-    }
+        tablapacientes.getColumnModel().getColumn(10).setHeaderValue("Estado");}
     /**
      * MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
      * @param tabla que contiene un JTable para ser Limpiado
@@ -115,8 +121,7 @@ public class TablaPacientes extends javax.swing.JFrame{
         //RECORREMOS TODAS LAS FILAS
         while(tabla.getRowCount()>0){
             //Y AQUÍ LAS REMOVEMOS
-            ((DefaultTableModel)tabla.getModel()).removeRow(0);}
-    }
+            ((DefaultTableModel)tabla.getModel()).removeRow(0);}}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -133,6 +138,7 @@ public class TablaPacientes extends javax.swing.JFrame{
         rbbuscarporestado = new javax.swing.JRadioButton();
         cbactivo = new javax.swing.JCheckBox();
         cbinactivo = new javax.swing.JCheckBox();
+        lblusuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablapacientes = new javax.swing.JTable();
 
@@ -253,6 +259,8 @@ public class TablaPacientes extends javax.swing.JFrame{
             }
         });
 
+        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout pfondoLayout = new javax.swing.GroupLayout(pfondo);
         pfondo.setLayout(pfondoLayout);
         pfondoLayout.setHorizontalGroup(
@@ -266,9 +274,11 @@ public class TablaPacientes extends javax.swing.JFrame{
                     .addComponent(rbbuscarporprimerape)
                     .addComponent(rbbuscarpondocumento))
                 .addGap(6, 6, 6)
-                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtnombres, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(txtprimerape))
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtnombres, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                        .addComponent(txtprimerape))
+                    .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(rbbuscarporestado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -295,7 +305,9 @@ public class TablaPacientes extends javax.swing.JFrame{
                                 .addComponent(rbbuscarporestado)
                                 .addComponent(cbactivo)
                                 .addComponent(cbinactivo))
-                            .addComponent(rbbuscarpondocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(rbbuscarpondocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(3, 3, 3)
                         .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rbbuscarpornombres, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -460,6 +472,7 @@ public class TablaPacientes extends javax.swing.JFrame{
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
         Pacientes p=new Pacientes();
+        p.setText(lblusuario.getText());
         p.setVisible(true);
     }//GEN-LAST:event_btnregresarActionPerformed
     //ACCIÓN DEL BOTÓN LIMPIAR CON CLIC
@@ -517,6 +530,7 @@ public class TablaPacientes extends javax.swing.JFrame{
     private void btnregresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnregresarKeyTyped
         this.dispose();
         Pacientes p=new Pacientes();
+        p.setText(lblusuario.getText());
         p.setVisible(true);
     }//GEN-LAST:event_btnregresarKeyTyped
     /**
@@ -588,6 +602,7 @@ public class TablaPacientes extends javax.swing.JFrame{
     private javax.swing.JCheckBox cbinactivo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblimagen;
+    private javax.swing.JLabel lblusuario;
     private javax.swing.JPanel pfondo;
     private javax.swing.JRadioButton rbbuscarpondocumento;
     private javax.swing.JRadioButton rbbuscarporestado;

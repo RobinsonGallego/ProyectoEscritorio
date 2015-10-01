@@ -65,9 +65,12 @@
                       <Component id="rbbuscarpondocumento" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtnombres" pref="180" max="32767" attributes="0"/>
-                      <Component id="txtprimerape" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtnombres" pref="180" max="32767" attributes="0"/>
+                          <Component id="txtprimerape" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="lblusuario" min="-2" pref="85" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="rbbuscarporestado" min="-2" max="-2" attributes="0"/>
@@ -100,7 +103,10 @@
                                   <Component id="cbactivo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbinactivo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="rbbuscarpondocumento" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="rbbuscarpondocumento" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="lblusuario" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -283,6 +289,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbinactivoActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblusuario">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

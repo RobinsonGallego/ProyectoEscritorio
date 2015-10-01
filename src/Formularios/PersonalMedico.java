@@ -123,8 +123,7 @@ public class PersonalMedico extends javax.swing.JFrame{
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     /**
      * MÉTODO ALTERNO INICIAR
      * @author Robinson Gallego Alzate
@@ -162,7 +161,7 @@ public class PersonalMedico extends javax.swing.JFrame{
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void CargarImagen(){
+    private void CargarImagen(){
         //CREAMOS UN OBJETO DE FILECHOOSER
         JFileChooser dlg=new JFileChooser();
         //DEL OBJETO CREADO, VAMOS A LLAMAR AL MÉTODO setFileFilter, Y MANDAMOS NUESTRA VARIABLE CREADA
@@ -954,6 +953,11 @@ public class PersonalMedico extends javax.swing.JFrame{
                 btnguardarActionPerformed(evt);
             }
         });
+        btnguardar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnguardarKeyTyped(evt);
+            }
+        });
 
         btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png"))); // NOI18N
         btnmodificar.setText("Modificar");
@@ -964,6 +968,11 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmodificarActionPerformed(evt);
+            }
+        });
+        btnmodificar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnmodificarKeyTyped(evt);
             }
         });
 
@@ -977,6 +986,11 @@ public class PersonalMedico extends javax.swing.JFrame{
                 btnlistarActionPerformed(evt);
             }
         });
+        btnlistar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnlistarKeyTyped(evt);
+            }
+        });
 
         btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar2_opt.png"))); // NOI18N
         btnregresar.setText("Regresar");
@@ -988,6 +1002,11 @@ public class PersonalMedico extends javax.swing.JFrame{
                 btnregresarActionPerformed(evt);
             }
         });
+        btnregresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnregresarKeyTyped(evt);
+            }
+        });
 
         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png"))); // NOI18N
         btnconsultar.setText("Consultar");
@@ -997,6 +1016,11 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnconsultarActionPerformed(evt);
+            }
+        });
+        btnconsultar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnconsultarKeyTyped(evt);
             }
         });
 
@@ -1080,7 +1104,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         LimpiarLabores();
         taobservaciones.requestFocus();
     }//GEN-LAST:event_rbnoActionPerformed
-    //ACCIÓN DEL BOTÓN REGRESAR
+    //ACCIÓN DEL BOTÓN REGRESAR CON CLIC
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
         Menu menu=new Menu();
@@ -1343,8 +1367,137 @@ public class PersonalMedico extends javax.swing.JFrame{
         if(conteo>249){
             evt.consume();}
     }//GEN-LAST:event_taobservacionesKeyTyped
-    //ACCIÓN DEL BOTÓN GUARDAR
+    //ACCIÓN DEL BOTÓN GUARDAR CON CLIC
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        AcciónGuardar();
+    }//GEN-LAST:event_btnguardarActionPerformed
+    //ACCIÓN REALIZADA AL ESCOGER UN PAÍS
+    private void cbpaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbpaisActionPerformed
+        if(cbpais.getSelectedItem()!=""){
+            cbciudad.setEnabled(true);
+            IniciarCiudades();}
+        else{
+            cbciudad.removeAllItems();
+            cbciudad.setEnabled(false);}
+    }//GEN-LAST:event_cbpaisActionPerformed
+    //ACCIÓN DEL BOTÓN CONSULTAR CON CLIC
+    private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
+        AccionConsultar();
+    }//GEN-LAST:event_btnconsultarActionPerformed
+    //ACCIÓN DEL COMBOBOX IDIOMAS
+    private void cbidiomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbidiomasActionPerformed
+        taidiomas.setText(taidiomas.getText().replace("","")+cbidiomas.getSelectedItem()+" \n");
+    }//GEN-LAST:event_cbidiomasActionPerformed
+    //ACCIÓN DEL BOTÓN MODIFICAR CON CLIC
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        AccionModificar();
+    }//GEN-LAST:event_btnmodificarActionPerformed
+   //ACCIÓN DEL BOTÓN LISTAR CON CLIC
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+        this.dispose();
+        TablaPersonalMedico tpm=new TablaPersonalMedico();
+        tpm.setText(lblusuario.getText());
+        tpm.setVisible(true);
+    }//GEN-LAST:event_btnlistarActionPerformed
+    //ACCIÓN DEL BOTÓN LIMPIAR IDIOMAS
+    private void btnlimpiaridiomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiaridiomasActionPerformed
+        cbidiomas.setSelectedItem("");
+        taidiomas.setText("");
+    }//GEN-LAST:event_btnlimpiaridiomasActionPerformed
+    //ACCIÓN DEL BOTÓN GUARDAR CON TECLADO
+    private void btnguardarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnguardarKeyTyped
+        AcciónGuardar();
+    }//GEN-LAST:event_btnguardarKeyTyped
+    //ACCIÓN DEL BOTÓN CONSULTAR CON TECLADO
+    private void btnconsultarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnconsultarKeyTyped
+        AccionConsultar();
+    }//GEN-LAST:event_btnconsultarKeyTyped
+    //ACCIÓN DEL BOTÓN MODIFICAR CON TECLADO
+    private void btnmodificarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnmodificarKeyTyped
+        AccionModificar();
+    }//GEN-LAST:event_btnmodificarKeyTyped
+    //ACCIÓN DEL BOTÓN LISTAR CON TECLADO
+    private void btnlistarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnlistarKeyTyped
+        this.dispose();
+        TablaPersonalMedico tpm=new TablaPersonalMedico();
+        tpm.setText(lblusuario.getText());
+        tpm.setVisible(true);
+    }//GEN-LAST:event_btnlistarKeyTyped
+    //ACCIÓN DEL BOTÓN REGRESAR CON TECLADO
+    private void btnregresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnregresarKeyTyped
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setText(lblusuario.getText());
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarKeyTyped
+    /**
+     * MÉTODO GUARDAR
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private void Guardar(){
+        //CREAMOS UN OBJETO DE LA CLASE PERSONAL MÉDICO
+        ClasePersonalMedico cpm=new ClasePersonalMedico();
+        int telefono=0,salario=0;
+        //CAPTURAMOS LOS DATOS
+        long identificacion=Long.parseLong(txtidentificacion.getText());
+        ResultSet rs=cpm.Buscar(identificacion);
+        try{
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null,"La Identificación ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE,error);
+                Limpiar();
+                Iniciar();
+                LimpiarLabores();
+                Inhabilitar2();}
+            else{
+                String nombres=txtnombres.getText();
+                String primerApellido=txtprimerapellido.getText();
+                String segundoApellido=txtsegundoapellido.getText();
+                String fechaNacimiento=df.format(datefechanacimiento.getDate());
+                String pais=cbpais.getSelectedItem().toString();
+                String ciudad=cbciudad.getSelectedItem().toString();
+                String estadoCivil=cbestadocivil.getSelectedItem().toString();
+                String direccion=txtdireccion.getText();
+                if(!"".equals(txttelefono.getText())){
+                    telefono=Integer.parseInt(txttelefono.getText());}
+                long movil=Long.parseLong(txtmovil.getText());
+                String correo=txtcorreo.getText();
+                String rutafoto=txtruta.getText();
+                String tarjeta=txttarjeta.getText();
+                String titulo=txttitulo.getText();
+                String institucion=txtinstitucion.getText();
+                String otrosEstudios=taotrosestudios.getText();
+                String idiomas=taidiomas.getText();
+                String experiencialaboral="NO";
+                if(rbsi.isSelected()==true){
+                    experiencialaboral=rbsi.getText();}
+                String ultimaEmpresa=txtultimaempresa.getText();
+                String cargo=txtcargo.getText();
+                String motivo=cbmotivo.getSelectedItem().toString();
+                if(!"".equals(txtsalario.getText())){
+                    salario=Integer.parseInt(txtsalario.getText());}
+                String observaciones=taobservaciones.getText();
+                //VALIDAMOS LA FECHA DE NACIMIENTO
+                int anos=this.Fecha(fechaNacimiento);
+                if(anos<0){
+                    JOptionPane.showMessageDialog(null,"Fecha de Nacimiento errada.","Error",JOptionPane.ERROR_MESSAGE,error);
+                    datefechanacimiento.requestFocus();}
+                else if(anos<18){
+                    JOptionPane.showMessageDialog(null,"Debe registrar mayores de Edad","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
+                    datefechanacimiento.requestFocus();}
+                else{
+                    cpm.Guardar(identificacion,nombres,primerApellido,segundoApellido,fechaNacimiento,pais,ciudad,estadoCivil,direccion,telefono,movil,correo,tarjeta,titulo,institucion,otrosEstudios,idiomas,experiencialaboral,ultimaEmpresa,cargo,motivo,salario,observaciones,rutafoto);
+                    JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
+                    Limpiar();
+                    Iniciar();
+                    LimpiarLabores();
+                    Inhabilitar2();}}}
+        catch(SQLException e){
+            System.out.println(e.getMessage());}}
+    /**
+     * ACCIÓN DE GUARDAR
+     */
+    private void AcciónGuardar(){
         //VALIDAMOS LOS CAMPOS OBLIGATORIOS
         if(txtidentificacion.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir la Identificación","Verificar",JOptionPane.WARNING_MESSAGE,warning);
@@ -1366,19 +1519,11 @@ public class PersonalMedico extends javax.swing.JFrame{
         else if(!"".equals(txtsegundoapellido.getText())){
             SegundoALleno();}
         else{
-            SegundoAVacio();}
-    }//GEN-LAST:event_btnguardarActionPerformed
-    //ACCIÓN REALIZADA AL ESCOGER UN PAÍS
-    private void cbpaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbpaisActionPerformed
-        if(cbpais.getSelectedItem()!=""){
-            cbciudad.setEnabled(true);
-            IniciarCiudades();}
-        else{
-            cbciudad.removeAllItems();
-            cbciudad.setEnabled(false);}
-    }//GEN-LAST:event_cbpaisActionPerformed
-    //ACCIÓN DEL BOTÓN CONSULTAR
-    private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
+            SegundoAVacio();}}
+    /**
+     * ACCIÓN DE CONSULTAR
+     */
+    private void AccionConsultar(){
         //CREAMOS UN OBJETO DE LA CLASE USUARIOS
         ClaseUsuarios cu=new ClaseUsuarios();
         ResultSet rs=cu.BuscarUsuario2(lblusuario.getText());
@@ -1399,14 +1544,11 @@ public class PersonalMedico extends javax.swing.JFrame{
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }//GEN-LAST:event_btnconsultarActionPerformed
-    //ACCIÓN DEL COMBOBOX IDIOMAS
-    private void cbidiomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbidiomasActionPerformed
-        taidiomas.setText(taidiomas.getText().replace("","")+cbidiomas.getSelectedItem()+" \n");
-    }//GEN-LAST:event_cbidiomasActionPerformed
-    //ACCIÓN DEL BOTÓN MODIFICAR
-    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
+    /**
+     * ACCIÓN DE MODIFICAR
+     */
+    private void AccionModificar(){
         //ACTIVAMOS LOS CAMPOS
         Habilitar();
         //DESACTIVAMOS LOS BOTONES
@@ -1439,101 +1581,13 @@ public class PersonalMedico extends javax.swing.JFrame{
             else if(!"".equals(txtsegundoapellido.getText())){
                 SegundoALleno2();}
             else {
-                SegundoAVacio2();}}
-    }//GEN-LAST:event_btnmodificarActionPerformed
-   //ACCIÓN DEL BOTÓN LISTAR
-    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
-        this.dispose();
-        TablaPersonalMedico tpm=new TablaPersonalMedico();
-        tpm.setVisible(true);
-    }//GEN-LAST:event_btnlistarActionPerformed
-    //ACCIÓN DEL BOTÓN LIMPIAR IDIOMAS
-    private void btnlimpiaridiomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiaridiomasActionPerformed
-        cbidiomas.setSelectedItem("");
-        taidiomas.setText("");
-    }//GEN-LAST:event_btnlimpiaridiomasActionPerformed
-    /**
-     * MÉTODO GUARDAR
-     * @author Robinson Gallego Alzate
-     * @version 1.0
-     */
-    public void Guardar(){
-        //CREAMOS UN OBJETO DE LA CLASE PERSONAL MÉDICO
-        ClasePersonalMedico cpm=new ClasePersonalMedico();
-        int telefono=0,salario=0;
-        //CAPTURAMOS LOS DATOS
-        long identificacion=Long.parseLong(txtidentificacion.getText());
-        ResultSet rs=cpm.Buscar(identificacion);
-        try{
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null,"La Identificación ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE,error);
-                Limpiar();
-                Iniciar();
-                LimpiarLabores();
-                Inhabilitar2();}
-            else{
-                String nombres=txtnombres.getText();
-                String primerApellido=txtprimerapellido.getText();
-                String segundoApellido=txtsegundoapellido.getText();
-                ResultSet rs2=cpm.Buscar2(nombres,primerApellido,segundoApellido);
-                try{
-                    if(rs2.next()){
-                        JOptionPane.showMessageDialog(null,"El Nombre, Primer Apellido y Segundo Apellido ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE,error);
-                        Limpiar();
-                        Iniciar();
-                        LimpiarLabores();
-                        Inhabilitar2();}
-                    else{
-                        String fechaNacimiento=df.format(datefechanacimiento.getDate());
-                        String pais=cbpais.getSelectedItem().toString();
-                        String ciudad=cbciudad.getSelectedItem().toString();
-                        String estadoCivil=cbestadocivil.getSelectedItem().toString();
-                        String direccion=txtdireccion.getText();
-                        if(!"".equals(txttelefono.getText())){
-                            telefono=Integer.parseInt(txttelefono.getText());}
-                        long movil=Long.parseLong(txtmovil.getText());
-                        String correo=txtcorreo.getText();
-                        String rutafoto=txtruta.getText();
-                        String tarjeta=txttarjeta.getText();
-                        String titulo=txttitulo.getText();
-                        String institucion=txtinstitucion.getText();
-                        String otrosEstudios=taotrosestudios.getText();
-                        String idiomas=taidiomas.getText();
-                        String experiencialaboral="NO";
-                        if(rbsi.isSelected()==true){
-                            experiencialaboral=rbsi.getText();}
-                        String ultimaEmpresa=txtultimaempresa.getText();
-                        String cargo=txtcargo.getText();
-                        String motivo=cbmotivo.getSelectedItem().toString();
-                        if(!"".equals(txtsalario.getText())){
-                            salario=Integer.parseInt(txtsalario.getText());}
-                        String observaciones=taobservaciones.getText();
-                        //VALIDAMOS LA FECHA DE NACIMIENTO
-                        int anos=this.Fecha(fechaNacimiento);
-                        if(anos<0){
-                            JOptionPane.showMessageDialog(null,"Fecha de Nacimiento errada.","Error",JOptionPane.ERROR_MESSAGE,error);
-                            datefechanacimiento.requestFocus();}
-                        else if(anos<18){
-                            JOptionPane.showMessageDialog(null,"Debe registrar mayores de Edad","Información",JOptionPane.INFORMATION_MESSAGE,informacion);
-                            datefechanacimiento.requestFocus();}
-                        else{
-                            cpm.Guardar(identificacion,nombres,primerApellido,segundoApellido,fechaNacimiento,pais,ciudad,estadoCivil,direccion,telefono,movil,correo,tarjeta,titulo,institucion,otrosEstudios,idiomas,experiencialaboral,ultimaEmpresa,cargo,motivo,salario,observaciones,rutafoto);
-                            JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
-                            Limpiar();
-                            Iniciar();
-                            LimpiarLabores();
-                            Inhabilitar2();}}}
-                catch(SQLException e){
-                    System.out.println(e.getMessage());}}}
-        catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+                SegundoAVacio2();}}}
     /**
      * MÉTODO PARA ACTUALIZAR
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Actualizar(){
+    private void Actualizar(){
         //CREAMOS UN OBJETO DE LA CLASE PERSONALMÉDICO
         ClasePersonalMedico cpm=new ClasePersonalMedico();
         int telefono=0,salario=0;
@@ -1581,14 +1635,13 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnmodificar.setText("Modificar");
         btnmodificar.setDescription("Edit");
         btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-        btnmodificar.setEnabled(false);
-    }
+        btnmodificar.setEnabled(false);}
     /**
      * MÉTODO PARA CONSULTA DE ADMINISTRADOR
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
-    public void ConsultarAdmin(){
+    private void ConsultarAdmin(){
         switch(btnconsultar.getText()){
             case "Consultar":
                 String respuesta=((String)JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
@@ -1697,14 +1750,13 @@ public class PersonalMedico extends javax.swing.JFrame{
                 btnmodificar.setDescription("Edit");
                 btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
                 btnmodificar.setEnabled(false);
-                break;}
-    }
+                break;}}
     /**
      * MÉTODO PARA CONSULTA DE OTRO USUARIO
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void ConsultarOtro(){
+    private void ConsultarOtro(){
         switch(btnconsultar.getText()){
             case "Consultar":
                 String respuesta=((String)JOptionPane.showInputDialog(null,"Ingrese la Identificación que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
@@ -1799,10 +1851,9 @@ public class PersonalMedico extends javax.swing.JFrame{
                 btnconsultar.setText("Consultar");
                 btnconsultar.setDescription("Consult");
                 btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-                break;}
-    }
+                break;}}
     //COMPLEMENTO DE VALIDACIONES GUARDAR
-    public void SegundoALleno(){
+    private void SegundoALleno(){
         if(String.valueOf(txtsegundoapellido.getText().charAt(0)).equals(" ")){
             JOptionPane.showMessageDialog(null,"El Segundo Apellido no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtsegundoapellido.requestFocus();
@@ -1823,7 +1874,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             DireccionLleno();}
         else{
             DireccionVacio();}}
-    public void SegundoAVacio(){
+    private void SegundoAVacio(){
         if(datefechanacimiento.getDate()==null){
             JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             datefechanacimiento.requestFocus();}
@@ -1840,32 +1891,24 @@ public class PersonalMedico extends javax.swing.JFrame{
             DireccionLleno();}
         else{
             DireccionVacio();}}
-    public void DireccionLleno(){
+    private void DireccionLleno(){
         if(String.valueOf(txtdireccion.getText().charAt(0)).equals(" ")||EsNumero(String.valueOf(txtdireccion.getText().charAt(0)))==true){
-            JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco o con un Número","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco o con un Número.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtdireccion.requestFocus();
             txtdireccion.setText("");}
         else if(!"".equals(txttelefono.getText())){
-            TelefonoLleno();}
+            Telefono();}
         else{
-            TelefonoVacio();}}
-    public void DireccionVacio(){
+            Telefono();}}
+    private void DireccionVacio(){
         if(!"".equals(txttelefono.getText())){
-            TelefonoLleno();}
+            Telefono();}
         else{
-            TelefonoVacio();}}
-    public void TelefonoLleno(){
-        if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttelefono.requestFocus();
-            txttelefono.setText("");}
-        else if(txtmovil.getText().equals("")){
+            Telefono();}}
+    private void Telefono(){
+        if(txtmovil.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtmovil.requestFocus();}
-        else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtmovil.requestFocus();
-            txtmovil.setText("");}
         else if(txtcorreo.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcorreo.requestFocus();}
@@ -1932,82 +1975,8 @@ public class PersonalMedico extends javax.swing.JFrame{
             int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
             if(Respuesta==JOptionPane.YES_OPTION){
                 Guardar();}}}
-    public void TelefonoVacio(){
-        if(txtmovil.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtmovil.requestFocus();}
-        else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtmovil.requestFocus();
-            txtmovil.setText("");}
-        else if(txtcorreo.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtcorreo.requestFocus();}
-        if(EsNumero(String.valueOf(txtcorreo.getText().charAt(0)))==true){
-            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
-            txtcorreo.requestFocus();
-            txtcorreo.setText("");}
-        else if(esMail(txtcorreo.getText())==false){
-            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
-            txtcorreo.requestFocus();}
-        else if(txttarjeta.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttarjeta.requestFocus();}
-        else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttarjeta.requestFocus();
-            txttarjeta.setText("");}
-        else if(Formato(txttarjeta.getText())==false){
-            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional esta mal Ingresada","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttarjeta.requestFocus();}
-        else if(txttitulo.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttitulo.requestFocus();}
-        else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttitulo.requestFocus();
-            txttitulo.setText("");}
-        else if(txtinstitucion.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtinstitucion.requestFocus();}
-        else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtinstitucion.requestFocus();
-            txtinstitucion.setText("");}
-        else if(taidiomas.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            cbidiomas.requestFocus();}
-        else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            rbsi.requestFocus();}
-        else if(rbsi.isSelected()==true){
-            if(txtultimaempresa.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtultimaempresa.requestFocus();}
-            else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtultimaempresa.requestFocus();
-                txtultimaempresa.setText("");}
-            else if(txtcargo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtcargo.requestFocus();}
-            else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtcargo.requestFocus();
-                txtcargo.setText("");}
-            else if(cbmotivo.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                cbmotivo.requestFocus();}
-            else{
-                int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
-                if(Respuesta==JOptionPane.YES_OPTION){
-                    Guardar();}}}
-        else{
-            int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
-            if(Respuesta==JOptionPane.YES_OPTION){
-                Guardar();}}}
     //COMPLEMENTO DE VALIDACIONES ACTUALIZAR
-    public void SegundoALleno2(){
+    private void SegundoALleno2(){
         if(String.valueOf(txtsegundoapellido.getText().charAt(0)).equals(" ")){
             JOptionPane.showMessageDialog(null,"El Segundo Apellido no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtsegundoapellido.requestFocus();
@@ -2028,7 +1997,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             DireccionLleno2();}
         else{
             DireccionVacio2();}}
-    public void SegundoAVacio2(){
+    private void SegundoAVacio2(){
         if(datefechanacimiento.getDate()==null){
             JOptionPane.showMessageDialog(null,"Debe seleccionar la Fecha de Nacimiento","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             datefechanacimiento.requestFocus();}
@@ -2045,102 +2014,24 @@ public class PersonalMedico extends javax.swing.JFrame{
             DireccionLleno2();}
         else{
             DireccionVacio2();}}
-    public void DireccionLleno2(){
+    private void DireccionLleno2(){
         if(String.valueOf(txtdireccion.getText().charAt(0)).equals(" ")||EsNumero(String.valueOf(txtdireccion.getText().charAt(0)))==true){
             JOptionPane.showMessageDialog(null,"Dirección no puede iniciar con espacio en blanco o con un Número","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtdireccion.requestFocus();
             txtdireccion.setText("");}
         else if(!"".equals(txttelefono.getText())){
-            TelefonoLleno2();}
+            Telefono2();}
         else{
-            TelefonoVacio2();}}
-    public void DireccionVacio2(){
+            Telefono2();}}
+    private void DireccionVacio2(){
         if(!"".equals(txttelefono.getText())){
-            TelefonoLleno2();}
+            Telefono2();}
         else{
-            TelefonoVacio2();}}
-    public void TelefonoLleno2(){
-        if(String.valueOf(txttelefono.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"Teléfono no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttelefono.requestFocus();
-            txttelefono.setText("");}
-        else if(txtmovil.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtmovil.requestFocus();}
-        else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtmovil.requestFocus();
-            txtmovil.setText("");}
-        else if(txtcorreo.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtcorreo.requestFocus();}
-        if(EsNumero(String.valueOf(txtcorreo.getText().charAt(0)))==true){
-            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
-            txtcorreo.requestFocus();
-            txtcorreo.setText("");}
-        else if(esMail(txtcorreo.getText())==false){
-            JOptionPane.showMessageDialog(null,"El Correo esta mal ingresado","Validación",JOptionPane.ERROR_MESSAGE,error);
-            txtcorreo.requestFocus();}
-        else if(txttarjeta.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Tarjeta Profesional","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttarjeta.requestFocus();}
-        else if(String.valueOf(txttarjeta.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttarjeta.requestFocus();
-            txttarjeta.setText("");}
-        else if(Formato(txttarjeta.getText())==false){
-            JOptionPane.showMessageDialog(null,"La Tarjeta Profesional esta mal Ingresada","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttarjeta.requestFocus();}
-        else if(txttitulo.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Título obtenido","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttitulo.requestFocus();}
-        else if(String.valueOf(txttitulo.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Título no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txttitulo.requestFocus();
-            txttitulo.setText("");}
-        else if(txtinstitucion.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Institución","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtinstitucion.requestFocus();}
-        else if(String.valueOf(txtinstitucion.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Institución no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtinstitucion.requestFocus();
-            txtinstitucion.setText("");}
-        else if(taidiomas.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar al menos un Idioma","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            cbidiomas.requestFocus();}
-        else if(rbsi.isSelected()==false&&rbno.isSelected()==false){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar la Experiencia Laboral","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            rbsi.requestFocus();}
-        else if(rbsi.isSelected()==true){
-            if(txtultimaempresa.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar la Última Empresa en donde Laboró","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtultimaempresa.requestFocus();}
-            else if(String.valueOf(txtultimaempresa.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"Última Empresa no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtultimaempresa.requestFocus();
-                txtultimaempresa.setText("");}
-            else if(txtcargo.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar el Cargo que desempeñaba","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtcargo.requestFocus();}
-            else if(String.valueOf(txtcargo.getText().charAt(0)).equals(" ")){
-                JOptionPane.showMessageDialog(null,"El Cargo no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                txtcargo.requestFocus();
-                txtcargo.setText("");}
-            else if(cbmotivo.getSelectedItem().equals("")){
-                JOptionPane.showMessageDialog(null,"Debe seleccionar el Motivo de Salida","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-                cbmotivo.requestFocus();}
-            else{
-                Actualizar();}}
-        else{
-            Actualizar();}}
-    public void TelefonoVacio2(){
+            Telefono2();}}
+    private void Telefono2(){
         if(txtmovil.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir el Móvil","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtmovil.requestFocus();}
-        else if(String.valueOf(txtmovil.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Móvil no puede iniciar con espacio en blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtmovil.requestFocus();
-            txtmovil.setText("");}
         else if(txtcorreo.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe escribir el Correo","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcorreo.requestFocus();}
@@ -2209,7 +2100,7 @@ public class PersonalMedico extends javax.swing.JFrame{
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
-    public void CargarFoto(long identificacion){
+    private void CargarFoto(long identificacion){
         Image dtCat=foto.RecuperarFoto(identificacion);
         ImageIcon icon=new ImageIcon(dtCat);
         //SE EXTRAE LA IMAGEN DEL ICONO
@@ -2221,8 +2112,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         //SE COLOCA EL NUEVO ICONO MODIFICADO
         if(newIcon!=null){
             lblfoto.setIcon(newIcon);
-            lblfoto.setSize(276,344);}
-    }
+            lblfoto.setSize(276,344);}}
     /**
      * MÉTODO PARA VALIDAR FECHAS DE NACIMIENTO
      * @param FechaR que contiene un String para ser Validado
@@ -2230,7 +2120,7 @@ public class PersonalMedico extends javax.swing.JFrame{
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public int Fecha(String FechaR){
+    private int Fecha(String FechaR){
         Date Fecha=null;
         try{
            /*SE PUEDE CAMBIAR LA MÁSCARA POR EL FORMATO DE LA FECHA
@@ -2252,8 +2142,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         if(mes<0||(mes==0&&dia<0)){
             year--;}
         //REGRESA LA CANTIDAD DE AÑOS EN BASE A LA FECHA RECIBIDA
-        return year;
-    }
+        return year;}
     /**
      * MÉTODO PARA VALIDAR UN EMAIL
      * @param correo que contiene un String con un correo
@@ -2265,8 +2154,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         Matcher matcherMail=patronEmail.matcher(correo.toLowerCase());
         if(matcherMail.matches()){
             correcto=true;}
-        return correcto;
-    }
+        return correcto;}
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que sera Analizado
@@ -2285,7 +2173,7 @@ public class PersonalMedico extends javax.swing.JFrame{
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Inhabilitar(){
+    private void Inhabilitar(){
         txtidentificacion.setEnabled(false);
         txtnombres.setEnabled(false);
         txtprimerapellido.setEnabled(false);
@@ -2308,14 +2196,13 @@ public class PersonalMedico extends javax.swing.JFrame{
         rbsi.setEnabled(false);
         rbno.setEnabled(false);
         Inhabilitar2();
-        taobservaciones.setEnabled(false);
-    }
+        taobservaciones.setEnabled(false);}
     /**
      * MÉTODO PARA INHABILITAR CAMPOS SECUNDARIOS
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Inhabilitar2(){
+    private void Inhabilitar2(){
         plaboral.setEnabled(false);
         lblultimaempresa.setEnabled(false);
         lblcargo.setEnabled(false);
@@ -2324,14 +2211,13 @@ public class PersonalMedico extends javax.swing.JFrame{
         txtultimaempresa.setEnabled(false);
         txtcargo.setEnabled(false);
         cbmotivo.setEnabled(false);
-        txtsalario.setEnabled(false);
-    }
+        txtsalario.setEnabled(false);}
     /**
      * MÉTODO PARA HABILITAR LOS CAMPOS
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Habilitar(){
+    private void Habilitar(){
         txtnombres.setEnabled(true);
         txtprimerapellido.setEnabled(true);
         txtsegundoapellido.setEnabled(true);
@@ -2354,14 +2240,13 @@ public class PersonalMedico extends javax.swing.JFrame{
         btnlimpiaridiomas.setEnabled(true);
         rbsi.setEnabled(true);
         rbno.setEnabled(true);
-        taobservaciones.setEnabled(true);
-    }
+        taobservaciones.setEnabled(true);}
     /**
      * MÉTODO PARA HABILITAR CAMPOS SECUNDARIOS
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Habilitar2(){
+    private void Habilitar2(){
         plaboral.setEnabled(true);
         lblultimaempresa.setEnabled(true);
         lblcargo.setEnabled(true);
@@ -2370,14 +2255,13 @@ public class PersonalMedico extends javax.swing.JFrame{
         txtultimaempresa.setEnabled(true);
         txtcargo.setEnabled(true);
         cbmotivo.setEnabled(true);
-        txtsalario.setEnabled(true);
-    }
+        txtsalario.setEnabled(true);}
     /**
      * MÉTODO PARA LIMPIAR LOS DATOS
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Limpiar(){
+    private void Limpiar(){
         txtidentificacion.setText("");
         txtnombres.setText("");
         txtprimerapellido.setText("");
@@ -2407,19 +2291,17 @@ public class PersonalMedico extends javax.swing.JFrame{
         lblestado1.setVisible(false);
         lblestadoactual1.setVisible(false);
         lblestado2.setVisible(false);
-        lblestadoactual2.setVisible(false);
-    }
+        lblestadoactual2.setVisible(false);}
     /**
      * MÉTODO PARA LIMPIAR LOS DATOS LABORES
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void LimpiarLabores(){
+    private void LimpiarLabores(){
         txtultimaempresa.setText("");
         txtcargo.setText("");
         cbmotivo.setSelectedItem("");
-        txtsalario.setText("");
-    }
+        txtsalario.setText("");}
     /**
      * MÉTODO QUE VALIDA LETRAS
      * @param a que contiene un JTextField
@@ -2432,8 +2314,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
                 if(!Character.isLetter(c)&&c!=' '){//AQUÍ ESTOY COMPARANDO SI SON LETRAS O ESPACIO EN BLANCO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO
-    }
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO QUE VALIDA NÚMEROS
      * @param a que contiene un JTextField
@@ -2446,8 +2327,7 @@ public class PersonalMedico extends javax.swing.JFrame{
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
                 if(!Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI SON NÚMEROS O ESPACIO EN BLANCO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO 
-    }
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO QUE VALIDA LETRAS Y NÚMEROS
      * @param a que contiene un JTextField
@@ -2506,8 +2386,7 @@ public class PersonalMedico extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new PersonalMedico().setVisible(true);}});
-    }
+                new PersonalMedico().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncargar;
     private org.edisoncor.gui.button.ButtonTask btnconsultar;

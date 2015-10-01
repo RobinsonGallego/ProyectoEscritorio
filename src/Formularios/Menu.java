@@ -34,8 +34,7 @@ public class Menu extends javax.swing.JFrame{
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         setTitle("Menú Principal");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
-        lblusuario.setVisible(false);
-    }
+        lblusuario.setVisible(false);}
     /**
      * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL 
      * @param user que contiene un String recibido del Inicio de Sessión
@@ -96,6 +95,7 @@ public class Menu extends javax.swing.JFrame{
                                 msalidas.setEnabled(true);
                                 smconsustockmedicamentos.setEnabled(false);
                                 sminformeingresos.setEnabled(false);
+                                sminfogastosgenerales.setEnabled(false);
                                 sminformapersonalmedico.setEnabled(false);
                                 smhojasdevida.setEnabled(false);
                                 //HERRAMIENTAS
@@ -106,7 +106,41 @@ public class Menu extends javax.swing.JFrame{
                                 //SALIR
                                 msalir.setEnabled(true);
                             break;
-                            case "Paciente":
+                            case "Dietética y cocina":
+                                //GESTIONES
+                                mgestiones.setEnabled(true);
+                                smpersonal.setEnabled(false);
+                                smfarmaceutas.setEnabled(false);
+                                smunidades.setEnabled(false);
+                                smhabitaciones.setEnabled(false);
+                                smconsultorios.setEnabled(false);
+                                smhorarios.setEnabled(false);
+                                smzona.setEnabled(false);
+                                //TRANSACCIONES
+                                mtransacciones.setEnabled(true);
+                                smentradasalida.setEnabled(false);
+                                smfacpacientes.setEnabled(false);
+                                smfacfarmacia.setEnabled(false);
+                                sminventario.setEnabled(false);
+                                smdiagnostico.setEnabled(false);
+                                smhospitalizacion.setEnabled(false);
+                                smseguimiento.setEnabled(false);
+                                smasignacion.setEnabled(false);
+                                //SALIDAS
+                                msalidas.setEnabled(true);
+                                smconsustockmedicamentos.setEnabled(false);
+                                smconsucontraindicaciones.setEnabled(false);
+                                sminformeingresos.setEnabled(false);
+                                sminfogastosgenerales.setEnabled(false);
+                                sminformapersonalmedico.setEnabled(false);
+                                smhojasdevida.setEnabled(false);
+                                //HERRAMIENTAS
+                                mherramientas.setEnabled(false);
+                                //AYUDA
+                                mayuda.setEnabled(true);
+                                smmanualtecnico.setEnabled(false);
+                                //SALIR
+                                msalir.setEnabled(true);
                             break;}}}
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
@@ -151,6 +185,7 @@ public class Menu extends javax.swing.JFrame{
         smconsucontraindicaciones = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         sminformeingresos = new javax.swing.JMenuItem();
+        sminfogastosgenerales = new javax.swing.JMenuItem();
         sminformapersonalmedico = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         smhojasdevida = new javax.swing.JMenuItem();
@@ -395,6 +430,10 @@ public class Menu extends javax.swing.JFrame{
         sminformeingresos.setText("Informe Ingresos Económicos");
         msalidas.add(sminformeingresos);
 
+        sminfogastosgenerales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        sminfogastosgenerales.setText("Informe Gastos Generales");
+        msalidas.add(sminfogastosgenerales);
+
         sminformapersonalmedico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         sminformapersonalmedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informepersonal_opt.png"))); // NOI18N
         sminformapersonalmedico.setText("Informe Personal Médico");
@@ -530,6 +569,7 @@ public class Menu extends javax.swing.JFrame{
     private void smtipomenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smtipomenuActionPerformed
         this.dispose();
         TipoMenu tipoMenu=new TipoMenu();
+        tipoMenu.setText(lblusuario.getText());
         tipoMenu.setVisible(true);
     }//GEN-LAST:event_smtipomenuActionPerformed
     //ACCIÓN DEL SUB-MENÚ SALIR
@@ -707,6 +747,7 @@ public class Menu extends javax.swing.JFrame{
     private javax.swing.JMenuItem smhojasdevida;
     private javax.swing.JMenuItem smhorarios;
     private javax.swing.JMenuItem smhospitalizacion;
+    private javax.swing.JMenuItem sminfogastosgenerales;
     private javax.swing.JMenuItem sminformapersonalmedico;
     private javax.swing.JMenuItem sminformeingresos;
     private javax.swing.JMenuItem sminventario;

@@ -4,7 +4,9 @@ package Formularios;
  * @author Robinson Gallego Alzate
  * @version 1.0
  */
+import Clases.ClasePerfiles;
 import Clases.ClaseTipoMenu;
+import Clases.ClaseUsuarios;
 import Tablas.TablaTipoMenu;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
@@ -30,10 +32,56 @@ public class TipoMenu extends javax.swing.JFrame{
         setResizable(false);//BLOQUEA EL TAMAÑO DE LA VENTANA
         setTitle("Personal Médico Your Hospital");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
-        //ESTE OBJETO NOS PERMITIRA COMUNICARNOS CON LA BASE DE DATOS
+        lblusuario.setVisible(false);
         cbtipomenu.requestFocus();
-        Iniciar();
-    }
+        Iniciar();}
+    /**
+     * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL 
+     * @param user que contiene un String recibido del Inicio de Sessión
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    public void setText(String user){
+        Perfil(user);
+        lblusuario.setText(user);}
+    /**
+     * MÉTODO PARA VALIDAR PERFILES
+     * @param usuario que contiene un String para Buscarlo
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    private void Perfil(String usuario){
+        //CREAMOS UN OBJETO DE LA CLASE USUARIOS
+        ClaseUsuarios cu=new ClaseUsuarios();
+        ResultSet rs=cu.BuscarUsuario2(usuario);
+        try{
+            if(rs.next()){                
+                //TRANSFORMAMOS EL DATO DEL PERFIL
+                int codigoPerfil=Integer.parseInt(rs.getString(8));
+                //CREAMOS UN OBJETO DE LA CLASEPERFILES
+                ClasePerfiles cp=new ClasePerfiles();
+                ResultSet rs2=cp.Buscar(codigoPerfil);
+                try{
+                    if(rs2.next()){
+                        String perfil=rs2.getString(2);
+                        if(perfil.equals("Administrador")||perfil.equals("Dietética y cocina")){
+                            btnguardar.setEnabled(true);
+                            btnconsultar.setEnabled(true);
+                            btneliminar.setEnabled(true);
+                            btnlistar.setEnabled(true);
+                            btnregresar.setEnabled(true);}
+                        else{
+                            Inhabilitar();
+                            btnguardar.setEnabled(false);
+                            btnconsultar.setEnabled(true);
+                            btnmodificar.setEnabled(false);
+                            btneliminar.setEnabled(false);
+                            btnlistar.setEnabled(false);
+                            btnregresar.setEnabled(true);}}}
+                catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     /**
      * MÉTODO ALTERNATIVO INICIAR
      * @author Robinson Gallego Alzate
@@ -52,8 +100,7 @@ public class TipoMenu extends javax.swing.JFrame{
         tacomponentes.setText("");
         tapacientesespaciales.setText("");
         ctm.LlenarComponente(cbcomponentes);
-        ctm2.LlenarPacientesEspaciales(cbpacientesespaciales);
-    }
+        ctm2.LlenarPacientesEspaciales(cbpacientesespaciales);}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -79,6 +126,7 @@ public class TipoMenu extends javax.swing.JFrame{
         lblcaracteres = new javax.swing.JLabel();
         btnlimpiarcomponentes = new javax.swing.JButton();
         btnlimpiarpe = new javax.swing.JButton();
+        lblusuario = new javax.swing.JLabel();
         btnguardar = new org.edisoncor.gui.button.ButtonTask();
         btnconsultar = new org.edisoncor.gui.button.ButtonTask();
         btneliminar = new org.edisoncor.gui.button.ButtonTask();
@@ -194,6 +242,8 @@ public class TipoMenu extends javax.swing.JFrame{
             }
         });
 
+        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout ptipomenuLayout = new javax.swing.GroupLayout(ptipomenu);
         ptipomenu.setLayout(ptipomenuLayout);
         ptipomenuLayout.setHorizontalGroup(
@@ -240,7 +290,10 @@ public class TipoMenu extends javax.swing.JFrame{
                                         .addComponent(lblcaracteres)
                                         .addGap(6, 6, 6)
                                         .addComponent(lblconteo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblcontraindicaciones)
+                                    .addGroup(ptipomenuLayout.createSequentialGroup()
+                                        .addComponent(lblcontraindicaciones)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -255,7 +308,9 @@ public class TipoMenu extends javax.swing.JFrame{
                         .addGroup(ptipomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ptipomenuLayout.createSequentialGroup()
                                 .addGap(19, 19, 19)
-                                .addComponent(lblcontraindicaciones)
+                                .addGroup(ptipomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblcontraindicaciones)
+                                    .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(3, 3, 3)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
@@ -417,6 +472,7 @@ public class TipoMenu extends javax.swing.JFrame{
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
         Menu menu=new Menu();
+        menu.setText(lblusuario.getText());
         menu.setVisible(true);
     }//GEN-LAST:event_btnregresarActionPerformed
     //LIMITACIONES Y TRANSFERENCIA DE FOCUS
@@ -427,7 +483,6 @@ public class TipoMenu extends javax.swing.JFrame{
             if(Contador==10){
                 cbcomponentes.requestFocus();}}
     }//GEN-LAST:event_cbtipomenuKeyTyped
-
     private void cbcomponentesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbcomponentesKeyTyped
         char Caracter=evt.getKeyChar();
         int Contador=(int)(Caracter);
@@ -435,14 +490,12 @@ public class TipoMenu extends javax.swing.JFrame{
             if(Contador==10){
                 tacontraindicaciones.requestFocus();}}
     }//GEN-LAST:event_cbcomponentesKeyTyped
-
     private void tacontraindicacionesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tacontraindicacionesKeyPressed
         if(tacontraindicaciones.getText().length()==300){
             evt.consume();}
         if(evt.getKeyCode()==KeyEvent.VK_TAB){
             cbpacientesespaciales.requestFocus();}
     }//GEN-LAST:event_tacontraindicacionesKeyPressed
-
     private void cbpacientesespacialesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbpacientesespacialesKeyTyped
         char Caracter=evt.getKeyChar();
         int Contador=(int)(Caracter);
@@ -450,7 +503,6 @@ public class TipoMenu extends javax.swing.JFrame{
             if(Contador==10){
                 btnguardar.requestFocus();}}
     }//GEN-LAST:event_cbpacientesespacialesKeyTyped
-
     private void tacontraindicacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tacontraindicacionesKeyTyped
         int conteo=tacontraindicaciones.getText().length();
         lblconteo.setText(String.valueOf(conteo));
@@ -488,46 +540,49 @@ public class TipoMenu extends javax.swing.JFrame{
     }//GEN-LAST:event_btnguardarActionPerformed
     //ACCIÓN DEL BOTÓN CONSULTAR
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
-        if(btnconsultar.getText().equals("Consultar")){
-            int codigo=Integer.parseInt((String)JOptionPane.showInputDialog(null,"Ingrese el código que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
-            //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
-            ClaseTipoMenu ctm=new ClaseTipoMenu();
-            ResultSet rs=ctm.Buscar(codigo);
-            try{
-                if(rs.next()){
-                    //ACTIVAMOS LOS BOTONES QUE ESTÁN INACTIVOS
-                    btnmodificar.setEnabled(true);
-                    btneliminar.setEnabled(true);
-                    btnguardar.setEnabled(false);
-                    //DESACTIVAMOS LOS CAMPOS DE ESCRITURA
-                    Inhabilitar();
-                    //CAPTURAMOS LA INFORMACIÓN EN LAS CAJAS
-                    txtcodigo.setText(rs.getString(1));
-                    cbtipomenu.setSelectedItem(rs.getString(2));
-                    tacomponentes.setText(rs.getString(3));
-                    tacontraindicaciones.setText(rs.getString(4));
-                    tapacientesespaciales.setText(rs.getString(5));
-                    btnconsultar.setText("Limpiar");
-                    btnconsultar.setDescription("Clean");
-                    btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
-                else{
-                    Habilitar();
-                    Limpiar();
-                    JOptionPane.showMessageDialog(null,"El dato buscado no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
-            catch (SQLException e){
-                JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
-        else if(btnconsultar.getText().equals("Limpiar")){
-            Limpiar();
-            Iniciar();
-            Habilitar();
-            btnconsultar.setText("Consultar");
-            btnconsultar.setDescription("Consult");
-            btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-            btnguardar.setEnabled(true);
-            btnmodificar.setEnabled(false);
-            btnmodificar.setText("Modificar");
-            btnmodificar.setDescription("Edit");
-            btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));}
+        switch(btnconsultar.getText()){
+            case "Consultar":
+                int codigo=Integer.parseInt((String)JOptionPane.showInputDialog(null,"Ingrese el código que desea Modificar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
+                //CREAMOS UN OBJETO DE LA CLASE TIPO MENÚ
+                ClaseTipoMenu ctm=new ClaseTipoMenu();
+                ResultSet rs=ctm.Buscar(codigo);
+                try{
+                    if(rs.next()){
+                        //ACTIVAMOS LOS BOTONES QUE ESTÁN INACTIVOS
+                        btnmodificar.setEnabled(true);
+                        btneliminar.setEnabled(true);
+                        btnguardar.setEnabled(false);
+                        //DESACTIVAMOS LOS CAMPOS DE ESCRITURA
+                        Inhabilitar();
+                        //CAPTURAMOS LA INFORMACIÓN EN LAS CAJAS
+                        txtcodigo.setText(rs.getString(1));
+                        cbtipomenu.setSelectedItem(rs.getString(2));
+                        tacomponentes.setText(rs.getString(3));
+                        tacontraindicaciones.setText(rs.getString(4));
+                        tapacientesespaciales.setText(rs.getString(5));
+                        btnconsultar.setText("Limpiar");
+                        btnconsultar.setDescription("Clean");
+                        btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
+                    else{
+                        Habilitar();
+                        Limpiar();
+                        JOptionPane.showMessageDialog(null,"El dato buscado no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
+                catch (SQLException e){
+                    JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
+                break;
+            case "Limpiar":
+                Limpiar();
+                Iniciar();
+                Habilitar();
+                btnconsultar.setText("Consultar");
+                btnconsultar.setDescription("Consult");
+                btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
+                btnguardar.setEnabled(true);
+                btnmodificar.setEnabled(false);
+                btnmodificar.setText("Modificar");
+                btnmodificar.setDescription("Edit");
+                btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
+                break;}
     }//GEN-LAST:event_btnconsultarActionPerformed
     //ACCIÓN DEL BOTÓN MODIFICAR
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
@@ -626,20 +681,19 @@ public class TipoMenu extends javax.swing.JFrame{
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Limpiar(){
+    private void Limpiar(){
         txtcodigo.setText("");
         cbtipomenu.setSelectedItem("");
         tacomponentes.setText("");
         tacontraindicaciones.setText("");
         tapacientesespaciales.setText("");
-        cbtipomenu.requestFocus();
-    }
+        cbtipomenu.requestFocus();}
     /**
      * MÉTODO PARA HABILITAR CAMPOS
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Habilitar(){
+    private void Habilitar(){
         cbtipomenu.setEnabled(true);
         cbcomponentes.setEnabled(true);
         tacomponentes.setEnabled(true);
@@ -647,14 +701,13 @@ public class TipoMenu extends javax.swing.JFrame{
         cbpacientesespaciales.setEnabled(true);
         tapacientesespaciales.setEnabled(true);
         btnlimpiarcomponentes.setEnabled(true);
-        btnlimpiarpe.setEnabled(true);
-    }
+        btnlimpiarpe.setEnabled(true);}
     /**
      * MÉTODO PARA INHABILITAR CAMPOS
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    public void Inhabilitar(){
+    private void Inhabilitar(){
         cbtipomenu.setEnabled(false);
         cbcomponentes.setEnabled(false);
         tacomponentes.setEnabled(false);
@@ -662,8 +715,7 @@ public class TipoMenu extends javax.swing.JFrame{
         cbpacientesespaciales.setEnabled(false);
         tapacientesespaciales.setEnabled(false);
         btnlimpiarcomponentes.setEnabled(false);
-        btnlimpiarpe.setEnabled(false);
-    }
+        btnlimpiarpe.setEnabled(false);}
     /**
      * MÉTODO PRINCIPAL MAIN
      * @param args que contiene un String de arreglos
@@ -695,8 +747,7 @@ public class TipoMenu extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new TipoMenu().setVisible(true);}});
-    }
+                new TipoMenu().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnconsultar;
     private org.edisoncor.gui.button.ButtonTask btneliminar;
@@ -720,6 +771,7 @@ public class TipoMenu extends javax.swing.JFrame{
     private javax.swing.JLabel lblmensaje;
     private javax.swing.JLabel lblpacientesespeciales;
     private javax.swing.JLabel lbltipomenu;
+    private javax.swing.JLabel lblusuario;
     private javax.swing.JPanel ptipomenu;
     private javax.swing.JTextArea tacomponentes;
     private javax.swing.JTextArea tacontraindicaciones;

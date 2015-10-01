@@ -14,6 +14,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -44,8 +46,8 @@ public class Usuarios extends javax.swing.JFrame{
         cbidentificacion.requestFocus();
         //VALIDACIONES LETRAS
         Letras(txtusuario);
-        Iniciar();
-    }
+        LetrasyNumeros(txtcontrasena);
+        Iniciar();}
     /**
      * MÉTODO ALTERNATIVO INICIAR
      * @author Robinson Gallego Alzate
@@ -171,9 +173,6 @@ public class Usuarios extends javax.swing.JFrame{
 
         txtcontrasena.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcontrasena.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtcontrasenaKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcontrasenaKeyTyped(evt);
             }
@@ -506,6 +505,13 @@ public class Usuarios extends javax.swing.JFrame{
         if(evt.getSource()==txtcontrasena){
             if(Contador==10){
                 cbestado.requestFocus();}}
+        //MÉTODO PARA PONER MAYÚSCULA INICIAL
+        JTextField txtrespu=(JTextField)evt.getComponent();
+        String texto=txtrespu.getText();
+        if(texto.length()>0){
+            char primera=texto.charAt(0);
+            texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
+            txtcontrasena.setText(texto);}
     }//GEN-LAST:event_txtcontrasenaKeyTyped
     private void cbestadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbestadoKeyTyped
         char Caracter=evt.getKeyChar();
@@ -521,11 +527,8 @@ public class Usuarios extends javax.swing.JFrame{
             if(Contador==10){
                 btnguardar.requestFocus();}}
     }//GEN-LAST:event_cbperfilKeyTyped
-    //CONVERTIR MAYÚSCULAS A MINÚSCULAS
-    private void txtcontrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcontrasenaKeyReleased
-        Minusculas(txtcontrasena);
-    }//GEN-LAST:event_txtcontrasenaKeyReleased
-    //ACCIÓN DEL BOTÓN GUARDAR CON CLIC
+
+   //ACCIÓN DEL BOTÓN GUARDAR CON CLIC
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         Guardar();
     }//GEN-LAST:event_btnguardarActionPerformed
@@ -588,36 +591,35 @@ public class Usuarios extends javax.swing.JFrame{
      */
     private void Guardar(){
         if(cbidentificacion.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar la Identificación del Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar la Identificación del Usuario.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbidentificacion.requestFocus();}
         else if(txtusuario.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir el Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe escribir el Usuario.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtusuario.requestFocus();}
-        else if(txtusuario.getText().length()<9){
-            JOptionPane.showMessageDialog(null,"El Usuario debe ser de mínimo 9 caracteres","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+        else if(txtusuario.getText().length()<8){
+            JOptionPane.showMessageDialog(null,"El Usuario debe ser mínimo de 8 caracteres.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtusuario.requestFocus();}
-        else if(String.valueOf(txtusuario.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"El Usuario no debe iniciar con Espacio en Blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtusuario.requestFocus();
-            txtusuario.setText("");}
         else if(cbpreguntasecreta.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar la Pregunta Secreta","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar la Pregunta Secreta.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbpreguntasecreta.requestFocus();}
         else if(txtcontrasena.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe escribir la Contraseña","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe escribir la Contraseña.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcontrasena.requestFocus();}
-        else if(txtcontrasena.getText().length()<8){
-            JOptionPane.showMessageDialog(null,"La Contraseña debe ser de mínimo 8 caracteres","Verificar",JOptionPane.WARNING_MESSAGE,warning);
-            txtcontrasena.requestFocus();}
-        else if(String.valueOf(txtcontrasena.getText().charAt(0)).equals(" ")){
-            JOptionPane.showMessageDialog(null,"La Contraseña no debe iniciar con Espacio en Blanco","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+        else if(EsNumero(String.valueOf(txtcontrasena.getText().charAt(0)))==true){
+            JOptionPane.showMessageDialog(null,"La Contraseña esta mal Ingresada.\nNo puede inicar con un Número.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtcontrasena.requestFocus();
             txtcontrasena.setText("");}
+        else if(txtcontrasena.getText().length()<8){
+            JOptionPane.showMessageDialog(null,"La Contraseña debe ser de mínimo 8 caracteres.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            txtcontrasena.requestFocus();}
+        else if(Formato(txtcontrasena.getText())==false){
+            JOptionPane.showMessageDialog(null,"La Contraseña esta mal Ingresada.\nPor favor siga el Formato: Letras+Números.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            txtcontrasena.requestFocus();}
         else if(cbestado.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar el Estado del Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar el Estado del Usuario.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbestado.requestFocus();}
         else if(cbperfil.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar un Perfil para el Usuario","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            JOptionPane.showMessageDialog(null,"Debe seleccionar un Perfil para el Usuario.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             cbperfil.requestFocus();}
         else{
             //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
@@ -633,16 +635,24 @@ public class Usuarios extends javax.swing.JFrame{
                     Limpiar();}
                 else{
                     String usuario=txtusuario.getText();
-                    String correo=txtcorreo.getText();
-                    String preguntasecre=(String)cbpreguntasecreta.getSelectedItem();
-                    String contrasena=txtcontrasena.getText();
-                    String estado=(String)cbestado.getSelectedItem();
-                    String perfil=(String)cbperfil.getSelectedItem();
-                    int cambiocontra=Integer.parseInt(lblcambiocontrasena.getText());
-                    String respuesta=txtrespuesta.getText();
-                    cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil,cambiocontra,respuesta);
-                    JOptionPane.showMessageDialog(null,"Registro guardado con Exito.","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
-                    Limpiar();}}
+                    ResultSet rs2=cu.BuscarUsuario2(usuario);
+                    try{
+                        if(rs2.next()){
+                            JOptionPane.showMessageDialog(null,"El Usuario ya existe. Por favor corregir el dato.","Error",JOptionPane.ERROR_MESSAGE,error);
+                            Limpiar();}
+                        else{
+                            String correo=txtcorreo.getText();
+                            String preguntasecre=(String)cbpreguntasecreta.getSelectedItem();
+                            String contrasena=txtcontrasena.getText();
+                            String estado=(String)cbestado.getSelectedItem();
+                            String perfil=(String)cbperfil.getSelectedItem();
+                            int cambiocontra=Integer.parseInt(lblcambiocontrasena.getText());
+                            String respuesta=txtrespuesta.getText();
+                            cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil,cambiocontra,respuesta);
+                            JOptionPane.showMessageDialog(null,"Registro guardado con Exito.","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
+                            Limpiar();}}
+                    catch(SQLException e){
+                        JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
             catch(SQLException e){
                 JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
     /**
@@ -775,10 +785,8 @@ public class Usuarios extends javax.swing.JFrame{
             @Override
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
-                if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
-                    getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO
-    }
+                if(!Character.isLetter(c)){//AQUÍ ESTOY COMPARANDO SI ES UNA LETRA
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que sera evaluado
@@ -791,8 +799,7 @@ public class Usuarios extends javax.swing.JFrame{
             Integer.parseInt(Respuesta);
             return true;}
         catch(NumberFormatException e){
-           return false;}
-    }
+           return false;}}
     /**
      * MÉTODO PARA CONVERTIR MAYÚSCULAS A MINÚSCULAS
      * @param txt que contiene un JTextField
@@ -801,8 +808,34 @@ public class Usuarios extends javax.swing.JFrame{
      */
     private void Minusculas(javax.swing.JTextField txt){
         String texto=(txt.getText().toLowerCase());
-        txt.setText(texto);
-    }
+        txt.setText(texto);}
+    /**
+     * MÉTODO QUE VALIDA LETRAS Y NÚMEROS
+     * @param a que contiene un JTextField
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private void LetrasyNumeros(JTextField a){
+        a.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyTyped(KeyEvent KE){
+                char c=KE.getKeyChar();
+                if(!Character.isLetterOrDigit(c)){//AQUÍ ESTOY COMPARANDO QUE SEAN LETRAS Y NÚMEROS SOLAMENTE
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
+    /**
+     * MÉTODO PARA DAR FORMATO ESPECIAL
+     * @param texto que contiene un String que sera Validado
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    protected static boolean Formato(String texto){
+    	boolean valido=false;
+    	Pattern patron=Pattern.compile("(\\D{1,10})(\\d{1,5})");
+    	Matcher mTarje=patron.matcher(texto.toLowerCase());
+    	if(mTarje.matches()){
+            valido=true;}
+        return valido;}
     /**
      * MÉTODO LIMPIAR
      * @author Robinson Gallego Alzate
@@ -817,8 +850,7 @@ public class Usuarios extends javax.swing.JFrame{
         cbestado.setSelectedItem("");
         cbperfil.setSelectedItem("");
         txtrespuesta.setText("");
-        cbidentificacion.requestFocus();
-    }
+        cbidentificacion.requestFocus();}
     /**
      * MÉTODO INHABILITAR
      * @author Robinson Gallego Alzate
@@ -833,8 +865,7 @@ public class Usuarios extends javax.swing.JFrame{
         txtcontrasena.setEnabled(false);
         cbestado.setEnabled(false);
         cbperfil.setEnabled(false);
-        txtrespuesta.setEnabled(false);
-    }
+        txtrespuesta.setEnabled(false);}
     /**
      * MÉTODO HABILITAR
      * @author Robinson Gallego Alzate
@@ -850,8 +881,7 @@ public class Usuarios extends javax.swing.JFrame{
         txtcontrasena.setEnabled(true);
         cbestado.setEnabled(true);
         cbperfil.setEnabled(true);
-        txtrespuesta.setEnabled(true);
-    }
+        txtrespuesta.setEnabled(true);}
     /**
      * MÉTODO PRINCIPAL MAIN
      * @param args que contiene un String de arreglos
@@ -883,8 +913,7 @@ public class Usuarios extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Usuarios().setVisible(true);}});
-    }
+                new Usuarios().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnconsultar;
     private org.edisoncor.gui.button.ButtonTask btnguardar;

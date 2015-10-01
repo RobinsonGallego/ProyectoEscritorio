@@ -37,11 +37,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         setExtendedState(MAXIMIZED_BOTH);//TAMAÑO MAXIMO DE LA VENTANA
         setTitle("Tabla Personal Médico");//TÍTULO DE LA VENTANA
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
+        //lblusuario.setVisible(false);
         btnregresar.requestFocus();
         Letras(txtnombres);
         Letras(txtprimerape);
-        Iniciar();
-    }
+        Iniciar();}
     /**
      * MÉTODO ALTERNO INICIAR
      * @author Robinson Gallego Alzate
@@ -56,8 +56,15 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         ClasePersonalMedico cpm=new ClasePersonalMedico();
         //LLAMAMOS EL MÉTODO
         cpm.LlenarDatos(modelo);
-        FormatoTabla();
-    }
+        FormatoTabla();}
+    /**
+     * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL
+     * @param user que contiene un String para recibido del Menú
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    public void setText(String user){
+        lblusuario.setText(user);}
     /**
      * MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
      * @author Robinson Gallego Alzate
@@ -113,8 +120,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getColumnModel().getColumn(10).setWidth(25);
         tablapersonalmedico.getColumnModel().getColumn(10).setMaxWidth(130);
         tablapersonalmedico.getColumnModel().getColumn(10).setMinWidth(25);
-        tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Experiencia Laboral");
-    }
+        tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Experiencia Laboral");}
     /**
      * MÉTODO PARA DAR FORMATO A ESTADO CIVIL O DIRECCIÓN
      * @author Robinson Gallego Alzate
@@ -158,8 +164,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getColumnModel().getColumn(10).setWidth(25);
         tablapersonalmedico.getColumnModel().getColumn(10).setMaxWidth(210);
         tablapersonalmedico.getColumnModel().getColumn(10).setMinWidth(25);
-        tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Correo");
-    }
+        tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Correo");}
     /**
      * MÉTODO PARA DAR FORMATO A INFORMACIÓN PROFESIONAL
      * @author Robinson Gallego Alzate
@@ -207,8 +212,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getColumnModel().getColumn(10).setMaxWidth(0);
         tablapersonalmedico.getColumnModel().getColumn(10).setMinWidth(0);
         tablapersonalmedico.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(0);
-        tablapersonalmedico.getTableHeader().getColumnModel().getColumn(10).setMinWidth(0);
-    }
+        tablapersonalmedico.getTableHeader().getColumnModel().getColumn(10).setMinWidth(0);}
     /**
      * MÉTOD PARA DAR FORMATO A INFORMACIÓN LABORAL
      * @author Robinson Gallego Alzate
@@ -255,8 +259,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         tablapersonalmedico.getColumnModel().getColumn(10).setWidth(25);
         tablapersonalmedico.getColumnModel().getColumn(10).setMaxWidth(100);
         tablapersonalmedico.getColumnModel().getColumn(10).setMinWidth(25);
-        tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Observaciones");
-    }
+        tablapersonalmedico.getColumnModel().getColumn(10).setHeaderValue("Observaciones");}
     /**
      * MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
      * @param tabla que contiene un JTable para ser Limpiado
@@ -267,8 +270,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         //RECORREMOS TODAS LAS FILAS
         while(tabla.getRowCount()>0){
             //Y AQUÍ LAS REMOVEMOS
-            ((DefaultTableModel)tabla.getModel()).removeRow(0);}
-    }
+            ((DefaultTableModel)tabla.getModel()).removeRow(0);}}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -286,6 +288,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         txtnombres = new javax.swing.JTextField();
         rbbuscarprimerape = new javax.swing.JRadioButton();
         txtprimerape = new javax.swing.JTextField();
+        lblusuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -338,6 +341,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                 btnregresarActionPerformed(evt);
             }
         });
+        btnregresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnregresarKeyTyped(evt);
+            }
+        });
 
         rbbuscardoec.setBackground(new java.awt.Color(255, 255, 255));
         rbbuscardoec.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -356,6 +364,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         btnlimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlimpiarActionPerformed(evt);
+            }
+        });
+        btnlimpiar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnlimpiarKeyTyped(evt);
             }
         });
 
@@ -417,6 +430,8 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
             }
         });
 
+        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout pbusquedaLayout = new javax.swing.GroupLayout(pbusqueda);
         pbusqueda.setLayout(pbusquedaLayout);
         pbusquedaLayout.setHorizontalGroup(
@@ -426,21 +441,21 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                 .addComponent(lblimagen)
                 .addGap(18, 18, 18)
                 .addGroup(pbusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pbusquedaLayout.createSequentialGroup()
-                        .addGroup(pbusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pbusquedaLayout.createSequentialGroup()
-                                .addComponent(rbbuscarnombres)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pbusquedaLayout.createSequentialGroup()
-                                .addComponent(rbbuscarprimerape)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtprimerape, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(pbusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbbuscarinfopro)
-                            .addComponent(rbbuscarexplabo)))
+                    .addGroup(pbusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pbusquedaLayout.createSequentialGroup()
+                            .addComponent(rbbuscarnombres)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pbusquedaLayout.createSequentialGroup()
+                            .addComponent(rbbuscarprimerape)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtprimerape, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(rbbuscardoec))
+                .addGap(18, 18, 18)
+                .addGroup(pbusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbbuscarinfopro)
+                    .addComponent(rbbuscarexplabo)
+                    .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(pbusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnregresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,8 +478,14 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                             .addComponent(rbbuscarprimerape)
                             .addComponent(txtprimerape, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rbbuscarexplabo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 10, Short.MAX_VALUE)
-                        .addComponent(rbbuscardoec, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pbusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pbusquedaLayout.createSequentialGroup()
+                                .addGap(0, 4, Short.MAX_VALUE)
+                                .addComponent(rbbuscardoec, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pbusquedaLayout.createSequentialGroup()
+                                .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pbusquedaLayout.createSequentialGroup()
                 .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -491,10 +512,11 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    //ACCIÓN DEL BOTÓN REGRESAR
+    //ACCIÓN DEL BOTÓN REGRESAR CON CLIC
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
         PersonalMedico pm=new PersonalMedico();
+        pm.setText(lblusuario.getText());
         pm.setVisible(true);
     }//GEN-LAST:event_btnregresarActionPerformed
     //ACCIÓN DEL RADIOBUTTON ESTADO CIVIL O DIRECCIÓN
@@ -551,7 +573,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
                 catch(SQLException e){
                     JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
     }//GEN-LAST:event_rbbuscardoecActionPerformed
-    //ACCIÓN DEL BOTÓN LIMPIAR
+    //ACCIÓN DEL BOTÓN LIMPIAR CON CLIC
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         Limpiar();
         Activar();
@@ -737,6 +759,19 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
             txtprimerape.setText(texto);}
     }//GEN-LAST:event_txtprimerapeKeyTyped
+    //ACCIÓN DEL BOTÓN REGRESAR CON TECLADO
+    private void btnregresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnregresarKeyTyped
+        this.dispose();
+        PersonalMedico pm=new PersonalMedico();
+        pm.setText(lblusuario.getText());
+        pm.setVisible(true);
+    }//GEN-LAST:event_btnregresarKeyTyped
+    //ACCIÓN DEL BOTÓN LIMPIAR CON TECLADO
+    private void btnlimpiarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnlimpiarKeyTyped
+        Limpiar();
+        Activar();
+        Iniciar();
+    }//GEN-LAST:event_btnlimpiarKeyTyped
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String que se Analizará
@@ -749,23 +784,21 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
             Integer.parseInt(Respuesta);
             return true;}
         catch(NumberFormatException e){
-           return false;}
-    }
+           return false;}}
     /**
      * MÉTODO QUE VALIDA LETRAS
      * @param a que contiene un JTextField
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
-    private void Letras(final JTextField a){
+    private void Letras(JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
                 if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
                     getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO                
-    }
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO PARA ACTIVAR TODO
      * @author Robinson Gallego Alzate
@@ -783,8 +816,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         txtnombres.setEnabled(false);
         rbbuscarprimerape.setEnabled(true);
         rbbuscarprimerape.setForeground(Color.BLACK);
-        txtprimerape.setEnabled(false);
-    }
+        txtprimerape.setEnabled(false);}
     /**
      * MÉTODO PARA LIMPIAR
      * @author Robinson Gallego Alzate
@@ -797,8 +829,7 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         rbbuscarnombres.setSelected(false);
         rbbuscarprimerape.setSelected(false);
         txtnombres.setText("");
-        txtprimerape.setText("");
-    }
+        txtprimerape.setText("");}
     /**
      * MÉTODO PRINCIPAL MAIN
      * @param args que contiene un String de arreglos
@@ -830,13 +861,13 @@ public class TablaPersonalMedico extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new TablaPersonalMedico().setVisible(true);}});
-    }
+                new TablaPersonalMedico().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnlimpiar;
     private org.edisoncor.gui.button.ButtonTask btnregresar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblimagen;
+    private javax.swing.JLabel lblusuario;
     private javax.swing.JPanel pbusqueda;
     private javax.swing.JRadioButton rbbuscardoec;
     private javax.swing.JRadioButton rbbuscarexplabo;

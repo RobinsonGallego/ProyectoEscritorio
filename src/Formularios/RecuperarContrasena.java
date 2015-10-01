@@ -36,7 +36,7 @@ public class RecuperarContrasena extends javax.swing.JFrame{
         String texto="<html>Correo\nEléctronico</html>";
         lblcorreo.setText(texto);
         Letras(txtrespuesta);
-        txtcorreo.requestFocus();}
+        txtrespuesta.requestFocus();}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,6 +64,8 @@ public class RecuperarContrasena extends javax.swing.JFrame{
         lbltitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbltitulo.setText("Recuperación de Contraseña");
 
+        txtcorreo.setEditable(false);
+        txtcorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtcorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -210,6 +212,7 @@ public class RecuperarContrasena extends javax.swing.JFrame{
     public void Pregunta(ResultSet rs){
         try{
             lblusuario.setText(rs.getString(2));
+            txtcorreo.setText(rs.getString(4));
             lblpregunta.setText(rs.getString(5));
             lblrespubd.setText(rs.getString(10));
             lblcontrasena.setText(rs.getString(6));}

@@ -411,25 +411,25 @@ public class ClasePersonalMedico{
             ResultSet rs=cmd.executeQuery();
             //SE LEE EL MÁXIMO DE FILAS
             while(rs.next()){
-                    /*SE CREA UN OBJETO DE DATOS QUE GUARDARA
-                    LOS DATOS Y LUEGO LOS INSERTAREMOS EN LA TABLA*/
-                    Object[] datos=new Object[11];
-                    //SE PONE 11, PORQUE SOLO SON 11 COLUMNAS
-                    for (int i=0;i<11;i++){
-                        //GUARDAMOS LOS DATOS EN EL OBJETO
-                        datos[0]=rs.getString(1);
-                        datos[1]=rs.getString(2);
-                        datos[2]=rs.getString(3);
-                        datos[3]=rs.getString(4);
-                        datos[4]=rs.getString(12);
-                        datos[5]=rs.getString(18);
-                        datos[6]=rs.getString(19);
-                        datos[7]=rs.getString(20);
-                        datos[8]=rs.getString(21);
-                        datos[9]=rs.getString(22);
-                        datos[10]=rs.getString(23);}
-                    //GUARDAMOS LOS DATOS EN LA TABLA
-                    modelo.addRow(datos);}
+                /*SE CREA UN OBJETO DE DATOS QUE GUARDARA
+                LOS DATOS Y LUEGO LOS INSERTAREMOS EN LA TABLA*/
+                Object[] datos=new Object[11];
+                //SE PONE 11, PORQUE SOLO SON 11 COLUMNAS
+                for (int i=0;i<11;i++){
+                    //GUARDAMOS LOS DATOS EN EL OBJETO
+                    datos[0]=rs.getString(1);
+                    datos[1]=rs.getString(2);
+                    datos[2]=rs.getString(3);
+                    datos[3]=rs.getString(4);
+                    datos[4]=rs.getString(12);
+                    datos[5]=rs.getString(18);
+                    datos[6]=rs.getString(19);
+                    datos[7]=rs.getString(20);
+                    datos[8]=rs.getString(21);
+                    datos[9]=rs.getString(22);
+                    datos[10]=rs.getString(23);}
+                //GUARDAMOS LOS DATOS EN LA TABLA
+                modelo.addRow(datos);}
             //CERRAMOS LA CONEXIÓN
             cmd.close();
             cn.close();}

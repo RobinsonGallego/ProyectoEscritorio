@@ -34,8 +34,7 @@ public class Perfiles extends javax.swing.JFrame{
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/favicon2.png")).getImage());//PONER IMAGEN ICONO
         txtdescripcion.requestFocus();
         //VALIDACIONES LETRAS
-        Letras(txtdescripcion);
-    }
+        Letras(txtdescripcion);}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -112,6 +111,11 @@ public class Perfiles extends javax.swing.JFrame{
                 btnguardarActionPerformed(evt);
             }
         });
+        btnguardar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnguardarKeyTyped(evt);
+            }
+        });
 
         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png"))); // NOI18N
         btnconsultar.setText("Consultar");
@@ -121,6 +125,11 @@ public class Perfiles extends javax.swing.JFrame{
         btnconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnconsultarActionPerformed(evt);
+            }
+        });
+        btnconsultar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnconsultarKeyTyped(evt);
             }
         });
 
@@ -135,6 +144,11 @@ public class Perfiles extends javax.swing.JFrame{
                 btnmodificarActionPerformed(evt);
             }
         });
+        btnmodificar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnmodificarKeyTyped(evt);
+            }
+        });
 
         btnlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listar.png"))); // NOI18N
         btnlistar.setText("Listar");
@@ -146,6 +160,11 @@ public class Perfiles extends javax.swing.JFrame{
                 btnlistarActionPerformed(evt);
             }
         });
+        btnlistar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnlistarKeyTyped(evt);
+            }
+        });
 
         btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar2_opt.png"))); // NOI18N
         btnregresar.setText("Regresar");
@@ -155,6 +174,11 @@ public class Perfiles extends javax.swing.JFrame{
         btnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnregresarActionPerformed(evt);
+            }
+        });
+        btnregresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnregresarKeyTyped(evt);
             }
         });
 
@@ -220,8 +244,58 @@ public class Perfiles extends javax.swing.JFrame{
             texto=Character.toUpperCase(primera)+texto.toLowerCase().substring(1,texto.length());
             txtdescripcion.setText(texto);}
     }//GEN-LAST:event_txtdescripcionKeyTyped
-    //ACCIÓN DEL BOTÓN GUARDAR
+    //ACCIÓN DEL BOTÓN GUARDAR CON CLIC
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        Guardar();
+    }//GEN-LAST:event_btnguardarActionPerformed
+    //ACCIÓN DEL BOTÓN CONSULTAR CON CLIC
+    private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
+        Consultar();
+    }//GEN-LAST:event_btnconsultarActionPerformed
+    //ACCIÓN DEL BOTÓN MODIFICAR CON CLIC
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        Modificar();
+    }//GEN-LAST:event_btnmodificarActionPerformed
+    //ACCIÓN DEL BOTÓN REGRESAR CON CLIC
+    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarActionPerformed
+    //ACCIÓN DEL BOTÓN LISTAR CON CLIC
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+        this.dispose();
+        Tablas.TablaPerfiles tp=new TablaPerfiles();
+        tp.setVisible(true);
+    }//GEN-LAST:event_btnlistarActionPerformed
+    //ACCIÓN DEL BOTÓN GUARDAR CON TECLADO
+    private void btnguardarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnguardarKeyTyped
+        Guardar();
+    }//GEN-LAST:event_btnguardarKeyTyped
+    //ACCIÓN DEL BOTÓN CONSULTAR CON TECLADO
+    private void btnconsultarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnconsultarKeyTyped
+        Consultar();
+    }//GEN-LAST:event_btnconsultarKeyTyped
+    //ACCIÓN DEL BOTÓN MODIFICAR CON TECLADO
+    private void btnmodificarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnmodificarKeyTyped
+        Modificar();
+    }//GEN-LAST:event_btnmodificarKeyTyped
+    //ACCIÓN DEL BOTÓN LISTAR CON TECLADO
+    private void btnlistarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnlistarKeyTyped
+        this.dispose();
+        Tablas.TablaPerfiles tp=new TablaPerfiles();
+        tp.setVisible(true);
+    }//GEN-LAST:event_btnlistarKeyTyped
+    //ACCIÓN DEL BOTÓN REGRESAR CON TECLADO
+    private void btnregresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnregresarKeyTyped
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarKeyTyped
+    /**
+     * MÉTODO PARA GUARDAR
+     */
+    private void Guardar(){
         if(txtdescripcion.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Debe ingresar la Descripción","Verificar",JOptionPane.WARNING_MESSAGE,warning);
             txtdescripcion.requestFocus();}
@@ -241,10 +315,11 @@ public class Perfiles extends javax.swing.JFrame{
                         JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
                         Limpiar();}}
             catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Error al grabar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
-    }//GEN-LAST:event_btnguardarActionPerformed
-    //ACCIÓN DEL BOTÓN CONSULTAR
-    private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
+                JOptionPane.showMessageDialog(null,"Error al grabar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
+    /**
+     * MÉTODO PARA CONSULTAR
+     */
+    private void Consultar(){
         switch(btnconsultar.getText()){
             case "Consultar":
                 String respuesta=((String)JOptionPane.showInputDialog(null,"Ingrese el código que desea Consultar","Consultar",JOptionPane.QUESTION_MESSAGE,pregunta,null,null));
@@ -275,22 +350,23 @@ public class Perfiles extends javax.swing.JFrame{
                             JOptionPane.showMessageDialog(null,"El dato buscado no existe","Información",JOptionPane.INFORMATION_MESSAGE,informacion);}}
                     catch(SQLException e){
                         JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-                    break;}
-                case "Limpiar":
-                    Limpiar();
-                    Habilitar();
-                    btnconsultar.setText("Consultar");
-                    btnconsultar.setDescription("Consult");
-                    btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
-                    btnguardar.setEnabled(true);
-                    btnmodificar.setEnabled(false);
-                    btnmodificar.setText("Modificar");
-                    btnmodificar.setDescription("Edit");
-                    btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
-                    break;}
-    }//GEN-LAST:event_btnconsultarActionPerformed
-    //ACCIÓN DEL BOTÓN MODIFICAR
-    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+                break;}
+            case "Limpiar":
+                Limpiar();
+                Habilitar();
+                btnconsultar.setText("Consultar");
+                btnconsultar.setDescription("Consult");
+                btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
+                btnguardar.setEnabled(true);
+                btnmodificar.setEnabled(false);
+                btnmodificar.setText("Modificar");
+                btnmodificar.setDescription("Edit");
+                btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
+                break;}}
+    /**
+     * MÉTODO PARA MODIFICAR
+     */
+    private void Modificar(){
         //HABILITAMOS EL CAMPO QUE SE MODIFICARA
         txtdescripcion.setEnabled(true);
         txtdescripcion.requestFocus();
@@ -329,35 +405,20 @@ public class Perfiles extends javax.swing.JFrame{
                 btnmodificar.setDescription("Edit");
                 btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar3_opt.png")));
                 btnmodificar.setEnabled(false);
-                Habilitar();}}
-    }//GEN-LAST:event_btnmodificarActionPerformed
-    //ACCIÓN DEL BOTÓN REGRESAR
-    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
-        this.dispose();
-        Menu menu=new Menu();
-        menu.setVisible(true);
-    }//GEN-LAST:event_btnregresarActionPerformed
-    //ACCIÓN DEL BOTÓN LISTAR
-    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
-        this.dispose();
-        Tablas.TablaPerfiles tp=new TablaPerfiles();
-        tp.setVisible(true);
-    }//GEN-LAST:event_btnlistarActionPerformed
+                Habilitar();}}}
     /**
      * MÉTODO QUE VALIDA LETRAS
      * @param a que contiene un JTextField
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
-    private void Letras(final JTextField a){
+    private void Letras(JTextField a){
         a.addKeyListener(new KeyAdapter(){
             @Override
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
-                if(Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI ES UN NÚMERO
-                    getToolkit().beep();//SONIDO CUANDO NO LEE LA ACCIÓN DEL TECLADO
-                    KE.consume();}}});//ANULA EVENTOS DEL TECLADO
-    }    
+                if(!Character.isLetter(c)&&c!=' '){//AQUÍ ESTOY COMPARANDO SI ES UNA LETRA O ESPACIO EN BLANCO
+                    KE.consume();}}});}//ANULA EVENTOS DEL TECLADO   
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
      * @param Respuesta que contiene un String de sera evaluado
@@ -370,8 +431,7 @@ public class Perfiles extends javax.swing.JFrame{
             Integer.parseInt(Respuesta);
             return true;}
         catch(NumberFormatException e){
-           return false;}
-    }
+           return false;}}
     /**
      * MÉTODO PARA LIMPIAR TODO
      * @author Robinson Gallego Alzate
@@ -380,8 +440,7 @@ public class Perfiles extends javax.swing.JFrame{
     public void Limpiar(){
         txtcodigo.setText("");
         txtdescripcion.setText("");
-        txtdescripcion.requestFocus();
-    }
+        txtdescripcion.requestFocus();}
     /**
      * MÉTODO PARA INHABILITAR CAMPOS
      * @author Robinson Gallego Alzate
@@ -389,8 +448,7 @@ public class Perfiles extends javax.swing.JFrame{
      */
     public void Inhabilitar(){
         txtcodigo.setEnabled(false);
-        txtdescripcion.setEnabled(false);
-    }
+        txtdescripcion.setEnabled(false);}
     /**
      * MÉTODO PARA HABILITAR CAMPOS
      * @author Robinson Gallego Alzate
@@ -399,8 +457,7 @@ public class Perfiles extends javax.swing.JFrame{
     public void Habilitar(){
         txtcodigo.setEnabled(true);
         txtdescripcion.setEnabled(true);
-        txtdescripcion.requestFocus();
-    }
+        txtdescripcion.requestFocus();}
     /**
      * MÉTODO PRINCIPAL MAIN 
      * @param args que contiene un String de arreglos
@@ -432,9 +489,7 @@ public class Perfiles extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run() {
-                new Perfiles().setVisible(true);}});
-    }
-
+                new Perfiles().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnconsultar;
     private org.edisoncor.gui.button.ButtonTask btnguardar;

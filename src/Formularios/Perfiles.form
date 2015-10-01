@@ -175,6 +175,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnguardarActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnguardarKeyTyped"/>
       </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnconsultar">
@@ -193,6 +194,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnconsultarActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnconsultarKeyTyped"/>
       </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnmodificar">
@@ -212,6 +214,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmodificarActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnmodificarKeyTyped"/>
       </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnlistar">
@@ -230,6 +233,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlistarActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnlistarKeyTyped"/>
       </Events>
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonTask" name="btnregresar">
@@ -248,6 +252,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnregresarActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnregresarKeyTyped"/>
       </Events>
     </Component>
   </SubComponents>

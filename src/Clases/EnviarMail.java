@@ -52,13 +52,11 @@ public class EnviarMail{
             BodyPart adjunto=new MimeBodyPart();
             if(!rutaArchivo.equals("")){
                 adjunto.setDataHandler(new DataHandler(new FileDataSource(rutaArchivo)));
-                adjunto.setFileName(nombreArchivo);
-            }
+                adjunto.setFileName(nombreArchivo);}
             MimeMultipart multiparte=new MimeMultipart();
             multiparte.addBodyPart(texto);
             if(!rutaArchivo.equals("")){
-                multiparte.addBodyPart(adjunto);
-            }
+                multiparte.addBodyPart(adjunto);}
             
             MimeMessage message=new MimeMessage(session);
             message.setFrom(new InternetAddress(usuarioCorreo));

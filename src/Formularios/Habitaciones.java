@@ -725,7 +725,7 @@ public class Habitaciones extends javax.swing.JFrame{
             @Override
             public void keyTyped(KeyEvent KE){
                 char c=KE.getKeyChar();
-                if(!Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI SON NÚMEROS O ESPACIO EN BLANCO
+                if(!Character.isDigit(c)){//AQUÍ ESTOY COMPARANDO SI SON NÚMEROS
                     KE.consume();}}});}//ANULA EVENTOS DEL TECLADO
     /**
      * MÉTODO QUE VALIDA SI RESPUESTA ES UN NÚMERO
