@@ -167,7 +167,7 @@ public class ClasePersonalMedico{
             //CERRAMOS LA CONEXIÓN
             cmd.close();
             cn.close();}
-        catch (FileNotFoundException|SQLException e){
+        catch(FileNotFoundException|SQLException e){
             System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA BUSCAR UN DATO

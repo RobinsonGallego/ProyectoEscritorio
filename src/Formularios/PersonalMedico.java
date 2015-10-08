@@ -377,7 +377,8 @@ public class PersonalMedico extends javax.swing.JFrame{
         });
 
         pfotografia.setBackground(new java.awt.Color(255, 255, 255));
-        pfotografia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fotográfia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        pfotografia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fotográfia *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        pfotografia.setAutoscrolls(true);
 
         txtruta.setEditable(false);
         txtruta.setBackground(new java.awt.Color(255, 255, 255));
@@ -1971,6 +1972,9 @@ public class PersonalMedico extends javax.swing.JFrame{
                 int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
                 if(Respuesta==JOptionPane.YES_OPTION){
                     Guardar();}}}
+        else if(txtruta.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Debe seleccionar la Foto de la persona.","Verificar",JOptionPane.WARNING_MESSAGE,warning);
+            btncargar.requestFocus();}
         else{
             int Respuesta=JOptionPane.showConfirmDialog(null,"Desea Guardar la Información?","Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,pregunta);
             if(Respuesta==JOptionPane.YES_OPTION){

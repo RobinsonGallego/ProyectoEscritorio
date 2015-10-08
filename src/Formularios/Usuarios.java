@@ -679,6 +679,7 @@ public class Usuarios extends javax.swing.JFrame{
                             //ACTIVAMOS LOS BOTONES QUE ESTÁN INACTIVOS
                             btnmodificar.setEnabled(true);
                             btnguardar.setEnabled(false);
+                            btnlistar.setEnabled(false);
                             //DESACTIVAMOS LOS CAMPOS DE ESCRITURA
                             Inhabilitar();
                             //CAPTURAMOS LA INFORMACIÓN EN LAS CAJAS
@@ -702,6 +703,7 @@ public class Usuarios extends javax.swing.JFrame{
                                     cbperfil.setSelectedItem(rs2.getString(2));}}
                             catch(SQLException e){
                                 JOptionPane.showMessageDialog(null,"Error al buscar los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
+                            txtrespuesta.setText(rs.getString(10));
                             btnconsultar.setText("Limpiar");
                             btnconsultar.setDescription("Clean");
                             btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));}
@@ -719,6 +721,7 @@ public class Usuarios extends javax.swing.JFrame{
                 btnconsultar.setDescription("Consult");
                 btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
                 btnguardar.setEnabled(true);
+                btnlistar.setEnabled(true);
                 btnmodificar.setEnabled(false);
                 btnmodificar.setText("Modificar");
                 btnmodificar.setDescription("Edit");
@@ -737,6 +740,7 @@ public class Usuarios extends javax.swing.JFrame{
         lblmenscontrasena.setVisible(false);
         //DESACTIVAMOS LOS BOTONES
         btnguardar.setEnabled(false);
+        btnlistar.setEnabled(false);
         btnconsultar.setText("Limpiar");
         btnconsultar.setDescription("Clean");
         btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar_opt.png")));
@@ -768,6 +772,7 @@ public class Usuarios extends javax.swing.JFrame{
                 btnconsultar.setDescription("Consult");
                 btnconsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar_opt.png")));
                 btnguardar.setEnabled(true);
+                btnlistar.setEnabled(true);
                 btnmodificar.setEnabled(false);
                 btnmodificar.setText("Modificar");
                 btnmodificar.setDescription("Edit");

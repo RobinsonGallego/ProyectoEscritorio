@@ -14,7 +14,7 @@ public class Encriptar_Desencriptar{
         ARREGLO Y MODIFICAMOS LA CONTRASEÑA*/
         for(int i=0;i<arreglo.length;i++){
             //ENCRIPTACIÓN
-            arreglo[i]=(char)(arreglo[i]+(char)+10);}
+            arreglo[i]=(char)(arreglo[i]+(char)+5);}
         //CAPTURAMOS LA CONTRASEÑA ENCRIPTADA
         String encriptado=String.valueOf(arreglo);
         //RETORNAMOS LA ENCRIPCTACIÓN
@@ -33,7 +33,7 @@ public class Encriptar_Desencriptar{
         ARREGLO Y MODIFICAMOS LA CONTRASEÑA*/
         for(int i=0;i<arreglo.length;i++){
             //ENCRIPTACIÓN
-            arreglo[i]=(char)(arreglo[i]-(char)+10);}
+            arreglo[i]=(char)(arreglo[i]-(char)+5);}
         //CAPTURAMOS LA CONTRASEÑA DESENCRIPTADA
         String desencriptado=String.valueOf(arreglo);
         //RETORNAMOS LA DESENCRIPTACIÓN
