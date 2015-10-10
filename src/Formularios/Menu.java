@@ -467,6 +467,7 @@ public class Menu extends javax.swing.JFrame{
         msalidas.add(sminformeingresos);
 
         sminfogastosgenerales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        sminfogastosgenerales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gastos_opt.png"))); // NOI18N
         sminfogastosgenerales.setText("Informe Gastos Generales");
         msalidas.add(sminfogastosgenerales);
 

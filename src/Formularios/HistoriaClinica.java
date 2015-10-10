@@ -30,8 +30,7 @@ public class HistoriaClinica extends javax.swing.JFrame{
         ImageIcon logo=new ImageIcon("src/Imagenes/logo.png");//CREAMOS UN OBJETO IMAGEICON PARA LLAMAR LA IMAGEN
         Icon icono=new ImageIcon(logo.getImage().getScaledInstance(lbllogo.getWidth(),lbllogo.getHeight(),Image.SCALE_DEFAULT));//CONVERTIMOS LA IMAGEN EN ICONO CON LAS MEDIDAS DEL JLABEL
         lbllogo.setIcon(icono);//CAPTURAMOS LA IMAGEN EN EL JLABEL
-        Iniciar();
-    }
+        Iniciar();}
     /**
      * MÉTODO MOSTRAR INFORMACIÓN
      * @param rs
@@ -95,8 +94,7 @@ public class HistoriaClinica extends javax.swing.JFrame{
             else{
                 CargarFoto(txtnumdocu.getText());}}
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
-    }
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     /**
      * MÉTODO ALTERNO INICIAR
      * @author Robinson Gallego Alzate
@@ -143,8 +141,7 @@ public class HistoriaClinica extends javax.swing.JFrame{
         //SE COLOCA EL NUEVO ICONO MODIFICADO
         if(newIcon!=null){
             lblfoto.setIcon(newIcon);
-            lblfoto.setSize(176,206);}
-    }
+            lblfoto.setSize(176,206);}}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,7 +149,7 @@ public class HistoriaClinica extends javax.swing.JFrame{
         pfondo = new javax.swing.JPanel();
         jtppestanas = new javax.swing.JTabbedPane();
         pinfopersonal = new javax.swing.JPanel();
-        ppinfopaciente = new javax.swing.JPanel();
+        pinfopaciente = new javax.swing.JPanel();
         lblnhc = new javax.swing.JLabel();
         lblnhcrecibida = new javax.swing.JLabel();
         lbltipodocu = new javax.swing.JLabel();
@@ -199,8 +196,9 @@ public class HistoriaClinica extends javax.swing.JFrame{
         lbllogo = new javax.swing.JLabel();
         cbpais = new javax.swing.JComboBox();
         cbciudad = new javax.swing.JComboBox();
-        jPanel1 = new javax.swing.JPanel();
+        phistorial = new javax.swing.JPanel();
         btnnuevac = new org.edisoncor.gui.button.ButtonTask();
+        btnregresar = new org.edisoncor.gui.button.ButtonTask();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -210,8 +208,8 @@ public class HistoriaClinica extends javax.swing.JFrame{
 
         pinfopersonal.setBackground(new java.awt.Color(255, 255, 255));
 
-        ppinfopaciente.setBackground(new java.awt.Color(255, 255, 255));
-        ppinfopaciente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Información del Paciente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        pinfopaciente.setBackground(new java.awt.Color(255, 255, 255));
+        pinfopaciente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Información del Paciente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         lblnhc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblnhc.setText("N° de H.C");
@@ -422,42 +420,42 @@ public class HistoriaClinica extends javax.swing.JFrame{
         cbciudad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbciudad.setEnabled(false);
 
-        javax.swing.GroupLayout ppinfopacienteLayout = new javax.swing.GroupLayout(ppinfopaciente);
-        ppinfopaciente.setLayout(ppinfopacienteLayout);
-        ppinfopacienteLayout.setHorizontalGroup(
-            ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ppinfopacienteLayout.createSequentialGroup()
-                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
+        javax.swing.GroupLayout pinfopacienteLayout = new javax.swing.GroupLayout(pinfopaciente);
+        pinfopaciente.setLayout(pinfopacienteLayout);
+        pinfopacienteLayout.setHorizontalGroup(
+            pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pinfopacienteLayout.createSequentialGroup()
+                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
                         .addGap(855, 855, 855)
                         .addComponent(lblnhc)
                         .addGap(6, 6, 6)
                         .addComponent(lblnhcrecibida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(lbltipodocu)
                         .addGap(21, 21, 21)
                         .addComponent(txttipodocu, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(pinformacionadicional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(92, 92, 92)
                         .addComponent(lbllogo, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ppinfopacienteLayout.createSequentialGroup()
-                                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pinfopacienteLayout.createSequentialGroup()
+                                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblnumdocu)
                                     .addComponent(lblnombres)
                                     .addComponent(lblprimerape)
                                     .addComponent(lblsegundoape)
                                     .addComponent(lblestadocivil)
-                                    .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lbldireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(lblgenero)))
                                 .addGap(18, 18, 18)
-                                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtnumdocu, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtprimerape, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -466,24 +464,24 @@ public class HistoriaClinica extends javax.swing.JFrame{
                                     .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtestadocivil, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(122, 122, 122)
-                                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblnumtelefono)
                                     .addComponent(lblnummovil)
                                     .addComponent(lblfechanacimiento)
                                     .addComponent(lblpais)
                                     .addComponent(lblciudad)
                                     .addComponent(lblcorreo)))
-                            .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                            .addGroup(pinfopacienteLayout.createSequentialGroup()
                                 .addComponent(lblprofesion)
                                 .addGap(83, 83, 83)
                                 .addComponent(txtprofesion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(122, 122, 122)
                                 .addComponent(lbltiposangre)))
                         .addGap(18, 18, 18)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtmovil, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                            .addGroup(pinfopacienteLayout.createSequentialGroup()
                                 .addComponent(txtfechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(lbledad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -497,23 +495,23 @@ public class HistoriaClinica extends javax.swing.JFrame{
                         .addComponent(pfoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32))
         );
-        ppinfopacienteLayout.setVerticalGroup(
-            ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ppinfopacienteLayout.createSequentialGroup()
-                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pinfopacienteLayout.setVerticalGroup(
+            pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pinfopacienteLayout.createSequentialGroup()
+                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblnhc)
                     .addComponent(lblnhcrecibida, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(lbltipodocu))
                     .addComponent(txttipodocu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pinfopacienteLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(lblnumdocu)
                                 .addGap(16, 16, 16)
@@ -522,7 +520,7 @@ public class HistoriaClinica extends javax.swing.JFrame{
                                 .addComponent(lblprimerape)
                                 .addGap(16, 16, 16)
                                 .addComponent(lblsegundoape))
-                            .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                            .addGroup(pinfopacienteLayout.createSequentialGroup()
                                 .addComponent(txtnumdocu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -531,18 +529,18 @@ public class HistoriaClinica extends javax.swing.JFrame{
                                 .addGap(6, 6, 6)
                                 .addComponent(txtsegundoape, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblgenero))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbldireccion))
                                 .addGap(6, 6, 6)
-                                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtestadocivil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblestadocivil)))
-                            .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                            .addGroup(pinfopacienteLayout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(lblnumtelefono)
                                 .addGap(16, 16, 16)
@@ -551,41 +549,41 @@ public class HistoriaClinica extends javax.swing.JFrame{
                                 .addComponent(lblfechanacimiento))
                             .addComponent(pfoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtprofesion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblprofesion)))
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(txtmovil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtfechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                            .addGroup(pinfopacienteLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
-                                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbledad, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblmensajito))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblcorreo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbpais, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblpais))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblciudad))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txttiposangre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbltiposangre))))
                 .addGap(12, 12, 12)
-                .addGroup(ppinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ppinfopacienteLayout.createSequentialGroup()
+                .addGroup(pinfopacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pinfopacienteLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(pinformacionadicional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbllogo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -597,32 +595,49 @@ public class HistoriaClinica extends javax.swing.JFrame{
         pinfopersonal.setLayout(pinfopersonalLayout);
         pinfopersonalLayout.setHorizontalGroup(
             pinfopersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ppinfopaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pinfopaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pinfopersonalLayout.setVerticalGroup(
             pinfopersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ppinfopaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pinfopaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jtppestanas.addTab("Información Personal", pinfopersonal);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout phistorialLayout = new javax.swing.GroupLayout(phistorial);
+        phistorial.setLayout(phistorialLayout);
+        phistorialLayout.setHorizontalGroup(
+            phistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1142, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 587, Short.MAX_VALUE)
+        phistorialLayout.setVerticalGroup(
+            phistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
 
-        jtppestanas.addTab("Motivo Consulta", jPanel1);
+        jtppestanas.addTab("Historial de Consultas", phistorial);
 
+        btnnuevac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo_opt.png"))); // NOI18N
         btnnuevac.setText("Nueva Consulta");
         btnnuevac.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnnuevac.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnnuevac.setDescription("New Query");
+
+        btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar2_opt.png"))); // NOI18N
+        btnregresar.setText("Regresar");
+        btnregresar.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnregresar.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnregresar.setDescription("Return");
+        btnregresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregresarActionPerformed(evt);
+            }
+        });
+        btnregresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnregresarKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pfondoLayout = new javax.swing.GroupLayout(pfondo);
         pfondo.setLayout(pfondoLayout);
@@ -632,14 +647,21 @@ public class HistoriaClinica extends javax.swing.JFrame{
             .addGroup(pfondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnnuevac, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pfondoLayout.setVerticalGroup(
             pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pfondoLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(btnnuevac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnnuevac, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtppestanas))
         );
 
@@ -656,12 +678,23 @@ public class HistoriaClinica extends javax.swing.JFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //ACCIÓN DEL COMBOBOX PAIS
     private void cbpaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbpaisActionPerformed
         cbciudad.removeAllItems();
         IniciarCiudades();
     }//GEN-LAST:event_cbpaisActionPerformed
-
+    //ACCIÓN DEL BOTÓN REGRESAR CON CLIC
+    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarActionPerformed
+    //ACCIÓN DEL BOTÓN REGRESAR CON TECLADO
+    private void btnregresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnregresarKeyTyped
+        this.dispose();
+        Menu menu=new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnregresarKeyTyped
     /**
      * @param args the command line arguments
      */
@@ -693,9 +726,9 @@ public class HistoriaClinica extends javax.swing.JFrame{
                 new HistoriaClinica().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnnuevac;
+    private org.edisoncor.gui.button.ButtonTask btnregresar;
     private javax.swing.JComboBox cbciudad;
     private javax.swing.JComboBox cbpais;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jtppestanas;
     private javax.swing.JLabel lblciudad;
     private javax.swing.JLabel lblcorreo;
@@ -724,9 +757,10 @@ public class HistoriaClinica extends javax.swing.JFrame{
     private javax.swing.JLabel lblvalorcopago;
     private javax.swing.JPanel pfondo;
     private javax.swing.JPanel pfoto;
+    private javax.swing.JPanel phistorial;
+    private javax.swing.JPanel pinfopaciente;
     private javax.swing.JPanel pinfopersonal;
     private javax.swing.JPanel pinformacionadicional;
-    private javax.swing.JPanel ppinfopaciente;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txteps;
