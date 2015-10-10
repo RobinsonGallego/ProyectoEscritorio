@@ -622,6 +622,16 @@ public class HistoriaClinica extends javax.swing.JFrame{
         btnnuevac.setCategoryFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnnuevac.setCategorySmallFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnnuevac.setDescription("New Query");
+        btnnuevac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevacActionPerformed(evt);
+            }
+        });
+        btnnuevac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnnuevacKeyTyped(evt);
+            }
+        });
 
         btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar2_opt.png"))); // NOI18N
         btnregresar.setText("Regresar");
@@ -695,6 +705,18 @@ public class HistoriaClinica extends javax.swing.JFrame{
         Menu menu=new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_btnregresarKeyTyped
+    //ACCIÓN DEL BOTÓN NUEVA CONSULTA CON CLIC
+    private void btnnuevacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevacActionPerformed
+        this.dispose();
+        NuevaConsulta nc=new NuevaConsulta();
+        nc.setVisible(true);
+    }//GEN-LAST:event_btnnuevacActionPerformed
+    //ACCIÓN DEL BOTÓN NUEVA CONSULTA CON TECLADO
+    private void btnnuevacKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnnuevacKeyTyped
+        this.dispose();
+        NuevaConsulta nc=new NuevaConsulta();
+        nc.setVisible(true);
+    }//GEN-LAST:event_btnnuevacKeyTyped
     /**
      * @param args the command line arguments
      */

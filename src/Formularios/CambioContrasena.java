@@ -299,14 +299,14 @@ public class CambioContrasena extends javax.swing.JFrame{
                 char caracter=con.charAt(i);
                 if(!EsNumero2(caracter)){
                     aComparar+=caracter;}}
-            //CREAMOS UN OBJETO DE LA CLASEUSUARIOS
+            //CREAMOS UN OBJETO DE LA CLASEPERSONALMÉDICO
             ClasePersonalMedico cpm=new ClasePersonalMedico();
             ResultSet rs=cpm.Buscar(identificacion);
             try{
                 if(rs.next()){
-                    String nombre=rs.getString(2),pNombre="",sNombre="";
-                    for(int i=0;i<nombre.length();i++){
-                        char caracter=nombre.charAt(i);
+                    String nombres=rs.getString(2),pNombre="",sNombre="";
+                    for(int i=0;i<nombres.length();i++){
+                        char caracter=nombres.charAt(i);
                         if(caracter!=' '&&contador==0){
                             pNombre+=caracter;}
                         else{

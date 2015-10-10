@@ -7,7 +7,6 @@ package Formularios;
 import Clases.ClasePerfiles;
 import Clases.ClasePersonalMedico;
 import Clases.ClaseUsuarios;
-import Clases.Encriptar_Desencriptar;
 import Tablas.TablaUsuarios;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
@@ -527,7 +526,6 @@ public class Usuarios extends javax.swing.JFrame{
             if(Contador==10){
                 btnguardar.requestFocus();}}
     }//GEN-LAST:event_cbperfilKeyTyped
-
    //ACCIÓN DEL BOTÓN GUARDAR CON CLIC
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         Guardar();
@@ -644,13 +642,44 @@ public class Usuarios extends javax.swing.JFrame{
                             String correo=txtcorreo.getText();
                             String preguntasecre=(String)cbpreguntasecreta.getSelectedItem();
                             String contrasena=txtcontrasena.getText();
-                            String estado=(String)cbestado.getSelectedItem();
-                            String perfil=(String)cbperfil.getSelectedItem();
-                            int cambiocontra=Integer.parseInt(lblcambiocontrasena.getText());
-                            String respuesta=txtrespuesta.getText();
-                            cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil,cambiocontra,respuesta);
-                            JOptionPane.showMessageDialog(null,"Registro guardado con Exito.","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
-                            Limpiar();}}
+                            String aComparar="";
+                            int contador=0;
+                            for(int i=0;i<contrasena.length();i++){
+                                char caracter=contrasena.charAt(i);
+                                if(!EsNumero2(caracter)){
+                                    aComparar+=caracter;}}
+                            //CREAMOS UN OBJETO DE LA CLASEPERSONALMÉDICO
+                            ClasePersonalMedico cpm=new ClasePersonalMedico();
+                            ResultSet rs3=cpm.Buscar(identificacion);
+                            try{
+                                if(rs3.next()){
+                                    String nombres=rs3.getString(2),pNombre="",sNombre="";
+                                    for(int i=0;i<nombres.length();i++){
+                                        char caracter=nombres.charAt(i);
+                                        if(caracter!=' '&&contador==0){
+                                            pNombre+=caracter;}
+                                        else{
+                                            contador=1;
+                                            sNombre+=caracter;}}
+                                    if(!"".equals(sNombre)){
+                                        if(sNombre.charAt(0)==' '){
+                                            sNombre=sNombre.replace(" ","");}}
+                                        String pApellido=rs3.getString(3);
+                                        String sApellido=rs3.getString(4);
+                                        if(aComparar.compareToIgnoreCase(pNombre)==0||aComparar.compareToIgnoreCase(sNombre)==0||aComparar.compareToIgnoreCase(pApellido)==0||aComparar.compareToIgnoreCase(sApellido)==0){
+                                            JOptionPane.showMessageDialog(null,"Error en la Contraseña ingresada. No puede ser\nsu Nombre, Primer Apellido o Segundo Apellido.","Error",JOptionPane.ERROR_MESSAGE,error);
+                                            txtcontrasena.setText("");
+                                            txtcontrasena.requestFocus();}
+                                        else{
+                                            String estado=(String)cbestado.getSelectedItem();
+                                            String perfil=(String)cbperfil.getSelectedItem();
+                                            int cambiocontra=Integer.parseInt(lblcambiocontrasena.getText());
+                                            String respuesta=txtrespuesta.getText();
+                                            cu.Guardar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil,cambiocontra,respuesta);
+                                            JOptionPane.showMessageDialog(null,"Registro guardado con Exito.","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
+                                            Limpiar();}}}
+                            catch(SQLException e){
+                                JOptionPane.showMessageDialog(null,"Error en los datos: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
                     catch(SQLException e){
                         JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}}
             catch(SQLException e){
@@ -687,10 +716,7 @@ public class Usuarios extends javax.swing.JFrame{
                             txtusuario.setText(rs.getString(3));
                             txtcorreo.setText(rs.getString(4));
                             cbpreguntasecreta.setSelectedItem(rs.getString(5));
-                            //ENCRIPTAMOS LA CONTRASEÑA
-                            String contra=rs.getString(6);
-                            Encriptar_Desencriptar ed=new Encriptar_Desencriptar();
-                            txtcontrasena.setText(ed.Encriptar(contra));
+                            txtcontrasena.setText(rs.getString(6));                            
                             lblmenscontrasena.setVisible(true);
                             cbestado.setSelectedItem(rs.getString(7));
                             //TRANSFORMAMOS EL DATO DEL PERFIL
@@ -760,9 +786,7 @@ public class Usuarios extends javax.swing.JFrame{
                 String usuario=txtusuario.getText();
                 String correo=txtcorreo.getText();
                 String preguntasecre=(String)cbpreguntasecreta.getSelectedItem();
-                //DESENCRIPTAMOS LA CONTRASEÑA
-                Encriptar_Desencriptar ed=new Encriptar_Desencriptar();
-                String contrasena=(ed.Desencriptar(txtcontrasena.getText()));
+                String contrasena=(txtcontrasena.getText());
                 String estado=(String)cbestado.getSelectedItem();
                 String perfil=(String)cbperfil.getSelectedItem();
                 cu.Actualizar(identificacion,usuario,correo,preguntasecre,contrasena,estado,perfil);
@@ -842,6 +866,19 @@ public class Usuarios extends javax.swing.JFrame{
             valido=true;}
         return valido;}
     /**
+     * MÉTODO QUE VALIDA SI CARACTER ES UN NÚMERO
+     * @param Caracter que contiene un Caracter que sera Analizado
+     * @return un dato tipo Booleano
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private static boolean EsNumero2(char Caracter){
+        try{
+            Integer.parseInt(String.valueOf(Caracter));
+            return true;}
+        catch(NumberFormatException e){
+           return false;}}
+    /**
      * MÉTODO LIMPIAR
      * @author Robinson Gallego Alzate
      * @version 1.1
@@ -893,7 +930,7 @@ public class Usuarios extends javax.swing.JFrame{
      * @author Robinson Gallego Alzate
      * @version 1.1
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -915,9 +952,9 @@ public class Usuarios extends javax.swing.JFrame{
             java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
-            public void run() {
+            public void run(){
                 new Usuarios().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonTask btnconsultar;

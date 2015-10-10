@@ -52,6 +52,19 @@ public class NuevaConsulta extends javax.swing.JFrame{
         lblmts = new javax.swing.JLabel();
         ftxestatura = new javax.swing.JFormattedTextField();
         txtpeso = new javax.swing.JTextField();
+        lblantecedentes = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taantecedentes = new javax.swing.JTextArea();
+        lbldiagnostico = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tadiagnostico = new javax.swing.JTextArea();
+        lblobservaciones = new javax.swing.JLabel();
+        lblobservaciones2 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        taobservaciones = new javax.swing.JTextArea();
+        lblcaracteres2 = new javax.swing.JLabel();
+        lblcontadorobservaciones = new javax.swing.JLabel();
+        ptipoconsulta = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +155,73 @@ public class NuevaConsulta extends javax.swing.JFrame{
             }
         });
 
+        lblantecedentes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblantecedentes.setText("Antecedentes Familiares *");
+
+        taantecedentes.setColumns(20);
+        taantecedentes.setFont(new java.awt.Font("Monospaced", 1, 13)); // NOI18N
+        taantecedentes.setRows(5);
+        taantecedentes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                taantecedentesKeyPressed(evt);
+            }
+        });
+        jScrollPane2.setViewportView(taantecedentes);
+
+        lbldiagnostico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbldiagnostico.setText("Diagnóstico *");
+
+        tadiagnostico.setColumns(20);
+        tadiagnostico.setFont(new java.awt.Font("Monospaced", 1, 13)); // NOI18N
+        tadiagnostico.setRows(5);
+        tadiagnostico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tadiagnosticoKeyPressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tadiagnostico);
+
+        lblobservaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblobservaciones.setText("Observaciones");
+
+        lblobservaciones2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblobservaciones2.setForeground(new java.awt.Color(102, 102, 102));
+        lblobservaciones2.setText("(Alergías, Medicación, Cirugías)");
+
+        taobservaciones.setColumns(20);
+        taobservaciones.setFont(new java.awt.Font("Monospaced", 1, 13)); // NOI18N
+        taobservaciones.setRows(5);
+        taobservaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                taobservacionesKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                taobservacionesKeyTyped(evt);
+            }
+        });
+        jScrollPane4.setViewportView(taobservaciones);
+
+        lblcaracteres2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblcaracteres2.setForeground(new java.awt.Color(255, 0, 0));
+        lblcaracteres2.setText("Caracteres");
+
+        lblcontadorobservaciones.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblcontadorobservaciones.setForeground(new java.awt.Color(255, 0, 0));
+
+        ptipoconsulta.setBackground(new java.awt.Color(255, 255, 255));
+        ptipoconsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo Consulta *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        javax.swing.GroupLayout ptipoconsultaLayout = new javax.swing.GroupLayout(ptipoconsulta);
+        ptipoconsulta.setLayout(ptipoconsultaLayout);
+        ptipoconsultaLayout.setHorizontalGroup(
+            ptipoconsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 142, Short.MAX_VALUE)
+        );
+        ptipoconsultaLayout.setVerticalGroup(
+            ptipoconsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pfondoLayout = new javax.swing.GroupLayout(pfondo);
         pfondo.setLayout(pfondoLayout);
         pfondoLayout.setHorizontalGroup(
@@ -154,26 +234,6 @@ public class NuevaConsulta extends javax.swing.JFrame{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblcontadorsintomas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(pfondoLayout.createSequentialGroup()
-                            .addComponent(lblpeso)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblkg)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblestatura)
-                            .addGap(18, 18, 18)
-                            .addComponent(ftxestatura, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblmts)
-                            .addGap(56, 56, 56)
-                            .addComponent(lblpresion)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(rbnormal)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(rbbaja)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jRadioButton1))
                         .addComponent(lblsintomas)
                         .addGroup(pfondoLayout.createSequentialGroup()
                             .addComponent(lblfechaconsulta)
@@ -188,8 +248,51 @@ public class NuevaConsulta extends javax.swing.JFrame{
                                     .addGap(18, 18, 18)
                                     .addComponent(lblnumero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txtmedico, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jScrollPane1)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pfondoLayout.createSequentialGroup()
+                            .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pfondoLayout.createSequentialGroup()
+                                    .addComponent(lblpeso)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblkg)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblestatura)
+                                    .addGap(18, 18, 18))
+                                .addGroup(pfondoLayout.createSequentialGroup()
+                                    .addComponent(lblantecedentes)
+                                    .addGap(118, 118, 118)))
+                            .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbldiagnostico)
+                                .addGroup(pfondoLayout.createSequentialGroup()
+                                    .addComponent(ftxestatura, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblmts)
+                                    .addGap(56, 56, 56)
+                                    .addComponent(lblpresion)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(rbnormal)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(rbbaja)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jRadioButton1))
+                                .addComponent(jScrollPane3)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pfondoLayout.createSequentialGroup()
+                            .addComponent(lblobservaciones)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblobservaciones2))
+                        .addComponent(jScrollPane4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ptipoconsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pfondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblcaracteres2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblcontadorobservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127))
         );
         pfondoLayout.setVerticalGroup(
             pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,15 +302,18 @@ public class NuevaConsulta extends javax.swing.JFrame{
                     .addComponent(lblnhc)
                     .addComponent(lblnumero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblfechaconsulta)
-                    .addComponent(txtfechaconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblmedico)
-                    .addComponent(txtmedico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblsintomas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pfondoLayout.createSequentialGroup()
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblfechaconsulta)
+                            .addComponent(txtfechaconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblmedico)
+                            .addComponent(txtmedico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblsintomas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ptipoconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblcaracteres)
@@ -224,7 +330,25 @@ public class NuevaConsulta extends javax.swing.JFrame{
                     .addComponent(lblmts)
                     .addComponent(ftxestatura, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblantecedentes)
+                    .addComponent(lbldiagnostico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblobservaciones)
+                    .addComponent(lblobservaciones2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblcaracteres2)
+                    .addComponent(lblcontadorobservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -242,7 +366,7 @@ public class NuevaConsulta extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
     //LIMITANTES Y TRANSFERENCIA DE FOCUS
     private void tasintomasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasintomasKeyPressed
-        if(tasintomas.getText().length()==500){
+        if(tasintomas.getText().length()==400){
             evt.consume();}
         if(evt.getKeyCode()==KeyEvent.VK_TAB){
             txtpeso.requestFocus();}
@@ -251,7 +375,7 @@ public class NuevaConsulta extends javax.swing.JFrame{
     private void tasintomasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasintomasKeyTyped
         int conteo=tasintomas.getText().length();
         lblcontadorsintomas.setText(String.valueOf(conteo));
-        if(conteo>499){
+        if(conteo>399){
             evt.consume();}
     }//GEN-LAST:event_tasintomasKeyTyped
     private void txtpesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesoKeyTyped
@@ -265,6 +389,30 @@ public class NuevaConsulta extends javax.swing.JFrame{
             if(Contador==10){
                 ftxestatura.requestFocus();}}
     }//GEN-LAST:event_txtpesoKeyTyped
+    private void taantecedentesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_taantecedentesKeyPressed
+        if(taantecedentes.getText().length()==100){
+            evt.consume();}
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            tadiagnostico.requestFocus();}
+    }//GEN-LAST:event_taantecedentesKeyPressed
+    private void tadiagnosticoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tadiagnosticoKeyPressed
+        if(tadiagnostico.getText().length()==200){
+            evt.consume();}
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            taobservaciones.requestFocus();}
+    }//GEN-LAST:event_tadiagnosticoKeyPressed
+    private void taobservacionesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_taobservacionesKeyPressed
+        if(taobservaciones.getText().length()==400){
+            evt.consume();}
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            taobservaciones.requestFocus();}
+    }//GEN-LAST:event_taobservacionesKeyPressed
+    private void taobservacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_taobservacionesKeyTyped
+        int conteo=taobservaciones.getText().length();
+        lblcontadorobservaciones.setText(String.valueOf(conteo));
+        if(conteo>399){
+            evt.consume();}
+    }//GEN-LAST:event_taobservacionesKeyTyped
     /**
      * MÉTODO PARA OBTENER LA FECHA DEL SISTEMA
      * @return un String con la fecha del día Actual
@@ -306,8 +454,15 @@ public class NuevaConsulta extends javax.swing.JFrame{
     private javax.swing.JFormattedTextField ftxestatura;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblantecedentes;
     private javax.swing.JLabel lblcaracteres;
+    private javax.swing.JLabel lblcaracteres2;
+    private javax.swing.JLabel lblcontadorobservaciones;
     private javax.swing.JLabel lblcontadorsintomas;
+    private javax.swing.JLabel lbldiagnostico;
     private javax.swing.JLabel lblestatura;
     private javax.swing.JLabel lblfechaconsulta;
     private javax.swing.JLabel lblkg;
@@ -315,12 +470,18 @@ public class NuevaConsulta extends javax.swing.JFrame{
     private javax.swing.JLabel lblmts;
     private javax.swing.JLabel lblnhc;
     private javax.swing.JLabel lblnumero;
+    private javax.swing.JLabel lblobservaciones;
+    private javax.swing.JLabel lblobservaciones2;
     private javax.swing.JLabel lblpeso;
     private javax.swing.JLabel lblpresion;
     private javax.swing.JLabel lblsintomas;
     private javax.swing.JPanel pfondo;
+    private javax.swing.JPanel ptipoconsulta;
     private javax.swing.JRadioButton rbbaja;
     private javax.swing.JRadioButton rbnormal;
+    private javax.swing.JTextArea taantecedentes;
+    private javax.swing.JTextArea tadiagnostico;
+    private javax.swing.JTextArea taobservaciones;
     private javax.swing.JTextArea tasintomas;
     private javax.swing.JTextField txtfechaconsulta;
     private javax.swing.JTextField txtmedico;
