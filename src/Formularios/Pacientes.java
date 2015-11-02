@@ -1749,70 +1749,60 @@ public class Pacientes extends javax.swing.JFrame{
                 String nombres=txtnombres.getText();
                 String primerApellido=txtprimerapellido.getText();
                 String segundoApellido=txtsegundoapellido.getText();
-                ResultSet rs2=cpa.BuscarPacienteNombres(nombres,primerApellido,segundoApellido);
-                try{
-                    if(rs2.next()){
-                        JOptionPane.showMessageDialog(null,"El Nombre, Primer Apellido y Segundo Apellido ya existe en la Base de Datos","Error",JOptionPane.ERROR_MESSAGE,error);
-                        Limpiar();
-                        Iniciar();}
+                if(!"".equals(txttelefono.getText())){
+                    telefono=Integer.parseInt(txttelefono.getText());}
+                if(!"".equals(txtmovil.getText())){
+                    movil=Long.parseLong(txtmovil.getText());}
+                String direccion=txtdireccion.getText();
+                String genero=(String)cbgenero.getSelectedItem();
+                String correo=txtcorreo.getText();
+                if(jdcfechanacimiento.getDate()!=null){
+                    fechaNaci=df.format(jdcfechanacimiento.getDate());}
+                if(!"".equals(txtedad.getText())){
+                    edad=Integer.parseInt(txtedad.getText());}
+                String estadoCivil=(String)cbestadocivil.getSelectedItem();
+                int pais=cbpais.getSelectedIndex();
+                int ciudad=cbciudades.getSelectedIndex();
+                String profesion=txtprofesion.getText();
+                String tipoSangre=(String)cbtiposangre.getSelectedItem();
+                String fechaIngreso=df.format(jdcfechaingreso.getDate());
+                int eps=cbeps.getSelectedIndex();
+                String formaPago="";
+                if(rbentidadaseguradora.isSelected()==true){
+                    formaPago=rbentidadaseguradora.getText();}
+                else{
+                    if(rbtarjeta.isSelected()==true){
+                        formaPago=rbtarjeta.getText();}
                     else{
-                        if(!"".equals(txttelefono.getText())){
-                            telefono=Integer.parseInt(txttelefono.getText());}
-                        if(!"".equals(txtmovil.getText())){
-                            movil=Long.parseLong(txtmovil.getText());}
-                        String direccion=txtdireccion.getText();
-                        String genero=(String)cbgenero.getSelectedItem();
-                        String correo=txtcorreo.getText();
-                        if(jdcfechanacimiento.getDate()!=null){
-                            fechaNaci=df.format(jdcfechanacimiento.getDate());}
-                        if(!"".equals(txtedad.getText())){
-                            edad=Integer.parseInt(txtedad.getText());}
-                        String estadoCivil=(String)cbestadocivil.getSelectedItem();
-                        int pais=cbpais.getSelectedIndex();
-                        int ciudad=cbciudades.getSelectedIndex();
-                        String profesion=txtprofesion.getText();
-                        String tipoSangre=(String)cbtiposangre.getSelectedItem();
-                        String fechaIngreso=df.format(jdcfechaingreso.getDate());
-                        int eps=cbeps.getSelectedIndex();
-                        String formaPago="";
-                        if(rbentidadaseguradora.isSelected()==true){
-                            formaPago=rbentidadaseguradora.getText();}
+                        if(rbefectivo.isSelected()==true){
+                            formaPago=rbefectivo.getText();}
                         else{
-                            if(rbtarjeta.isSelected()==true){
-                                formaPago=rbtarjeta.getText();}
-                            else{
-                                if(rbefectivo.isSelected()==true){
-                                    formaPago=rbefectivo.getText();}
-                                else{
-                                    if(rbcheque.isSelected()==true){
-                                        formaPago=rbcheque.getText();}}}}
-                        String numeroTarjeta=txtnumerotarjeta.getText();
-                        String tipoTarjeta=(String)cbtipotarjeta.getSelectedItem();
-                        String franquicia=(String)cbfranquicia.getSelectedItem();
-                        String numeroCheque=txtnumerocheque.getText();
-                        String banco=txtbanco.getText();
-                        String rutafoto=txtrutafoto.getText();
-                        String estado=(String)cbestado.getSelectedItem();
-                        ObjetoPaciente pa=new ObjetoPaciente(tipoDocumento,identificacion,nombres,primerApellido,segundoApellido,telefono,movil,direccion,genero,correo,fechaNaci,edad,estadoCivil,pais,ciudad,profesion,tipoSangre,fechaIngreso,eps,formaPago,numeroTarjeta,tipoTarjeta,franquicia,numeroCheque,banco,rutafoto,estado);
-                        if(edad<0){
-                            JOptionPane.showMessageDialog(null,"Fecha de Nacimiento errada.","Error",JOptionPane.ERROR_MESSAGE,error);
-                            jdcfechanacimiento.setDate(null);
-                            jdcfechanacimiento.requestFocus();}
-                        else{
-                            Boolean respuesta=comparcionFechas(fechaIngreso);
-                            if(respuesta!=true){
-                                JOptionPane.showMessageDialog(null,"Fecha de Ingreso errada.\nLa fecha debe ser el día de Hoy","Error",JOptionPane.ERROR_MESSAGE,error);
-                                jdcfechaingreso.setDate(null);}
-                            else{
-                                cpa.Guardar(pa);
-                                JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
-                                Limpiar();
-                                Iniciar();}}}}
-                catch(SQLException e){
-                    System.out.println(e.getMessage());}}}
+                            if(rbcheque.isSelected()==true){
+                                formaPago=rbcheque.getText();}}}}
+                String numeroTarjeta=txtnumerotarjeta.getText();
+                String tipoTarjeta=(String)cbtipotarjeta.getSelectedItem();
+                String franquicia=(String)cbfranquicia.getSelectedItem();
+                String numeroCheque=txtnumerocheque.getText();
+                String banco=txtbanco.getText();
+                String rutafoto=txtrutafoto.getText();
+                String estado=(String)cbestado.getSelectedItem();
+                ObjetoPaciente pa=new ObjetoPaciente(tipoDocumento,identificacion,nombres,primerApellido,segundoApellido,telefono,movil,direccion,genero,correo,fechaNaci,edad,estadoCivil,pais,ciudad,profesion,tipoSangre,fechaIngreso,eps,formaPago,numeroTarjeta,tipoTarjeta,franquicia,numeroCheque,banco,rutafoto,estado);
+                if(edad<0){
+                    JOptionPane.showMessageDialog(null,"Fecha de Nacimiento errada.","Error",JOptionPane.ERROR_MESSAGE,error);
+                    jdcfechanacimiento.setDate(null);
+                    jdcfechanacimiento.requestFocus();}
+                else{
+                    Boolean respuesta=comparcionFechas(fechaIngreso);
+                    if(respuesta!=true){
+                        JOptionPane.showMessageDialog(null,"Fecha de Ingreso errada.\nLa fecha debe ser el día actual.","Error",JOptionPane.ERROR_MESSAGE,error);
+                        jdcfechaingreso.setDate(null);}
+                    else{
+                        cpa.Guardar(pa);
+                        JOptionPane.showMessageDialog(null,"Registro guardado con Exito","Confirmación",JOptionPane.INFORMATION_MESSAGE,informacion);
+                        Limpiar();
+                        Iniciar();}}}}
         catch(SQLException e){
-            System.out.println(e.getMessage());}
-    }
+            System.out.println(e.getMessage());}}
     /**
      * MÉTODO PARA CONSULTA DE ADMINISTRADOR
      * @author Robinson Gallego Alzate

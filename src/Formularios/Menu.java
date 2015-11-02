@@ -690,6 +690,7 @@ public class Menu extends javax.swing.JFrame{
                 if(rs.next()){
                     HistoriaClinica hc=new HistoriaClinica();
                     hc.InfoPaciente(rs);
+                    hc.setText(lblusuario.getText());
                     hc.setVisible(true);
                     this.dispose();}
                 else{
@@ -715,8 +716,7 @@ public class Menu extends javax.swing.JFrame{
             Integer.parseInt(Respuesta);
             return true;}
         catch(NumberFormatException e){
-           return false;}
-    }
+           return false;}}
     /**
      * MÉTODO PRINCIPAL MAIN
      * @param args que contiene un String de arreglos
@@ -748,8 +748,7 @@ public class Menu extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new Menu().setVisible(true);}});
-    }
+                new Menu().setVisible(true);}});}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXMonthView calendario;
     private javax.swing.JPopupMenu.Separator jSeparator1;

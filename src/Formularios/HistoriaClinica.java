@@ -1,16 +1,26 @@
 package Formularios;
-
+//LIBRERÍAS IMPORTADAS
+import Clases.ClaseNuevaCita;
 import Clases.ClasePacientes;
 import Clases.FotoClassPM;
 import Conexion.Conectate;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class HistoriaClinica extends javax.swing.JFrame{
     //IMAGENES DE LOS MENSAJES
@@ -30,15 +40,17 @@ public class HistoriaClinica extends javax.swing.JFrame{
         ImageIcon logo=new ImageIcon("src/Imagenes/logo.png");//CREAMOS UN OBJETO IMAGEICON PARA LLAMAR LA IMAGEN
         Icon icono=new ImageIcon(logo.getImage().getScaledInstance(lbllogo.getWidth(),lbllogo.getHeight(),Image.SCALE_DEFAULT));//CONVERTIMOS LA IMAGEN EN ICONO CON LAS MEDIDAS DEL JLABEL
         lbllogo.setIcon(icono);//CAPTURAMOS LA IMAGEN EN EL JLABEL
+        lblusuario.setVisible(false);
         Iniciar();}
     /**
      * MÉTODO MOSTRAR INFORMACIÓN
-     * @param rs
+     * @param rs con toda la información del paciente
      * @throws java.sql.SQLException
      */
-    public void InfoPaciente(ResultSet rs) throws SQLException{
+    public void InfoPaciente(ResultSet rs)throws SQLException{
         txttipodocu.setText(rs.getString(1));
         txtnumdocu.setText(rs.getString(2));
+        lblnhcrecibida.setText(rs.getString(2));
         txtnombres.setText(rs.getString(3));
         txtprimerape.setText(rs.getString(4));
         txtsegundoape.setText(rs.getString(5));
@@ -96,11 +108,29 @@ public class HistoriaClinica extends javax.swing.JFrame{
         catch(SQLException e){
             JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}}
     /**
+     * MÉTODO QUE CAPTURA EL USUARIO QUE INGRESO Y APLICA SU PERFIL 
+     * @param user que contiene un String recibido del Inicio de Sessión
+     * @author Robinson Gallego Alzate
+     * @version 1.1
+     */
+    public void setText(String user){
+        //Perfil(user);
+        lblusuario.setText(user);}
+    /**
      * MÉTODO ALTERNO INICIAR
      * @author Robinson Gallego Alzate
      * @version 1.0
      */
     private void Iniciar(){
+        //MÉTODO PARA SELECCIONAR UN REGISTRO DE LA TABLA CON CLIC DERECHO.
+        tablaconsultas.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e){
+                if(SwingUtilities.isRightMouseButton(e)){
+                    Point point=e.getPoint();
+                    int fila=tablaconsultas.rowAtPoint(point);
+                    ListSelectionModel modelo=tablaconsultas.getSelectionModel();
+                    modelo.setSelectionInterval(fila,fila);}}});
         //LIMPIAMOS COMBOBOX
         cbpais.removeAllItems();
         //PONEMOS UN ITEM POR DEFECTO
@@ -146,6 +176,9 @@ public class HistoriaClinica extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpmhistorial = new javax.swing.JPopupMenu();
+        jmidetalles = new javax.swing.JMenuItem();
+        jmiimprimir = new javax.swing.JMenuItem();
         pfondo = new javax.swing.JPanel();
         jtppestanas = new javax.swing.JTabbedPane();
         pinfopersonal = new javax.swing.JPanel();
@@ -197,14 +230,35 @@ public class HistoriaClinica extends javax.swing.JFrame{
         cbpais = new javax.swing.JComboBox();
         cbciudad = new javax.swing.JComboBox();
         phistorial = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaconsultas = new javax.swing.JTable();
         btnnuevac = new org.edisoncor.gui.button.ButtonTask();
         btnregresar = new org.edisoncor.gui.button.ButtonTask();
+        lblusuario = new javax.swing.JLabel();
+
+        jmidetalles.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jmidetalles.setText("Ver Detalles...");
+        jmidetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmidetallesActionPerformed(evt);
+            }
+        });
+        jpmhistorial.add(jmidetalles);
+
+        jmiimprimir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jmiimprimir.setText("Imprimir");
+        jpmhistorial.add(jmiimprimir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pfondo.setBackground(new java.awt.Color(255, 255, 255));
 
         jtppestanas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jtppestanas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jtppestanasStateChanged(evt);
+            }
+        });
 
         pinfopersonal.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -604,15 +658,42 @@ public class HistoriaClinica extends javax.swing.JFrame{
 
         jtppestanas.addTab("Información Personal", pinfopersonal);
 
+        tablaconsultas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tablaconsultas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fecha", "Médico", "Tipo Cita", "Sintomas", "Peso", "Estatura", "Presión"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaconsultas.setComponentPopupMenu(jpmhistorial);
+        jScrollPane1.setViewportView(tablaconsultas);
+
         javax.swing.GroupLayout phistorialLayout = new javax.swing.GroupLayout(phistorial);
         phistorial.setLayout(phistorialLayout);
         phistorialLayout.setHorizontalGroup(
             phistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1142, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1142, Short.MAX_VALUE)
         );
         phistorialLayout.setVerticalGroup(
             phistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 579, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
         );
 
         jtppestanas.addTab("Historial de Consultas", phistorial);
@@ -649,6 +730,8 @@ public class HistoriaClinica extends javax.swing.JFrame{
             }
         });
 
+        lblusuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout pfondoLayout = new javax.swing.GroupLayout(pfondo);
         pfondo.setLayout(pfondoLayout);
         pfondoLayout.setHorizontalGroup(
@@ -659,7 +742,9 @@ public class HistoriaClinica extends javax.swing.JFrame{
                 .addComponent(btnnuevac, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pfondoLayout.setVerticalGroup(
             pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -670,7 +755,9 @@ public class HistoriaClinica extends javax.swing.JFrame{
                         .addComponent(btnnuevac, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pfondoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtppestanas))
         );
@@ -697,26 +784,113 @@ public class HistoriaClinica extends javax.swing.JFrame{
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
         Menu menu=new Menu();
+        menu.setText(lblusuario.getText());
         menu.setVisible(true);
     }//GEN-LAST:event_btnregresarActionPerformed
     //ACCIÓN DEL BOTÓN REGRESAR CON TECLADO
     private void btnregresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnregresarKeyTyped
         this.dispose();
         Menu menu=new Menu();
+        menu.setText(lblusuario.getText());
         menu.setVisible(true);
     }//GEN-LAST:event_btnregresarKeyTyped
     //ACCIÓN DEL BOTÓN NUEVA CONSULTA CON CLIC
     private void btnnuevacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevacActionPerformed
         this.dispose();
         NuevaConsulta nc=new NuevaConsulta();
+        nc.setText(lblusuario.getText(),txtnumdocu.getText());
         nc.setVisible(true);
     }//GEN-LAST:event_btnnuevacActionPerformed
     //ACCIÓN DEL BOTÓN NUEVA CONSULTA CON TECLADO
     private void btnnuevacKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnnuevacKeyTyped
         this.dispose();
         NuevaConsulta nc=new NuevaConsulta();
+        nc.setText(lblusuario.getText(),txtnumdocu.getText());
         nc.setVisible(true);
     }//GEN-LAST:event_btnnuevacKeyTyped
+    //ACCIÓN REALIZADA CUANDO SE SELECCIONA LA PESTAÑA HISTORAL DE CONSULTAS
+    private void jtppestanasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtppestanasStateChanged
+        if(jtppestanas.getSelectedIndex()==1){
+            //LIMPIAMOS LA TABLA
+            Limpiar(tablaconsultas);
+            //PONEMOS TODOS LOS DATOS POR DEFECTO
+            DefaultTableModel modelo=(DefaultTableModel)tablaconsultas.getModel();
+            //CREAMOS UN OBJETO DE LA CLASENUEVACITA
+            ClaseNuevaCita cnc=new ClaseNuevaCita();
+            //LLAMAMOS EL MÉTODO
+            cnc.LlenarDatos1(modelo,txtnumdocu.getText());
+            Formato1Tabla();}
+    }//GEN-LAST:event_jtppestanasStateChanged
+    //ACCIÓN DEL JMENÚITEM DETALLES
+    private void jmidetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmidetallesActionPerformed
+        int i=tablaconsultas.getSelectedRow();
+        String fecha="";
+        if(i!=-1){
+            fecha=(String)tablaconsultas.getValueAt(i,0);}
+        //CREAMOS UN OBJETO DE LA CLASENUEVACITA
+        ClaseNuevaCita cnc=new ClaseNuevaCita();
+        ResultSet rs=cnc.Detalles(fecha);
+        try{
+            if(rs.next()){
+                Detalles detalles=new Detalles(this,true);
+                detalles.MasDetalles(rs);
+                detalles.setVisible(true);}
+            else{
+                JOptionPane.showMessageDialog(null,"Error al buscar la información.","Error",JOptionPane.ERROR_MESSAGE,error);}}
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Error al buscar la información."+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE,error);}
+    }//GEN-LAST:event_jmidetallesActionPerformed
+    /**
+     * MÉTODO PARA DARLE TAMAÑO A CADA COLUMNA DE LA TABLA
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private void Formato1Tabla(){
+        //MODIFICAMOS LOS TÍTULOS DE LAS COLUMNAS
+        JTableHeader th;
+        th=tablaconsultas.getTableHeader();
+        Font fuente=new Font("Tahoma",Font.BOLD,12);
+        th.setFont(fuente);
+        //PONEMOS TAMAÑO A CADA COLUMNA
+        tablaconsultas.getColumnModel().getColumn(0).setWidth(25);
+        tablaconsultas.getColumnModel().getColumn(0).setMaxWidth(143);
+        tablaconsultas.getColumnModel().getColumn(0).setMinWidth(25);
+        tablaconsultas.getColumnModel().getColumn(0).setHeaderValue("Fecha");
+        tablaconsultas.getColumnModel().getColumn(1).setWidth(25);
+        tablaconsultas.getColumnModel().getColumn(1).setMaxWidth(200);
+        tablaconsultas.getColumnModel().getColumn(1).setMinWidth(25);
+        tablaconsultas.getColumnModel().getColumn(1).setHeaderValue("Médico");
+        tablaconsultas.getColumnModel().getColumn(2).setWidth(25);
+        tablaconsultas.getColumnModel().getColumn(2).setMaxWidth(140);
+        tablaconsultas.getColumnModel().getColumn(2).setMinWidth(25);
+        tablaconsultas.getColumnModel().getColumn(2).setHeaderValue("Tipo Cita");
+        tablaconsultas.getColumnModel().getColumn(3).setWidth(25);
+        tablaconsultas.getColumnModel().getColumn(3).setMaxWidth(490);
+        tablaconsultas.getColumnModel().getColumn(3).setMinWidth(25);
+        tablaconsultas.getColumnModel().getColumn(3).setHeaderValue("Sintomas");
+        tablaconsultas.getColumnModel().getColumn(4).setWidth(25);
+        tablaconsultas.getColumnModel().getColumn(4).setMaxWidth(70);
+        tablaconsultas.getColumnModel().getColumn(4).setMinWidth(25);
+        tablaconsultas.getColumnModel().getColumn(4).setHeaderValue("Peso (Kg)");
+        tablaconsultas.getColumnModel().getColumn(5).setWidth(25);
+        tablaconsultas.getColumnModel().getColumn(5).setMaxWidth(105);
+        tablaconsultas.getColumnModel().getColumn(5).setMinWidth(25);
+        tablaconsultas.getColumnModel().getColumn(5).setHeaderValue("Estatura (Mts)");
+        tablaconsultas.getColumnModel().getColumn(6).setWidth(25);
+        tablaconsultas.getColumnModel().getColumn(6).setMaxWidth(60);
+        tablaconsultas.getColumnModel().getColumn(6).setMinWidth(25);
+        tablaconsultas.getColumnModel().getColumn(6).setHeaderValue("Presión");}
+    /**
+     * MÉTODO PARA LIMPIAR LOS DATOS EN LA TABLA
+     * @param tabla que contiene un JTable para ser Limpiado
+     * @author Robinson Gallego Alzate
+     * @version 1.0
+     */
+    private void Limpiar(JTable tabla){
+        //RECORREMOS TODAS LAS FILAS
+        while(tabla.getRowCount()>0){
+            //Y AQUÍ LAS REMOVEMOS
+            ((DefaultTableModel)tabla.getModel()).removeRow(0);}}
     /**
      * @param args the command line arguments
      */
@@ -751,6 +925,10 @@ public class HistoriaClinica extends javax.swing.JFrame{
     private org.edisoncor.gui.button.ButtonTask btnregresar;
     private javax.swing.JComboBox cbciudad;
     private javax.swing.JComboBox cbpais;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem jmidetalles;
+    private javax.swing.JMenuItem jmiimprimir;
+    private javax.swing.JPopupMenu jpmhistorial;
     private javax.swing.JTabbedPane jtppestanas;
     private javax.swing.JLabel lblciudad;
     private javax.swing.JLabel lblcorreo;
@@ -776,6 +954,7 @@ public class HistoriaClinica extends javax.swing.JFrame{
     private javax.swing.JLabel lblsegundoape;
     private javax.swing.JLabel lbltipodocu;
     private javax.swing.JLabel lbltiposangre;
+    private javax.swing.JLabel lblusuario;
     private javax.swing.JLabel lblvalorcopago;
     private javax.swing.JPanel pfondo;
     private javax.swing.JPanel pfoto;
@@ -783,6 +962,7 @@ public class HistoriaClinica extends javax.swing.JFrame{
     private javax.swing.JPanel pinfopaciente;
     private javax.swing.JPanel pinfopersonal;
     private javax.swing.JPanel pinformacionadicional;
+    private javax.swing.JTable tablaconsultas;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txteps;
